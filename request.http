@@ -1,0 +1,34 @@
+# POST 'api/users', to: 'api/users#create'
+POST http://localhost:3000/api/users/
+Content-Type: application/x-www-form-urlencoded
+
+user[username]=aa@gmail
+&user[email]=adf
+&user[password]=pass
+
+###
+# let user = {
+#   user: {
+#     username: 'jason',
+#     password: 'password'
+#   }
+# }
+
+# $.ajax(
+#   url: '/api/users',
+#   method: 'POST',
+#   data: user
+# )
+
+
+###
+# POST 'api/session', to: 'api/sessions#create'
+POST http://localhost:3000/api/session/
+Content-Type: application/x-www-form-urlencoded
+
+user[username_or_password]=ingiteus
+&user[password]=123456789
+
+###
+# delete '/api/session', to: 'api/sessions#destroy'
+DELETE http://localhost:3000/api/session/
