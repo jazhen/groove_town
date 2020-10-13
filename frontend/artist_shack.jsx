@@ -7,8 +7,20 @@ import Root from './components/root';
 import { signup, login, logout } from './actions/session_actions';
 // TESTING END
 
+const createStore = () => {
+  const preloadedState = {
+    entities: {
+      users: { [window.currentUser.id]: window.currentUser },
+    },
+    session: { id: window.currentUser.id },
+  };
+
+  delete window.currentUser;
+  return configureStore(preloadedState);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
+  const store = window.currentUser ? createStore() : configureStore();
   const root = document.getElementById('root');
 
   // TESTING START
