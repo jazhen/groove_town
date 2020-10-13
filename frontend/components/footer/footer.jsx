@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AuthenticatedFooter = () => {
+const AuthenticatedFooter = ({ logout }) => {
   return (
     <footer className="footer-container">
       <div className="footer">
-        <Link className="footer__link" to="/logout">
-          Log out
-        </Link>
+        <ul className="footer__menu">
+          <li className="footer__menu-item">
+            <button className="footer__logout" onClick={() => logout()}>
+              Log out
+            </button>
+          </li>
+        </ul>
       </div>
     </footer>
   );
@@ -25,8 +29,12 @@ const UnauthenticatedFooter = () => {
   );
 };
 
-const Footer = ({ currentUser }) => {
-  return currentUser ? <AuthenticatedFooter /> : <UnauthenticatedFooter />;
+const Footer = ({ currentUser, logout }) => {
+  return currentUser ? (
+    <AuthenticatedFooter logout={logout} />
+  ) : (
+    <UnauthenticatedFooter />
+  );
 };
 
 export default Footer;
