@@ -18,8 +18,9 @@ class SessionForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      username: '',
+      email: '',
       password: '',
+      username: '',
     };
   }
 
@@ -37,7 +38,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { email, password, username } = this.state;
     const { formType, errors } = this.props;
 
     return (
@@ -45,19 +46,19 @@ class SessionForm extends React.Component {
         {/* <LinkToOtherFormType formType={formType} /> */}
         <form onSubmit={this.handleSubmit}>
           <h1>{formType}</h1>
-          <label htmlFor="username">
-            <span>Username / email</span>
+          <label htmlFor="email">
+            <span>Email address</span>
             <input
-              type="text"
-              className={errors.username ? 'invalid' : 'valid'}
-              id="username"
-              value={username}
-              onChange={this.handleFieldChange('username')}
+              type="email"
+              className={errors.email ? 'invalid' : 'valid'}
+              id="email"
+              value={email}
+              onChange={this.handleFieldChange('email')}
             />
-            <SessionErrors errors={errors} field="username" />
+            {/* <SessionErrors errors={errors} field="email" /> */}
           </label>
           <label htmlFor="password">
-            <span>password</span>
+            <span>Password</span>
             <input
               type="password"
               className={errors.password ? 'invalid' : 'valid'}
@@ -65,7 +66,18 @@ class SessionForm extends React.Component {
               value={password}
               onChange={this.handleFieldChange('password')}
             />
-            <SessionErrors errors={errors} field="password" />
+            {/* <SessionErrors errors={errors} field="password" /> */}
+          </label>
+          <label htmlFor="username">
+            <span>Username</span>
+            <input
+              type="text"
+              className={errors.username ? 'invalid' : 'valid'}
+              id="username"
+              value={username}
+              onChange={this.handleFieldChange('username')}
+            />
+            {/* <SessionErrors errors={errors} field="username" /> */}
           </label>
           <button type="submit">Submit</button>
         </form>

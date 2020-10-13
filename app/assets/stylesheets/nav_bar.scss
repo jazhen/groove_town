@@ -11,11 +11,11 @@
   // max-width: 136rem;
 }
 
-.nav-bar__list-left {
+.nav-bar__site-list {
   display: flex;
 }
 
-.nav-bar__list-left-item {
+.nav-bar__site-list-item {
   margin: 1rem 0;
   padding: 0 1.9rem 0 0;
 }
@@ -27,12 +27,12 @@
   padding: 1rem 3rem;
 }
 
-.nav-bar__list-right {
+.nav-bar__user-list {
   display: flex;
   font-size: 1.4rem;
 }
 
-.nav-bar__list-right-item > a {
+.nav-bar__user-list-item > a {
   padding: 0 1.5rem;
 }
 
