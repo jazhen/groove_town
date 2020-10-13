@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AuthenticatedHeader = ({ logout }) => {
+  debugger;
   return (
     <header>
       <div className="nav-bar">

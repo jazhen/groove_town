@@ -33,34 +33,36 @@ class SessionForm extends React.Component {
     const { formType, errors } = this.props;
 
     return (
-      <div>
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          <h1>{formType}</h1>
-          <label htmlFor="username">
-            <span>Username / email</span>
-            <input
-              type="text"
-              className={errors.username ? 'invalid' : 'valid'}
-              id="username"
-              value={usernameOrEmail}
-              onChange={this.handleFieldChange('username_or_password')}
-            />
-            <SessionErrors errors={errors} field="username" />
-          </label>
-          <label htmlFor="password">
-            <span>password</span>
-            <input
-              type="password"
-              className={errors.password ? 'invalid' : 'valid'}
-              id="password"
-              value={password}
-              onChange={this.handleFieldChange('password')}
-            />
-            <SessionErrors errors={errors} field="password" />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+      <form className="login-form parent" onSubmit={this.handleSubmit}>
+        <h1 className="login-form__header div1">{formType}</h1>
+        <label className="login-form__username-label div2" htmlFor="username">
+          <span className="login-form__username-title">Username / email</span>
+          <input
+            type="text"
+            className="login-form__username-input"
+            // {errors.username ? 'invalid' : 'valid'}
+            id="username"
+            value={usernameOrEmail}
+            onChange={this.handleFieldChange('username_or_password')}
+          />
+          {/* <SessionErrors errors={errors} field="username" /> */}
+        </label>
+        <label className="login-form__password-label div3" htmlFor="password">
+          <span className="login-form__password-title">password</span>
+          <input
+            type="password"
+            className="login-form__password-input"
+            // {errors.password ? 'invalid' : 'valid'}
+            id="password"
+            value={password}
+            onChange={this.handleFieldChange('password')}
+          />
+          {/* <SessionErrors errors={errors} field="password" /> */}
+        </label>
+        <button className="login-form__button div4" type="submit">
+          Submit
+        </button>
+      </form>
     );
   }
 }
