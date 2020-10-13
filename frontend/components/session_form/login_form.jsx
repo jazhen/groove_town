@@ -68,7 +68,7 @@ class SessionForm extends React.Component {
         </form>
         <div className="signup-form-nav">
           <span className="signup-form-nav__text">
-            Dont have an account?&nbsp;
+            Don&apos;t have an account?&nbsp;
             <Link className="signup-form-nav__link" to="/signup">
               Sign up.
             </Link>

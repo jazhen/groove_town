@@ -44,3 +44,15 @@ export const signup = (user) => (dispatch) => {
     (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
   );
 };
+
+export const demoLogin = () => (dispatch) => {
+  const demoUser = {
+    username: 'demoUser',
+    password: 'password',
+  };
+
+  return sessionAPIUtil.login(demoUser).then(
+    (currentUser) => dispatch(receiveCurrentUser(currentUser)),
+    (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
+  );
+};

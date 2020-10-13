@@ -86,6 +86,14 @@ class SessionForm extends React.Component {
             </Link>
           </span>
         </div>
+        <div className="demo-form-nav">
+          <span className="demo-form-nav__text">
+            Don&apos;t want to make an account?&nbsp;
+            <Link className="demo-form-nav__link" to="/login">
+              Log in as a demo user.
+            </Link>
+          </span>
+        </div>
       </div>
     );
   }

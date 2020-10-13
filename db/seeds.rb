@@ -8,8 +8,27 @@
 
 User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
-user1 = User.create(username: Faker::Name.name, password: 'password')
-user2 = User.create(username: Faker::Name.name, password: 'password')
-user3 = User.create(username: Faker::Name.name, password: 'password')
-user4 = User.create(username: Faker::Name.name, password: 'password')
-user5 = User.create(username: Faker::Name.name, password: 'password')
+
+demo_user = User.create(username: 'demoUser',
+                        email: 'demouser@artistshack.com',
+                        password: 'password')
+
+user1 = User.create(username: Faker::Name.unique.name,
+                    email: Faker::Internet.unique.email,
+                    password: 'password')
+
+user2 = User.create(username: Faker::Name.unique.name,
+                    email: Faker::Internet.unique.email,
+                    password: 'password')
+
+user3 = User.create(username: Faker::Name.unique.name,
+                    email: Faker::Internet.unique.email,
+                    password: 'password')
+
+user4 = User.create(username: Faker::Name.unique.name,
+                    email: Faker::Internet.unique.email,
+                    password: 'password')
+
+user5 = User.create(username: Faker::Name.unique.name,
+                    email: Faker::Internet.unique.email,
+                    password: 'password')
