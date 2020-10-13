@@ -1,14 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-const LinkToOtherFormType = ({ formType }) => {
-  return formType === 'Log in' ? (
-    <Link to="/signup">Sign up</Link>
-  ) : (
-    <Link to="/login">Log in</Link>
-  );
-};
-
 const SessionErrors = ({ errors, field }) => {
   return errors.responseJSON ? <span>{errors.responseJSON[field]}</span> : null;
 };
@@ -18,18 +10,18 @@ class SessionForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      username: '',
+      username_or_password: '',
       password: '',
     };
   }
 
   handleSubmit(e) {
-    const { processForm, history } = this.props;
+    const { login, history } = this.props;
     const user = { ...this.state };
 
     e.preventDefault();
-    processForm(user);
-    // history.push('/');
+    login(user);
+    history.push('/');
   }
 
   handleFieldChange(field) {
@@ -37,22 +29,21 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { usernameOrEmail, password } = this.state;
     const { formType, errors } = this.props;
 
     return (
       <div>
-        <LinkToOtherFormType formType={formType} />
-        <form onSubmit={this.handleSubmit}>
+        <form className="login-form" onSubmit={this.handleSubmit}>
           <h1>{formType}</h1>
           <label htmlFor="username">
-            <span>username</span>
+            <span>Username / email</span>
             <input
               type="text"
-              className={errors.username ? 'error' : null}
+              className={errors.username ? 'invalid' : 'valid'}
               id="username"
-              value={username}
-              onChange={this.handleFieldChange('username')}
+              value={usernameOrEmail}
+              onChange={this.handleFieldChange('username_or_password')}
             />
             <SessionErrors errors={errors} field="username" />
           </label>
@@ -60,7 +51,7 @@ class SessionForm extends React.Component {
             <span>password</span>
             <input
               type="password"
-              className={errors.password ? 'error' : null}
+              className={errors.password ? 'invalid' : 'valid'}
               id="password"
               value={password}
               onChange={this.handleFieldChange('password')}
