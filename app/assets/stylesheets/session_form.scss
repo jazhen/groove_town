@@ -17,6 +17,8 @@
 .login-form__button { grid-area: 4 / 2 / 5 / 3; }
 
 
+// frontend/components/session_form/signup_form.jsx
+
 .signup-form-container {
   text-align: center;
 }
@@ -34,6 +36,8 @@
 .signup-form__password-label { grid-area: 3 / 2 / 4 / 3; }
 .signup-form__username-label { grid-area: 4 / 2 / 5 / 3; }
 .signup-form__button { grid-area: 5 / 2 / 6 / 3; }
+
+// frontend/components/session_form/session_form_helper.jsx
 
 .demo-form-nav__button--link {
   font-size: 1rem;
