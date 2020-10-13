@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
 
   render() {
     const { email, password, username } = this.state;
-    const { formType, errors } = this.props;
+    const { formType, errors, demoLogin } = this.props;
 
     return (
       <div className="signup-form-container">
@@ -89,9 +89,11 @@ class SessionForm extends React.Component {
         <div className="demo-form-nav">
           <span className="demo-form-nav__text">
             Don&apos;t want to make an account?&nbsp;
-            <Link className="demo-form-nav__link" to="/login">
+            <button
+              className="demo-form-nav__button"
+              onClick={() => demoLogin()}>
               Log in as a demo user.
-            </Link>
+            </button>
           </span>
         </div>
       </div>

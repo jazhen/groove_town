@@ -1,8 +1,8 @@
 class Api::SessionsController < ApplicationController
   def create
-    username_or_password = params[:user][:username_or_password]
+    username_or_email = params[:user][:username_or_email]
     password = params[:user][:password]
-    @user = User.find_by_credentials(username_or_password, password)
+    @user = User.find_by_credentials(username_or_email, password)
 
     if @user
       login!(@user)
@@ -10,9 +10,9 @@ class Api::SessionsController < ApplicationController
     else
       session_errors = Hash.new { |h, k| h[k] = [] }
 
-      if username_or_password.blank?
+      if username_or_email.blank?
         session_errors[:username] << 'Please enter your username.'
-      elsif !User.find_by_username_or_email(username_or_password)
+      elsif !User.find_by_username_or_email(username_or_email)
         session_errors[:username] << 'We didn’t recognize that username.\nPlease try again.'
       end
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SessionErrors, inputClassName } from './session_form_helper';
 
 class SessionForm extends React.Component {
@@ -7,7 +7,7 @@ class SessionForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      username_or_password: '',
+      username_or_email: '',
       password: '',
     };
   }
@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
 
   render() {
     const { usernameOrEmail, password } = this.state;
-    const { formType, errors } = this.props;
+    const { formType, errors, demoLogin } = this.props;
 
     return (
       <div className="login-form-container">
@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
               className={inputClassName(formType, 'username', errors)}
               id="username"
               value={usernameOrEmail}
-              onChange={this.handleFieldChange('username_or_password')}
+              onChange={this.handleFieldChange('username_or_email')}
             />
             <SessionErrors
               formType={formType}
@@ -72,6 +72,16 @@ class SessionForm extends React.Component {
             <Link className="signup-form-nav__link" to="/signup">
               Sign up.
             </Link>
+          </span>
+        </div>
+        <div className="demo-form-nav">
+          <span className="demo-form-nav__text">
+            Don&apos;t want to make an account?&nbsp;
+            <button
+              className="demo-form-nav__button"
+              onClick={() => demoLogin()}>
+              Log in as a demo user.
+            </button>
           </span>
         </div>
       </div>

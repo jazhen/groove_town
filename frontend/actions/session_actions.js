@@ -45,14 +45,11 @@ export const signup = (user) => (dispatch) => {
   );
 };
 
-export const demoLogin = () => (dispatch) => {
+export const demoLogin = () => {
   const demoUser = {
-    username: 'demoUser',
+    username_or_email: 'demoUser',
     password: 'password',
   };
 
-  return sessionAPIUtil.login(demoUser).then(
-    (currentUser) => dispatch(receiveCurrentUser(currentUser)),
-    (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
-  );
+  return login(demoUser);
 };
