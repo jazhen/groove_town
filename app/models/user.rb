@@ -10,6 +10,8 @@
 #  updated_at      :datetime         not null
 #
 
+require 'bcrypt'
+
 class CheckLengthValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     if value.blank?
