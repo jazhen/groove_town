@@ -1,17 +1,6 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-
-const LinkToOtherFormType = ({ formType }) => {
-  return formType === 'Log in' ? (
-    <Link to="/signup">Sign up</Link>
-  ) : (
-    <Link to="/login">Log in</Link>
-  );
-};
-
-const SessionErrors = ({ errors, field }) => {
-  return errors.responseJSON ? <span>{errors.responseJSON[field]}</span> : null;
-};
+import { Link } from 'react-router-dom';
+import { SessionErrors, inputClassName } from './session_form_helper';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -25,12 +14,11 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-    const { processForm, history } = this.props;
+    const { processForm } = this.props;
     const user = { ...this.state };
 
     e.preventDefault();
     processForm(user);
-    // history.push('/');
   }
 
   handleFieldChange(field) {
@@ -42,45 +30,62 @@ class SessionForm extends React.Component {
     const { formType, errors } = this.props;
 
     return (
-      <div>
-        {/* <LinkToOtherFormType formType={formType} /> */}
-        <form onSubmit={this.handleSubmit}>
-          <h1>{formType}</h1>
-          <label htmlFor="email">
-            <span>Email address</span>
+      <div className="signup-form-container">
+        <form className="signup-form" onSubmit={this.handleSubmit}>
+          <h1 className="signup-form__header">Sign up</h1>
+          <label className="signup-form__email-label" htmlFor="email">
+            <span className="signup-form__email-title">Email address</span>
             <input
               type="email"
-              className={errors.email ? 'invalid' : 'valid'}
+              className={inputClassName(formType, 'email', errors)}
               id="email"
               value={email}
               onChange={this.handleFieldChange('email')}
             />
-            {/* <SessionErrors errors={errors} field="email" /> */}
+            <SessionErrors formType={formType} field="email" errors={errors} />
           </label>
-          <label htmlFor="password">
-            <span>Password</span>
+          <label className="signup-form__password-label" htmlFor="password">
+            <span className="signup-form__password-title">Password</span>
             <input
               type="password"
-              className={errors.password ? 'invalid' : 'valid'}
+              className={inputClassName(formType, 'password', errors)}
               id="password"
               value={password}
               onChange={this.handleFieldChange('password')}
             />
-            {/* <SessionErrors errors={errors} field="password" /> */}
+            <SessionErrors
+              formType={formType}
+              field="password"
+              errors={errors}
+            />
           </label>
-          <label htmlFor="username">
-            <span>Username</span>
+          <label className="signup-form__username-label" htmlFor="username">
+            <span className="signup-form__username-title">Username</span>
             <input
               type="text"
-              className={errors.username ? 'invalid' : 'valid'}
+              className={inputClassName(formType, 'username', errors)}
               id="username"
               value={username}
               onChange={this.handleFieldChange('username')}
             />
-            {/* <SessionErrors errors={errors} field="username" /> */}
+            <SessionErrors
+              formType={formType}
+              field="username"
+              errors={errors}
+            />
           </label>
-          <button type="submit">Submit</button>
+          <button className="signup-form__button" type="submit">
+            Submit
+          </button>
         </form>
+        <div className="login-form-nav">
+          <span className="login-form-nav__text">
+            Already have an account?&nbsp;
+            <Link className="login-form-nav__link" to="/login">
+              Log in.
+            </Link>
+          </span>
+        </div>
       </div>
     );
   }

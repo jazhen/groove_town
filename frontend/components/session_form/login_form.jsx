@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-
-const SessionErrors = ({ errors, field }) => {
-  return errors.responseJSON ? <span>{errors.responseJSON[field]}</span> : null;
-};
+import { SessionErrors, inputClassName } from './session_form_helper';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -16,12 +13,11 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-    const { login, history } = this.props;
+    const { processForm } = this.props;
     const user = { ...this.state };
 
     e.preventDefault();
-    login(user);
-    history.push('/');
+    processForm(user);
   }
 
   handleFieldChange(field) {
@@ -33,36 +29,52 @@ class SessionForm extends React.Component {
     const { formType, errors } = this.props;
 
     return (
-      <form className="login-form parent" onSubmit={this.handleSubmit}>
-        <h1 className="login-form__header div1">{formType}</h1>
-        <label className="login-form__username-label div2" htmlFor="username">
-          <span className="login-form__username-title">Username / email</span>
-          <input
-            type="text"
-            className="login-form__username-input"
-            // {errors.username ? 'invalid' : 'valid'}
-            id="username"
-            value={usernameOrEmail}
-            onChange={this.handleFieldChange('username_or_password')}
-          />
-          {/* <SessionErrors errors={errors} field="username" /> */}
-        </label>
-        <label className="login-form__password-label div3" htmlFor="password">
-          <span className="login-form__password-title">password</span>
-          <input
-            type="password"
-            className="login-form__password-input"
-            // {errors.password ? 'invalid' : 'valid'}
-            id="password"
-            value={password}
-            onChange={this.handleFieldChange('password')}
-          />
-          {/* <SessionErrors errors={errors} field="password" /> */}
-        </label>
-        <button className="login-form__button div4" type="submit">
-          Submit
-        </button>
-      </form>
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={this.handleSubmit}>
+          <h1 className="login-form__header">Log in</h1>
+          <label className="login-form__username-label" htmlFor="username">
+            <span className="login-form__username-title">Username / email</span>
+            <input
+              type="text"
+              className={inputClassName(formType, 'username', errors)}
+              id="username"
+              value={usernameOrEmail}
+              onChange={this.handleFieldChange('username_or_password')}
+            />
+            <SessionErrors
+              formType={formType}
+              field="username"
+              errors={errors}
+            />
+          </label>
+          <label className="login-form__password-label" htmlFor="password">
+            <span className="login-form__password-title">password</span>
+            <input
+              type="password"
+              className={inputClassName(formType, 'username', errors)}
+              id="password"
+              value={password}
+              onChange={this.handleFieldChange('password')}
+            />
+            <SessionErrors
+              formType={formType}
+              field="password"
+              errors={errors}
+            />
+          </label>
+          <button className="login-form__button" type="submit">
+            Submit
+          </button>
+        </form>
+        <div className="signup-form-nav">
+          <span className="signup-form-nav__text">
+            Dont have an account?&nbsp;
+            <Link className="signup-form-nav__link" to="/signup">
+              Sign up.
+            </Link>
+          </span>
+        </div>
+      </div>
     );
   }
 }
