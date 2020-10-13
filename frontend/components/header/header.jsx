@@ -24,16 +24,16 @@ const UnauthenticatedHeader = () => {
       <div className="navbar">
         <Link to="/">artistshack</Link>
         <div>Seach Bar</div>
-        <Link to="/signup">sign up</Link>
-        <Link to="/login">log in</Link>
+        <Link to="/signup">Signup</Link>
+        <Link to="/login">Login</Link>
       </div>
     </header>
   );
 };
 
 const Header = ({ currentUser, logout }) => {
-  if (currentUser) return <AuthenticatedHeader />;
-  return <UnauthenticatedHeader logout={logout} />;
+  if (currentUser) return <AuthenticatedHeader logout={logout} />;
+  return <UnauthenticatedHeader />;
 };
 
 export default Header;
