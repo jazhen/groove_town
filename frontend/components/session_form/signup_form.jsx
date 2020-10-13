@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SessionErrors, inputClassName } from './session_form_helper';
+import { SessionErrors, inputClassName, DemoUser } from './session_form_helper';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -86,16 +86,7 @@ class SessionForm extends React.Component {
             </Link>
           </span>
         </div>
-        <div className="demo-form-nav">
-          <span className="demo-form-nav__text">
-            Don&apos;t want to make an account?&nbsp;
-            <button
-              className="demo-form-nav__button"
-              onClick={() => demoLogin()}>
-              Log in as a demo user.
-            </button>
-          </span>
-        </div>
+        <DemoUser demoLogin={demoLogin} />
       </div>
     );
   }

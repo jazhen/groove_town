@@ -12,3 +12,18 @@ export const inputClassName = (formType, field, errors) => {
   }
   return `${formType}-form__${field}-input`;
 };
+
+export const DemoUser = ({ demoLogin }) => {
+  return (
+    <div className="demo-form-nav">
+      <span className="demo-form-nav__text">
+        Don&apos;t want to make an account?&nbsp;
+        <button
+          className="demo-form-nav__button demo-form-nav__button--link"
+          onClick={() => demoLogin()}>
+          Log in as a demo user.
+        </button>
+      </span>
+    </div>
+  );
+};

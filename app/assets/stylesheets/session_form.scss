@@ -34,3 +34,11 @@
 .signup-form__password-label { grid-area: 3 / 2 / 4 / 3; }
 .signup-form__username-label { grid-area: 4 / 2 / 5 / 3; }
 .signup-form__button { grid-area: 5 / 2 / 6 / 3; }
+
+.demo-form-nav__button--link {
+  font-size: 1rem;
+  border: none;
+  background: none;
+  outline: inherit;
+  cursor: pointer;
+}
