@@ -36,20 +36,22 @@ class SessionForm extends React.Component {
           <label className="signup-form__email-label" htmlFor="email">
             <span className="signup-form__email-title">Email address</span>
             <input
-              type="email"
+              type="text"
               className={inputClassName(formType, 'email', errors)}
-              id="email"
+              id="signup-form__email-label"
               value={email}
               onChange={this.handleFieldChange('email')}
             />
             <SessionErrors formType={formType} field="email" errors={errors} />
           </label>
-          <label className="signup-form__password-label" htmlFor="password">
+          <label
+            className="signup-form__password-label"
+            htmlFor="signup-form__password-label">
             <span className="signup-form__password-title">Password</span>
             <input
               type="password"
               className={inputClassName(formType, 'password', errors)}
-              id="password"
+              id="signup-form__password-label"
               value={password}
               onChange={this.handleFieldChange('password')}
             />
@@ -59,12 +61,14 @@ class SessionForm extends React.Component {
               errors={errors}
             />
           </label>
-          <label className="signup-form__username-label" htmlFor="username">
+          <label
+            className="signup-form__username-label"
+            htmlFor="signup-form__username-label">
             <span className="signup-form__username-title">Username</span>
             <input
               type="text"
               className={inputClassName(formType, 'username', errors)}
-              id="username"
+              id="signup-form__username-label"
               value={username}
               onChange={this.handleFieldChange('username')}
             />
