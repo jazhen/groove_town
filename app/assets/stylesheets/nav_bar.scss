@@ -35,3 +35,12 @@
 .nav-bar__list-right-item > a {
   padding: 0 1.5rem;
 }
+
+.nav-bar__dropdown-content {
+  display: none;
+  position: absolute;
+}
+
+.nav-bar__dropdown:hover > .nav-bar__dropdown-content {
+  display: block;
+}
