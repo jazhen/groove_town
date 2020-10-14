@@ -1,43 +1,46 @@
 // frontend/components/session_form/login_form.jsx
-.login-form-container {
-  text-align: center;
-  background-color: #F3F3F3;
-}
-
-.login-form {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
-}
-
-.login-form__header { grid-area: 1 / 2 / 2 / 3; }
-.login-form__username-label { grid-area: 2 / 2 / 3 / 3; }
-.login-form__password-label { grid-area: 3 / 2 / 4 / 3; }
-.login-form__button { grid-area: 4 / 2 / 5 / 3; }
-
-
 // frontend/components/session_form/signup_form.jsx
 
-.signup-form-container {
-  text-align: center;
+.session-form-container {
   background-color: #F3F3F3;
+  border: 1px dotted rgb(70, 36, 36);
 }
 
-.signup-form {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+.session-form__inner-container {
+  margin: 0 auto;
+  text-align: center;
+  width: 50rem;
+  position: relative;
+
+  border: 1px dotted rgb(70, 36, 36);
 }
 
-.signup-form__header { grid-area: 1 / 2 / 2 / 3; }
-.signup-form__email-label { grid-area: 2 / 2 / 3 / 3; }
-.signup-form__password-label { grid-area: 3 / 2 / 4 / 3; }
-.signup-form__username-label { grid-area: 4 / 2 / 5 / 3; }
-.signup-form__button { grid-area: 5 / 2 / 6 / 3; }
+.session-form {
+  display: inline-block;
+  border: 1px dotted rgb(70, 36, 36);
+}
+
+
+.session-form__username-title {
+  position: absolute;
+}
+
+
+.session-form__password-title {
+  position: absolute;
+}
+
+.session-form__email-title {
+  position: absolute;
+}
+
+.session-form__button {
+  width: 100%;
+}
+
+.signup-form-nav, .login-form-nav {
+  text-align: center;
+}
 
 // frontend/components/session_form/session_form_helper.jsx
 
