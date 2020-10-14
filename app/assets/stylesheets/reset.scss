@@ -15,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	line-height: 1;
+	line-height: 1.5;
 }
 
 ol, ul {
@@ -56,6 +56,13 @@ table {
 
 /* user added attributes */
 
+input, label, select, button, textarea
+{
+	margin: 0;
+	border: 1;
+	padding: 0;
+}
+
 a {
   text-decoration: none;
   color: #000000;
@@ -63,4 +70,32 @@ a {
 
 html {
   font-size: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 3.375rem;
+}
+
+h2 {
+  font-size: 5.063rem;
+}
+
+h1 {
+  font-size: 7.594rem;
 }

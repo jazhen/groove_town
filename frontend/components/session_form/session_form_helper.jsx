@@ -2,13 +2,17 @@ import React from 'react';
 
 export const SessionErrors = ({ formType, field, errors }) => {
   return errors ? (
-    <div className={`${formType}-form__${field}-errors`}>{errors[field]}</div>
-  ) : null;
+    <div className={`${formType}-form__${field}-errors session-form--errors`}>
+      {errors[field]}
+    </div>
+  ) : (
+    <div className={`${formType}-form__${field}-errors session-form--errors`} />
+  );
 };
 
 export const inputClassName = (formType, field, errors) => {
   if (errors[field]) {
-    return `${formType}-form__${field}-input ${formType}-form__${field}-input--error`;
+    return `${formType}-form__${field}-input session-form-input--error`;
   }
   return `${formType}-form__${field}-input`;
 };

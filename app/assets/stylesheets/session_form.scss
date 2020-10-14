@@ -1,42 +1,48 @@
-// frontend/components/session_form/login_form.jsx
-// frontend/components/session_form/signup_form.jsx
-
 .session-form-container {
   background-color: #F3F3F3;
-  border: 1px dotted rgb(70, 36, 36);
 }
 
-.session-form__inner-container {
+.session-form-inner-container {
+  max-width: 30rem;
   margin: 0 auto;
-  text-align: center;
-  width: 50rem;
-  position: relative;
-
-  border: 1px dotted rgb(70, 36, 36);
 }
 
-.session-form {
-  display: inline-block;
-  border: 1px dotted rgb(70, 36, 36);
+.session-form-outer-container {
+  max-width: 50rem;
+  margin: 0 auto;
 }
 
-
-.session-form__username-title,
-.session-form__password-title,
-.session-form__email-title {
-  position: absolute;
+.session-form__list-item {
+  display: flex;
+  padding: .5em;
 }
 
 .session-form__button {
   width: 100%;
+  background-color: #00A1C6;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+
+  height: 3.2rem;
 }
 
-// frontend/components/session_form/session_form_helper.jsx
+.session-form--left {
+  flex: 1;
+}
 
-.demo-form-nav__button--link {
-  font-size: 1rem;
-  border: none;
-  background: none;
-  outline: inherit;
-  cursor: pointer;
+.session-form--right {
+  flex: 2;
+}
+
+.session-form__header {
+  display: flex;
+  max-width: 30rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.session-form__header-divider {
+  border: 2px dotted #ccc;
+  margin: 2rem 0;
 }
