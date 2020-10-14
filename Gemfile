@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1'
+gem 'faker', '~> 2.14'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -53,7 +54,6 @@ group :development do
   gem 'annotate', '~> 3.1'
   gem 'better_errors', '~> 2.8'
   gem 'binding_of_caller', '~> 0.8.0'
-  gem 'faker', '~> 2.14'
   gem 'pry-rails', '~> 0.3.9'
 end
 
