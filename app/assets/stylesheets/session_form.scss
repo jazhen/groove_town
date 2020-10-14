@@ -21,25 +21,14 @@
 }
 
 
-.session-form__username-title {
-  position: absolute;
-}
-
-
-.session-form__password-title {
-  position: absolute;
-}
-
+.session-form__username-title,
+.session-form__password-title,
 .session-form__email-title {
   position: absolute;
 }
 
 .session-form__button {
   width: 100%;
-}
-
-.signup-form-nav, .login-form-nav {
-  text-align: center;
 }
 
 // frontend/components/session_form/session_form_helper.jsx

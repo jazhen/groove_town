@@ -10,12 +10,12 @@ const App = () => {
   return (
     <>
       <HeaderContainer />
-
-      <Switch>
-        <AuthRoute path="/login" component={LoginFormContainer} />
-        <AuthRoute path="/signup" component={SignupFormContainer} />
-      </Switch>
-
+      <main className="main">
+        <Switch>
+          <AuthRoute path="/login" component={LoginFormContainer} />
+          <AuthRoute path="/signup" component={SignupFormContainer} />
+        </Switch>
+      </main>
       <FooterContainer />
     </>
   );

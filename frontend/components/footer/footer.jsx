@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 
 const AuthenticatedFooter = ({ logout }) => {
   return (
-    <footer className="footer-container">
-      <div className="footer">
-        <ul className="footer__menu">
-          <li className="footer__menu-item">
-            <button className="footer__logout" onClick={() => logout()}>
+    <footer className="footer">
+      <div className="footer-container">
+        <ul className="footer-container__menu">
+          <li className="footer-container__menu-item">
+            <button
+              className="footer-container__logout"
+              onClick={() => logout()}>
               Log out
             </button>
           </li>
@@ -19,9 +21,9 @@ const AuthenticatedFooter = ({ logout }) => {
 
 const UnauthenticatedFooter = () => {
   return (
-    <footer className="footer-container">
-      <div className="footer">
-        <Link className="footer__link" to="/login">
+    <footer className="footer">
+      <div className="footer-container">
+        <Link className="footer-container__link" to="/login">
           Log in
         </Link>
       </div>

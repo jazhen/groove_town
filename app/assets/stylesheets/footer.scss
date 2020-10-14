@@ -1,18 +1,30 @@
-.footer-container {
+.footer {
   height: 15rem;
   background-color: #477987;
   text-align: right;
   font-size: 1.3rem;
 }
 
-.footer {
+.footer-container {
   padding: 1rem 1rem;
 }
 
-.footer__logout {
+.footer-container__logout {
   font-size: 1rem;
   border: none;
   background: none;
   outline: inherit;
   cursor: pointer;
+}
+
+// sticky footer
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
 }
