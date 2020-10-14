@@ -13,7 +13,7 @@
   },
   "rules": {
     // "func-names": "off",
-    "jsx-a11y/label-has-associated-control": "warn",
+    "jsx-a11y/label-has-associated-control": ["error", { "assert": "either" }],
     // "no-console": "off",
     // "no-else-return": "off",
     // "no-extend-native": "off",
