@@ -7,7 +7,7 @@ class SignUpForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      bandName: '',
+      band: '',
       email: '',
       password: '',
       username: '',
@@ -27,7 +27,7 @@ class SignUpForm extends React.Component {
   }
 
   render() {
-    const { email, password, username } = this.state;
+    const { band, email, password, username } = this.state;
     const { errors, demoLogin } = this.props;
 
     return (
@@ -45,23 +45,23 @@ class SignUpForm extends React.Component {
               <div className="session-form__item">
                 <label
                   className="session-form__label session-form--left"
-                  htmlFor="session-form__label-band-name">
+                  htmlFor="session-form__label-band">
                   <div className="session-form__span-container">
                     <span className="session-form__span">Artist/Band name</span>
                   </div>
                 </label>
                 <input
                   type="text"
-                  className={inputClassName('band-name', errors)}
-                  id="session-form__label-band-name"
-                  value=""
-                  onChange={this.handleFieldChange('bandName')}
+                  className={inputClassName('band', errors)}
+                  id="session-form__label-band"
+                  value={band}
+                  onChange={this.handleFieldChange('band')}
                   placeholder="optional"
                 />
               </div>
               <div className="session-form__errors">
                 <div className="session-form__placeholder session-form--left" />
-                <SessionErrors field="email" errors={errors} />
+                <SessionErrors field="band" errors={errors} />
               </div>
               <div className="session-form__item">
                 <label

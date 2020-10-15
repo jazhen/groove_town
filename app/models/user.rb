@@ -4,25 +4,15 @@
 #
 #  id              :bigint           not null, primary key
 #  username        :string           not null
+#  email           :string           not null
+#  band            :string
 #  session_token   :string           not null
 #  password_digest :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
-class CheckLengthValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    if value.blank?
-      if attribute == :username
-        record.errors[attribute] << 'Please choose your username.'
-      else
-        record.errors[attribute] << 'Please enter your password.'
-      end
-    elsif value.length < options[:minimum]
-      record.errors[attribute] << "Your #{attribute} must be at least #{options[:minimum]} characters."
-    end
-  end
-end
+require_relative './models_helpers/check_length_validator.rb'
 
 class User < ApplicationRecord
   validates :username,
