@@ -48,7 +48,7 @@ class LogInForm extends React.Component {
                   className="session-form__label session-form--left"
                   htmlFor="session-form__label-username">
                   <div className="session-form__span-container">
-                    <span className="session-form__span">Username / email</span>
+                    <span className="session-form__span">Username / Email</span>
                   </div>
                 </label>
                 <input
@@ -92,6 +92,7 @@ class LogInForm extends React.Component {
                 </button>
               </div>
             </form>
+            <DemoUser demoLogin={demoLogin} />
             <div className="session-form__other-sessions">
               <div className="session-form__placeholder session-form--left" />
               <div className="session-form__other-sessions-container session-form--right">
@@ -103,7 +104,6 @@ class LogInForm extends React.Component {
                     Sign up.
                   </Link>
                 </span>
-                <DemoUser demoLogin={demoLogin} />
               </div>
             </div>
           </div>

@@ -6,12 +6,12 @@
 
 .session-form__header,
 .session-form__inner-container {
-  max-width: 45rem;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
 .session-form__container {
-  max-width: 60rem;
+  max-width: 70rem;
   margin: 0 auto;
 }
 
@@ -29,6 +29,9 @@
   background-color: #00A1C6;
   color: #fff;
   font-weight: bold;
+  border: none;
+  outline: inherit;
+  cursor: pointer;
 }
 
 .session-form--left {
@@ -73,14 +76,6 @@
   border: 1px solid #c43329;
 }
 
-.session-form__demo-button {
-  border: none;
-  background: none;
-  outline: inherit;
-  cursor: pointer;
-}
-
-.session-form__demo-button,
 .session-form__other-sessions-link {
   color: #00A1C6;
   margin: 1.5rem 0;
@@ -104,4 +99,8 @@
 .session-form__header-span-container {
   margin-top: 4rem;
   font-size: 1.8rem;
+}
+
+.session-form__button--demo {
+  margin-top: 2.5rem;
 }

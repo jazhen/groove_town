@@ -51,7 +51,9 @@ class SignUpForm extends React.Component {
                   className="session-form__label session-form--left"
                   htmlFor="session-form__label-band">
                   <div className="session-form__span-container">
-                    <span className="session-form__span">Artist/Band name</span>
+                    <span className="session-form__span">
+                      Artist / Band Name
+                    </span>
                   </div>
                 </label>
                 <input
@@ -136,6 +138,7 @@ class SignUpForm extends React.Component {
                 </button>
               </div>
             </form>
+            <DemoUser demoLogin={demoLogin} />
             <div className="session-form__other-sessions">
               <div className="session-form__placeholder session-form--left" />
               <div className="session-form__other-sessions-container session-form--right">
@@ -147,7 +150,6 @@ class SignUpForm extends React.Component {
                     Log in.
                   </Link>
                 </span>
-                <DemoUser demoLogin={demoLogin} />
               </div>
             </div>
           </div>

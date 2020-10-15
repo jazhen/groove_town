@@ -19,10 +19,13 @@ export const inputClassName = (field, errors) => {
 
 export const DemoUser = ({ demoLogin }) => {
   return (
-    <div className="session-form__demo">
-      <span className="session-form__demo-span">Log in as a&nbsp;</span>
-      <button className="session-form__demo-button" onClick={() => demoLogin()}>
-        demo user.
+    <div className="session-form__item">
+      <div className="session-form__placeholder session-form--left" />
+      <button
+        type="submit"
+        className="session-form__button session-form__button--demo session-form--right"
+        onClick={() => demoLogin()}>
+        Log in as a demo user
       </button>
     </div>
   );
