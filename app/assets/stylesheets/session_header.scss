@@ -1,8 +1,11 @@
 .session-header {
   background-color: #DDDDDD;
-  min-height: 12rem;
+  min-height: 11rem;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
 }
 
 .session-header__link-container {
-  width: 70rem;
+  margin-left: 10%;
 }
