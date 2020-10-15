@@ -4,7 +4,6 @@ import { demoLogin, signup } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => ({
   errors: state.errors.session,
-  formType: 'signup',
 });
 
 const mapDispatchToProps = (dispatch) => ({

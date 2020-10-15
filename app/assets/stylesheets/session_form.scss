@@ -1,48 +1,105 @@
-.session-form-container {
+.session-form {
   background-color: #F3F3F3;
+  color: #333;
 }
 
-.session-form-inner-container {
-  max-width: 30rem;
+.session-form__header,
+.session-form__inner-container {
+  max-width: 45rem;
   margin: 0 auto;
 }
 
-.session-form-outer-container {
-  max-width: 50rem;
+.session-form__container {
+  max-width: 60rem;
   margin: 0 auto;
 }
 
-.session-form__list-item {
+.session-form__item,
+.session-form__errors,
+.session-form__other-sessions {
   display: flex;
-  padding: .5em;
 }
 
 .session-form__button {
-  width: 100%;
   background-color: #00A1C6;
   color: #fff;
-  font-size: 1.6rem;
   font-weight: bold;
-
-  height: 3.2rem;
 }
 
 .session-form--left {
   flex: 1;
+  height: 3rem;
+  text-align: right;
+  font-size: 1.6rem;
 }
 
 .session-form--right {
   flex: 2;
+  font-size: 1.6rem;
+}
+
+.session-form__label {
+  display: flex;
+  align-items: center;
 }
 
 .session-form__header {
   display: flex;
-  max-width: 30rem;
-  margin: 0 auto;
   text-align: center;
 }
 
 .session-form__header-divider {
   border: 2px dotted #ccc;
   margin: 2rem 0;
+}
+
+.session-form__errors-span {
+  color: #c43329;
+}
+
+.session-form__input {
+  border: 1px solid #ccc;
+}
+
+.session-form__input--error {
+  border: 1px solid #c43329;
+}
+
+.session-form__demo-button {
+  border: none;
+  background: none;
+  outline: inherit;
+  cursor: pointer;
+}
+
+.session-form__demo-button,
+.session-form__other-sessions-link {
+  color: #00A1C6;
+  margin: 1.5rem 0;
+}
+
+.session-form__other-sessions-container {
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.session-form__span-container {
+  width: 100%;
+}
+
+.session-form__span {
+  margin-right: 1rem;
+}
+
+.session-form__header-span {
+  font-size: 1.8rem;
+}
+
+.session-form__other-sessions-container {
+  font-size: 1.2rem;
+  color: #818285;
+}
+
+.session-form__header-span-container {
+  margin-top: 4rem;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SessionErrors, inputClassName, DemoUser } from './session_form_helper';
 
-class SessionForm extends React.Component {
+class LogInForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,75 +25,83 @@ class SessionForm extends React.Component {
 
   render() {
     const { usernameOrEmail, password } = this.state;
-    const { formType, errors, demoLogin } = this.props;
+    const { errors, demoLogin } = this.props;
 
     return (
-      <div className="session-form-container">
-        <div className="session-form-outer-container">
+      <div className="session-form">
+        <div className="session-form__container">
           <div className="session-form__header">
-            <div className="session-form__header-placeholder session-form--left" />
-            <div className="session-form__header-title session-form--right">
-              Log in
+            <div className="session-form__placeholder session-form--left" />
+            <div className="session-form__header-span-container session-form--right">
+              <span className="session-form__header-span">Log in</span>
             </div>
           </div>
           <div className="session-form__header-divider" />
-          <div className="session-form-inner-container">
-            <form className="session-form" onSubmit={this.handleSubmit}>
-              <ul className="session-form__list">
-                <li className="session-form__username-list-item session-form__list-item">
-                  <label
-                    className="session-form__username-label session-form--left"
-                    htmlFor="username">
-                    <div className="session-form__username-title-container">
-                      <span className="session-form__username-title">
-                        Username / email
-                      </span>
-                    </div>
-                  </label>
-                  <input
-                    type="text"
-                    className={`${inputClassName(
-                      formType,
-                      'username',
-                      errors
-                    )} session-form--right`}
-                    id="username"
-                    value={usernameOrEmail}
-                    onChange={this.handleFieldChange('username_or_email')}
-                  />
-                </li>
-                <li className="session-form__pasword-list-item session-form__list-item">
-                  <label
-                    className="session-form__pasword-label session-form--left"
-                    htmlFor="pasword">
-                    <div className="session-form__pasword-title-container">
-                      <span className="session-form__pasword-title">
-                        Password
-                      </span>
-                    </div>
-                  </label>{' '}
-                  <input
-                    type="password"
-                    className={`${inputClassName(
-                      formType,
-                      'password',
-                      errors
-                    )} session-form--right`}
-                    id="password"
-                    value={password}
-                    onChange={this.handleFieldChange('password')}
-                  />
-                </li>
-                <li className="session-form__button-list-item session-form__list-item">
-                  <div className="session-form__placeholder session-form--left" />
-                  <button
-                    className="session-form__button session-form--right"
-                    type="submit">
-                    Log in
-                  </button>
-                </li>
-              </ul>
+          <div className="session-form__inner-container">
+            <form className="session-form__form" onSubmit={this.handleSubmit}>
+              <div className="session-form__item">
+                <label
+                  className="session-form__label session-form--left"
+                  htmlFor="session-form__label-username">
+                  <div className="session-form__span-container">
+                    <span className="session-form__span">Username / email</span>
+                  </div>
+                </label>
+                <input
+                  type="text"
+                  className={inputClassName('username', errors)}
+                  id="session-form__label-username"
+                  value={usernameOrEmail}
+                  onChange={this.handleFieldChange('username_or_email')}
+                />
+              </div>
+              <div className="session-form__errors">
+                <div className="session-form__placeholder session-form--left" />
+                <SessionErrors field="username" errors={errors} />
+              </div>
+              <div className="session-form__item">
+                <label
+                  className="session-form__label session-form--left"
+                  htmlFor="session-form__label-password">
+                  <div className="session-form__span-container">
+                    <span className="session-form__span">Password</span>
+                  </div>
+                </label>
+                <input
+                  type="password"
+                  className={inputClassName('password', errors)}
+                  id="session-form__label-password"
+                  value={password}
+                  onChange={this.handleFieldChange('password')}
+                />
+              </div>
+              <div className="session-form__errors">
+                <div className="session-form__placeholder session-form--left" />
+                <SessionErrors field="password" errors={errors} />
+              </div>
+              <div className="session-form__item">
+                <div className="session-form__placeholder session-form--left" />
+                <button
+                  className="session-form__button session-form--right"
+                  type="submit">
+                  Log in
+                </button>
+              </div>
             </form>
+            <div className="session-form__other-sessions">
+              <div className="session-form__placeholder session-form--left" />
+              <div className="session-form__other-sessions-container session-form--right">
+                <span className="session-form__other-sessions-span">
+                  Don&apos;t have an account?&nbsp;
+                  <Link
+                    className="session-form__other-sessions-link"
+                    to="/signup">
+                    Sign up.
+                  </Link>
+                </span>
+                <DemoUser demoLogin={demoLogin} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -101,4 +109,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default LogInForm;

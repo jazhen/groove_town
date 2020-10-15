@@ -1,33 +1,28 @@
 import React from 'react';
 
-export const SessionErrors = ({ formType, field, errors }) => {
+export const SessionErrors = ({ field, errors }) => {
   return errors ? (
-    <div className={`${formType}-form__${field}-errors session-form--errors`}>
-      {errors[field]}
+    <div className="session-form__errors session-form--right">
+      <span className="session-form__errors-span">{errors[field]}</span>
     </div>
   ) : (
-    <div className={`${formType}-form__${field}-errors session-form--errors`} />
+    <div className="session-form__errors session-form--right" />
   );
 };
 
-export const inputClassName = (formType, field, errors) => {
+export const inputClassName = (field, errors) => {
   if (errors[field]) {
-    return `${formType}-form__${field}-input session-form-input--error`;
+    return `session-form__input session-form--right session-form__input--error`;
   }
-  return `${formType}-form__${field}-input`;
+  return `session-form__input session-form--right`;
 };
 
 export const DemoUser = ({ demoLogin }) => {
   return (
-    <div className="demo-form-nav">
-      <span className="demo-form-nav__text">
-        Don&apos;t want to make an account?&nbsp;
-        <button
-          className="demo-form-nav__button demo-form-nav__button--link"
-          onClick={() => demoLogin()}>
-          Log in as a demo user.
-        </button>
-      </span>
+    <div className="session-form__demo">
+      <button className="session-form__demo-button" onClick={() => demoLogin()}>
+        Log in as a demo user.
+      </button>
     </div>
   );
 };
