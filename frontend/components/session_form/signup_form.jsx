@@ -7,6 +7,7 @@ class SignUpForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
+      bandName: '',
       email: '',
       password: '',
       username: '',
@@ -35,7 +36,7 @@ class SignUpForm extends React.Component {
           <div className="session-form__header">
             <div className="session-form__placeholder session-form--left" />
             <div className="session-form__header-span-container session-form--right">
-              <span className="session-form__header-span">Log in</span>
+              <span className="session-form__header-span">Sign Up</span>
             </div>
           </div>
           <div className="session-form__header-divider" />
@@ -44,22 +45,43 @@ class SignUpForm extends React.Component {
               <div className="session-form__item">
                 <label
                   className="session-form__label session-form--left"
-                  htmlFor="session-form__label-username">
+                  htmlFor="session-form__label-band-name">
                   <div className="session-form__span-container">
-                    <span className="session-form__span">Username / email</span>
+                    <span className="session-form__span">Artist/Band name</span>
                   </div>
                 </label>
                 <input
                   type="text"
-                  className={inputClassName('username', errors)}
-                  id="session-form__label-username"
-                  value={username}
-                  onChange={this.handleFieldChange('username_or_email')}
+                  className={inputClassName('band-name', errors)}
+                  id="session-form__label-band-name"
+                  value=""
+                  onChange={this.handleFieldChange('bandName')}
+                  placeholder="optional"
                 />
               </div>
               <div className="session-form__errors">
                 <div className="session-form__placeholder session-form--left" />
-                <SessionErrors field="username" errors={errors} />
+                <SessionErrors field="email" errors={errors} />
+              </div>
+              <div className="session-form__item">
+                <label
+                  className="session-form__label session-form--left"
+                  htmlFor="session-form__label-email">
+                  <div className="session-form__span-container">
+                    <span className="session-form__span">Email</span>
+                  </div>
+                </label>
+                <input
+                  type="text"
+                  className={inputClassName('email', errors)}
+                  id="session-form__label-email"
+                  value={email}
+                  onChange={this.handleFieldChange('email')}
+                />
+              </div>
+              <div className="session-form__errors">
+                <div className="session-form__placeholder session-form--left" />
+                <SessionErrors field="email" errors={errors} />
               </div>
               <div className="session-form__item">
                 <label
@@ -82,6 +104,26 @@ class SignUpForm extends React.Component {
                 <SessionErrors field="password" errors={errors} />
               </div>
               <div className="session-form__item">
+                <label
+                  className="session-form__label session-form--left"
+                  htmlFor="session-form__label-username">
+                  <div className="session-form__span-container">
+                    <span className="session-form__span">Username</span>
+                  </div>
+                </label>
+                <input
+                  type="text"
+                  className={inputClassName('username', errors)}
+                  id="session-form__label-username"
+                  value={username}
+                  onChange={this.handleFieldChange('username')}
+                />
+              </div>
+              <div className="session-form__errors">
+                <div className="session-form__placeholder session-form--left" />
+                <SessionErrors field="username" errors={errors} />
+              </div>
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <button
                   className="session-form__button session-form--right"
@@ -94,11 +136,11 @@ class SignUpForm extends React.Component {
               <div className="session-form__placeholder session-form--left" />
               <div className="session-form__other-sessions-container session-form--right">
                 <span className="session-form__other-sessions-span">
-                  Don&apos;t have an account?&nbsp;
+                  Already have an account?&nbsp;
                   <Link
                     className="session-form__other-sessions-link"
-                    to="/signup">
-                    Sign up.
+                    to="/login">
+                    Log in.
                   </Link>
                 </span>
                 <DemoUser demoLogin={demoLogin} />

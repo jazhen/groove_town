@@ -50,7 +50,7 @@
 
 .session-form__header-divider {
   border: 2px dotted #ccc;
-  margin: 2rem 0;
+  margin: 3rem 0;
 }
 
 .session-form__errors-span {
@@ -59,6 +59,7 @@
 
 .session-form__input {
   border: 1px solid #ccc;
+  padding: .5rem 1rem;
 }
 
 .session-form__input--error {
@@ -81,6 +82,8 @@
 .session-form__other-sessions-container {
   text-align: center;
   margin: 5rem 0;
+  font-size: 1.2rem;
+  color: #818285;
 }
 
 .session-form__span-container {
@@ -91,15 +94,7 @@
   margin-right: 1rem;
 }
 
-.session-form__header-span {
-  font-size: 1.8rem;
-}
-
-.session-form__other-sessions-container {
-  font-size: 1.2rem;
-  color: #818285;
-}
-
 .session-form__header-span-container {
   margin-top: 4rem;
+  font-size: 1.8rem;
 }
