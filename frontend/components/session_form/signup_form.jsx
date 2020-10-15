@@ -14,6 +14,10 @@ class SignUpForm extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     const { processForm } = this.props;
     const user = { ...this.state };
