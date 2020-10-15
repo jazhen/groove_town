@@ -20,8 +20,9 @@ export const inputClassName = (field, errors) => {
 export const DemoUser = ({ demoLogin }) => {
   return (
     <div className="session-form__demo">
+      <span className="session-form__demo-span">Log in as a&nbsp;</span>
       <button className="session-form__demo-button" onClick={() => demoLogin()}>
-        Log in as a demo user.
+        demo user.
       </button>
     </div>
   );
