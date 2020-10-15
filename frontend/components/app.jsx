@@ -1,19 +1,29 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import HeaderContainer from './header/header_container';
 import FooterContainer from './footer/footer_container';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import { AuthRoute } from '../util/route_util';
+import SessionHeader from './header/session_header';
 
-const App = () => {
+const App = (props) => {
+  const {
+    location: { pathname },
+  } = props;
+
   return (
     <>
-      <HeaderContainer />
+      {['/login', '/signup'].includes(pathname) ? (
+        <SessionHeader />
+      ) : (
+        <HeaderContainer />
+      )}
       <main className="main">
         <Switch>
-          <AuthRoute path="/login" component={LoginFormContainer} />
-          <AuthRoute path="/signup" component={SignupFormContainer} />
+          <AuthRoute exact path="/login" component={LoginFormContainer} />
+          <AuthRoute exact path="/signup" component={SignupFormContainer} />
+          <Route path="/" />
         </Switch>
       </main>
       <FooterContainer />
@@ -21,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
