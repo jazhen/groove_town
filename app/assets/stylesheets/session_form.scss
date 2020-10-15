@@ -1,6 +1,7 @@
 .session-form {
   background-color: #F3F3F3;
   color: #333;
+  height: 84vh;
 }
 
 .session-form__header,
@@ -14,7 +15,11 @@
   margin: 0 auto;
 }
 
-.session-form__item,
+.session-form__item {
+  display: flex;
+  align-items: center;
+}
+
 .session-form__errors,
 .session-form__other-sessions {
   display: flex;
@@ -36,6 +41,7 @@
 .session-form--right {
   flex: 2;
   font-size: 1.6rem;
+  height: 3.5rem;
 }
 
 .session-form__label {
@@ -55,6 +61,7 @@
 
 .session-form__errors-span {
   color: #c43329;
+  font-size: 1.4rem;
 }
 
 .session-form__input {

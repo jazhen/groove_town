@@ -132,7 +132,7 @@ class SignUpForm extends React.Component {
                 <button
                   className="session-form__button session-form--right"
                   type="submit">
-                  Log in
+                  Sign up
                 </button>
               </div>
             </form>

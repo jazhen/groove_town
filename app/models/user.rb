@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   validates :email,
             uniqueness: { case_sensitive: false,
-                          message: 'A fan with that email address already exists. Please log in.' },
+                          message: 'A user with that email address already exists.' },
             format: { with: URI::MailTo::EMAIL_REGEXP,
                       message: 'That email address doesn’t look right.' }
 
