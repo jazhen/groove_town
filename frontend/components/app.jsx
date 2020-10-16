@@ -26,10 +26,10 @@ const App = () => {
       )}
       <main className="main">
         <Switch>
-          <Route path="/users/:id" component={UserShowContainer} />
-          <Route exact path="/" />
           <AuthRoute exact path="/login" component={LoginFormContainer} />
           <AuthRoute exact path="/signup" component={SignupFormContainer} />
+          <Route path="/users/:userId" component={UserShowContainer} />
+          <Route exact path="/" />
           <Route path="*">
             <Redirect to="/" />
           </Route>

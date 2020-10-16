@@ -5,8 +5,15 @@ class UserShow extends React.Component {
     super();
   }
 
+  componentDidMount() {
+    const { fetchUser, match } = this.props;
+    fetchUser(match.params.userId);
+  }
+
   render() {
-    return <h1>user show page</h1>;
+    // debugger;
+    // const info = JSON.stringify(this.props.albums);
+    return <div>WORKS</div>;
   }
 }
 

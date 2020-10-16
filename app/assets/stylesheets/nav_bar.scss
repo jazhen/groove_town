@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
   height: 5.3rem;
   padding: 0 1.6rem;
   color: #000000;
@@ -22,18 +23,14 @@
 
 .nav-bar__search-bar {
   background-color: #F3F3F3;
-  width: 28rem;
-  height: 1.7rem;
+  width: 35rem;
+  height: 4rem;
   padding: 1rem 3rem;
 }
 
 .nav-bar__user-list {
   display: flex;
   font-size: 1.4rem;
-}
-
-.nav-bar__user-list-item > a {
-  padding: 0 1.5rem;
 }
 
 .nav-bar__dropdown-content {
@@ -44,3 +41,17 @@
 .nav-bar__dropdown:hover > .nav-bar__dropdown-content {
   display: block;
 }
+
+.nav-bar__dropdown-button,
+.nav-bar__link:hover {
+  background-color: #F3F3F3;
+}
+
+.nav-bar__link {
+  display: block;
+  padding: 5.3rem 0;
+  padding: 1.5rem;
+}
+
+// ============================
+

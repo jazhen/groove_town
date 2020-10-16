@@ -17,5 +17,9 @@ module ArtistShack
     # the framework and any gems in your application.
 
     config.assets.initialize_on_precompile = false
+
+    initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
+      app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
+    end
   end
 end

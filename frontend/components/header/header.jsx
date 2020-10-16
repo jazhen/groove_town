@@ -22,9 +22,16 @@ const AuthenticatedHeader = ({ logout }) => {
       <nav className="nav-bar">
         <NavBarSiteList />
         <ul className="nav-bar__dropdown">
-          <button className="nav-bar__dropdown-button">Dropdown</button>
+          <li className="nav-bar__dropdown-list-item">
+            <span className="nav-bar__dropdown-span">Dropdown</span>
+          </li>
           <ul className="nav-bar__dropdown-content">
-            <li className="nav-bar__dropdown-list-item">
+            <li className="nav-bar__dropdown-content-list-item">
+              <Link className="nav-bar__dropdown-link" to="/">
+                View collection
+              </Link>
+            </li>
+            <li className="nav-bar__dropdown-content-list-item">
               <button
                 className="nav-bar__logout"
                 type="submit"
@@ -46,12 +53,12 @@ const UnauthenticatedHeader = () => {
         <NavBarSiteList />
         <ul className="nav-bar__user-list">
           <li className="nav-bar__user-list-item">
-            <Link className="nav-bar__signup" to="/signup">
+            <Link className="nav-bar__link" to="/signup">
               signup
             </Link>
           </li>
           <li className="nav-bar__user-list-item">
-            <Link className="nav-bar__login" to="/login">
+            <Link className="nav-bar__link" to="/login">
               login
             </Link>
           </li>
