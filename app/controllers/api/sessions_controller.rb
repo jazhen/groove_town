@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login!(@user)
-      render 'api/users/show'
+      render :show
     else
       session_errors = Hash.new { |h, k| h[k] = [] }
 
@@ -32,7 +32,7 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout!
-      render 'api/users/show'
+      render :show
     else
       render json: ['Invalid request, not logged in.'], status: 401
     end

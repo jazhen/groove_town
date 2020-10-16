@@ -4,9 +4,19 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
-      render 'api/users/show'
+      render :show
     else
       render json: @user.errors, status: 409
+    end
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+
+    if @user
+      render :show
+    else
+      render json: @user.errors, status: 404
     end
   end
 

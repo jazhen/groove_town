@@ -89,5 +89,5 @@ class User < ApplicationRecord
     session_token
   end
 
-  has_many :album, dependent: :destroy
+  has_many :albums, dependent: :destroy
 end
