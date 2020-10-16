@@ -13,7 +13,11 @@ class LogInForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearErrors();
+    const { errors, clearErrors } = this.props;
+
+    if (Object.keys(errors).length) {
+      clearErrors();
+    }
   }
 
   handleSubmit(e) {
