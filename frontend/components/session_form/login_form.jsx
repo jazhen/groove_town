@@ -40,12 +40,12 @@ class LogInForm extends React.Component {
         <div className="session-form__container">
           <div className="session-form__header">
             <div className="session-form__placeholder session-form--left" />
-            <div className="session-form__header-span-container session-form--right">
+            <div className="session-form__header-span-container session-form--right session-form--center-text">
               <span className="session-form__header-span">Log in</span>
             </div>
           </div>
           <div className="session-form__header-divider" />
-          <div className="session-form__inner-container">
+          <div className="session-form__form-container">
             <form className="session-form__form" onSubmit={this.handleSubmit}>
               <div className="session-form__item">
                 <label
@@ -63,7 +63,7 @@ class LogInForm extends React.Component {
                   onChange={this.handleFieldChange('username_or_email')}
                 />
               </div>
-              <div className="session-form__errors">
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <SessionErrors field="username" errors={errors} />
               </div>
@@ -83,21 +83,23 @@ class LogInForm extends React.Component {
                   onChange={this.handleFieldChange('password')}
                 />
               </div>
-              <div className="session-form__errors">
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <SessionErrors field="password" errors={errors} />
               </div>
               <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <button
-                  className="session-form__button session-form--right"
+                  className="session-form__button session-form--right session-form--box"
                   type="submit">
                   Log in
                 </button>
               </div>
             </form>
+          </div>
+          <div className="session-form__other-sessions">
             <DemoUser demoLogin={demoLogin} />
-            <div className="session-form__other-sessions">
+            <div className="session-form__item session-form--center-text">
               <div className="session-form__placeholder session-form--left" />
               <div className="session-form__other-sessions-container session-form--right">
                 <span className="session-form__other-sessions-span">

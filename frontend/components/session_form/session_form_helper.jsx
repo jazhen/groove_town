@@ -12,9 +12,9 @@ export const SessionErrors = ({ field, errors }) => {
 
 export const inputClassName = (field, errors) => {
   if (errors[field]) {
-    return `session-form__input session-form--right session-form__input--error`;
+    return `session-form__input session-form--right session-form--box session-form__input--error`;
   }
-  return `session-form__input session-form--right`;
+  return `session-form__input session-form--right session-form--box`;
 };
 
 export const DemoUser = ({ demoLogin }) => {
@@ -23,7 +23,7 @@ export const DemoUser = ({ demoLogin }) => {
       <div className="session-form__placeholder session-form--left" />
       <button
         type="submit"
-        className="session-form__button session-form__button--demo session-form--right"
+        className="session-form__button session-form__button--demo session-form--box session-form--right"
         onClick={() => demoLogin()}>
         Log in as a demo user
       </button>

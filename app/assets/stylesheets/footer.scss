@@ -1,19 +1,16 @@
+@import 'base';
+
 .footer {
-  height: 14vh;
+  align-items: center;
   background-color: #477987;
-  text-align: right;
-  font-size: 1.3rem;
+  display: flex;
+  font-size: $ms-2;
+  height: 20vh;
+  justify-content: center;
 }
 
-.footer-container {
-  padding: 1rem 1rem;
-}
-
-.footer-container__logout {
-  font-size: 1rem;
-  border: none;
-  background: none;
-  outline: inherit;
+.footer__link {
+  color: #fff;
 }
 
 // sticky footer

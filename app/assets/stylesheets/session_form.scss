@@ -1,105 +1,122 @@
+@import 'base';
+
+* {
+  // outline: 1px solid red;
+}
+
+.session-header {
+  font-size: $ms3;
+}
+
+.session-form__header {
+  align-items: center;
+  display: flex;
+  font-size: $ms1;
+  height: 10vh;
+}
+
+.session-form__other-sessions-span {
+  color: #818285;
+  font-size: $ms-1;
+}
+
 .session-form {
   background-color: #F3F3F3;
   color: #333;
-  height: 84vh;
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+}
+
+.session-form,
+.session-form__container {
+  width: 100vw;
 }
 
 .session-form__header,
-.session-form__inner-container {
-  max-width: 50rem;
-  margin: 0 auto;
-}
-
-.session-form__container {
-  max-width: 70rem;
-  margin: 0 auto;
-}
-
-.session-form__item {
-  display: flex;
-  align-items: center;
-}
-
-.session-form__errors,
+.session-form__form,
 .session-form__other-sessions {
-  display: flex;
+  width: 80vw;
 }
 
-.session-form__button {
-  background-color: #00A1C6;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  outline: inherit;
-}
-
-.session-form--left {
-  flex: 1;
-  height: 3rem;
-  text-align: right;
-  font-size: 1.6rem;
-}
-
-.session-form--right {
-  flex: 2;
-  font-size: 1.6rem;
-  height: 3.5rem;
-}
-
-.session-form__label {
-  display: flex;
-  align-items: center;
+.session-form__header,
+.session-form__other-sessions {
+  margin: 0 auto;
 }
 
 .session-form__header {
   display: flex;
-  text-align: center;
+  justify-content: center;
+}
+
+.session-form__form-container {
+  display: flex;
+  justify-content: center;
 }
 
 .session-form__header-divider {
   border: 2px dotted #ccc;
-  margin: 3rem 0;
+  margin-bottom: 5vh;
 }
 
-.session-form__errors-span {
-  color: #c43329;
-  font-size: 1.4rem;
+.session-form__item {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+.session-form--left {
+  // flex: 1;
+  // text-align: right;
+  text-align: center;
+}
+
+.session-form--right {
+  // flex: 2;
+  // text-align: center;
+}
+
+.session-form--center-text {
+  text-align: center;
 }
 
 .session-form__input {
   border: 1px solid #ccc;
-  padding: .5rem 1rem;
+  padding: 0 1em;
+}
+
+.session-form__errors {
+  color: #c43329;
+  text-align: center;
+  height: $ms9;
 }
 
 .session-form__input--error {
   border: 1px solid #c43329;
 }
 
-.session-form__other-sessions-link {
-  color: #00A1C6;
-  margin: 1.5rem 0;
+.session-form--box {
+  height: 3em;
 }
 
-.session-form__other-sessions-container {
-  text-align: center;
-  margin: 5rem 0;
-  font-size: 1.2rem;
-  color: #818285;
+.session-form__button {
+  background-color: #00A1C6;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  outline: inherit;
 }
 
-.session-form__span-container {
-  width: 100%;
-}
-
-.session-form__span {
-  margin-right: 1rem;
-}
-
-.session-form__header-span-container {
-  margin-top: 4rem;
-  font-size: 1.8rem;
+.session-form__button {
+  margin: 1vh 0;
 }
 
 .session-form__button--demo {
-  margin-top: 2.5rem;
+  margin-bottom: 5vh;
+}
+
+.session-form__other-sessions-link {
+  color: #00A1C6;
+  margin: 1.5em 0;
 }

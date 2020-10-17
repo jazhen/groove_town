@@ -48,7 +48,7 @@ class SignUpForm extends React.Component {
             </div>
           </div>
           <div className="session-form__header-divider" />
-          <div className="session-form__inner-container">
+          <div className="session-form__form-container">
             <form className="session-form__form" onSubmit={this.handleSubmit}>
               <div className="session-form__item">
                 <label
