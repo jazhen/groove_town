@@ -70,21 +70,14 @@
 // ========================================
 
 .nav-bar {
-  // align-items: center;
-  // background-color: #ffffff;
-  // border-bottom: 1px solid #eeeeee;
-  // color: #000000;
-  // font-size: 1.6rem;
-  // justify-content: space-between;
-  // padding: 0 1.6rem;
-
   display: flex;
   flex-wrap: wrap;
+  margin: 0 12px;
 
-  height: 100px;
+  height: 80px;
 }
 
-.nav-bar__index-container {
+.nav-bar__index {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -93,13 +86,56 @@
 .nav-bar__user-list {
   display: flex;
   flex: 1;
-  align-items: center;
   justify-content: end;
 }
 
 .nav-bar__search-bar {
-  align-items: center;
-  background-color: #F3F3F3;
   display: flex;
   width: 100%;
+}
+
+.nav-bar__search-bar-input {
+  flex: 1;
+}
+
+.nav-bar__search-bar-input,
+.nav-bar__search-bar-icon {
+  background-color: #f3f3f3;
+  padding: 0 16px;
+}
+
+.nav-bar__user-list-item:hover {
+  background-color: #f3f3f3;
+}
+
+.nav-bar__user-list-item {
+  height: 100%;
+}
+
+.nav-bar__index-link,
+.nav-bar__session-link {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 0 16px;
+}
+
+
+@media only screen
+and (min-width: 992px) {
+  .nav-bar {
+    flex-wrap: nowrap;
+
+    height: 60px;
+  }
+
+  .nav-bar__search-bar {
+    margin: 10px 0;
+    order: 1;
+    max-width: 400px;
+  }
+
+  .nav-bar__user-list {
+    order: 2;
+  }
 }
