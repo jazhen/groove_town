@@ -3,12 +3,6 @@
    License: none (public domain)
 */
 
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -32,6 +26,9 @@ time, mark, audio, video, button, input {
 	font-size: 100%;
 	font: inherit;
   vertical-align: baseline;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -85,5 +82,11 @@ a {
 }
 
 html {
-  font-size: 1em;
+  font-size: 16px;
+  min-width: 200px;
+  min-height: 360px;
+}
+
+#root {
+  height: 100%;
 }

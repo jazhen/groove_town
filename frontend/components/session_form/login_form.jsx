@@ -101,7 +101,7 @@ class LogInForm extends React.Component {
             <DemoUser demoLogin={demoLogin} />
             <div className="session-form__item session-form--center-text">
               <div className="session-form__placeholder session-form--left" />
-              <div className="session-form__other-sessions-container session-form--right">
+              <div className="session-form__other-sessions-container session-form__last session-form--right">
                 <span className="session-form__other-sessions-span">
                   Don&apos;t have an account?&nbsp;
                   <Link

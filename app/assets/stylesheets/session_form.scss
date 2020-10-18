@@ -1,84 +1,49 @@
 @import 'base';
 
-* {
-  // outline: 1px solid red;
+.main {
+  background-color: #F3F3F3;
 }
 
-.session-header {
-  font-size: $ms3;
+.session-form__other-sessions,
+.session-form__header,
+.session-form__form-container {
+  margin: 0 auto;
+  max-width: 300px;
 }
 
 .session-form__header {
-  align-items: center;
-  display: flex;
   font-size: $ms1;
-  height: 10vh;
-}
-
-.session-form__other-sessions-span {
-  color: #818285;
-  font-size: $ms-1;
+  height: $ms16;
+  display: flex;
+  align-items: center;
 }
 
 .session-form {
-  background-color: #F3F3F3;
   color: #333;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 70vh;
-}
-
-.session-form,
-.session-form__container {
-  width: 100vw;
-}
-
-.session-form__header,
-.session-form__form,
-.session-form__other-sessions {
-  width: 80vw;
-}
-
-.session-form__header,
-.session-form__other-sessions {
-  margin: 0 auto;
 }
 
 .session-form__header {
-  display: flex;
-  justify-content: center;
-}
-
-.session-form__form-container {
   display: flex;
   justify-content: center;
 }
 
 .session-form__header-divider {
   border: 2px dotted #ccc;
-  margin-bottom: 5vh;
+  margin: 0 auto;
+  margin-bottom: $ms12;
+  max-width: 700px;
+}
+
+.session-form--right {
+  text-align: center;
 }
 
 .session-form__item {
   display: flex;
-
   flex-direction: column;
-  justify-content: center;
-}
-
-.session-form--left {
-  // flex: 1;
-  // text-align: right;
-  text-align: center;
-}
-
-.session-form--right {
-  // flex: 2;
-  // text-align: center;
-}
-
-.session-form--center-text {
-  text-align: center;
 }
 
 .session-form__input {
@@ -86,18 +51,19 @@
   padding: 0 1em;
 }
 
-.session-form__errors {
-  color: #c43329;
-  text-align: center;
-  height: $ms9;
-}
-
 .session-form__input--error {
   border: 1px solid #c43329;
 }
 
+.session-form__errors {
+  color: #c43329;
+  font-size: $ms-2;
+  text-align: center;
+  height: $ms4;
+}
+
 .session-form--box {
-  height: 3em;
+  height: $ms9;
 }
 
 .session-form__button {
@@ -109,14 +75,60 @@
 }
 
 .session-form__button {
-  margin: 1vh 0;
+  margin: $ms-6 0;
 }
 
 .session-form__button--demo {
-  margin-bottom: 5vh;
+  margin-bottom: $ms6;
+}
+
+.session-form__other-sessions-span {
+  color: #818285;
 }
 
 .session-form__other-sessions-link {
   color: #00A1C6;
-  margin: 1.5em 0;
+}
+
+.session-form__last {
+  margin-bottom: $ms16;
+}
+
+@media only screen
+and (min-width: 992px) {
+  .session-form__header,
+  .session-form__form-container,
+  .session-form__other-sessions {
+    max-width: 450px;
+    position: relative;
+    right: 70px;
+  }
+
+  .session-form__header-divider {
+    max-width: 700px;
+  }
+
+  .session-form__label {
+    margin-right: 1rem;
+  }
+
+  .session-form__item {
+    flex-direction: row;
+  }
+
+  .session-form--left {
+    flex: 1;
+    line-height: $ms9;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .session-form--right {
+    flex: 2;
+  }
+
+  .session-form__input,
+  .session-form__errors {
+    text-align: left;
+  }
 }

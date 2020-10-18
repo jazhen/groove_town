@@ -5,7 +5,7 @@
   background-color: #477987;
   display: flex;
   font-size: $ms-2;
-  height: 20vh;
+  height: 10vh;
   justify-content: center;
 }
 
@@ -23,4 +23,17 @@
 
 .main {
   flex: 1;
+}
+
+// @media only screen and (min-width: 768px) {
+//   .footer {
+//     font-size: 1rem;
+//   }
+// }
+
+@media only screen and (min-width: 992px) {
+  .footer {
+    // font-size: $ms3;
+    // height: 20vh;
+  }
 }

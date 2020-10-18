@@ -69,7 +69,7 @@ class SignUpForm extends React.Component {
                   placeholder="optional"
                 />
               </div>
-              <div className="session-form__errors">
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <SessionErrors field="band" errors={errors} />
               </div>
@@ -89,7 +89,7 @@ class SignUpForm extends React.Component {
                   onChange={this.handleFieldChange('email')}
                 />
               </div>
-              <div className="session-form__errors">
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <SessionErrors field="email" errors={errors} />
               </div>
@@ -109,7 +109,7 @@ class SignUpForm extends React.Component {
                   onChange={this.handleFieldChange('password')}
                 />
               </div>
-              <div className="session-form__errors">
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <SessionErrors field="password" errors={errors} />
               </div>
@@ -129,21 +129,23 @@ class SignUpForm extends React.Component {
                   onChange={this.handleFieldChange('username')}
                 />
               </div>
-              <div className="session-form__errors">
+              <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <SessionErrors field="username" errors={errors} />
               </div>
               <div className="session-form__item">
                 <div className="session-form__placeholder session-form--left" />
                 <button
-                  className="session-form__button session-form--right"
+                  className="session-form__button session-form--right session-form--box"
                   type="submit">
                   Sign up
                 </button>
               </div>
             </form>
+          </div>
+          <div className="session-form__other-sessions">
             <DemoUser demoLogin={demoLogin} />
-            <div className="session-form__other-sessions">
+            <div className="session-form__item session-form-text session-form__last">
               <div className="session-form__placeholder session-form--left" />
               <div className="session-form__other-sessions-container session-form--right">
                 <span className="session-form__other-sessions-span">
