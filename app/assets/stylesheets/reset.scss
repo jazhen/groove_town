@@ -63,13 +63,16 @@ table {
 
 /* user added attributes */
 
-input, label, select, button, textarea
-{
+input, label, select, button, textarea {
 	margin: 0;
 	border: 0;
   padding: 0;
   outline:none;
   background: none;
+}
+
+input{
+  background-color: #ffffff;
 }
 
 button {

@@ -12,10 +12,10 @@
 }
 
 .session-form__header {
-  font-size: $ms1;
-  height: $ms16;
-  display: flex;
   align-items: center;
+  font-size: $ms1;
+  display: flex;
+  margin-top: 50px;
 }
 
 .session-form {
@@ -33,10 +33,12 @@
 .session-form__header-divider {
   border: 2px dotted #ccc;
   margin: 0 auto;
-  margin-bottom: $ms12;
+  margin-top: 50px;
+  margin-bottom: 50px;
   max-width: 700px;
 }
 
+.session-form--left,
 .session-form--right {
   text-align: center;
 }
@@ -59,7 +61,7 @@
   color: #c43329;
   font-size: $ms-2;
   text-align: center;
-  height: $ms4;
+  height: $ms6;
 }
 
 .session-form--box {
@@ -84,6 +86,7 @@
 
 .session-form__other-sessions-span {
   color: #818285;
+  font-size: $ms-3;
 }
 
 .session-form__other-sessions-link {
