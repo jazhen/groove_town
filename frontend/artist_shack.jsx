@@ -6,6 +6,7 @@ import Root from './components/root';
 // TESTING START
 import { signup, login, logout, demoLogin } from './actions/session_actions';
 import { fetchUser } from './actions/user_actions';
+import { fetchAlbums } from './actions/album_actions';
 // TESTING END
 
 const createStore = () => {
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchUser = fetchUser;
+  window.fetchAlbums = fetchAlbums;
   // TESTING END
 
   ReactDOM.render(<Root store={store} />, root);

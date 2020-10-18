@@ -1,9 +1,5 @@
 @import 'base';
 
-.main {
-  background-color: #F3F3F3;
-}
-
 .session-form__other-sessions,
 .session-form__header,
 .session-form__form-container {
@@ -11,23 +7,22 @@
   max-width: 300px;
 }
 
-.session-form__header {
-  align-items: center;
-  font-size: $ms1;
-  display: flex;
-  margin-top: 50px;
-}
-
-.session-form {
+.session-form
+{
+  background-color: #F3F3F3;
   color: #333;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
 }
 
 .session-form__header {
+  align-items: center;
   display: flex;
+  font-size: $ms1;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .session-form__header-divider {

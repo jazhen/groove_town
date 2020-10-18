@@ -50,7 +50,11 @@ const UnauthenticatedHeader = () => {
   return (
     <header className="header">
       <nav className="nav-bar">
-        <NavBarSiteList />
+        <div className="nav-bar__index-container">
+          <Link className="nav-bar__index" to="/">
+            Artist Shack
+          </Link>
+        </div>
         <ul className="nav-bar__user-list">
           <li className="nav-bar__user-list-item">
             <Link className="nav-bar__session-link" to="/signup">
@@ -63,6 +67,22 @@ const UnauthenticatedHeader = () => {
             </Link>
           </li>
         </ul>
+        <div className="nav-bar__search-bar">
+          <div className="nav-bar__search-bar__container">Search</div>
+        </div>
+        {/* <NavBarSiteList />
+        <ul className="nav-bar__user-list">
+          <li className="nav-bar__user-list-item">
+            <Link className="nav-bar__session-link" to="/signup">
+              signup
+            </Link>
+          </li>
+          <li className="nav-bar__user-list-item">
+            <Link className="nav-bar__session-link" to="/login">
+              login
+            </Link>
+          </li>
+        </ul> */}
       </nav>
     </header>
   );

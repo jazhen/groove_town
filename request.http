@@ -35,4 +35,8 @@ DELETE http://localhost:3000/api/session/
 
 ###
 # get '/api/users/:id'
-GET http://localhost:3000/api/users/1
+GET http://localhost:3000/api/users/2
+
+###
+# get '/api/albums'
+GET http://localhost:3000/api/albums/
