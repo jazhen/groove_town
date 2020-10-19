@@ -1,7 +1,7 @@
 .nav-bar__dropdown {
   display: flex;
   flex: 1;
-  justify-content: end;
+  flex-direction: row-reverse;
 }
 
 .nav-bar__dropdown-menu {
@@ -35,16 +35,10 @@
   height: 110px;
 }
 
-.nav-bar__index {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
 .nav-bar__user-list {
   display: flex;
   flex: 1;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .nav-bar__search-bar {
