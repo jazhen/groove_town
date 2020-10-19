@@ -1,6 +1,6 @@
-@albums.includes(:user).each do |album|
-  json.set! album.id do
-    json.partial! 'api/albums/album', album: album
-    json.band album.user.band
-  end
+json.array!(@albums.includes(:user)) do |album|
+  json.id album.id
+  json.name album.name
+  json.band album.user.band
+  json.user_id album.user_id
 end

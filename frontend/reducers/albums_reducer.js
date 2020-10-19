@@ -7,7 +7,8 @@ const albumsReducer = (prevState = {}, action) => {
     case RECEIVE_USER:
       return { ...prevState, ...action.albums };
     case RECEIVE_ALBUMS:
-      return { ...prevState, ...action.albums };
+      // return { ...prevState, ...action.albums };
+      return action.albums;
     default:
       return prevState;
   }

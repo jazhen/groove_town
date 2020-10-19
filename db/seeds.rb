@@ -94,7 +94,7 @@ godspeed_you = User.create(username: 'godspeedyoublackemporer',
                            email: 'godspeedyoublackemporer@godspeedyoublackemporer.com',
                            password: 'password',
                            band: 'Godspeed You! Black Emperor')
-lift_your_skinny_fists = Album.create(name: 'Godspeed You! Black Emperor Lift Your Skinny Fists Like Antennas to Heaven', user_id: godspeed_you.id)
+lift_your_skinny_fists = Album.create(name: 'Lift Your Skinny Fists Like Antennas to Heaven', user_id: godspeed_you.id)
 luciferian_towers = Album.create(name: 'Luciferian Towers', user_id: godspeed_you.id)
 
 king_crimson = User.create(username: 'kingcrimson',

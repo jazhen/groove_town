@@ -7,6 +7,7 @@
   font-size: $ms-2;
   height: 10vh;
   justify-content: center;
+  min-height: 60px;
 }
 
 .footer__link {
@@ -22,5 +23,6 @@
 }
 
 .main {
+  display: flex;
   flex: 1;
 }
