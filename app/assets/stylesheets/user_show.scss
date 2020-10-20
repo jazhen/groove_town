@@ -5,14 +5,41 @@
 .user-show__main-container {
   margin: 0 auto;
   max-width: 1260px;
-
-  background-color: cornsilk;
 }
 
-.user-show__collection-tab-list {
+.user-show__tabs-header-list {
   display: flex;
+  border-bottom: 1px solid #DDDDDD;
 }
 
-.user-show__collection-tab-list-item:hover {
+.user-show__tabs-header-list-item {
+  color: #00A1C6;
   cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+.user-show__tabs-header-list-item:hover {
+  border-bottom: 2px solid #00A1C6;
+}
+
+.user-show__tab-content{
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-show__tabs-header-button {
+  padding: 10px 20px;
+}
+
+.user-show__tabs--active {
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.user-show__tabs--active:hover {
+  border-bottom: 2px solid black;
 }

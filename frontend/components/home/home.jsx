@@ -36,8 +36,8 @@ class Home extends React.Component {
   render() {
     const { albums } = this.props;
 
-    if (!Object.keys(albums).length) {
-      return null;
+    if (!albums.length) {
+      return <div />;
     }
 
     return (
