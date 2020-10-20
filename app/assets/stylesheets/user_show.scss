@@ -1,0 +1,18 @@
+.user-show {
+  width: 100%;
+}
+
+.user-show__main-container {
+  margin: 0 auto;
+  max-width: 1260px;
+
+  background-color: cornsilk;
+}
+
+.user-show__collection-tab-list {
+  display: flex;
+}
+
+.user-show__collection-tab-list-item:hover {
+  cursor: pointer;
+}

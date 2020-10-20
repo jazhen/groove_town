@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 //   );
 // };
 
-const AuthenticatedHeader = ({ logout }) => {
+const AuthenticatedHeader = ({ currentUserId, logout }) => {
   return (
     // <header className="header">
     //   <nav className="nav-bar">
@@ -55,7 +55,9 @@ const AuthenticatedHeader = ({ logout }) => {
           <li className="nav-bar__dropdown-menu">
             <ul className="nav-bar__dropdown-content">
               <li className="nav-bar__dropdown-content-list-item">
-                <Link className="nav-bar__dropdown-link" to="/">
+                <Link
+                  className="nav-bar__dropdown-link"
+                  to={`/users/${currentUserId}`}>
                   view collection
                 </Link>
               </li>
@@ -121,7 +123,7 @@ const UnauthenticatedHeader = () => {
 
 const Header = ({ currentUser, logout }) => {
   return currentUser ? (
-    <AuthenticatedHeader logout={logout} />
+    <AuthenticatedHeader currentUserId={currentUser.id} logout={logout} />
   ) : (
     <UnauthenticatedHeader />
   );

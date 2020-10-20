@@ -13,7 +13,25 @@ class UserShow extends React.Component {
   render() {
     // debugger;
     // const info = JSON.stringify(this.props.albums);
-    return <div>WORKS</div>;
+    return (
+      <div className="user-show">
+        <div className="user-show__main-container">
+          <div className="user-show__collection-container">
+            <ul className="user-show__collection-tab-list">
+              <li className="user-show__collection-tab-list-item user-show__collection-collection">
+                collection
+              </li>
+              <li className="user-show__collection-tab-list-item user-show__collection-following">
+                following
+              </li>
+              <li className="user-show__collection-tab-list-item user-show__collection-albums">
+                albums
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 

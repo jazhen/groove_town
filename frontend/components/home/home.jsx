@@ -5,18 +5,22 @@ const IndexAlbum = ({ album }) => {
     <li className="albums-index__list-item">
       <div className="albums-index__album-container">
         <div className="albums-index__album-art-container">
-          <div className="albums-index__album-art-placeholder" />
+          <a className="albums-index__album-link">
+            <div className="albums-index__album-art-placeholder" />
+          </a>
         </div>
         <ul className="albums-index__metadata-list">
           <li className="albums-index__metadata-list-item">
-            <p className="albums-index__album-name albums-index__metadata">
+            <a
+              className="albums-index__album-name albums-index__metadata"
+              href="#">
               {album.name}
-            </p>
+            </a>
           </li>
           <li className="albums-index__metadata-list-item">
-            <p className="albums-index__band albums-index__metadata">
+            <a className="albums-index__band albums-index__metadata" href="#">
               {album.band}
-            </p>
+            </a>
           </li>
         </ul>
       </div>
@@ -39,29 +43,47 @@ class Home extends React.Component {
     return (
       <div className="albums-index">
         <div className="albums-index__carousel">
-          <div className="column column1">
-            <img
-              className="img0"
-              src="https://f4.bcbits.com/img/0022029290_171.jpg"
-              alt=""
-            />
-          </div>
-          <div className="column column2">
-            <img
-              className="img1"
-              src="https://f4.bcbits.com/img/0022015622_170.jpg"
-              alt=""
-            />
-            <img
-              className="img2"
-              src="https://f4.bcbits.com/img/0021997335_170.jpg"
-              alt=""
-            />
-            <img
-              className="img3"
-              src="https://f4.bcbits.com/img/0021991804_170.jpg"
-              alt=""
-            />
+          <div className="albums-index__carousel-container">
+            <div className="albums-index__carousel-main albums-index__carousel-col">
+              <div className="albums-index__carousel-main-img-container">
+                <a className="albums-index__carousel-link" href="#">
+                  <img
+                    className="albums-index__carousel-main-img"
+                    src="https://wmscradio.com/wp-content/uploads/sites/4/2018/11/The-Low-End-Theory-by-A-Tribe-Called-Quest.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="albums-index__carousel-sub albums-index__carousel-col">
+              <div className="albums-index__carousel-sub-img-container">
+                <a className="albums-index__carousel-link" href="#">
+                  <img
+                    className="albums-index__carousel-sub-img"
+                    src="https://cdn4.pitchfork.com/longform/867/Merriweather10.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div className="albums-index__carousel-sub-img-container">
+                <a className="albums-index__carousel-link" href="#">
+                  <img
+                    className="albums-index__carousel-sub-img"
+                    src="https://cdn2.pitchfork.com/longform/734/Boards-of-Canada.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div className="albums-index__carousel-sub-img-container">
+                <a className="albums-index__carousel-link" href="#">
+                  <img
+                    className="albums-index__carousel-sub-img"
+                    src="https://www.nme.com/wp-content/uploads/2020/10/Leon-Bridges-Lucky-Dayes@2000x1270-696x442.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
         <ul className="albums-index__list">

@@ -121,3 +121,10 @@ idles = User.create(username: 'idles',
                     band: 'IDLES')
 brutalism = Album.create(name: 'Brutalism', user_id: idles.id)
 ultra_mono = Album.create(name: 'Ultra Mono', user_id: idles.id)
+
+julia_holter = User.create(username: 'juliaholter',
+                           email: 'juliaholter@juliaholter.com',
+                           password: 'password',
+                           band: 'Julia Holter')
+loud_city_song = Album.create(name: 'Loud City Song', user_id: julia_holter.id)
+have_you_in_my_wilderness = Album.create(name: 'Have You In My Wilderness', user_id: julia_holter.id)
