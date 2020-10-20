@@ -15,16 +15,18 @@ import UserShowContainer from './user/user_show_container';
 import { AuthRoute } from '../util/route_util';
 import SessionHeader from './header/session_header';
 
-const App = () => {
-  const location = useLocation();
+const Header = ({ pathname }) => {
+  return ['/login', '/signup'].includes(pathname) ? (
+    <SessionHeader />
+  ) : (
+    <HeaderContainer />
+  );
+};
 
+const App = () => {
   return (
     <>
-      {['/login', '/signup'].includes(location.pathname) ? (
-        <SessionHeader />
-      ) : (
-        <HeaderContainer />
-      )}
+      <Header pathname={useLocation().pathname} />
       <main className="main">
         <Switch>
           <AuthRoute exact path="/login" component={LoginFormContainer} />
