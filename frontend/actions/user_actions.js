@@ -15,5 +15,4 @@ export const fetchUser = (userId) => (dispatch) => {
   return userAPIUtil
     .fetchUser(userId)
     .then((user) => dispatch(receiveUser(user)));
-  // (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
 };

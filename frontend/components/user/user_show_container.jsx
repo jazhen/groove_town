@@ -10,7 +10,10 @@ const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
   const panes = [
     { title: 'collection', content: 'collection pane content' },
     { title: 'following', content: 'following pane content' },
-    { title: 'albums', content: <UserShowAlbums user={user} /> },
+    {
+      title: 'albums',
+      content: <UserShowAlbums user={user} albums={albums} />,
+    },
   ];
 
   return {

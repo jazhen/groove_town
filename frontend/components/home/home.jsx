@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IndexAlbum = ({ album }) => {
+export const IndexAlbum = ({ album }) => {
   return (
     <li className="albums-index__list-item">
       <div className="albums-index__album-container">

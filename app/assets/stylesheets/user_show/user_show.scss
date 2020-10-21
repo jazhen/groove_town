@@ -4,7 +4,7 @@
 
 .user-show__main-container {
   margin: 0 auto;
-  max-width: 1260px;
+  max-width: 1160px;
 }
 
 .user-show__tabs-header-list {
@@ -24,11 +24,7 @@
 }
 
 .user-show__tab-content{
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  margin-bottom: 10vh;
 }
 
 .user-show__tabs-header-button {

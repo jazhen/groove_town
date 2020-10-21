@@ -3,6 +3,7 @@ import { RECEIVE_ALBUMS } from '../actions/album_actions';
 
 const albumsReducer = (prevState = {}, action) => {
   Object.freeze(prevState);
+  // debugger;
   switch (action.type) {
     case RECEIVE_USER:
       return { ...prevState, ...action.albums };

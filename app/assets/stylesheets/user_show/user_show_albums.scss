@@ -1,0 +1,78 @@
+.user-albums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-albums__list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 200px;
+}
+
+.user-albums__album-container {
+  margin-top: 30px;
+}
+
+.user-albums__album-art-placeholder {
+  background-color: gray;
+  border: 1px solid #F2F2F2;
+  height: 200px;
+  width: 200px
+}
+
+@media only screen
+and (min-width: 576px) {
+  .user-albums__list {
+    max-width: 440px;
+  }
+
+  .user-albums__list-item:not(:nth-child(odd)) {
+    margin-left: 40px;
+  }
+}
+
+@media only screen
+and (min-width: 768px) {
+  .user-albums__list {
+    max-width: 690px;
+  }
+
+  .user-albums__list-item:nth-child(3n+1) {
+    margin-left: 0;
+  }
+
+  .user-albums__list-item:not(:nth-child(3n+1)) {
+    margin-left: 40px;
+  }
+}
+
+@media only screen
+and (min-width: 992px) {
+  .user-albums__list {
+    max-width: 920px;
+  }
+
+  .user-albums__list-item:nth-child(4n+1) {
+    margin-left: 0;
+  }
+
+  .user-albums__list-item:not(:nth-child(4n+1)) {
+    margin-left: 40px;
+  }
+}
+
+@media only screen
+and (min-width: 1200px) {
+  .user-albums__list {
+    max-width: 1160px;
+  }
+
+  .user-albums__list-item:nth-child(5n+1) {
+    margin-left: 0;
+  }
+
+  .user-albums__list-item:not(:nth-child(5n+1)) {
+    margin-left: 40px;
+  }
+}
