@@ -5,9 +5,9 @@
 }
 
 .user-show__profile-container {
-  margin: 40px auto;
+  margin: 20px auto;
   max-width: 1160px;
-  height: 100px;
+  height: 150px;
 }
 
 .user-show__profile-picture-container {
@@ -25,6 +25,14 @@
 }
 
 .user-show__profile-container {
-  max-width: 960px;
   display: flex;
+}
+
+.user-show__profile-placeholder {
+  width: 240px;
+}
+
+.user-show__profile-span {
+  font-size: 1.5em;
+  font-weight: bold;
 }

@@ -42,7 +42,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { users, albums, panes } = this.props;
+    const { user, albums, panes } = this.props;
     const { selectedPane } = this.state;
 
     const pane = panes[selectedPane];
@@ -56,7 +56,14 @@ class UserShow extends React.Component {
                 <div className="user-show__profile-picture" />
               </div>
             </div>
-            <div className="user-show__profile-container" />
+          </div>
+          <div className="user-show__profile-container">
+            <div className="user-show__profile-placeholder" />
+            <div className="user-show__profile">
+              <span className="user-show__profile-span">
+                {user.band ? user.band : user.username}
+              </span>
+            </div>
           </div>
           <div className="user-show__collection-container">
             <TabHeaders
