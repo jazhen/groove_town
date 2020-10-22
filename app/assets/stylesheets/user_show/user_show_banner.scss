@@ -1,0 +1,30 @@
+.user-show__banner {
+  height: 100px;
+  background: linear-gradient(135deg, #816FF7 0%, #30D4BB 100%);
+  position: relative;
+}
+
+.user-show__profile-container {
+  margin: 40px auto;
+  max-width: 1160px;
+  height: 100px;
+}
+
+.user-show__profile-picture-container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.user-show__profile-picture {
+  height: 200px;
+  position: absolute;
+  top: 60px;
+  width: 200px;
+
+  background-color: gray;
+}
+
+.user-show__profile-container {
+  max-width: 960px;
+  display: flex;
+}

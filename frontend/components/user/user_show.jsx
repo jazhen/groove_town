@@ -50,6 +50,14 @@ class UserShow extends React.Component {
     return (
       <div className="user-show">
         <div className="user-show__main-container">
+          <div className="user-show__user-profile">
+            <div className="user-show__banner">
+              <div className="user-show__profile-picture-container">
+                <div className="user-show__profile-picture" />
+              </div>
+            </div>
+            <div className="user-show__profile-container" />
+          </div>
           <div className="user-show__collection-container">
             <TabHeaders
               selectedPane={selectedPane}

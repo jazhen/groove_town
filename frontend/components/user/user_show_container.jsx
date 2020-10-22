@@ -5,11 +5,10 @@ import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
 const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
-  // debugger;
   const user = users[ownProps.match.params.userId];
   const panes = [
-    { title: 'collection', content: 'collection pane content' },
-    { title: 'following', content: 'following pane content' },
+    { title: 'collection', content: '' },
+    { title: 'following', content: '' },
     {
       title: 'albums',
       content: <UserShowAlbums user={user} albums={albums} />,
