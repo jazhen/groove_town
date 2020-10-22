@@ -1,0 +1,60 @@
+.album-show {
+  width: 100%;
+
+  background-color: rgb(245, 235, 209);
+}
+
+.album-show__container {
+  margin: 0 auto;
+  max-width: 1070px;
+
+  background-color: rgb(177, 144, 62);
+}
+
+.album-show__main-container {
+  max-width: 1070px;
+  margin: 0 auto;
+}
+
+.album-show__banner {
+  height: 140px;
+  margin: 0 auto;
+
+  background-color: green;
+}
+
+.album-show__tabs-header-list {
+  display: flex;
+  background-color: rgb(211, 209, 209);
+}
+
+.album-show__tabs-header-list-item {
+  color: #00A1C6;
+}
+
+.album-show__tabs-header-list-item:hover {
+  border-top: 2px solid #00A1C6;
+}
+
+.album-show__tabs-header-button {
+  padding: 4px 16px;
+}
+
+.album-show__tabs--active {
+  color: black;
+  border-top: 2px solid black;
+}
+
+.album-show__tabs--active:hover {
+  border-top: 2px solid black;
+}
+
+.album-show__tab-title {
+  font-weight: bold;
+}
+
+.album-show__tab-content {
+  margin: 30px 20px;
+
+  background-color: aliceblue;
+}

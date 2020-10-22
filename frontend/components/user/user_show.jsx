@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TabHeaders = ({ selectedPane, onTabChosen, panes, numAlbums }) => {
-  const active = selectedPane;
-  const headers = panes.map((pane, index) => {
-    const { title } = pane;
+const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
+  const active = selectedTab;
+  const headers = tabs.map((tab, index) => {
+    const { title } = tab;
     const selected = index === active ? 'user-show__tabs--active' : '';
 
     return (
@@ -31,7 +31,7 @@ class UserShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedPane: 0,
+      selectedTab: 0,
     };
     this.selectTab = this.selectTab.bind(this);
   }
@@ -42,14 +42,14 @@ class UserShow extends React.Component {
   }
 
   selectTab(num) {
-    this.setState({ selectedPane: num });
+    this.setState({ selectedTab: num });
   }
 
   render() {
-    const { user, albums, panes } = this.props;
-    const { selectedPane } = this.state;
+    const { user, albums, tabs } = this.props;
+    const { selectedTab } = this.state;
 
-    const pane = panes[selectedPane];
+    const tab = tabs[selectedTab];
 
     return (
       <div className="user-show">
@@ -71,14 +71,14 @@ class UserShow extends React.Component {
           </div>
           <div className="user-show__collection-container">
             <TabHeaders
-              selectedPane={selectedPane}
+              selectedTab={selectedTab}
               onTabChosen={this.selectTab}
-              panes={panes}
+              tabs={tabs}
               numAlbums={user.albumIds.length}
             />
             <div className="user-show__tab-content">
               <div className="user-show__tab-content-container">
-                {pane.content}
+                {tab.content}
               </div>
             </div>
           </div>

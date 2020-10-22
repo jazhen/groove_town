@@ -6,7 +6,7 @@ import UserShowAlbums from './user_show_albums';
 
 const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
   const user = users[ownProps.match.params.userId];
-  const panes = [
+  const tabs = [
     { title: 'collection', content: '' },
     { title: 'following', content: '' },
     {
@@ -18,7 +18,7 @@ const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
   return {
     user,
     albums,
-    panes,
+    tabs,
   };
 };
 
