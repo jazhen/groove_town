@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 //     <ul className="nav-bar__site-list">
 //       <li className="nav-bar__site-list-item">
 //         <Link className="nav-bar__index" to="/">
-//           Artist Shack
+//           groovetown
 //         </Link>
 //       </li>
 //       <li className="nav-bar__site-list-item">
@@ -22,7 +22,7 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
       <nav className="nav-bar">
         <div className="nav-bar__index">
           <Link className="nav-bar__index-link" to="/">
-            Artist Shack
+            groovetown
           </Link>
         </div>
         <ul className="nav-bar__dropdown">
@@ -67,7 +67,7 @@ const UnauthenticatedHeader = () => {
       <nav className="nav-bar">
         <div className="nav-bar__index">
           <Link className="nav-bar__index-link" to="/">
-            Artist Shack
+            groovetown
           </Link>
         </div>
         <div className="nav-bar__search-bar">

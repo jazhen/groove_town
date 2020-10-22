@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module ArtistShack
+module GrooveTown
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -18,9 +18,5 @@ module ArtistShack
 
     config.assets.initialize_on_precompile = false
     config.sass.preferred_syntax = :sass
-
-    initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
-      app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
-    end
   end
 end

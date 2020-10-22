@@ -12,12 +12,9 @@ Album.destroy_all
 Album.connection.execute('ALTER SEQUENCE albums_id_seq RESTART WITH 1')
 
 demo_user = User.create(username: 'demoUser',
-                        email: 'demouser@artistshack.com',
+                        email: 'demouser@groovetown.com',
                         password: 'password',
                         band: 'Demo Band')
-
-unknown_pleasures1 = Album.create(name: 'Unknown Pleasures1', user_id: demo_user.id)
-closer1 = Album.create(name: 'Closer1', user_id: demo_user.id)
 
 patti_smith = User.create(username: 'pattismith',
                           email: 'patti@pattismith.net',
