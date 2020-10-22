@@ -138,3 +138,9 @@ the_antlers = User.create(username: 'theantlers',
   band: 'The Antlers')
 hospice = Album.create(name: 'Hospice', user_id: the_antlers.id)
 familiars = Album.create(name: 'Familiars', user_id: the_antlers.id)
+
+giles_corey = User.create(username: 'gilescorey',
+  email: 'gilescorey@gilescorey.com',
+  password: 'password',
+  band: 'Giles Corey')
+giles_corey_album = Album.create(name: 'Giles Corey', user_id: giles_corey.id)

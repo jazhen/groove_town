@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Home from './home';
+import Splash from './splash';
 import { fetchAlbums } from '../../actions/album_actions';
 
 const mapStateToProps = (state) => ({
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchAlbums: () => dispatch(fetchAlbums()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);

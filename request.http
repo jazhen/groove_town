@@ -40,3 +40,6 @@ GET http://localhost:3000/api/users/2
 ###
 # get '/api/albums'
 GET http://localhost:3000/api/albums/
+
+###
+GET http://localhost:3000/api/users/2/albums/1

@@ -1,6 +1,3 @@
 json.array!(@albums.includes(:user)) do |album|
-  json.id album.id
-  json.name album.name
-  json.band album.user.band
-  json.user_id album.user_id
+  json.partial! 'api/albums/album', album: album
 end

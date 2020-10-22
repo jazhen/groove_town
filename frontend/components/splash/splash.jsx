@@ -1,26 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const IndexAlbum = ({ album }) => {
   return (
     <li className="albums-index__list-item">
       <div className="albums-index__album-container">
         <div className="albums-index__album-art-container">
-          <a className="albums-index__album-link">
+          <Link
+            to={`/users/${album.user_id}/albums/${album.id}`}
+            className="albums-index__album-name albums-index__metadata">
             <div className="albums-index__album-art-placeholder" />
-          </a>
+          </Link>
         </div>
         <ul className="albums-index__metadata-list">
           <li className="albums-index__metadata-list-item">
-            <a
-              className="albums-index__album-name albums-index__metadata"
-              href="#">
+            <Link
+              to={`/users/${album.user_id}/albums/${album.id}`}
+              className="albums-index__album-name albums-index__metadata">
               {album.name}
-            </a>
+            </Link>
           </li>
           <li className="albums-index__metadata-list-item">
-            <a className="albums-index__band albums-index__metadata" href="#">
+            <Link
+              to={`/users/${album.user_id}`}
+              className="albums-index__band albums-index__metadata">
               {album.band}
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -28,7 +33,7 @@ export const IndexAlbum = ({ album }) => {
   );
 };
 
-class Home extends React.Component {
+class Splash extends React.Component {
   componentDidMount() {
     this.props.fetchAlbums();
   }
@@ -96,4 +101,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Splash;

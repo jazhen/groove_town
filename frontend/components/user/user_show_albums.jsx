@@ -1,21 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserShowAlbumsList = ({ album }) => {
   return (
     <li key={album.id} className="user-albums__list-item">
       <div className="user-albums__album-container">
         <div className="user-albums__album-art-container">
-          <a className="user-albums__album-link" href="#">
+          <Link
+            to={`/users/${album.user_id}/albums/${album.id}`}
+            className="user-albums__album-link">
             <div className="user-albums__album-art-placeholder" />
-          </a>
+          </Link>
         </div>
         <ul className="user-albums__metadata-list">
           <li className="user-albums__metadata-list-item">
-            <a
-              className="user-albums__album-name user-albums__metadata"
-              href="#">
+            <Link
+              to={`/users/${album.user_id}/albums/${album.id}`}
+              className="user-albums__album-name user-albums__metadata">
               {album.name}
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
