@@ -24,25 +24,20 @@ const UserShowAlbumsList = ({ album }) => {
 };
 
 const UserShowAlbums = ({ user, albums }) => {
-  // debugger;
+  if (!user.albumIds.length) {
+    return null;
+  }
+
+  let userAlbumsClassModifier;
+  if (user.albumIds.length < 5) {
+    userAlbumsClassModifier = 'user-albums--min';
+  } else {
+    userAlbumsClassModifier = '';
+  }
+
   return (
-    <div className="user-albums">
+    <div className={`user-albums ${userAlbumsClassModifier}`}>
       <ul className="user-albums__list">
-        {user.albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
-        ))}
-        {user.albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
-        ))}
-        {user.albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
-        ))}
-        {user.albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
-        ))}
-        {user.albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
-        ))}
         {user.albumIds.map((albumId) => (
           <UserShowAlbumsList key={albumId} album={albums[albumId]} />
         ))}

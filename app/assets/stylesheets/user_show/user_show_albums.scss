@@ -64,6 +64,10 @@ and (min-width: 992px) {
 
 @media only screen
 and (min-width: 1200px) {
+  .user-albums--min {
+    justify-content: flex-start;
+  }
+
   .user-albums__list {
     max-width: 1160px;
   }
