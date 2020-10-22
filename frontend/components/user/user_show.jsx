@@ -6,13 +6,6 @@ const TabHeaders = ({ selectedPane, onTabChosen, panes, numAlbums }) => {
     const { title } = pane;
     const selected = index === active ? 'user-show__tabs--active' : '';
 
-    let tabAmount;
-    if (title === 'albums' && numAlbums > 1) {
-      tabAmount = (
-        <span className="user-show__tab-amount">{` ${numAlbums}`}</span>
-      );
-    }
-
     return (
       <li
         className={`user-show__tabs-header-list-item ${selected}`}
@@ -21,7 +14,11 @@ const TabHeaders = ({ selectedPane, onTabChosen, panes, numAlbums }) => {
           className="user-show__tabs-header-button"
           onClick={() => onTabChosen(index)}>
           <span className="user-show__tab-title">{title}</span>
-          {tabAmount}
+          {title === 'albums' ? (
+            <span className="user-show__tab-amount">{`${numAlbums}`}</span>
+          ) : (
+            <span className="user-show__tab-amount">0</span>
+          )}
         </button>
       </li>
     );
