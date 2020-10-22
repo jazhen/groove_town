@@ -24,11 +24,16 @@
   width: 200px;
 }
 
-.albums-index__album-art-placeholder {
+.albums-index__album-art-container {
   background-color: gray;
   border: 1px solid #F2F2F2;
   height: 200px;
   width: 200px
+}
+
+.albums-index__album-art {
+  height: 200px;
+  width: 200px;
 }
 
 .albums-index__metadata-list {

@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
 User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 Album.destroy_all
@@ -22,6 +24,9 @@ patti_smith = User.create(username: 'pattismith',
                           band: 'Patti Smith')
 
 horses = Album.create(name: 'Horses', user_id: patti_smith.id)
+
+horses_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/patti_smith-horses.jpg')
+horses.art.attach(io: horses_art, filename: 'patti_smith-horses.jpg')
 
 joy_division = User.create(username: 'joydivision',
                            email: 'joydivision@joydivision.com',

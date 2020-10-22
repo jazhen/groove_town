@@ -9,7 +9,17 @@ export const IndexAlbum = ({ album }) => {
           <Link
             to={`/users/${album.user_id}/albums/${album.id}`}
             className="albums-index__album-name albums-index__metadata">
-            <div className="albums-index__album-art-placeholder" />
+            <div className="albums-index__album-art-container">
+              {album.photoUrl ? (
+                <img
+                  className="albums-index__album-art"
+                  src={album.photoUrl}
+                  alt={`${album.band}-${album.name}`}
+                />
+              ) : (
+                ''
+              )}
+            </div>
           </Link>
         </div>
         <ul className="albums-index__metadata-list">

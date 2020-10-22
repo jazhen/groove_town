@@ -19,3 +19,9 @@ bundle.js.map
 # uploaded files in development
 !**/storage/.keep
 /public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# Ignore locally stored images
+/app/assets/images
