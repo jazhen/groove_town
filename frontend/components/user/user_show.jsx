@@ -1,10 +1,17 @@
 import React from 'react';
 
-const TabHeaders = ({ selectedPane, onTabChosen, panes }) => {
+const TabHeaders = ({ selectedPane, onTabChosen, panes, numAlbums }) => {
   const active = selectedPane;
   const headers = panes.map((pane, index) => {
     const { title } = pane;
     const selected = index === active ? 'user-show__tabs--active' : '';
+
+    let tabAmount;
+    if (title === 'albums' && numAlbums > 1) {
+      tabAmount = (
+        <span className="user-show__tab-amount">{` ${numAlbums}`}</span>
+      );
+    }
 
     return (
       <li
@@ -13,7 +20,8 @@ const TabHeaders = ({ selectedPane, onTabChosen, panes }) => {
         <button
           className="user-show__tabs-header-button"
           onClick={() => onTabChosen(index)}>
-          {title}
+          <span className="user-show__tab-title">{title}</span>
+          {tabAmount}
         </button>
       </li>
     );
@@ -34,7 +42,6 @@ class UserShow extends React.Component {
   componentDidMount() {
     const { fetchUser, match } = this.props;
     fetchUser(match.params.userId);
-    // debugger;
   }
 
   selectTab(num) {
@@ -70,6 +77,7 @@ class UserShow extends React.Component {
               selectedPane={selectedPane}
               onTabChosen={this.selectTab}
               panes={panes}
+              numAlbums={user.albumIds.length}
             />
             <div className="user-show__tab-content">
               <div className="user-show__tab-content-container">

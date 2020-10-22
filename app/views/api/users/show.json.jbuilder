@@ -1,6 +1,5 @@
 json.user do
   json.partial! 'api/users/user', user: @user
-  json.albumIds @user.albums.pluck(:id)
 end
 
 @user.albums.each do |album|

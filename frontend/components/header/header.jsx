@@ -18,31 +18,6 @@ import { Link } from 'react-router-dom';
 
 const AuthenticatedHeader = ({ currentUserId, logout }) => {
   return (
-    // <header className="header">
-    //   <nav className="nav-bar">
-    //     {/* <NavBarSiteList /> */}
-    //     <ul className="nav-bar__dropdown">
-    //       <button className="nav-bar__dropdown-button">Dropdown</button>
-    //       <li className="nav-bar__dropdown-menu">
-    //         <ul className="nav-bar__dropdown-content">
-    //           <li className="nav-bar__dropdown-content-list-item">
-    //             <Link className="nav-bar__dropdown-link" to="/">
-    //               view collection
-    //             </Link>
-    //           </li>
-    //           <li className="nav-bar__dropdown-content-list-item">
-    //             <button
-    //               className="nav-bar__logout"
-    //               type="submit"
-    //               onClick={logout}>
-    //               logout
-    //             </button>
-    //           </li>
-    //         </ul>
-    //       </li>
-    //     </ul>
-    //   </nav>
-    // </header>
     <header className="header">
       <nav className="nav-bar">
         <div className="nav-bar__index">

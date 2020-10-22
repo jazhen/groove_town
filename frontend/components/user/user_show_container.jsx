@@ -16,7 +16,7 @@ const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
   ];
 
   return {
-    user: users[ownProps.match.params.userId],
+    user,
     albums,
     panes,
   };

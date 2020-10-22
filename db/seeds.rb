@@ -16,6 +16,9 @@ demo_user = User.create(username: 'demoUser',
                         password: 'password',
                         band: 'Demo Band')
 
+unknown_pleasures1 = Album.create(name: 'Unknown Pleasures1', user_id: demo_user.id)
+closer1 = Album.create(name: 'Closer1', user_id: demo_user.id)
+
 patti_smith = User.create(username: 'pattismith',
                           email: 'patti@pattismith.net',
                           password: 'password',

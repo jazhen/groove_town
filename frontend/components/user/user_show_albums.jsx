@@ -5,7 +5,7 @@ const UserShowAlbumsList = ({ album }) => {
     <li key={album.id} className="user-albums__list-item">
       <div className="user-albums__album-container">
         <div className="user-albums__album-art-container">
-          <a className="user-albums__album-link">
+          <a className="user-albums__album-link" href="#">
             <div className="user-albums__album-art-placeholder" />
           </a>
         </div>

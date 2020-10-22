@@ -71,6 +71,13 @@
 .nav-bar__search-bar-input {
   flex: 1;
   height: 40px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.nav-bar__search-bar-icon {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .nav-bar__search-bar-input,
