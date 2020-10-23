@@ -116,6 +116,10 @@ and (min-width: 1200px) {
   flex-direction: column;
 }
 
+.albums-index__carousel-main-img {
+  filter: sepia(0.4);
+}
+
 .albums-index__carousel-main-img,
 .albums-index__carousel-sub-img {
   display: flex;

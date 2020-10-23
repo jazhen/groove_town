@@ -14,15 +14,27 @@
   margin-top: 30px;
 }
 
-.user-albums__album-art-placeholder {
-  background-color: gray;
-  border: 1px solid #F2F2F2;
+.user-index__album-art {
   height: 200px;
-  width: 200px
+  width: 200px;
+}
+
+.user-albums__metadata {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .user-show__tab-amount {
   margin-left: 12px;
+}
+
+.user-albums__list-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
 }
 
 @media only screen

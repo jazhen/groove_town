@@ -12,13 +12,16 @@
   border-bottom: 1px solid #DDDDDD;
 }
 
-.user-show__tabs-header-list-item {
-  color: #00A1C6;
-  cursor: pointer;
-  text-align: center;
+.user-show__tabs-header-list-item--active {
+  color: black;
+  border-bottom: 2px solid black;
 }
 
-.user-show__tabs-header-list-item:hover {
+.user-show__tabs-header-button--inactive {
+  color: #00A1C6;
+}
+
+.user-show__tabs-header-list-item--inactive:hover {
   border-bottom: 2px solid #00A1C6;
 }
 
@@ -28,13 +31,4 @@
 
 .user-show__tabs-header-button {
   padding: 10px 20px;
-}
-
-.user-show__tabs--active {
-  color: black;
-  border-bottom: 2px solid black;
-}
-
-.user-show__tabs--active:hover {
-  border-bottom: 2px solid black;
 }

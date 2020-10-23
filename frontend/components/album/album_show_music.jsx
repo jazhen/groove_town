@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class AlbumShowMusic extends React.Component {
   constructor(props) {
@@ -30,15 +31,17 @@ class AlbumShowMusic extends React.Component {
             <span> by </span>
             <span className="album-player__artist">{user.band}</span>
           </span>
-          {/* <div className="album-player__audio-container"> */}
-          <audio controls src="/media/cc0-audio/t-rex-roar.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-          </audio>
-          {/* </div> */}
+          <div className="album-player__audio-container">
+            <audio controls src="/media/cc0-audio/t-rex-roar.mp3">
+              Your browser does not support the
+              <code>audio</code> element.
+            </audio>
+          </div>
         </div>
         <div className="album-player__sidebar">
-          <span className="album-player__artist-name">{user.band}</span>
+          <span className="album-player__artist-name">
+            <Link to={`/users/${user.id}`}>{user.band}</Link>
+          </span>
         </div>
       </div>
     );

@@ -61,42 +61,50 @@ class Splash extends React.Component {
           <div className="albums-index__carousel-container">
             <div className="albums-index__carousel-main albums-index__carousel-col">
               <div className="albums-index__carousel-main-img-container">
-                <a className="albums-index__carousel-link" href="#">
+                <Link
+                  to="/users/10/albums/12"
+                  className="albums-index__carousel-link">
                   <img
                     className="albums-index__carousel-main-img"
-                    src="https://wmscradio.com/wp-content/uploads/sites/4/2018/11/The-Low-End-Theory-by-A-Tribe-Called-Quest.png"
+                    src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-main.png"
                     alt=""
                   />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="albums-index__carousel-sub albums-index__carousel-col">
               <div className="albums-index__carousel-sub-img-container">
-                <a className="albums-index__carousel-link" href="#">
+                <Link
+                  to="/users/19/albums/27"
+                  className="albums-index__carousel-link">
                   <img
                     className="albums-index__carousel-sub-img"
-                    src="https://cdn4.pitchfork.com/longform/867/Merriweather10.jpg"
+                    src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_1.jpg"
                     alt=""
                   />
-                </a>
+                </Link>
               </div>
               <div className="albums-index__carousel-sub-img-container">
-                <a className="albums-index__carousel-link" href="#">
+                <Link
+                  to="/users/20/albums/28"
+                  className="albums-index__carousel-link">
                   <img
                     className="albums-index__carousel-sub-img"
-                    src="https://cdn2.pitchfork.com/longform/734/Boards-of-Canada.jpg"
+                    src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_2.jpg"
                     alt=""
                   />
-                </a>
+                </Link>
               </div>
               <div className="albums-index__carousel-sub-img-container">
-                <a className="albums-index__carousel-link" href="#">
+                <Link
+                  to="/users/20/albums/29"
+                  className="albums-index__carousel-link">
                   <img
                     className="albums-index__carousel-sub-img"
-                    src="https://www.nme.com/wp-content/uploads/2020/10/Leon-Bridges-Lucky-Dayes@2000x1270-696x442.jpg"
+                    src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_3.jpg"
                     alt=""
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

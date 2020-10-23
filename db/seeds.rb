@@ -221,3 +221,12 @@ boards_of_canada = User.create(username: 'boardsofcanada',
 music_has_the_right_to_children = Album.create(name: 'Music Has the Right to Children', user_id: boards_of_canada.id)
 music_has_the_right_to_children_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/boards_of_canada-music_has_the_right_to_children.jpg')
 music_has_the_right_to_children.art.attach(io: music_has_the_right_to_children_art, filename: 'boards_of_canada-music_has_the_right_to_children.jpg')
+
+leon_bridges = User.create(username: 'leonbridges',
+  email: 'leonbridges@leonbridges.com',
+  password: 'password',
+  band: 'Leon Bridges & Lucky Daye')
+
+all_about_you = Album.create(name: 'All About You', user_id: leon_bridges.id)
+all_about_you_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/leon_bridges-all_about_you.jpg')
+all_about_you.art.attach(io: all_about_you_art, filename: 'leon_bridges-all_about_you.jpg')

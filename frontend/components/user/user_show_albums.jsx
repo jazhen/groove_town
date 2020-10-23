@@ -9,16 +9,22 @@ const UserShowAlbumsList = ({ album }) => {
           <Link
             to={`/users/${album.user_id}/albums/${album.id}`}
             className="user-albums__album-link">
-            <div className="user-albums__album-art-placeholder" />
+            <img
+              className="albums-index__album-art"
+              src={album.photoUrl}
+              alt={`${album.band}-${album.name}`}
+            />
           </Link>
         </div>
         <ul className="user-albums__metadata-list">
           <li className="user-albums__metadata-list-item">
-            <Link
-              to={`/users/${album.user_id}/albums/${album.id}`}
-              className="user-albums__album-name user-albums__metadata">
-              {album.name}
-            </Link>
+            <li className="user-albums__metadata-list-item">
+              <Link
+                to={`/users/${album.user_id}/albums/${album.id}`}
+                className="user-albums__album-name user-albums__metadata">
+                {album.name}
+              </Link>
+            </li>
           </li>
         </ul>
       </div>
