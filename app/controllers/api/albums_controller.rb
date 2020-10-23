@@ -5,7 +5,6 @@ class Api::AlbumsController < ApplicationController
   end
 
   def show
-    debugger
     @album = Album.find_by(id: params[:id])
     render :show
   end

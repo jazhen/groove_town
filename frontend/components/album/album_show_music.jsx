@@ -7,7 +7,6 @@ class AlbumShowMusic extends React.Component {
   }
 
   render() {
-    // debugger;
     const { user, albums, albumId } = this.props;
 
     if (!user) {

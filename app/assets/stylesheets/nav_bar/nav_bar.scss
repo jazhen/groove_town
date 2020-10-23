@@ -47,12 +47,18 @@
 
 .nav-bar__index-link,
 .nav-bar__session-link {
+  font-size: 17px;
   align-items: center;
   display: flex;
   height: 60px;
   padding: 0 10px;
 }
 
+.nav-bar__fa-music {
+  color: rgb(29, 160, 195);
+  font-size: 17px;
+  margin-right: 5px;
+}
 
 @media only screen
 and (min-width: 992px) {

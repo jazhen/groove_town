@@ -6,6 +6,7 @@ const NavBarSiteList = () => {
     <>
       <div className="nav-bar__index">
         <Link className="nav-bar__index-link" to="/">
+          <i className="fas fa-music nav-bar__fa-music" />
           groovetown
         </Link>
       </div>
@@ -29,17 +30,11 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
         <NavBarSiteList />
         <ul className="nav-bar__dropdown">
           <button className="nav-bar__dropdown-button">
-            <svg
-              width="2em"
-              height="2em"
-              viewBox="0 0 16 16"
-              className="bi bi-music-note-beamed"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z" />
-              <path fillRule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z" />
-              <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z" />
-            </svg>
+            <img
+              src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/general/default-profile-pic.svg"
+              className="nav-bar__profile-picture"
+              alt="default profile"
+            />
           </button>
           <li className="nav-bar__dropdown-menu">
             <ul className="nav-bar__dropdown-content">

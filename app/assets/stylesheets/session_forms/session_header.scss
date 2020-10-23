@@ -3,7 +3,6 @@
 .session-header {
   background-color: #dddddd;
   height: 10vh;
-  font-size: $ms2;
   min-height: 60px;
 }
 
@@ -15,14 +14,17 @@
   margin: 0 auto;
 }
 
+.session-header,
+.session-header__fa-music {
+  color: rgb(29, 160, 195);
+  font-size: $ms2;
+  margin-right: 5px;
+}
+
 @media only screen
 and (min-width: 992px) {
   .session-header__container {
+    justify-content: flex-start;
     max-width: 700px;
-    text-align: left;
-  }
-
-  .session-header__link {
-    width: 100%;
   }
 }

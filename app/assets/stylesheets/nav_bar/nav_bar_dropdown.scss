@@ -21,6 +21,14 @@
   padding: 0 10px;
 }
 
+.nav-bar__profile-picture {
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 90%;
+  background: radial-gradient(#ffffff 0%, #797979 100%);
+}
+
 .nav-bar__dropdown-button:focus ~ .nav-bar__dropdown-menu,
 .nav-bar__dropdown-menu:active,
 .nav-bar__dropdown-link
