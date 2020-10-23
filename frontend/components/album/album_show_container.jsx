@@ -12,10 +12,10 @@ const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
       title: 'music',
       content: <AlbumShowMusic user={user} albums={albums} albumId={albumId} />,
     },
-    { title: 'merch', content: 'merch tab' },
+    { title: 'merch', content: '' },
     {
       title: 'community',
-      content: 'community tab',
+      content: '',
     },
   ];
 

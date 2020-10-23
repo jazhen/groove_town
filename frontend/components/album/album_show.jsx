@@ -35,55 +35,55 @@ class AlbumShow extends React.Component {
   componentDidMount() {
     const { fetchUser, match } = this.props;
     fetchUser(match.params.userId);
-    setTimeout(function () {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const image = document.getElementById('album-player__art');
-      // debugger;
-      image.addEventListener('load', (e) => {
-        ctx.drawImage(image, 0, 0, 1100, 1000);
-      });
-      // const cw = (canvas.width = 200);
-      // const ch = (canvas.height = 200);
+    // setTimeout(function () {
+    //   const canvas = document.createElement('canvas');
+    //   const ctx = canvas.getContext('2d');
+    //   const image = document.getElementById('album-player__art');
+    //   // debugger;
+    //   image.addEventListener('load', (e) => {
+    //     ctx.drawImage(image, 0, 0, 1100, 1000);
+    //   });
+    //   // const cw = (canvas.width = 200);
+    //   // const ch = (canvas.height = 200);
 
-      // for (let x = 0; x < cw; x++) {
-      //   for (let y = 0; y < ch; y++) {
-      //     ctx.fillStyle = `hsl(0, 0%, ${100 - Math.random() * 15}%)`;
-      //     ctx.fillRect(x, y, 1, 1);
-      //   }
-      // }
+    //   // for (let x = 0; x < cw; x++) {
+    //   //   for (let y = 0; y < ch; y++) {
+    //   //     ctx.fillStyle = `hsl(0, 0%, ${100 - Math.random() * 15}%)`;
+    //   //     ctx.fillRect(x, y, 1, 1);
+    //   //   }
+    //   // }
 
-      const a = document.getElementById('album-show');
-      if (a) {
-        // debugger;
-        a.style.background = `url(${canvas.toDataURL()})`;
-      }
-    }, 100);
+    //   const a = document.getElementById('album-show');
+    //   if (a) {
+    //     // debugger;
+    //     a.style.background = `url(${canvas.toDataURL()})`;
+    //   }
+    // }, 100);
 
     this.setState({ albumId: match.params.albumId });
   }
 
-  componentDidUpdate() {
-    setTimeout(function () {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const cw = (canvas.width = 200);
-      const ch = (canvas.height = 200);
+  // componentDidUpdate() {
+  //   setTimeout(function () {
+  //     const canvas = document.createElement('canvas');
+  //     const ctx = canvas.getContext('2d');
+  //     const cw = (canvas.width = 200);
+  //     const ch = (canvas.height = 200);
 
-      for (let x = 0; x < cw; x++) {
-        for (let y = 0; y < ch; y++) {
-          ctx.fillStyle = `hsl(0, 0%, ${100 - Math.random() * 15}%)`;
-          ctx.fillRect(x, y, 1, 1);
-        }
-      }
+  //     for (let x = 0; x < cw; x++) {
+  //       for (let y = 0; y < ch; y++) {
+  //         ctx.fillStyle = `hsl(0, 0%, ${100 - Math.random() * 15}%)`;
+  //         ctx.fillRect(x, y, 1, 1);
+  //       }
+  //     }
 
-      const a = document.getElementById('album-show');
-      if (a) {
-        // debugger;
-        a.style.background = `url(${canvas.toDataURL()})`;
-      }
-    }, 50);
-  }
+  //     const a = document.getElementById('album-show');
+  //     if (a) {
+  //       // debugger;
+  //       a.style.background = `url(${canvas.toDataURL()})`;
+  //     }
+  //   }, 50);
+  // }
 
   selectTab(num) {
     this.setState({ selectedTab: num });
@@ -100,7 +100,12 @@ class AlbumShow extends React.Component {
 
     return (
       <>
-        <div id="album-show" className="album-show">
+        <div
+          id="album-show"
+          className="album-show"
+          style={{
+            backgroundImage: `url(https://coderwall-assets-0.s3.amazonaws.com/uploads/picture/file/1410/noise-bg.png)`,
+          }}>
           <div className="album-show__main-container">
             <div className="album-show__banner-container">
               <div

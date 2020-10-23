@@ -18,13 +18,11 @@ const UserShowAlbumsList = ({ album }) => {
         </div>
         <ul className="user-albums__metadata-list">
           <li className="user-albums__metadata-list-item">
-            <li className="user-albums__metadata-list-item">
-              <Link
-                to={`/users/${album.user_id}/albums/${album.id}`}
-                className="user-albums__album-name user-albums__metadata">
-                {album.name}
-              </Link>
-            </li>
+            <Link
+              to={`/users/${album.user_id}/albums/${album.id}`}
+              className="user-albums__album-name user-albums__metadata">
+              {album.name}
+            </Link>
           </li>
         </ul>
       </div>
