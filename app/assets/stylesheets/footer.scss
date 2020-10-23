@@ -30,6 +30,10 @@
   text-decoration: underline;
 }
 
+.footer__site-menu {
+  margin-top: 10px;
+}
+
 // sticky footer
 
 #root {
@@ -52,4 +56,9 @@ and (min-width: 768px) {
     margin: 0 40px;
     text-align: left;
   }
+
+  .footer__site-menu {
+    margin: 0;
+  }
+
 }

@@ -97,7 +97,7 @@ class Splash extends React.Component {
               </div>
               <div className="albums-index__carousel-sub-img-container">
                 <Link
-                  to="/users/20/albums/29"
+                  to="/users/21/albums/29"
                   className="albums-index__carousel-link">
                   <img
                     className="albums-index__carousel-sub-img"

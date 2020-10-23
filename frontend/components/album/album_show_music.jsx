@@ -16,7 +16,7 @@ class AlbumShowMusic extends React.Component {
     const album = albums[albumId];
 
     return (
-      <div div className="album-player">
+      <div className="album-player">
         <div className="album-player__art-container">
           <img
             className="album-player__art"
@@ -31,7 +31,7 @@ class AlbumShowMusic extends React.Component {
             <span className="album-player__artist">{user.band}</span>
           </span>
           <div className="album-player__audio-container">
-            <audio controls src="/media/cc0-audio/t-rex-roar.mp3">
+            <audio controls src="">
               Your browser does not support the
               <code>audio</code> element.
             </audio>
