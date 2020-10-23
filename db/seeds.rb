@@ -218,6 +218,6 @@ boards_of_canada = User.create(username: 'boardsofcanada',
   password: 'password',
   band: 'Boards of Canada')
 
-music_has_the_right_to_children = Album.create(name: 'Merriweather Post Pavilion', user_id: boards_of_canada.id)
+music_has_the_right_to_children = Album.create(name: 'Music Has the Right to Children', user_id: boards_of_canada.id)
 music_has_the_right_to_children_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/boards_of_canada-music_has_the_right_to_children.jpg')
 music_has_the_right_to_children.art.attach(io: music_has_the_right_to_children_art, filename: 'boards_of_canada-music_has_the_right_to_children.jpg')

@@ -1,9 +1,17 @@
+import React from 'react';
 import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/user_actions';
 import AlbumShow from './album_show';
+import AlbumShowMusic from './album_show_music';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
+  const { userId, albumId } = ownProps.match.params;
+  const user = users[userId];
   const tabs = [
-    { title: 'music', content: 'music tab' },
+    {
+      title: 'music',
+      content: <AlbumShowMusic user={user} albums={albums} albumId={albumId} />,
+    },
     { title: 'merch', content: 'merch tab' },
     {
       title: 'community',
@@ -12,12 +20,14 @@ const mapStateToProps = (state, ownProps) => {
   ];
 
   return {
-    userId: ownProps.match.params.userId,
-    albumId: ownProps.match.params.albumId,
+    user,
+    albums,
     tabs,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: (userId) => dispatch(fetchUser(userId)),
+});
 
-export default connect(mapStateToProps, null)(AlbumShow);
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumShow);

@@ -31,31 +31,39 @@ class AlbumShow extends React.Component {
     this.selectTab = this.selectTab.bind(this);
   }
 
+  componentDidMount() {
+    const { fetchUser, match } = this.props;
+    fetchUser(match.params.userId);
+  }
+
   selectTab(num) {
     this.setState({ selectedTab: num });
   }
 
   render() {
-    const { tabs } = this.props;
+    const { tabs, album } = this.props;
     const { selectedTab } = this.state;
     const tab = tabs[selectedTab];
 
     return (
-      <div className="album-show">
-        <div className="album-show__main-container">
-          <div className="album-show__banner" />
-          <TabHeaders
-            selectedTab={selectedTab}
-            onTabChosen={this.selectTab}
-            tabs={tabs}
-          />
-          <div className="album-show__tab-content">
-            <div className="album-show__tab-content-container">
-              {tab.content}
+      <>
+        <div className="placeholder" />
+        <div className="album-show">
+          <div className="album-show__main-container">
+            <div className="album-show__banner" />
+            <TabHeaders
+              selectedTab={selectedTab}
+              onTabChosen={this.selectTab}
+              tabs={tabs}
+            />
+            <div className="album-show__tab-content">
+              <div className="album-show__tab-content-container">
+                {tab.content}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

@@ -15,13 +15,21 @@
   margin: 0 auto;
 }
 
-.user-show__profile-picture {
+.user-show__profile-picture-background {
   height: 200px;
   position: absolute;
   top: 60px;
   width: 200px;
 
-  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(#ffffff 0%, #797979 100%);
+}
+
+.user-show__profile-picture {
+  height: 175px;
+  width: 175px;
 }
 
 .user-show__profile-container {

@@ -1,0 +1,53 @@
+.album-player {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.album-player__art {
+  width: 100%;
+  height: auto;
+}
+
+.album-player__title {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.album-player__artist-container {
+  font-size: 1rem;
+}
+
+.album-player__artist {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.album-player__artist-name {
+  font-weight: bold;
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-player__art-container {
+    flex: 2;
+    order: 1;
+    margin: 0 30px;
+  }
+
+  .album-player__sidebar {
+    flex: 1;
+    order: 2;
+  }
+
+  .album-player {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+
+  .album-player__metadata {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+  }
+}

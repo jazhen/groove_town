@@ -1,7 +1,7 @@
 .album-show {
   width: 100%;
 
-  background-color: rgb(245, 235, 209);
+  // background-color: rgb(245, 235, 209);
 }
 
 .album-show__container {
@@ -29,6 +29,10 @@
 }
 
 .album-show__tabs-header-list-item {
+  border: 2px solid transparent;
+  flex: 1;
+  margin: 0 5px;
+  text-align: center;
   color: #00A1C6;
 }
 
@@ -54,7 +58,28 @@
 }
 
 .album-show__tab-content {
-  margin: 30px 20px;
+  // margin: 30px 40px;
+}
 
-  background-color: aliceblue;
+.placeholder {
+  z-index: -999;
+  // height: 100vh;
+  width: 100%;
+  position: absolute;
+  // display: flex;
+  background-image: url(/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWDA9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7799439…/the_strokes-is_this_it.jpg);
+  filter: blur(20px);
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-show__tabs-header-list {
+    padding: 0 20px;
+  }
+
+  .album-show__tabs-header-list-item {
+    flex: 0;
+
+    text-align: left;
+  }
 }
