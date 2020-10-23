@@ -4,15 +4,30 @@
   align-items: center;
   background-color: #477987;
   display: flex;
-  font-size: $ms-2;
+  font-size: $ms-1;
   height: 10vh;
   justify-content: center;
   min-height: 60px;
 }
 
+.footer__container {
+  text-align: center;
+}
+
 .footer,
-.footer__link {
+.footer__logout {
+  color: #bfd7dd;
+}
+
+.footer__link,
+.footer__logout {
   color: #fff;
+}
+
+.footer__link:hover,
+.footer__logout:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 // sticky footer
@@ -26,4 +41,15 @@
 .main {
   display: flex;
   flex: 1;
+}
+
+@media only screen
+and (min-width: 768px) {
+  .footer__container {
+    display: flex;
+    justify-content: space-between;
+    width: 1300px;
+    margin: 0 40px;
+    text-align: left;
+  }
 }
