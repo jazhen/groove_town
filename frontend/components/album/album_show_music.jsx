@@ -19,6 +19,7 @@ class AlbumShowMusic extends React.Component {
       <div className="album-player">
         <div className="album-player__art-container">
           <img
+            id="album-player__art"
             className="album-player__art"
             src={albums[albumId].photoUrl}
             alt=""
