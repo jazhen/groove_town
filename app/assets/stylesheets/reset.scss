@@ -71,7 +71,7 @@ input, label, select, button, textarea {
   background: none;
 }
 
-input{
+input {
   background-color: #ffffff;
 }
 
@@ -83,6 +83,7 @@ a, a:hover, a:focus {
   text-decoration: none;
   color: #000000;
   cursor: pointer;
+  outline: none;
 }
 
 html {

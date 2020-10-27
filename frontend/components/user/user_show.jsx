@@ -1,6 +1,11 @@
 import React from 'react';
 
-const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
+const TabHeaders = ({
+  selectedTab,
+  onTabChosen,
+  tabs,
+  numAlbums,
+}) => {
   const active = selectedTab;
   const headers = tabs.map((tab, index) => {
     const { title } = tab;
@@ -9,10 +14,13 @@ const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
     return (
       <li
         className={`user-show__tabs-header-list-item--${selected}`}
-        key={index}>
+        key={index}
+      >
         <button
+          type="button"
           className={`user-show__tabs-header-button user-show__tabs-header-button--${selected}`}
-          onClick={() => onTabChosen(index)}>
+          onClick={() => onTabChosen(index)}
+        >
           <span className="user-show__tab-title">{title}</span>
           {title === 'albums' ? (
             <span className="user-show__tab-amount">{`${numAlbums}`}</span>

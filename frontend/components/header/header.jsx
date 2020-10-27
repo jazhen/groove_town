@@ -15,7 +15,7 @@ const NavBarSiteList = () => {
           className="nav-bar__search-bar-input"
           placeholder="Search and discover music"
         />
-        <button className="nav-bar__search-bar-icon">
+        <button type="button" className="nav-bar__search-bar-icon">
           <i className="fas fa-search" />
         </button>
       </div>
@@ -29,19 +29,20 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
       <nav className="nav-bar">
         <NavBarSiteList />
         <ul className="nav-bar__dropdown">
-          <button className="nav-bar__dropdown-button">
+          <a className="nav-bar__dropdown-button" tabIndex="0">
             <img
               src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/general/default-profile-pic.svg"
               className="nav-bar__profile-picture"
               alt="default profile"
             />
-          </button>
+          </a>
           <li className="nav-bar__dropdown-menu">
             <ul className="nav-bar__dropdown-content">
               <li className="nav-bar__dropdown-content-list-item">
                 <Link
                   className="nav-bar__dropdown-link"
-                  to={`/users/${currentUserId}`}>
+                  to={`/users/${currentUserId}`}
+                >
                   view collection
                 </Link>
               </li>
@@ -49,7 +50,8 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
                 <button
                   className="nav-bar__logout"
                   type="submit"
-                  onClick={logout}>
+                  onClick={logout}
+                >
                   logout
                 </button>
               </li>
@@ -85,7 +87,10 @@ const UnauthenticatedHeader = () => {
 
 const Header = ({ currentUser, logout }) => {
   return currentUser ? (
-    <AuthenticatedHeader currentUserId={currentUser.id} logout={logout} />
+    <AuthenticatedHeader
+      currentUserId={currentUser.id}
+      logout={logout}
+    />
   ) : (
     <UnauthenticatedHeader />
   );

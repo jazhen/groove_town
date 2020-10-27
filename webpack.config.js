@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'none',
   context: __dirname,
   entry: './frontend/groove_town.jsx',
   output: {

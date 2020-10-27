@@ -3,7 +3,9 @@ import React from 'react';
 export const SessionErrors = ({ field, errors }) => {
   return errors ? (
     <div className="session-form__errors session-form--right">
-      <span className="session-form__errors-span">{errors[field]}</span>
+      <span className="session-form__errors-span">
+        {errors[field]}
+      </span>
     </div>
   ) : (
     <div className="session-form__errors session-form--right" />
@@ -24,7 +26,8 @@ export const DemoUser = ({ demoLogin }) => {
       <button
         type="submit"
         className="session-form__button session-form__button--demo session-form--box session-form--right"
-        onClick={() => demoLogin()}>
+        onClick={() => demoLogin()}
+      >
         Log in as a demo user
       </button>
     </div>

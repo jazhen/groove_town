@@ -1,4 +1,5 @@
 .nav-bar__dropdown {
+  align-items: center;
   display: flex;
   flex: 1;
   flex-direction: row-reverse;
@@ -18,12 +19,12 @@
 }
 
 .nav-bar__dropdown-button {
-  padding: 0 10px;
+  display: flex;
+  padding: 10px;
 }
 
 .nav-bar__profile-picture {
   width: 40px;
-  height: 40px;
   border: 1px solid transparent;
   border-radius: 90%;
   background: radial-gradient(#ffffff 0%, #797979 100%);
