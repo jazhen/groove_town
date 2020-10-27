@@ -28,3 +28,6 @@ bundle.js.map
 
 # Ignore http request file
 request.http
+
+# eslint cache file
+.eslintcache
