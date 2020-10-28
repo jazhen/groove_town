@@ -34,6 +34,7 @@ class AlbumShowMusic extends React.Component {
           </span>
           <MusicPlayer
             album={album}
+            // audio="https://www.mdbg.net/chinese/rsc/audio/voice_pinyin_pz/chang3.mp3"
             audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3"
           />
         </div>

@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 const MusicPlayer = ({ album, audio }) => {
   const [player, setPlayer] = useState(null);
+  const [seekBar, setSeekBar] = useState(null);
   const [playing, setPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState('0');
+  const [currentTime, setCurrentTime] = useState('0');
 
   useEffect(() => {
-    setPlayer(document.getElementById('music_player'));
+    setPlayer(document.getElementById('album-player__music-player'));
+  }, []);
+
+  useEffect(() => {
+    setSeekBar(document.getElementById('album-player__seek-bar'));
   }, []);
 
   useEffect(() => {
@@ -22,11 +27,26 @@ const MusicPlayer = ({ album, audio }) => {
   useEffect(() => {
     if (player) {
       player.ontimeupdate = () => {
-        setDuration(player.duration);
         setCurrentTime(player.currentTime);
+
+        if (player.ended) {
+          setPlaying(false);
+          player.currentTime = 0;
+        }
       };
     }
   }, [player]);
+
+  function formatTime(totalSeconds) {
+    const minutes = Math.floor((totalSeconds % 3600) / 60)
+      .toString()
+      .padStart(2, '0');
+    const seconds = Math.floor(totalSeconds % 60)
+      .toString()
+      .padStart(2, '0');
+
+    return `${minutes}:${seconds}`;
+  }
 
   const handlePlay = () => {
     if (playing) {
@@ -38,11 +58,15 @@ const MusicPlayer = ({ album, audio }) => {
     }
   };
 
+  const handleChange = () => {
+    player.currentTime = seekBar.value;
+  };
+
   return (
     <div className="album-player__audio-container">
       <audio
-        id="music_player"
-        className="album-player__audio"
+        id="album-player__music-player"
+        className="album-player__music-player"
         preload="metadata"
       >
         <source src={audio} type="audio/mp3" />
@@ -65,18 +89,18 @@ const MusicPlayer = ({ album, audio }) => {
         <div className="album-player__track-info-container">
           <span className="album-player__track-name">{album.name}</span>
           <span className="album-player__track-time">
-            {currentTime} / {duration}
+            {formatTime(currentTime)} / {formatTime(duration)}
           </span>
         </div>
         <div className="album-player__seek-container">
           <input
             type="range"
-            id="volume"
-            name="volume"
+            id="album-player__seek-bar"
             min="0"
-            max="100"
-            step="1"
-            defaultValue="0"
+            max={duration}
+            step={1 / duration}
+            value={currentTime}
+            onChange={handleChange}
           />
         </div>
       </div>
