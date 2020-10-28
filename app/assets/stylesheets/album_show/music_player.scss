@@ -12,3 +12,24 @@
 .album-player__track-name {
   margin-right: 10px;
 }
+
+#album-player__seek-bar {
+    -webkit-appearance: none;
+     width:100%;
+     border:2px solid green;
+     border-radius:5px;
+}
+
+#album-player__seek-bar::-webkit-slider-runnable-track {
+   background-color: #3f91e5;
+   padding:5px;
+}
+
+#album-player__seek-bar::-webkit-slider-thumb {
+   -webkit-appearance: none;
+    height: 20px;
+    width: 40px;
+    border-radius: 10%;
+    background: pink;
+    box-shadow: 2px 2px 1px #000000;
+}
