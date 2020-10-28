@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MusicPlayer from './music_player';
 
 class AlbumShowMusic extends React.Component {
   constructor(props) {
@@ -31,12 +32,10 @@ class AlbumShowMusic extends React.Component {
             <span> by </span>
             <span className="album-player__artist">{user.band}</span>
           </span>
-          <div className="album-player__audio-container">
-            <audio controls src="">
-              Your browser does not support the
-              <code>audio</code> element.
-            </audio>
-          </div>
+          <MusicPlayer
+            album={album}
+            audio="https://www.mdbg.net/chinese/rsc/audio/voice_pinyin_pz/chang3.mp3"
+          />
         </div>
         <div className="album-player__sidebar">
           <span className="album-player__artist-name">
