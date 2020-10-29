@@ -98,7 +98,7 @@ const MusicPlayer = ({ album, audio }) => {
             id="album-player__seek-bar"
             min="0"
             max={duration}
-            step={1 / duration}
+            // step={1 / duration}
             value={currentTime}
             onChange={handleChange}
           />

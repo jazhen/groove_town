@@ -1,35 +1,105 @@
 .album-player__audio-container {
   display: flex;
+  justify-content: center;
 }
 
 .album-player__play-button {
   background-color: #fff;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #b9b9b9;
   border-radius: 2px;
-  padding: 14px;
+  font-size: 20px;
+  margin-right: 10px;
+  padding: 16px;
 }
 
 .album-player__track-name {
   margin-right: 10px;
 }
 
-#album-player__seek-bar {
-    -webkit-appearance: none;
-     width:100%;
-     border:2px solid green;
-     border-radius:5px;
+.album-player__main-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#album-player__seek-bar::-webkit-slider-runnable-track {
-   background-color: #3f91e5;
-   padding:5px;
+.album-player__track-info-container {
+  font-size: 12px;
+}
+
+#album-player__seek-bar {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 100%;
 }
 
 #album-player__seek-bar::-webkit-slider-thumb {
-   -webkit-appearance: none;
-    height: 20px;
-    width: 40px;
-    border-radius: 10%;
-    background: pink;
-    box-shadow: 2px 2px 1px #000000;
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  border: 1px solid #b9b9b9;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 14px;
+  margin-top: -3px;
+  width: 26px;
 }
+
+#album-player__seek-bar::-moz-range-thumb {
+  background-color: #ffffff;
+  border: 1px solid #b9b9b9;
+  border-radius: 2px;
+  height: 14px;
+  cursor: pointer;
+  width: 26px;
+}
+
+#album-player__seek-bar::-ms-thumb {
+  background-color: #ffffff;
+  border: 1px solid #b9b9b9;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 14px;
+  width: 26px;
+}
+
+#album-player__seek-bar::-webkit-slider-runnable-track {
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 10px;
+  width: 100%;
+}
+
+#album-player__seek-bar::-moz-range-track {
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 10px;
+  width: 100%;
+}
+
+#album-player__seek-bar::-ms-track {
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 10px;
+  width: 100%;
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-player__audio-container {
+    justify-content: flex-start;
+  }
+
+  .album-player__track-info-container {
+    font-size: 14px;
+  }
+}
+
+// chrome: -webkit-slider-thumb
+// firefox: -moz-range-thumb
+// ie: -ms-thumb
