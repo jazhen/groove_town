@@ -79,8 +79,8 @@ const MusicPlayer = ({ album, audio }) => {
           type="button"
           className={
             playing
-              ? 'fas fa-pause fa-2x album-player__play-button'
-              : 'fas fa-play fa-2x album-player__play-button'
+              ? 'fas fa-pause album-player__play-button'
+              : 'fas fa-play album-player__play-button'
           }
           onClick={handlePlay}
         />
@@ -93,15 +93,29 @@ const MusicPlayer = ({ album, audio }) => {
           </span>
         </div>
         <div className="album-player__seek-container">
-          <input
-            type="range"
-            id="album-player__seek-bar"
-            min="0"
-            max={duration}
-            // step={1 / duration}
-            value={currentTime}
-            onChange={handleChange}
-          />
+          <div className="album-player__seek-controls">
+            <input
+              type="range"
+              id="album-player__seek-bar"
+              min="0"
+              max={duration}
+              // step={1 / duration}
+              value={currentTime}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="album-player__direction-controls">
+            <button
+              type="button"
+              className="fas fa-fast-backward album-player__previous-button"
+              onClick={handlePlay}
+            />
+            <button
+              type="button"
+              className="fas fa-fast-forward album-player__next-button"
+              onClick={handlePlay}
+            />
+          </div>
         </div>
       </div>
     </div>

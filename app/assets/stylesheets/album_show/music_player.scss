@@ -1,6 +1,6 @@
 .album-player__audio-container {
+  align-items: center;
   display: flex;
-  justify-content: center;
 }
 
 .album-player__play-button {
@@ -17,14 +17,24 @@
 }
 
 .album-player__main-container {
-  display: flex;
   flex: 1;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .album-player__track-info-container {
-  font-size: 12px;
+  font-size: 16px;
+}
+
+.album-player__seek-container {
+  align-items: center;
+  display: flex;
+}
+
+.album-player__seek-controls {
+  flex: 1;
+}
+
+.album-player__previous-button {
+  margin: 0 10px;
 }
 
 #album-player__seek-bar {
@@ -91,12 +101,12 @@
 
 @media only screen
 and (min-width: 992px) {
-  .album-player__audio-container {
-    justify-content: flex-start;
-  }
+  // .album-player__audio-container {
+  //   justify-content: flex-start;
+  // }
 
   .album-player__track-info-container {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
