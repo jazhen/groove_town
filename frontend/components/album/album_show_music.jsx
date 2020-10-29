@@ -30,7 +30,9 @@ class AlbumShowMusic extends React.Component {
           <span className="album-player__title">{album.name}</span>
           <span className="album-player__artist-container">
             <span> by </span>
-            <span className="album-player__artist">{user.band}</span>
+            <span className="album-player__artist">
+              <Link to={`/users/${user.id}`}>{user.band}</Link>
+            </span>
           </span>
           <MusicPlayer
             album={album}
