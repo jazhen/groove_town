@@ -1,5 +1,3 @@
-json.id album.id
-json.name album.name
+json.extract! album, :id, :name, :user_id
 json.band album.user.band
-json.user_id album.user_id
 json.photoUrl url_for(album.art) if album.art.attached?
