@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Splash from './splash';
 import { fetchAlbums } from '../../actions/album_actions';
 
-const mapStateToProps = (state) => ({
-  albums: state.entities.albums,
+const mapStateToProps = ({ entities: { albums } }) => ({
+  albums,
 });
 
 const mapDispatchToProps = (dispatch) => ({

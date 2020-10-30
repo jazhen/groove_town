@@ -9,8 +9,9 @@ class Splash extends React.Component {
 
   render() {
     const { albums } = this.props;
+    const albumIds = Object.keys(albums);
 
-    if (!albums.length) {
+    if (!albumIds.length) {
       return null;
     }
 
@@ -73,8 +74,8 @@ class Splash extends React.Component {
           </div>
         </div>
         <ul className="albums-index__list">
-          {albums.map((album) => {
-            return <IndexAlbum key={album.id} album={album} />;
+          {albumIds.map((albumId) => {
+            return <IndexAlbum key={albumId} album={albums[albumId]} />;
           })}
         </ul>
       </div>
