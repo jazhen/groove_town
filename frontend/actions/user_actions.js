@@ -14,5 +14,5 @@ const receiveUser = ({ user, albums }) => {
 export const fetchUser = (userId) => (dispatch) => {
   return userAPIUtil
     .fetchUser(userId)
-    .then((user) => dispatch(receiveUser(user)));
+    .then((data) => dispatch(receiveUser(data)));
 };

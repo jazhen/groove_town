@@ -6,20 +6,14 @@ import AlbumShowMusic from './album_show_music';
 
 const mapStateToProps = (
   { entities: { users, albums } },
-  ownProps
+  { match: { params } }
 ) => {
-  const { userId, albumId } = ownProps.match.params;
+  const { userId, albumId } = params;
   const user = users[userId];
   const tabs = [
     {
       title: 'music',
-      content: (
-        <AlbumShowMusic
-          user={user}
-          albums={albums}
-          albumId={albumId}
-        />
-      ),
+      content: <AlbumShowMusic user={user} albums={albums} albumId={albumId} />,
     },
     { title: 'merch', content: '' },
     {
@@ -39,7 +33,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AlbumShow);
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumShow);

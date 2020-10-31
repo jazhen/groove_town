@@ -8,7 +8,8 @@ const UserShowAlbumsList = ({ album }) => {
         <div className="user-albums__album-art-container">
           <Link
             to={`/users/${album.user_id}/albums/${album.id}`}
-            className="user-albums__album-link">
+            className="user-albums__album-link"
+          >
             <img
               className="albums-index__album-art"
               src={album.photoUrl}
@@ -20,7 +21,8 @@ const UserShowAlbumsList = ({ album }) => {
           <li className="user-albums__metadata-list-item">
             <Link
               to={`/users/${album.user_id}/albums/${album.id}`}
-              className="user-albums__album-name user-albums__metadata">
+              className="user-albums__album-name user-albums__metadata"
+            >
               {album.name}
             </Link>
           </li>
@@ -31,12 +33,14 @@ const UserShowAlbumsList = ({ album }) => {
 };
 
 const UserShowAlbums = ({ user, albums }) => {
-  if (!user.albumIds.length) {
+  const { albumIds } = user;
+
+  if (!albumIds.length) {
     return null;
   }
 
   let userAlbumsClassModifier;
-  if (user.albumIds.length < 5) {
+  if (albumIds.length < 5) {
     userAlbumsClassModifier = 'user-albums--min';
   } else {
     userAlbumsClassModifier = '';
@@ -45,7 +49,7 @@ const UserShowAlbums = ({ user, albums }) => {
   return (
     <div className={`user-albums ${userAlbumsClassModifier}`}>
       <ul className="user-albums__list">
-        {user.albumIds.map((albumId) => (
+        {albumIds.map((albumId) => (
           <UserShowAlbumsList key={albumId} album={albums[albumId]} />
         ))}
       </ul>

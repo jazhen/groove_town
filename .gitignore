@@ -2,6 +2,7 @@
 node_modules
 bundle.js
 bundle.js.map
+package-lock.json
 
 # logfiles and tempfiles
 /log/*

@@ -1,11 +1,6 @@
 import React from 'react';
 
-const TabHeaders = ({
-  selectedTab,
-  onTabChosen,
-  tabs,
-  numAlbums,
-}) => {
+const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
   const active = selectedTab;
   const headers = tabs.map((tab, index) => {
     const { title } = tab;
@@ -14,6 +9,7 @@ const TabHeaders = ({
     return (
       <li
         className={`user-show__tabs-header-list-item--${selected}`}
+        // eslint-disable-next-line react/no-array-index-key
         key={index}
       >
         <button
@@ -54,7 +50,7 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user, albums, tabs } = this.props;
+    const { user, tabs } = this.props;
     const { selectedTab } = this.state;
 
     const tab = tabs[selectedTab];

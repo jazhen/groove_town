@@ -9,6 +9,7 @@ const TabHeaders = ({ selectedTab, onTabChosen, tabs }) => {
     return (
       <li
         className={`album-show__tabs-header-list-item album-show__tabs-header-list-item--${selected}`}
+        // eslint-disable-next-line react/no-array-index-key
         key={index}
       >
         <button
@@ -36,9 +37,12 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchUser, match } = this.props;
-    fetchUser(match.params.userId);
-    this.setState({ albumId: match.params.albumId });
+    const {
+      fetchUser,
+      match: { params },
+    } = this.props;
+    fetchUser(params.userId);
+    this.setState({ albumId: params.albumId });
   }
 
   selectTab(num) {

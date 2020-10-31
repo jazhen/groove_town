@@ -1,3 +1,7 @@
+// chrome: -webkit-slider-thumb
+// firefox: -moz-range-thumb
+// ie: -ms-thumb
+
 .album-player__audio-container {
   align-items: center;
   display: flex;
@@ -102,15 +106,7 @@
 
 @media only screen
 and (min-width: 992px) {
-  // .album-player__audio-container {
-  //   justify-content: flex-start;
-  // }
-
   .album-player__track-info-container {
     font-size: 12px;
   }
 }
-
-// chrome: -webkit-slider-thumb
-// firefox: -moz-range-thumb
-// ie: -ms-thumb

@@ -2,7 +2,7 @@ json.user do
   json.partial! 'api/users/user', user: @user
 end
 
-@user.albums.each do |album|
+@user.albums.includes(:user, art_attachment: :blob).each do |album|
   json.albums do
     json.set! album.id do
       json.partial! 'api/albums/album', album: album
