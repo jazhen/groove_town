@@ -25,7 +25,6 @@
 
 .footer__logout {
   background: none;
-  margin-top: 1rem;
   outline: none;
   text-align: left;
 }
@@ -34,6 +33,15 @@
 .footer__logout:hover {
   color: $white;
   text-decoration: underline;
+}
+
+.footer__link:focus,
+.footer__logout:focus {
+  color: $white;
+}
+
+.footer__session-action {
+  margin-top: 1rem;
 }
 
 // sticky footer

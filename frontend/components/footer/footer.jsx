@@ -49,7 +49,11 @@ const AuthenticatedFooter = ({ logout }) => {
     <footer className="footer">
       <div className="footer__container">
         <FooterCredentials />
-        <button type="button" onClick={logout} className="footer__logout">
+        <button
+          type="button"
+          onClick={logout}
+          className="footer__session-action footer__logout"
+        >
           Log out
         </button>
       </div>
@@ -62,7 +66,7 @@ const UnauthenticatedFooter = () => {
     <footer className="footer">
       <div className="footer__container">
         <FooterCredentials />
-        <Link to="/login" className="footer__link">
+        <Link to="/login" className="footer__session-action footer__link">
           Log in
         </Link>
       </div>
