@@ -3,9 +3,7 @@ import React from 'react';
 export const SessionErrors = ({ field, errors }) => {
   return errors ? (
     <div className="session-form__errors session-form--right">
-      <span className="session-form__errors-span">
-        {errors[field]}
-      </span>
+      <span className="session-form__errors-span">{errors[field]}</span>
     </div>
   ) : (
     <div className="session-form__errors session-form--right" />

@@ -11,7 +11,7 @@ const FooterCredentials = () => {
         className="footer__link"
       >
         <i className="fab fa-bandcamp footer__icon" />
-        Clone of bandcamp
+        Clone of bandcamp.com
       </a>
       <a
         target="_blank"

@@ -20,7 +20,7 @@
 .session-form__header {
   align-items: center;
   display: flex;
-  font-size: $ms1;
+  font-size: 1.25rem;
   justify-content: center;
   margin-top: 50px;
 }
@@ -54,9 +54,9 @@
 
 .session-form__errors {
   color: #c43329;
-  font-size: $ms-2;
+  font-size: 0.9rem;
   text-align: center;
-  height: $ms6;
+  height: 2rem;
 }
 
 .session-form--box {
@@ -72,16 +72,16 @@
 }
 
 .session-form__button {
-  margin: $ms-6 0;
+  margin: 0.5rem 0;
 }
 
 .session-form__button--demo {
-  margin-bottom: $ms6;
+  margin-bottom: 2rem;
 }
 
 .session-form__other-sessions-span {
   color: #818285;
-  font-size: $ms-3;
+  font-size: 1rem;
 }
 
 .session-form__other-sessions-link {
@@ -89,7 +89,7 @@
 }
 
 .session-form__last {
-  margin-bottom: $ms16;
+  margin-bottom: 5rem;
 }
 
 @media only screen
