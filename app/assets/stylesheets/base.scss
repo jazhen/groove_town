@@ -1,0 +1,65 @@
+$ms1: 1.132rem;
+$ms2: 1.243rem;
+$ms3: 1.4rem;
+$ms4: 1.471rem;
+$ms5: 1.616rem;
+$ms6: 1.912rem;
+$ms7: 2.197rem;
+$ms8: 2.1rem;
+$ms9: 2.197rem;
+$ms10: 2.486rem;
+$ms11: 2.73rem;
+$ms12: 2.856rem;
+$ms13: 3.232rem;
+$ms14: 3.549rem;
+$ms15: 3.713rem;
+$ms16: 4.202rem;
+
+$ms-1: 0.956rem;
+$ms-2: 0.87rem;
+$ms-3: 0.769rem;
+$ms-4: 0.735rem;
+$ms-5: 0.67rem;
+$ms-6: 0.592rem;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  min-width: 400px;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+}
+
+button, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  background-color: #ffffff;
+}
+
+li {
+  list-style: none;
+}
+
+a, a:hover, a:focus {
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+  outline: none;
+}

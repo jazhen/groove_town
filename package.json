@@ -9,7 +9,7 @@
     "url": "https://github.com/jazhen/groove_town.git"
   },
   "scripts": {
-    "webpack": "webpack --mode=development --watch",
+    "start": "webpack --mode=development --watch",
     "postinstall": "webpack"
   },
   "engines": {
