@@ -1,3 +1,5 @@
+@import 'variables';
+
 .nav-bar__dropdown {
   align-items: center;
   display: flex;
@@ -6,7 +8,7 @@
 }
 
 .nav-bar__dropdown-menu {
-  background-color: #ffffff;
+  background-color: $white;
   border: 1px solid #EEEEEE;
   border-radius: 5px;
   color: black;
@@ -27,7 +29,7 @@
   width: 40px;
   border: 1px solid transparent;
   border-radius: 90%;
-  background: radial-gradient(#ffffff 0%, #797979 100%);
+  background: radial-gradient($white 0%, #797979 100%);
 }
 
 .nav-bar__dropdown-button:focus ~ .nav-bar__dropdown-menu,

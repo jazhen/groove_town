@@ -1,4 +1,4 @@
-@import 'base';
+@import 'variables';
 
 .session-header {
   background-color: #dddddd;
@@ -16,12 +16,12 @@
 
 .session-header,
 .session-header__fa-music {
-  color: rgb(29, 160, 195);
-  font-size: $ms2;
+  color: $blue;
+  font-size: 1.25rem;
 }
 
 .session-header__fa-music {
-  margin-right: 5px;
+  margin-right: .25rem;
 }
 
 @media only screen

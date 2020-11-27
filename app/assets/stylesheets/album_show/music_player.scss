@@ -1,3 +1,5 @@
+@import 'variables';
+
 // chrome: -webkit-slider-thumb
 // firefox: -moz-range-thumb
 // ie: -ms-thumb
@@ -8,7 +10,7 @@
 }
 
 .album-player__play-button {
-  background-color: #fff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   font-size: 20px;
@@ -50,7 +52,7 @@
 
 #album-player__seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background-color: #ffffff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   cursor: pointer;
@@ -60,7 +62,7 @@
 }
 
 #album-player__seek-bar::-moz-range-thumb {
-  background-color: #ffffff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   height: 14px;
@@ -69,7 +71,7 @@
 }
 
 #album-player__seek-bar::-ms-thumb {
-  background-color: #ffffff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   cursor: pointer;
@@ -78,7 +80,7 @@
 }
 
 #album-player__seek-bar::-webkit-slider-runnable-track {
-  background-color: #fff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   cursor: pointer;
@@ -87,7 +89,7 @@
 }
 
 #album-player__seek-bar::-moz-range-track {
-  background-color: #fff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   cursor: pointer;
@@ -96,7 +98,7 @@
 }
 
 #album-player__seek-bar::-ms-track {
-  background-color: #fff;
+  background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
   cursor: pointer;

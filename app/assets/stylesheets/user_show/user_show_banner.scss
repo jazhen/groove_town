@@ -1,3 +1,5 @@
+@import 'variables';
+
 .user-show__banner {
   height: 100px;
   background: linear-gradient(135deg, #816FF7 0%, #30D4BB 100%);
@@ -24,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(#ffffff 0%, #797979 100%);
+  background: radial-gradient($white 0%, #797979 100%);
 }
 
 .user-show__profile-picture {
