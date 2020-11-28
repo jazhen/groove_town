@@ -1,39 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AlbumShowTracks from './album_show_tracks';
 
 const AudioPlayer = ({ album, tracks, audio }) => {
-  const [player, setPlayer] = useState(null);
-  const [seekBar, setSeekBar] = useState(null);
+  const player = useRef();
+  const seekBar = useRef();
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState('0');
   const [currentTime, setCurrentTime] = useState('0');
   const [currentTrack, setCurrentTrack] = useState(tracks[album.trackIds[0]]);
 
   useEffect(() => {
-    setPlayer(document.getElementById('album-player__music-player'));
-  }, []);
-
-  useEffect(() => {
-    setSeekBar(document.getElementById('album-player__seek-bar'));
-  }, []);
-
-  useEffect(() => {
-    if (player) {
-      player.onloadedmetadata = () => {
-        setDuration(player.duration);
-        setCurrentTime(player.currentTime);
+    if (player.current) {
+      player.current.onloadedmetadata = () => {
+        setDuration(player.current.duration);
+        setCurrentTime(player.current.currentTime);
       };
     }
   }, [player]);
 
   useEffect(() => {
-    if (player) {
-      player.ontimeupdate = () => {
-        setCurrentTime(player.currentTime);
+    if (player.current) {
+      player.current.ontimeupdate = () => {
+        setCurrentTime(player.current.currentTime);
 
-        if (player.ended) {
+        if (player.current.ended) {
           setPlaying(false);
-          player.currentTime = 0;
+          player.current.currentTime = 0;
         }
       };
     }
@@ -52,25 +44,25 @@ const AudioPlayer = ({ album, tracks, audio }) => {
 
   const handlePlay = () => {
     if (playing) {
-      player.pause();
+      player.current.pause();
       setPlaying(false);
     } else {
-      player.play();
+      player.current.play();
       setPlaying(true);
     }
   };
 
   const handleChange = () => {
-    player.currentTime = seekBar.value;
+    player.current.currentTime = seekBar.current.value;
   };
 
   return (
     <>
       <div className="album-player__audio-container">
         <audio
-          id="album-player__music-player"
           className="album-player__music-player"
           preload="metadata"
+          ref={player}
         >
           <source src={currentTrack.audioUrl} type="audio/mp3" />
           <p>
@@ -102,11 +94,12 @@ const AudioPlayer = ({ album, tracks, audio }) => {
             <div className="album-player__seek-controls">
               <input
                 type="range"
-                id="album-player__seek-bar"
+                className="album-player__seek-bar"
                 min="0"
                 max={duration}
                 value={currentTime}
                 onChange={handleChange}
+                ref={seekBar}
               />
             </div>
             <div className="album-player__direction-controls">
@@ -129,6 +122,7 @@ const AudioPlayer = ({ album, tracks, audio }) => {
       <AlbumShowTracks
         album={album}
         tracks={tracks}
+        player={player}
         setCurrentTrack={setCurrentTrack}
       />
     </>

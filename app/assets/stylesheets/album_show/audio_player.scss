@@ -44,13 +44,13 @@
   margin: 0 10px;
 }
 
-#album-player__seek-bar {
+.album-player__seek-bar {
   -webkit-appearance: none;
   background: transparent;
   width: 100%;
 }
 
-#album-player__seek-bar::-webkit-slider-thumb {
+.album-player__seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: $white;
   border: 1px solid #b9b9b9;
@@ -61,7 +61,7 @@
   width: 26px;
 }
 
-#album-player__seek-bar::-moz-range-thumb {
+.album-player__seek-bar::-moz-range-thumb {
   background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
@@ -70,7 +70,7 @@
   width: 26px;
 }
 
-#album-player__seek-bar::-ms-thumb {
+.album-player__seek-bar::-ms-thumb {
   background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
@@ -79,7 +79,7 @@
   width: 26px;
 }
 
-#album-player__seek-bar::-webkit-slider-runnable-track {
+.album-player__seek-bar::-webkit-slider-runnable-track {
   background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
@@ -88,7 +88,7 @@
   width: 100%;
 }
 
-#album-player__seek-bar::-moz-range-track {
+.album-player__seek-bar::-moz-range-track {
   background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;
@@ -97,7 +97,7 @@
   width: 100%;
 }
 
-#album-player__seek-bar::-ms-track {
+.album-player__seek-bar::-ms-track {
   background-color: $white;
   border: 1px solid #b9b9b9;
   border-radius: 2px;

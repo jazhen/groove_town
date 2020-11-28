@@ -1,9 +1,12 @@
 import React from 'react';
 // import AlbumShowTrack from './album_show_track';
 
-const AlbumShowTracks = ({ album, tracks, setCurrentTrack }) => {
+const AlbumShowTracks = ({ album, tracks, player, setCurrentTrack }) => {
   const handleClick = (track) => {
     setCurrentTrack(track);
+    player.current.pause();
+    player.current.load();
+    player.current.play();
   };
 
   return (
