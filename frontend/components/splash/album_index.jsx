@@ -7,14 +7,14 @@ const AlbumIndex = ({ album }) => {
       <div className="albums-index__album-container">
         <div className="albums-index__album-art-container">
           <Link
-            to={`/users/${album.user_id}/albums/${album.id}`}
+            to={`/users/${album.userId}/albums/${album.id}`}
             className="albums-index__album-name albums-index__metadata"
           >
             <div className="albums-index__album-art-container">
-              {album.art_url ? (
+              {album.artUrl ? (
                 <img
                   className="albums-index__album-art"
-                  src={album.art_url}
+                  src={album.artUrl}
                   alt={`${album.band}-${album.name}`}
                 />
               ) : (
@@ -26,7 +26,7 @@ const AlbumIndex = ({ album }) => {
         <ul className="albums-index__metadata-list">
           <li className="albums-index__metadata-list-item">
             <Link
-              to={`/users/${album.user_id}/albums/${album.id}`}
+              to={`/users/${album.userId}/albums/${album.id}`}
               className="albums-index__album-name albums-index__metadata"
             >
               {album.name}
@@ -34,7 +34,7 @@ const AlbumIndex = ({ album }) => {
           </li>
           <li className="albums-index__metadata-list-item">
             <Link
-              to={`/users/${album.user_id}`}
+              to={`/users/${album.userId}`}
               className="albums-index__band albums-index__metadata"
             >
               {album.band}

@@ -4,8 +4,6 @@ end
 
 @album.tracks.includes(:album, audio_attachment: :blob).each do |track|
   json.tracks do
-    json.set! track.id do
-      json.partial! 'api/tracks/track', track: track
-    end
+    json.partial! 'api/tracks/track', track: track
   end
 end
