@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const MusicPlayer = ({ album, audio }) => {
+const AudioPlayer = ({ album, audio }) => {
   const [player, setPlayer] = useState(null);
   const [seekBar, setSeekBar] = useState(null);
   const [playing, setPlaying] = useState(false);
@@ -77,6 +77,7 @@ const MusicPlayer = ({ album, audio }) => {
       <div className="album-player__play-pause-container">
         <button
           type="button"
+          aria-label="play-audio"
           className={
             playing
               ? 'fas fa-pause album-player__play-button'
@@ -106,11 +107,13 @@ const MusicPlayer = ({ album, audio }) => {
           <div className="album-player__direction-controls">
             <button
               type="button"
+              aria-label="prev-track"
               className="fas fa-fast-backward album-player__previous-button"
               onClick={handlePlay}
             />
             <button
               type="button"
+              aria-label="next-track"
               className="fas fa-fast-forward album-player__next-button"
               onClick={handlePlay}
             />
@@ -121,4 +124,4 @@ const MusicPlayer = ({ album, audio }) => {
   );
 };
 
-export default MusicPlayer;
+export default AudioPlayer;

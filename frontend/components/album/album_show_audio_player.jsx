@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MusicPlayer from './music_player';
+import AudioPlayer from './audio_player';
 
-const AlbumShowMusic = ({ user, albums, albumId }) => {
+const AlbumShowAudioPlayer = ({ user, albums, albumId }) => {
   const album = albums[albumId];
 
   if (!user) {
@@ -26,7 +26,7 @@ const AlbumShowMusic = ({ user, albums, albumId }) => {
             <Link to={`/users/${user.id}`}>{user.band}</Link>
           </span>
         </span>
-        <MusicPlayer
+        <AudioPlayer
           album={album}
           audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3"
         />
@@ -40,4 +40,4 @@ const AlbumShowMusic = ({ user, albums, albumId }) => {
   );
 };
 
-export default AlbumShowMusic;
+export default AlbumShowAudioPlayer;

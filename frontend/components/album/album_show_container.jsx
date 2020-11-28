@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
 import AlbumShow from './album_show';
-import AlbumShowMusic from './album_show_music';
+import AlbumShowAudioPlayer from './album_show_audio_player';
 
 const mapStateToProps = (
   { entities: { users, albums } },
@@ -13,7 +13,9 @@ const mapStateToProps = (
   const tabs = [
     {
       title: 'music',
-      content: <AlbumShowMusic user={user} albums={albums} albumId={albumId} />,
+      content: (
+        <AlbumShowAudioPlayer user={user} albums={albums} albumId={albumId} />
+      ),
     },
     { title: 'merch', content: '' },
     {
