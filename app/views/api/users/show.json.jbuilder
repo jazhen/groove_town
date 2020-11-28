@@ -9,3 +9,11 @@ end
     end
   end
 end
+
+@user.tracks.includes(:user, :album, audio_attachment: :blob).each do |track|
+  json.tracks do
+    json.set! track.id do
+      json.partial! 'api/tracks/track', track: track
+    end
+  end
+end
