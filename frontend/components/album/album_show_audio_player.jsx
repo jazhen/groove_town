@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import AlbumShowTracks from './album_show_tracks';
 import AudioPlayer from './audio_player';
 
 const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
@@ -8,6 +9,7 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
   if (!user) {
     return null;
   }
+
   return (
     <div className="album-player">
       <div className="album-player__art-container">
@@ -26,7 +28,8 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
             <Link to={`/users/${user.id}`}>{user.band}</Link>
           </span>
         </span>
-        <AudioPlayer album={album} audio={tracks[1].audioUrl} />
+        <AudioPlayer album={album} tracks={tracks} />
+        {/* <AlbumShowTracks album={album} tracks={tracks} /> */}
       </div>
       <div className="album-player__sidebar">
         <span className="album-player__artist-name">
