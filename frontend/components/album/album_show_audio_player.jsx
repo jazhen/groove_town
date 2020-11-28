@@ -14,7 +14,7 @@ const AlbumShowAudioPlayer = ({ user, albums, albumId }) => {
         <img
           id="album-player__art"
           className="album-player__art"
-          src={albums[albumId].artUrl}
+          src={albums[albumId].art_url}
           alt=""
         />
       </div>

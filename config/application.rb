@@ -20,8 +20,8 @@ module GrooveTown
     config.sass.preferred_syntax = :sass
 
     # Remove active storage routes
-    initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
-      app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
-    end
+    # initializer(:remove_activestorage_routes, after: :add_routing_paths) do |app|
+    #   app.routes_reloader.paths.delete_if { |path| path =~ /activestorage/ }
+    # end
   end
 end

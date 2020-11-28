@@ -12,7 +12,7 @@ const UserShowAlbumsList = ({ album }) => {
           >
             <img
               className="albums-index__album-art"
-              src={album.artUrl}
+              src={album.art_url}
               alt={`${album.band}-${album.name}`}
             />
           </Link>

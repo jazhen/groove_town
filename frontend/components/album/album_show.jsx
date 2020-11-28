@@ -53,7 +53,7 @@ const AlbumShow = ({ albums, tabs, fetchUser, match: { params } }) => {
             <div
               className="album-show__banner"
               style={{
-                backgroundImage: `url(${album.artUrl})`,
+                backgroundImage: `url(${album.art_url})`,
               }}
             />
           </div>
