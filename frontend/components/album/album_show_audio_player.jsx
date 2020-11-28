@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AudioPlayer from './audio_player';
 
-const AlbumShowAudioPlayer = ({ user, albums, albumId }) => {
+const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
   const album = albums[albumId];
 
   if (!user) {
@@ -14,8 +14,8 @@ const AlbumShowAudioPlayer = ({ user, albums, albumId }) => {
         <img
           id="album-player__art"
           className="album-player__art"
-          src={albums[albumId].artUrl}
-          alt=""
+          src={album.artUrl}
+          alt="album art"
         />
       </div>
       <div className="album-player__metadata">
@@ -26,10 +26,7 @@ const AlbumShowAudioPlayer = ({ user, albums, albumId }) => {
             <Link to={`/users/${user.id}`}>{user.band}</Link>
           </span>
         </span>
-        <AudioPlayer
-          album={album}
-          audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3"
-        />
+        <AudioPlayer album={album} audio={tracks[1].audioUrl} />
       </div>
       <div className="album-player__sidebar">
         <span className="album-player__artist-name">
