@@ -12,6 +12,8 @@ User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 Album.destroy_all
 Album.connection.execute('ALTER SEQUENCE albums_id_seq RESTART WITH 1')
+Track.destroy_all
+Track.connection.execute('ALTER SEQUENCE tracks_id_seq RESTART WITH 1')
 
 ################################################################################
 
@@ -31,11 +33,23 @@ phoebe_bridgers = User.create(username: 'phoebe_bridgers',
 ################################################################################
 
 stranger_in_the_alps = Album.create(name: 'Stranger in the Alps',
-                      user_id: phoebe_bridgers.id)
+                                    user_id: phoebe_bridgers.id)
 
 stranger_in_the_alps_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/phoebe_bridgers-stranger_in_the_alps.jpg')
 
 stranger_in_the_alps.art.attach(io: stranger_in_the_alps_art, filename: 'phoebe_bridgers-stranger_in_the_alps.jpg')
+
+################################################################################
+
+stranger_in_the_alps_01 = Track.create(name: 'Smoke Signals',
+                                       ord: 1,
+                                       user_id: phoebe_bridgers.id,
+                                       album_id: stranger_in_the_alps.id)
+
+stranger_in_the_alps_01_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-strangers_in_the_alps-01.mp3')
+
+stranger_in_the_alps_01.audio.attach(io: stranger_in_the_alps_01_audio,
+                                     filename: 'phoebe_bridgers-stranger_in_the_alps-01.mp3')
 
 ################################################################################
 
@@ -47,7 +61,6 @@ punisher.art.attach(io: punisher_art, filename: 'phoebe_bridgers-punisher.jpg')
 
 ################################################################################
 ################################################################################
-
 
 # patti_smith = User.create(username: 'pattismith',
 #                           email: 'patti@pattismith.net',
@@ -202,7 +215,6 @@ punisher.art.attach(io: punisher_art, filename: 'phoebe_bridgers-punisher.jpg')
 # common_as_light_and_love = Album.create(name: 'Common as Light and Love Are Red Valleys of Blood', user_id: sun_kil_moon.id)
 # common_as_light_and_love_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/sun_kil_moon-common_as_light_and_love.jpg')
 # common_as_light_and_love.art.attach(io: common_as_light_and_love_art, filename: 'sun_kil_moon-common_as_light_and_love.jpg')
-
 
 # the_antlers = User.create(username: 'theantlers',
 #   email: 'theantlers@theantlers.com',
