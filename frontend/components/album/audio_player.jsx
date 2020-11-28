@@ -123,7 +123,10 @@ const AudioPlayer = ({ album, tracks, audio }) => {
         album={album}
         tracks={tracks}
         player={player}
+        playing={playing}
+        currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
+        handlePlay={handlePlay}
       />
     </>
   );
