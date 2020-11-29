@@ -1,7 +1,19 @@
+@import 'variables';
+
 .album-show-discography {
   font-size: .75rem;
 }
 
 .album-show-discography__art {
-  max-width: 10rem;
+  width: 100%;
+  height: auto;
+}
+
+.album-show-discography__link {
+  color: $blue;
+}
+
+.album-show-discography__link:hover {
+  color: $blue;
+  text-decoration: underline;
 }

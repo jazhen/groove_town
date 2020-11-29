@@ -41,11 +41,16 @@
 }
 
 .album-player__previous-button {
+  background: transparent;
   margin: 0 .75rem;
 }
 
 .album-player__previous-button:disabled {
   cursor: default;
+}
+
+.album-player__next-button {
+  background: transparent;
 }
 
 .album-player__next-button:disabled {
@@ -109,4 +114,14 @@
   border-radius: 2px;
   height: .75rem;
   width: 100%;
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-player__container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
 }

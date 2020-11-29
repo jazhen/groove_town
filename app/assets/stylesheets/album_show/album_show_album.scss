@@ -1,8 +1,4 @@
-.album-player {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+@import 'variables';
 
 .album-player__art {
   width: 100%;
@@ -21,6 +17,12 @@
 .album-player__artist {
   font-weight: 500;
   font-size: 1rem;
+  color: $blue;
+}
+
+.album-player__artist:hover {
+  color: $blue;
+  text-decoration: underline;
 }
 
 .album-player__artist-name {
@@ -38,6 +40,7 @@ and (min-width: 992px) {
   .album-player__sidebar {
     flex: 1;
     order: 2;
+    max-width: 16rem;
   }
 
   .album-player {

@@ -1,8 +1,9 @@
 @import 'variables';
 
 .album-show {
-  background-color: $white;
   width: 100%;
+  background-size: cover;
+  background-position: center center;
 }
 
 .album-show__container {
@@ -59,7 +60,8 @@
 }
 
 .album-show__tab-content {
-  margin: 1.5rem 2rem;
+  padding: 1.5rem 2rem;
+  background-color: #fff;
 }
 
 @media only screen

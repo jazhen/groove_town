@@ -45,7 +45,7 @@ const AlbumShow = ({ albums, tabs, fetchUser, match: { params } }) => {
         id="album-show"
         className="album-show"
         style={{
-          backgroundImage: `url(https://coderwall-assets-0.s3.amazonaws.com/uploads/picture/file/1410/noise-bg.png)`,
+          backgroundImage: `url(${album.artUrl})`,
         }}
       >
         <div className="album-show__main-container">
