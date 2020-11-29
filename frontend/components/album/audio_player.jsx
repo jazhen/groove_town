@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import AlbumShowTracks from './album_show_tracks';
 
 const AudioPlayer = ({ album, tracks, audio }) => {
+  const { trackIds } = album;
+
   const player = useRef();
   const seekBar = useRef();
+
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState('0');
-  const [currentTrack, setCurrentTrack] = useState(tracks[album.trackIds[0]]);
+  const [currentTrack, setCurrentTrack] = useState(tracks[trackIds[0]]);
 
   useEffect(() => {
     if (player.current) {
@@ -48,6 +51,22 @@ const AudioPlayer = ({ album, tracks, audio }) => {
       player.current.play();
       setPlaying(true);
     }
+  };
+
+  const handlePrev = () => {
+    const prevTrack = tracks[currentTrack.ord - 1];
+    setCurrentTrack(prevTrack);
+    player.current.pause();
+    player.current.load();
+    player.current.play();
+  };
+
+  const handleNext = () => {
+    const nextTrack = tracks[currentTrack.ord + 1];
+    setCurrentTrack(nextTrack);
+    player.current.pause();
+    player.current.load();
+    player.current.play();
   };
 
   const handleChange = () => {
@@ -105,24 +124,22 @@ const AudioPlayer = ({ album, tracks, audio }) => {
                 type="button"
                 aria-label="prev-track"
                 className="fas fa-fast-backward album-player__previous-button"
-                onClick={handlePlay}
+                onClick={handlePrev}
                 disabled={currentTrack.ord === 1}
               />
               <button
                 type="button"
                 aria-label="next-track"
                 className="fas fa-fast-forward album-player__next-button"
-                onClick={handlePlay}
-                disabled={
-                  currentTrack.ord === album.trackIds[album.trackIds.length - 1]
-                }
+                onClick={handleNext}
+                disabled={currentTrack.ord === trackIds[trackIds.length - 1]}
               />
             </div>
           </div>
         </div>
       </div>
       <AlbumShowTracks
-        trackIds={album.trackIds}
+        trackIds={trackIds}
         tracks={tracks}
         player={player}
         playing={playing}
