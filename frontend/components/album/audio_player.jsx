@@ -25,12 +25,22 @@ const AudioPlayer = ({ album, tracks, audio }) => {
         setCurrentTime(player.current.currentTime);
 
         if (player.current.ended) {
-          setPlaying(false);
-          player.current.currentTime = 0;
+          if (currentTrack.ord === trackIds[trackIds.length - 1]) {
+            setPlaying(false);
+            setCurrentTrack(tracks[trackIds[0]]);
+            player.current.pause();
+            player.current.load();
+          } else {
+            const nextTrack = tracks[currentTrack.ord + 1];
+            setCurrentTrack(nextTrack);
+            player.current.pause();
+            player.current.load();
+            player.current.play();
+          }
         }
       };
     }
-  }, [player]);
+  }, [player, tracks, trackIds, currentTrack.ord]);
 
   function formatTime(totalSeconds) {
     const minutes = Math.floor((totalSeconds % 3600) / 60)
