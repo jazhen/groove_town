@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'open-uri'
-require_relative 'helpers'
+require 'mp3info'
 
 User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
@@ -56,12 +56,12 @@ albums.each do |album_hash|
   album_hash[:track_names].each_with_index do |track_name, index|
     track_filename = "#{filename}-0#{index + 1}.mp3"
     track_audio = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}")
-
+    track_duration = Mp3Info.open(track_audio).length
     track = Track.create(name: track_name,
                          ord: index + 1,
                          user_id: band.id,
                          album_id: album.id,
-                         duration: audio_duration(track_audio))
+                         duration: track_duration)
 
     track.audio.attach(io: track_audio,
                        filename: track_filename)

@@ -49,6 +49,7 @@ const AlbumShowTracks = ({
   currentTrack,
   setCurrentTrack,
   handlePlay,
+  formatTime,
 }) => {
   return (
     <ul>
@@ -72,7 +73,7 @@ const AlbumShowTracks = ({
               </li>
               <li>{`${track.ord}.`}</li>
               <li className="album-show__track-name">{track.name}</li>
-              <li>{track.duration}</li>
+              <li>{formatTime(track.duration)}</li>
             </ul>
           </li>
         );

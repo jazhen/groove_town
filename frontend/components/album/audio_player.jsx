@@ -85,7 +85,7 @@ const AudioPlayer = ({ album, tracks, audio }) => {
               {currentTrack.name}
             </span>
             <span className="album-player__track-time">
-              {`${formatTime(currentTime)} / ${currentTrack.duration}`}
+              {formatTime(currentTime)} / {formatTime(currentTrack.duration)}
             </span>
           </div>
           <div className="album-player__seek-container">
@@ -126,6 +126,7 @@ const AudioPlayer = ({ album, tracks, audio }) => {
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
         handlePlay={handlePlay}
+        formatTime={formatTime}
       />
     </>
   );
