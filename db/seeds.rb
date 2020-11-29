@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'open-uri'
+require_relative 'helpers'
 
 User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
@@ -25,80 +26,144 @@ demo_user = User.create(username: 'demoUser',
 ################################################################################
 ################################################################################
 
-phoebe_bridgers = User.create(username: 'phoebe_bridgers',
-                              email: 'phoebe_bridgers@gmail.com',
-                              password: 'password',
-                              band: 'Phoebe Bridgers')
+band_name = 'Phoebe Bridgers'
+formatted_band_name = band_name.downcase.split.join('_')
+band = User.create(username: formatted_band_name,
+                   email: "#{formatted_band_name}@gmail.com",
+                   password: 'password',
+                   band: band_name)
 
 ################################################################################
 
-stranger_in_the_alps = Album.create(name: 'Stranger in the Alps',
-                                    user_id: phoebe_bridgers.id)
+albums = [
+  {
+    album_name: 'Stranger in the Alps',
+    track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street']
+  }
+  # {
+  #   album_name: 'Punisher',
+  #   track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street']
+  # }
+]
 
-stranger_in_the_alps_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/phoebe_bridgers-stranger_in_the_alps.jpg')
+albums.each do |album_hash|
+  formatted_album_name = album_hash[:album_name].downcase.split.join('_')
+  filename = "#{formatted_band_name}-#{formatted_album_name}"
+  album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
+  album = Album.create(name: album_hash[:album_name], user_id: band.id)
+  album.art.attach(io: album_art_url, filename: filename)
 
-stranger_in_the_alps.art.attach(io: stranger_in_the_alps_art, filename: 'phoebe_bridgers-stranger_in_the_alps.jpg')
+  album_hash[:track_names].each_with_index do |track_name, index|
+    track_filename = "#{filename}-0#{index + 1}.mp3"
+    track_audio = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}")
 
-################################################################################
+    track = Track.create(name: track_name,
+                         ord: index + 1,
+                         user_id: band.id,
+                         album_id: album.id,
+                         duration: audio_duration(track_audio))
 
-stranger_in_the_alps_01 = Track.create(name: 'Motion Sickness',
-                                       ord: 1,
-                                       user_id: phoebe_bridgers.id,
-                                       album_id: stranger_in_the_alps.id)
+    track.audio.attach(io: track_audio,
+                       filename: track_filename)
+  end
+end
 
-stranger_in_the_alps_01_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-01.mp3')
-
-stranger_in_the_alps_01.audio.attach(io: stranger_in_the_alps_01_audio,
-                                     filename: 'phoebe_bridgers-stranger_in_the_alps-01.mp3')
-
-stranger_in_the_alps_02 = Track.create(name: 'Smoke Signals',
-                                       ord: 2,
-                                       user_id: phoebe_bridgers.id,
-                                       album_id: stranger_in_the_alps.id)
-
-stranger_in_the_alps_02_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-02.mp3')
-
-stranger_in_the_alps_02.audio.attach(io: stranger_in_the_alps_02_audio,
-                                     filename: 'phoebe_bridgers-stranger_in_the_alps-02.mp3')
-
-stranger_in_the_alps_03 = Track.create(name: 'Funeral',
-                                       ord: 3,
-                                       user_id: phoebe_bridgers.id,
-                                       album_id: stranger_in_the_alps.id)
-
-stranger_in_the_alps_03_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-03.mp3')
-
-stranger_in_the_alps_03.audio.attach(io: stranger_in_the_alps_03_audio,
-                                     filename: 'phoebe_bridgers-stranger_in_the_alps-03.mp3')
-
-stranger_in_the_alps_04 = Track.create(name: 'Demi Moore',
-                                       ord: 4,
-                                       user_id: phoebe_bridgers.id,
-                                       album_id: stranger_in_the_alps.id)
-
-stranger_in_the_alps_04_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-04.mp3')
-
-stranger_in_the_alps_04.audio.attach(io: stranger_in_the_alps_04_audio,
-                                     filename: 'phoebe_bridgers-stranger_in_the_alps-04.mp3')
-
-stranger_in_the_alps_05 = Track.create(name: 'Scott Street',
-                                       ord: 5,
-                                       user_id: phoebe_bridgers.id,
-                                       album_id: stranger_in_the_alps.id)
-
-stranger_in_the_alps_05_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-05.mp3')
-
-stranger_in_the_alps_05.audio.attach(io: stranger_in_the_alps_05_audio,
-                                     filename: 'phoebe_bridgers-stranger_in_the_alps-05.mp3')
-
+# album_name = 'Stranger in the Alps'
+# formatted_album_name = album_name.downcase.split.join('_')
+# filename = "#{formatted_band_name}-#{formatted_album_name}.jpg"
+# album_art_url = "https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}"
+# album = Album.create(name: album_name, user_id: band.id)
+# album.art.attach(io: album_art_url, filename: filename)
 
 ################################################################################
 
-punisher = Album.create(name: 'Punisher', user_id: phoebe_bridgers.id)
+# track_names = ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street']
 
-punisher_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/phoebe_bridgers-punisher.jpg')
+# track_names.each_with_index do |track_name, index|
+#   Track.create(name: track_name,
+#                ord: index + 1,
+#                user_id: band.id,
+#                album_id: album.id)
+# end
 
-punisher.art.attach(io: punisher_art, filename: 'phoebe_bridgers-punisher.jpg')
+# stranger_in_the_alps_01 = Track.create(name: 'Motion Sickness',
+#                                        ord: 1,
+#                                        user_id: phoebe_bridgers.id,
+#                                        album_id: stranger_in_the_alps.id)
+
+# stranger_in_the_alps_01_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-01.mp3')
+
+# stranger_in_the_alps_01.audio.attach(io: stranger_in_the_alps_01_audio,
+#                                      filename: 'phoebe_bridgers-stranger_in_the_alps-01.mp3')
+
+################################################################################
+
+# stranger_in_the_alps = Album.create(name: 'Stranger in the Alps',
+#                                     user_id: phoebe_bridgers.id)
+
+# stranger_in_the_alps_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/phoebe_bridgers-stranger_in_the_alps.jpg')
+
+# stranger_in_the_alps.art.attach(io: stranger_in_the_alps_art, filename: 'phoebe_bridgers-stranger_in_the_alps.jpg')
+
+################################################################################
+
+# stranger_in_the_alps_01 = Track.create(name: 'Motion Sickness',
+#                                        ord: 1,
+#                                        user_id: phoebe_bridgers.id,
+#                                        album_id: stranger_in_the_alps.id)
+
+# stranger_in_the_alps_01_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-01.mp3')
+
+# stranger_in_the_alps_01.audio.attach(io: stranger_in_the_alps_01_audio,
+#                                      filename: 'phoebe_bridgers-stranger_in_the_alps-01.mp3')
+
+# stranger_in_the_alps_02 = Track.create(name: 'Smoke Signals',
+#                                        ord: 2,
+#                                        user_id: phoebe_bridgers.id,
+#                                        album_id: stranger_in_the_alps.id)
+
+# stranger_in_the_alps_02_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-02.mp3')
+
+# stranger_in_the_alps_02.audio.attach(io: stranger_in_the_alps_02_audio,
+#                                      filename: 'phoebe_bridgers-stranger_in_the_alps-02.mp3')
+
+# stranger_in_the_alps_03 = Track.create(name: 'Funeral',
+#                                        ord: 3,
+#                                        user_id: phoebe_bridgers.id,
+#                                        album_id: stranger_in_the_alps.id)
+
+# stranger_in_the_alps_03_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-03.mp3')
+
+# stranger_in_the_alps_03.audio.attach(io: stranger_in_the_alps_03_audio,
+#                                      filename: 'phoebe_bridgers-stranger_in_the_alps-03.mp3')
+
+# stranger_in_the_alps_04 = Track.create(name: 'Demi Moore',
+#                                        ord: 4,
+#                                        user_id: phoebe_bridgers.id,
+#                                        album_id: stranger_in_the_alps.id)
+
+# stranger_in_the_alps_04_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-04.mp3')
+
+# stranger_in_the_alps_04.audio.attach(io: stranger_in_the_alps_04_audio,
+#                                      filename: 'phoebe_bridgers-stranger_in_the_alps-04.mp3')
+
+# stranger_in_the_alps_05 = Track.create(name: 'Scott Street',
+#                                        ord: 5,
+#                                        user_id: phoebe_bridgers.id,
+#                                        album_id: stranger_in_the_alps.id)
+
+# stranger_in_the_alps_05_audio = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/phoebe_bridgers-stranger_in_the_alps-05.mp3')
+
+# stranger_in_the_alps_05.audio.attach(io: stranger_in_the_alps_05_audio,
+#                                      filename: 'phoebe_bridgers-stranger_in_the_alps-05.mp3')
+
+################################################################################
+
+# punisher = Album.create(name: 'Punisher', user_id: phoebe_bridgers.id)
+
+# punisher_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/phoebe_bridgers-punisher.jpg')
+
+# punisher.art.attach(io: punisher_art, filename: 'phoebe_bridgers-punisher.jpg')
 
 ################################################################################
 ################################################################################
