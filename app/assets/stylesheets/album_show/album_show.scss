@@ -1,5 +1,7 @@
+@import 'variables';
+
 .album-show {
-  background-color: rgb(255, 255, 255);
+  background-color: $white;
   width: 100%;
 }
 
@@ -23,19 +25,15 @@
 }
 
 .album-show__tabs-header-list {
-  background-color: rgb(219, 219, 219);
+  background-color: #dbdbdb;
   display: flex;
 }
 
 .album-show__tabs-header-list-item {
   border: 2px solid transparent;
   flex: 1;
-  margin: 0 5px;
+  margin: 0 .25rem;
   text-align: center;
-}
-
-.album-show__tabs-header-button {
-  padding: 4px 16px;
 }
 
 .album-show__tabs-header-list-item--active {
@@ -43,27 +41,31 @@
   color: black;
 }
 
-.album-show__tabs-header-button--inactive {
-  color: #00A1C6;
-}
-
 .album-show__tabs-header-list-item--inactive:hover {
-  border-top: 2px solid #00A1C6;
+  border-top: 2px solid $blue;
 }
 
+.album-show__tabs-header-button {
+  background: transparent;
+  padding: .25rem 1rem;
+}
+
+.album-show__tabs-header-button--inactive {
+  color: $blue;
+}
 
 .album-show__tab-title {
   font-weight: bold;
 }
 
 .album-show__tab-content {
-  margin: 30px 40px;
+  margin: 1.5rem 2rem;
 }
 
 @media only screen
 and (min-width: 992px) {
   .album-show__tabs-header-list {
-    padding: 0 20px;
+    padding: 0 1.25rem;
   }
 
   .album-show__tabs-header-list-item {

@@ -60,7 +60,7 @@
 }
 
 .session-form--box {
-  height: $ms9;
+  height: 2.25rem;
 }
 
 .session-form__button {
@@ -116,7 +116,7 @@ and (min-width: 992px) {
 
   .session-form--left {
     flex: 1;
-    line-height: $ms9;
+    line-height: 2.25rem;
     text-align: right;
     white-space: nowrap;
   }
