@@ -106,12 +106,16 @@ const AudioPlayer = ({ album, tracks, audio }) => {
                 aria-label="prev-track"
                 className="fas fa-fast-backward album-player__previous-button"
                 onClick={handlePlay}
+                disabled={currentTrack.ord === 1}
               />
               <button
                 type="button"
                 aria-label="next-track"
                 className="fas fa-fast-forward album-player__next-button"
                 onClick={handlePlay}
+                disabled={
+                  currentTrack.ord === album.trackIds[album.trackIds.length - 1]
+                }
               />
             </div>
           </div>

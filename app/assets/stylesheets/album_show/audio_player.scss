@@ -44,6 +44,14 @@
   margin: 0 .75rem;
 }
 
+.album-player__previous-button:disabled {
+  cursor: default;
+}
+
+.album-player__next-button:disabled {
+  cursor: default;
+}
+
 .album-player__seek-bar {
   -webkit-appearance: none;
   background: transparent;

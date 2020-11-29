@@ -68,13 +68,6 @@ albums.each do |album_hash|
   end
 end
 
-# album_name = 'Stranger in the Alps'
-# formatted_album_name = album_name.downcase.split.join('_')
-# filename = "#{formatted_band_name}-#{formatted_album_name}.jpg"
-# album_art_url = "https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}"
-# album = Album.create(name: album_name, user_id: band.id)
-# album.art.attach(io: album_art_url, filename: filename)
-
 ################################################################################
 
 # track_names = ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street']
