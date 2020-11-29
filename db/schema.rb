@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_080328) do
+ActiveRecord::Schema.define(version: 2020_11_29_121826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 2020_11_29_080328) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "release_date", null: false
     t.index ["name"], name: "index_albums_on_name"
+    t.index ["release_date"], name: "index_albums_on_release_date"
     t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
@@ -55,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_29_080328) do
     t.string "duration", null: false
     t.index ["album_id"], name: "index_tracks_on_album_id"
     t.index ["name"], name: "index_tracks_on_name"
-    t.index ["ord"], name: "index_tracks_on_ord", unique: true
+    t.index ["ord", "album_id"], name: "index_tracks_on_ord_and_album_id", unique: true
     t.index ["user_id"], name: "index_tracks_on_user_id"
   end
 
