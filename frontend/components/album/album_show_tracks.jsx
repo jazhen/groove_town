@@ -2,16 +2,18 @@ import React from 'react';
 // import AlbumShowTrack from './album_show_track';
 
 const AlbumShowTracks = ({
-  album,
+  trackIds,
   tracks,
   player,
   playing,
+  setPlaying,
   currentTrack,
   setCurrentTrack,
   handlePlay,
 }) => {
   const handleClick = (track) => {
     setCurrentTrack(track);
+    setPlaying(true);
     player.current.pause();
     player.current.load();
     player.current.play();
@@ -19,8 +21,9 @@ const AlbumShowTracks = ({
 
   return (
     <ul>
-      {album.trackIds.map((trackId) => {
+      {trackIds.map((trackId) => {
         const track = tracks[trackId];
+
         return (
           <li key={trackId}>
             {/* <AlbumShowTrack track={tracks[trackId]} /> */}

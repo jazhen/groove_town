@@ -120,10 +120,11 @@ const AudioPlayer = ({ album, tracks, audio }) => {
         </div>
       </div>
       <AlbumShowTracks
-        album={album}
+        trackIds={album.trackIds}
         tracks={tracks}
         player={player}
         playing={playing}
+        setPlaying={setPlaying}
         currentTrack={currentTrack}
         setCurrentTrack={setCurrentTrack}
         handlePlay={handlePlay}
