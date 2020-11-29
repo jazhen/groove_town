@@ -70,9 +70,9 @@ const AlbumShowTracks = ({
                   handlePlay={handlePlay}
                 />
               </li>
-              <li className="album-show__track-ord">{`${track.ord}.`}</li>
+              <li>{`${track.ord}.`}</li>
               <li className="album-show__track-name">{track.name}</li>
-              {/* <li>{track.duration}</li> */}
+              <li>{track.duration}</li>
             </ul>
           </li>
         );

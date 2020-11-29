@@ -1,5 +1,5 @@
 json.set! track.id do
-  json.extract! track, :id, :name, :ord
+  json.extract! track, :id, :name, :ord, :duration
   json.userId track.user_id
   json.albumId track.album_id
   json.album track.album.name
