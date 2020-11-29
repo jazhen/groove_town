@@ -5,14 +5,12 @@ const AudioPlayer = ({ album, tracks, audio }) => {
   const player = useRef();
   const seekBar = useRef();
   const [playing, setPlaying] = useState(false);
-  const [duration, setDuration] = useState('0');
   const [currentTime, setCurrentTime] = useState('0');
   const [currentTrack, setCurrentTrack] = useState(tracks[album.trackIds[0]]);
 
   useEffect(() => {
     if (player.current) {
       player.current.onloadedmetadata = () => {
-        setDuration(player.current.duration);
         setCurrentTime(player.current.currentTime);
       };
     }
@@ -87,7 +85,7 @@ const AudioPlayer = ({ album, tracks, audio }) => {
               {currentTrack.name}
             </span>
             <span className="album-player__track-time">
-              {formatTime(currentTime)} / {formatTime(duration)}
+              {`${formatTime(currentTime)} / ${currentTrack.duration}`}
             </span>
           </div>
           <div className="album-player__seek-container">
@@ -96,7 +94,7 @@ const AudioPlayer = ({ album, tracks, audio }) => {
                 type="range"
                 className="album-player__seek-bar"
                 min="0"
-                max={duration}
+                max={currentTrack.duration}
                 value={currentTime}
                 onChange={handleChange}
                 ref={seekBar}
