@@ -1,0 +1,22 @@
+@import 'variables';
+
+.album-create {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-create__file-input {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.album-create__file-label {
+  border: 1px dashed silver;
+  color: $blue;
+}
+
+.album-create__file-label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
