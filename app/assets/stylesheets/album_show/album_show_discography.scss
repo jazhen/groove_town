@@ -1,12 +1,32 @@
 @import 'variables';
 
-.album-show-discography {
+.album-show-discography__header {
+  text-align: center;
+  margin: 1rem 0 1rem 0;
+}
+
+.album-show-discography__list {
   font-size: .75rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album-show-discography__list-item {
+  display: flex;
+  flex-basis: calc(50% - 1rem);
+  flex-direction: column;
+}
+
+.album-show-discography__list-item:nth-child(odd) {
+  margin-right: 1rem;
+}
+
+.album-show-discography__list-item:nth-child(even) {
+  margin-left: 1rem;
 }
 
 .album-show-discography__art {
   width: 100%;
-  height: auto;
 }
 
 .album-show-discography__link {
@@ -16,4 +36,19 @@
 .album-show-discography__link:hover {
   color: $blue;
   text-decoration: underline;
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-show-discography__header {
+    text-align: initial;
+  }
+
+  .album-show-discography__list {
+    display: block;
+  }
+
+  .album-show-discography__list-item:nth-child(n) {
+    margin: 1rem 0 0 0;
+  }
 }

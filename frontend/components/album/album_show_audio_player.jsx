@@ -21,20 +21,27 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
             alt="album art"
           />
         </div>
+
         <div className="album-player__metadata">
-          <span className="album-player__title">{album.name}</span>
-          <span className="album-player__artist-container">
-            <span> by </span>
-            <Link to={`/users/${user.id}`} className="album-player__artist">
-              {user.band}
-            </Link>
-          </span>
+          <div className="album-player__metadata-container">
+            <span className="album-player__title">
+              {album.name}
+              <span className="album-player__title-nbsp">&nbsp;</span>
+            </span>
+            <div className="album-player__artist-container">
+              <span>by&nbsp;</span>
+              <Link to={`/users/${user.id}`} className="album-player__artist">
+                {user.band}
+              </Link>
+            </div>
+          </div>
           <AudioPlayer album={album} tracks={tracks} />
         </div>
+
         <div className="album-player__sidebar">
-          <span className="album-player__artist-name">
+          <div className="album-player__artist-name">
             <Link to={`/users/${user.id}`}>{user.band}</Link>
-          </span>
+          </div>
           <AlbumShowDiscography albums={albums} albumIds={user.albumIds} />
         </div>
       </div>

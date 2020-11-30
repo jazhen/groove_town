@@ -6,17 +6,11 @@
 }
 
 .album-player__title {
-  font-size: 1.5rem;
   font-weight: 900;
-}
-
-.album-player__artist-container {
-  font-size: 1rem;
 }
 
 .album-player__artist {
   font-weight: 500;
-  font-size: 1rem;
   color: $blue;
 }
 
@@ -27,6 +21,13 @@
 
 .album-player__artist-name {
   font-weight: bold;
+  text-align: center;
+}
+
+.album-player__metadata-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 @media only screen
@@ -52,5 +53,22 @@ and (min-width: 992px) {
     display: flex;
     flex: 2;
     flex-direction: column;
+  }
+
+  .album-player__metadata-container {
+    display: block;
+    margin: 0 0 1rem 0;
+  }
+
+  .album-player__title {
+    font-size: 1.5rem;
+  }
+
+  .album-player__title-nbsp {
+    display: none;
+  }
+
+  .album-player__artist-name {
+    text-align: initial;
   }
 }
