@@ -59,7 +59,10 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
                   alt="album art"
                 />
                 <ul className="nav-bar__search-bar-results-data-list">
-                  <li className="nav-bar__search-bar-results-data-list-item">
+                  <li
+                    className="nav-bar__search-bar-results-data-list-item
+                      nav-bar__search-bar-results-list-item--bold"
+                  >
                     {album.name}
                   </li>
                   <li className="nav-bar__search-bar-results-data-list-item">
@@ -86,7 +89,10 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
                   alt="track album art"
                 />
                 <ul className="nav-bar__search-bar-results-data-list">
-                  <li className="nav-bar__search-bar-results-data-list-item">
+                  <li
+                    className="nav-bar__search-bar-results-data-list-item
+                      nav-bar__search-bar-results-list-item--bold"
+                  >
                     {track.name}
                   </li>
                   <li className="nav-bar__search-bar-results-data-list-item">
@@ -110,7 +116,10 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
                   alt="track album art"
                 />
                 <ul className="nav-bar__search-bar-results-data-list">
-                  <li className="nav-bar__search-bar-results-data-list-item">
+                  <li
+                    className="nav-bar__search-bar-results-data-list-item
+                      nav-bar__search-bar-results-list-item--bold"
+                  >
                     {user.band}
                   </li>
                   <li className="nav-bar__search-bar-results-data-list-item">
