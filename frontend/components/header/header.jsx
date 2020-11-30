@@ -37,6 +37,19 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
             </Link>
           </li>
           <li className="nav-bar__dropdown-content-list-item">
+            <Link to="/albums/new" className="nav-bar__dropdown-link">
+              add music
+            </Link>
+          </li>
+          <li className="nav-bar__dropdown-content-list-item">
+            <Link
+              to={`/users/${currentUserId}`}
+              className="nav-bar__dropdown-link"
+            >
+              edit profile
+            </Link>
+          </li>
+          <li className="nav-bar__dropdown-content-list-item">
             <Link to="/">
               <button
                 className="nav-bar__logout"
