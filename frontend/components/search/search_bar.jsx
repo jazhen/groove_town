@@ -33,7 +33,12 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   };
 
   const handleChange = (e) => {
-    updateSeachResults(e.currentTarget.value);
+    if (e.currentTarget.value === '') {
+      setActive(false);
+    } else {
+      setActive(true);
+      updateSeachResults(e.currentTarget.value);
+    }
   };
 
   const handleFocus = () => {
