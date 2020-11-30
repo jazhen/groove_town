@@ -5,6 +5,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [albumSearchResults, setAlbumSearchResults] = useState([]);
   const [trackSearchResults, setTrackSearchResults] = useState([]);
   const [bandSearchResults, setBandSearchResults] = useState([]);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     fetchAll();
@@ -35,102 +36,114 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
     updateSeachResults(e.currentTarget.value);
   };
 
+  const handleFocus = () => {
+    setActive(true);
+  };
+
+  const handleBlur = () => {
+    setActive(false);
+  };
+
   return (
     <div className="nav-bar__search-bar">
       <input
         className="nav-bar__search-bar-input"
         placeholder="Search and discover music"
         onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
       <button type="button" className="nav-bar__search-bar-icon">
         <i className="fas fa-search" />
       </button>
-      <ul className="nav-bar__search-bar-results-list">
-        {albumSearchResults.map((album) => {
-          return (
-            <Link
-              to={`/users/${album.userId}/albums/${album.id}`}
-              key={album.id}
-            >
-              <li className="nav-bar__search-bar-results-list-item">
-                <img
-                  className="nav-bar__search-bar-results-album-img"
-                  src={album.artUrl}
-                  alt="album art"
-                />
-                <ul className="nav-bar__search-bar-results-data-list">
-                  <li
-                    className="nav-bar__search-bar-results-data-list-item
+      {active ? (
+        <ul className="nav-bar__search-bar-results-list">
+          {albumSearchResults.map((album) => {
+            return (
+              <Link
+                to={`/users/${album.userId}/albums/${album.id}`}
+                key={album.id}
+              >
+                <li className="nav-bar__search-bar-results-list-item">
+                  <img
+                    className="nav-bar__search-bar-results-album-img"
+                    src={album.artUrl}
+                    alt="album art"
+                  />
+                  <ul className="nav-bar__search-bar-results-data-list">
+                    <li
+                      className="nav-bar__search-bar-results-data-list-item
                       nav-bar__search-bar-results-list-item--bold"
-                  >
-                    {album.name}
-                  </li>
-                  <li className="nav-bar__search-bar-results-data-list-item">
-                    by {album.band}
-                  </li>
-                  <li className="nav-bar__search-bar-results-data-list-item">
-                    ALBUM
-                  </li>
-                </ul>
-              </li>
-            </Link>
-          );
-        })}
-        {trackSearchResults.map((track) => {
-          return (
-            <Link
-              to={`/users/${track.userId}/albums/${track.albumId}`}
-              key={track.id}
-            >
-              <li className="nav-bar__search-bar-results-list-item">
-                <img
-                  className="nav-bar__search-bar-results-album-img"
-                  src={albums[track.albumId].artUrl}
-                  alt="track album art"
-                />
-                <ul className="nav-bar__search-bar-results-data-list">
-                  <li
-                    className="nav-bar__search-bar-results-data-list-item
+                    >
+                      {album.name}
+                    </li>
+                    <li className="nav-bar__search-bar-results-data-list-item">
+                      by {album.band}
+                    </li>
+                    <li className="nav-bar__search-bar-results-data-list-item">
+                      ALBUM
+                    </li>
+                  </ul>
+                </li>
+              </Link>
+            );
+          })}
+          {trackSearchResults.map((track) => {
+            return (
+              <Link
+                to={`/users/${track.userId}/albums/${track.albumId}`}
+                key={track.id}
+              >
+                <li className="nav-bar__search-bar-results-list-item">
+                  <img
+                    className="nav-bar__search-bar-results-album-img"
+                    src={albums[track.albumId].artUrl}
+                    alt="track album art"
+                  />
+                  <ul className="nav-bar__search-bar-results-data-list">
+                    <li
+                      className="nav-bar__search-bar-results-data-list-item
                       nav-bar__search-bar-results-list-item--bold"
-                  >
-                    {track.name}
-                  </li>
-                  <li className="nav-bar__search-bar-results-data-list-item">
-                    by {track.band}
-                  </li>
-                  <li className="nav-bar__search-bar-results-data-list-item">
-                    TRACK
-                  </li>
-                </ul>
-              </li>
-            </Link>
-          );
-        })}
-        {bandSearchResults.map((user) => {
-          return (
-            <Link to={`/users/${user.id}`} key={user.id}>
-              <li className="nav-bar__search-bar-results-list-item">
-                <img
-                  className="nav-bar__search-bar-results-album-img"
-                  src={albums[1].artUrl}
-                  alt="track album art"
-                />
-                <ul className="nav-bar__search-bar-results-data-list">
-                  <li
-                    className="nav-bar__search-bar-results-data-list-item
+                    >
+                      {track.name}
+                    </li>
+                    <li className="nav-bar__search-bar-results-data-list-item">
+                      by {track.band}
+                    </li>
+                    <li className="nav-bar__search-bar-results-data-list-item">
+                      TRACK
+                    </li>
+                  </ul>
+                </li>
+              </Link>
+            );
+          })}
+          {bandSearchResults.map((user) => {
+            return (
+              <Link to={`/users/${user.id}`} key={user.id}>
+                <li className="nav-bar__search-bar-results-list-item">
+                  <img
+                    className="nav-bar__search-bar-results-album-img"
+                    src={albums[1].artUrl}
+                    alt="track album art"
+                  />
+                  <ul className="nav-bar__search-bar-results-data-list">
+                    <li
+                      className="nav-bar__search-bar-results-data-list-item
                       nav-bar__search-bar-results-list-item--bold"
-                  >
-                    {user.band}
-                  </li>
-                  <li className="nav-bar__search-bar-results-data-list-item">
-                    BAND
-                  </li>
-                </ul>
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
+                    >
+                      {user.band}
+                    </li>
+                    <li className="nav-bar__search-bar-results-data-list-item">
+                      BAND
+                    </li>
+                  </ul>
+                </li>
+              </Link>
+            );
+          })}
+        </ul>
+      ) : null}
     </div>
   );
 };
