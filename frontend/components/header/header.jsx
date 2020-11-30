@@ -37,9 +37,15 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
             </Link>
           </li>
           <li className="nav-bar__dropdown-content-list-item">
-            <button className="nav-bar__logout" type="submit" onClick={logout}>
-              logout
-            </button>
+            <Link to="/">
+              <button
+                className="nav-bar__logout"
+                type="submit"
+                onClick={logout}
+              >
+                logout
+              </button>
+            </Link>
           </li>
         </ul>
       </li>

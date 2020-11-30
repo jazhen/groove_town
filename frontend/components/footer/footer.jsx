@@ -49,13 +49,15 @@ const AuthenticatedFooter = ({ logout }) => {
     <footer className="footer">
       <div className="footer__container">
         <FooterCredentials />
-        <button
-          type="button"
-          onClick={logout}
-          className="footer__session-action footer__logout"
-        >
-          Log out
-        </button>
+        <Link to="/">
+          <button
+            type="button"
+            onClick={logout}
+            className="footer__session-action footer__logout"
+          >
+            Log out
+          </button>
+        </Link>
       </div>
     </footer>
   );
