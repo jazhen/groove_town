@@ -1,42 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// const AlbumCreate = () => {
-//   return null;
-// };
+const AlbumCreate = () => {
+  const [albumName, setAlbumName] = useState('');
+  const [albumReleaseDate, setAlbumReleaseDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
 
-class AlbumCreate extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
+  const handleAlbumNameChange = (e) => {
+    setAlbumName(e.currentTarget.value);
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  const handleAlbumReleaseDateChange = (e) => {
+    setAlbumReleaseDate(e.currentTarget.value);
+  };
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  handleSubmit(event) {
-    alert(`A name was submitted: ${this.state.value}`);
-    event.preventDefault();
-  }
+    alert(`album: ${albumName} | release: ${albumReleaseDate}`);
+  };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
+  return (
+    <form className="album-create" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={albumName}
+        onChange={handleAlbumNameChange}
+        placeholder="album name"
+      />
+      <label>
+        release date:
+        <input
+          type="date"
+          value={albumReleaseDate}
+          onChange={handleAlbumReleaseDateChange}
+          placeholder="optional"
+        />
+      </label>
+      <input type="file" accept="audio/mp3" />
+      <input type="submit" value="Submit" />
+    </form>
+  );
+};
 
 export default AlbumCreate;
