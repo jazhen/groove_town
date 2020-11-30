@@ -13,6 +13,7 @@ const AudioPlayer = ({ album, tracks }) => {
 
   useEffect(() => {
     setCurrentTrack(tracks[trackIds[0]]);
+    setPlaying(false);
     player.current.pause();
     player.current.load();
   }, [tracks, trackIds]);
@@ -31,13 +32,13 @@ const AudioPlayer = ({ album, tracks }) => {
         setCurrentTime(player.current.currentTime);
 
         if (player.current.ended) {
-          if (currentTrack.ord === trackIds[trackIds.length - 1]) {
+          if (currentTrack.ord === trackIds.length) {
             setPlaying(false);
             setCurrentTrack(tracks[trackIds[0]]);
             player.current.pause();
             player.current.load();
           } else {
-            const nextTrack = tracks[currentTrack.ord + 1];
+            const nextTrack = tracks[trackIds[currentTrack.ord]];
             setCurrentTrack(nextTrack);
             player.current.pause();
             player.current.load();
@@ -61,28 +62,38 @@ const AudioPlayer = ({ album, tracks }) => {
 
   const handlePlay = () => {
     if (playing) {
-      player.current.pause();
       setPlaying(false);
+      player.current.pause();
     } else {
-      player.current.play();
       setPlaying(true);
+      player.current.play();
     }
   };
 
   const handlePrev = () => {
-    const prevTrack = tracks[currentTrack.ord - 1];
+    // debugger;
+    const prevTrack = tracks[trackIds[currentTrack.ord - 2]];
+
     setCurrentTrack(prevTrack);
     player.current.pause();
     player.current.load();
-    player.current.play();
+
+    if (playing) {
+      player.current.play();
+    }
   };
 
   const handleNext = () => {
-    const nextTrack = tracks[currentTrack.ord + 1];
+    // debugger;
+
+    const nextTrack = tracks[trackIds[currentTrack.ord]];
     setCurrentTrack(nextTrack);
     player.current.pause();
     player.current.load();
-    player.current.play();
+
+    if (playing) {
+      player.current.play();
+    }
   };
 
   const handleChange = () => {
@@ -148,7 +159,7 @@ const AudioPlayer = ({ album, tracks }) => {
                 aria-label="next-track"
                 className="fas fa-fast-forward album-player__next-button"
                 onClick={handleNext}
-                disabled={currentTrack.ord === trackIds[trackIds.length - 1]}
+                disabled={currentTrack.ord === trackIds.length}
               />
             </div>
           </div>
