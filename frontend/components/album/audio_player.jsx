@@ -29,20 +29,22 @@ const AudioPlayer = ({ album, tracks }) => {
   useEffect(() => {
     if (player.current) {
       player.current.ontimeupdate = () => {
-        setCurrentTime(player.current.currentTime);
+        if (player.current) {
+          setCurrentTime(player.current.currentTime);
 
-        if (player.current.ended) {
-          if (currentTrack.ord === trackIds.length) {
-            setPlaying(false);
-            setCurrentTrack(tracks[trackIds[0]]);
-            player.current.pause();
-            player.current.load();
-          } else {
-            const nextTrack = tracks[trackIds[currentTrack.ord]];
-            setCurrentTrack(nextTrack);
-            player.current.pause();
-            player.current.load();
-            player.current.play();
+          if (player.current.ended) {
+            if (currentTrack.ord === trackIds.length) {
+              setPlaying(false);
+              setCurrentTrack(tracks[trackIds[0]]);
+              player.current.pause();
+              player.current.load();
+            } else {
+              const nextTrack = tracks[trackIds[currentTrack.ord]];
+              setCurrentTrack(nextTrack);
+              player.current.pause();
+              player.current.load();
+              player.current.play();
+            }
           }
         }
       };
