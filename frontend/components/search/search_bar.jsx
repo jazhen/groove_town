@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
-const SearchBar = ({ albums }) => {
+const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    // fetchAll();
-  });
+    fetchAll();
+  }, [fetchAll]);
 
   const updateSeachResults = (value) => {
-    const results = Object.values(albums).filter((album) =>
-      album.name.toLowerCase().includes(value.toLowerCase())
+    const allEntries = { ...albums, ...tracks, ...users };
+    console.log(allEntries);
+
+    const results = Object.values(allEntries).filter((entry) =>
+      entry.name.toLowerCase().includes(value.toLowerCase())
     );
 
     setSearchResults(results);

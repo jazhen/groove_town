@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAlbums } from '../../actions/album_actions';
+import { fetchAll } from '../../actions/user_actions';
 import SearchBar from './search_bar';
 
 const mapStateToProps = ({ entities: { users, albums, tracks } }) => {
@@ -11,8 +11,7 @@ const mapStateToProps = ({ entities: { users, albums, tracks } }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchAlbums: () => dispatch(fetchAlbums()),
-  // fetchUser: (userId) => dispatch(fetchUser(userId)),
+  fetchAll: () => dispatch(fetchAll()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

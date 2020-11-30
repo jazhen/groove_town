@@ -71,7 +71,6 @@ const AudioPlayer = ({ album, tracks }) => {
   };
 
   const handlePrev = () => {
-    // debugger;
     const prevTrack = tracks[trackIds[currentTrack.ord - 2]];
 
     setCurrentTrack(prevTrack);
@@ -84,9 +83,8 @@ const AudioPlayer = ({ album, tracks }) => {
   };
 
   const handleNext = () => {
-    // debugger;
-
     const nextTrack = tracks[trackIds[currentTrack.ord]];
+
     setCurrentTrack(nextTrack);
     player.current.pause();
     player.current.load();
