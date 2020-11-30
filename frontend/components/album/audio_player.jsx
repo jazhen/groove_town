@@ -1,15 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AlbumShowTracks from './album_show_tracks';
 
-const AudioPlayer = ({ album, tracks, audio }) => {
+const AudioPlayer = ({ album, tracks }) => {
   const { trackIds } = album;
 
   const player = useRef();
   const seekBar = useRef();
 
+  const [currentTrack, setCurrentTrack] = useState(tracks[trackIds[0]]);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState('0');
-  const [currentTrack, setCurrentTrack] = useState(tracks[trackIds[0]]);
+
+  useEffect(() => {
+    setCurrentTrack(tracks[trackIds[0]]);
+    player.current.pause();
+    player.current.load();
+  }, [tracks, trackIds]);
 
   useEffect(() => {
     if (player.current) {
