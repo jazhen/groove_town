@@ -12,37 +12,75 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   }, [fetchAll]);
 
   const updateSeachResults = (value) => {
-    const albumResults = Object.values(albums).filter((album) =>
-      album.name.toLowerCase().includes(value.toLowerCase())
-    );
+    let numSearchResults = 0;
 
-    setAlbumSearchResults(albumResults);
+    const albumMatches = [];
+    const albumsList = Object.values(albums);
 
-    const trackResults = Object.values(tracks).filter((track) =>
-      track.name.toLowerCase().includes(value.toLowerCase())
-    );
+    for (let i = 0; i < albumsList.length; i++) {
+      if (numSearchResults >= 10) {
+        break;
+      }
 
-    setTrackSearchResults(trackResults);
+      if (albumsList[i].name.toLowerCase().includes(value.toLowerCase())) {
+        albumMatches.push(albumsList[i]);
+        numSearchResults += 1;
+      }
+    }
 
-    const bandResults = Object.values(users).filter(
-      (user) =>
-        user.band && user.band.toLowerCase().includes(value.toLowerCase())
-    );
+    const trackMatches = [];
 
-    setBandSearchResults(bandResults);
+    if (numSearchResults < 10) {
+      const tracksList = Object.values(tracks);
+      for (let i = 0; i < tracksList.length; i++) {
+        if (numSearchResults >= 10) {
+          break;
+        }
+
+        if (tracksList[i].name.toLowerCase().includes(value.toLowerCase())) {
+          trackMatches.push(tracksList[i]);
+          numSearchResults += 1;
+        }
+      }
+    }
+
+    const bandMatches = [];
+
+    if (numSearchResults < 10) {
+      const usersList = Object.values(users);
+      for (let i = 0; i < usersList.length; i++) {
+        if (numSearchResults >= 10) {
+          break;
+        }
+
+        if (
+          usersList[i].band &&
+          usersList[i].band.toLowerCase().includes(value.toLowerCase())
+        ) {
+          bandMatches.push(usersList[i]);
+          numSearchResults += 1;
+        }
+      }
+    }
+
+    setAlbumSearchResults(albumMatches);
+    setTrackSearchResults(trackMatches);
+    setBandSearchResults(bandMatches);
   };
 
   const handleChange = (e) => {
-    if (e.currentTarget.value === '') {
-      setActive(false);
-    } else {
+    if (e.currentTarget.value !== '') {
       setActive(true);
       updateSeachResults(e.currentTarget.value);
+    } else {
+      setActive(false);
     }
   };
 
-  const handleFocus = () => {
-    setActive(true);
+  const handleFocus = (e) => {
+    if (e.currentTarget.value !== '') {
+      setActive(true);
+    }
   };
 
   const handleBlur = () => {
