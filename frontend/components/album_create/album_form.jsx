@@ -1,27 +1,11 @@
 import React from 'react';
 
-const AlbumForm = ({
-  // userId,
-  // createAlbum,
-  // nameError,
-  // artError,
-  // albumName,
-  // setAlbumName,
-  // albumArtUrl,
-  // setAlbumArtUrl,
-  // albumReleaseDate,
-  // setAlbumReleaseDate,
-  album,
-  setAlbum,
-  today,
-  // handleAlbumNameChange,
-}) => {
+const AlbumForm = ({ album, setAlbum, today }) => {
   const handleAlbumNameChange = (e) => {
     setAlbum({ ...album, name: e.currentTarget.value });
   };
 
   const handleAlbumReleaseDateChange = (e) => {
-    // setAlbumReleaseDate(e.currentTarget.value);
     setAlbum({ ...album, releaseDate: e.currentTarget.value });
   };
 
@@ -33,7 +17,6 @@ const AlbumForm = ({
   };
 
   const handleArtRemove = () => {
-    // setAlbumArtUrl(null);
     setAlbum({ ...album, artFile: null, artUrl: null });
   };
 

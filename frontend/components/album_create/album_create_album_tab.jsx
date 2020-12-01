@@ -5,7 +5,7 @@ const AlbumCreateAlbumTab = ({
   albumName,
   albumArtUrl,
   albumReleaseDate,
-  // setSelectedTabIndex,
+  setSelectedTabIndex,
 }) => {
   const [formattedDate, setFormattedDate] = useState('');
 
@@ -22,7 +22,7 @@ const AlbumCreateAlbumTab = ({
     <button
       type="button"
       className="album-create__album-tab"
-      // onClick={() => setSelectedTabIndex(0)}
+      onClick={() => setSelectedTabIndex(0)}
     >
       {albumArtUrl ? (
         <img

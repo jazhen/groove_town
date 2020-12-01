@@ -7,7 +7,6 @@ import TrackForm from './track_form';
 
 const AlbumCreate = ({ user }) => {
   const today = new Date().toISOString().slice(0, 10);
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const [album, setAlbum] = useState({
     name: '',
     releaseDate: today,
@@ -15,8 +14,10 @@ const AlbumCreate = ({ user }) => {
     artUrl: null,
   });
 
+  const [tracks, setTracks] = useState([]);
   const [tabs, setTabs] = useState([]);
   const [tabsContent, setTabsContent] = useState([]);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
   useEffect(() => {
     setTabs([
@@ -25,23 +26,11 @@ const AlbumCreate = ({ user }) => {
         albumName={album.name}
         albumArtUrl={album.artUrl}
         albumReleaseDate={album.releaseDate}
-        // formattedDate={formattedDate}
-        // setSelectedTabIndex={setSelectedTabIndex}
+        setSelectedTabIndex={setSelectedTabIndex}
       />,
     ]);
     setTabsContent([
-      <AlbumForm
-        // albumName={albumName}
-        // setAlbumName={setAlbumName}
-        // albumArtUrl={albumArtUrl}
-        // setAlbumArtUrl={setAlbumArtUrl}
-        // albumReleaseDate={albumReleaseDate}
-        // setAlbumReleaseDate={setAlbumReleaseDate}
-        album={album}
-        setAlbum={setAlbum}
-        today={today}
-        // handleAlbumNameChange={handleAlbumNameChange}
-      />,
+      <AlbumForm album={album} setAlbum={setAlbum} today={today} />,
     ]);
   }, [user, album, today]);
 
@@ -52,20 +41,17 @@ const AlbumCreate = ({ user }) => {
       <AlbumCreateTrackTab
         trackFileName={file.name}
         setSelectedTabIndex={setSelectedTabIndex}
-        numTabs={tabs.length}
+        tabIndex={tabs.length}
       />
     );
-    tabs.push(newTab);
-    setTabs(tabs);
+    setTabs([...tabs, newTab]);
 
     const newTrackForm = <TrackForm />;
-    tabsContent.push(newTrackForm);
-    setTabsContent(tabsContent);
+    setTabsContent([...tabsContent, newTrackForm]);
 
     setSelectedTabIndex(tabs.length - 1);
+    setTracks([...tracks, { name: '' }]);
   };
-
-  console.log(album);
 
   return (
     <div className="album-create">
