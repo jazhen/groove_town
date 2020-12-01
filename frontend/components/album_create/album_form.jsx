@@ -1,64 +1,69 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const AlbumForm = ({
-  userId,
-  createAlbum,
-  nameError,
-  artError,
-  albumName,
-  setAlbumName,
-  albumArtUrl,
-  setAlbumArtUrl,
-  albumReleaseDate,
-  setAlbumReleaseDate,
+  // userId,
+  // createAlbum,
+  // nameError,
+  // artError,
+  // albumName,
+  // setAlbumName,
+  // albumArtUrl,
+  // setAlbumArtUrl,
+  // albumReleaseDate,
+  // setAlbumReleaseDate,
+  album,
+  setAlbum,
   today,
+  // handleAlbumNameChange,
 }) => {
-  const [albumArtFile, setAlbumArtFile] = useState(null);
-
   const handleAlbumNameChange = (e) => {
-    setAlbumName(e.currentTarget.value);
+    setAlbum({ ...album, name: e.currentTarget.value });
   };
 
   const handleAlbumReleaseDateChange = (e) => {
-    setAlbumReleaseDate(e.currentTarget.value);
+    // setAlbumReleaseDate(e.currentTarget.value);
+    setAlbum({ ...album, releaseDate: e.currentTarget.value });
   };
 
   const handleArtUpload = (e) => {
     const file = e.currentTarget.files[0];
     const url = URL.createObjectURL(file);
 
-    setAlbumArtFile(file);
-    setAlbumArtUrl(url);
+    setAlbum({ ...album, artFile: file, artUrl: url });
   };
 
   const handleArtRemove = () => {
-    setAlbumArtUrl(null);
+    // setAlbumArtUrl(null);
+    setAlbum({ ...album, artFile: null, artUrl: null });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('album[name]', albumName);
-    formData.append('album[user_id]', userId);
-    formData.append('album[release_date]', albumReleaseDate);
-    if (albumArtFile) {
-      formData.append('album[art]', albumArtFile);
-    }
+  //   const formData = new FormData();
+  //   formData.append('album[name]', albumName);
+  //   formData.append('album[user_id]', userId);
+  //   formData.append('album[release_date]', albumReleaseDate);
+  //   if (albumArtFile) {
+  //     formData.append('album[art]', albumArtFile);
+  //   }
 
-    createAlbum(formData);
-  };
+  //   createAlbum(formData);
+  // };
 
   return (
-    <form className="album-form" onSubmit={handleSubmit}>
+    <form
+      className="album-form"
+      // onSubmit={handleSubmit}
+    >
       <input
         type="text"
         className="album-form__name"
-        value={albumName}
+        value={album.name}
         onChange={handleAlbumNameChange}
         placeholder="album name"
       />
-      <div>{nameError}</div>
+      {/* <div>{nameError}</div> */}
       <label className="album-form__date-label">
         release date:
         <input
@@ -66,20 +71,20 @@ const AlbumForm = ({
           min="1900-01-01"
           max={today}
           className="album-form__date-input"
-          value={albumReleaseDate}
+          value={album.releaseDate}
           onChange={handleAlbumReleaseDateChange}
           placeholder="optional"
         />
         <span className="album-form__date-description">default is today</span>
       </label>
 
-      {albumArtUrl ? (
+      {album.artUrl ? (
         <div
           className="album-form__file-input-container
             album-form__file-input-container--file"
         >
           <img
-            src={albumArtUrl}
+            src={album.artUrl}
             alt="album art"
             className="album-form__file-input-art"
           />
@@ -115,7 +120,7 @@ const AlbumForm = ({
               <div>.jpg or .png, 5MB max</div>
             </div>
           </div>
-          <div>{artError}</div>
+          {/* <div>{artError}</div> */}
         </>
       )}
       <input type="submit" value="Submit" />

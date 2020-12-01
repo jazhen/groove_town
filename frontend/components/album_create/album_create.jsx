@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AlbumCreateAlbumTab from './album_create_album_tab';
 import AlbumCreateTrackTab from './album_create_track_tab';
@@ -6,46 +6,48 @@ import AlbumForm from './album_form';
 import TrackForm from './track_form';
 
 const AlbumCreate = ({ user }) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
-  const [albumName, setAlbumName] = useState('');
-  const [albumArtUrl, setAlbumArtUrl] = useState(null);
   const today = new Date().toISOString().slice(0, 10);
-  const [albumReleaseDate, setAlbumReleaseDate] = useState(today);
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+  const [album, setAlbum] = useState({
+    name: '',
+    releaseDate: today,
+    artFile: null,
+    artUrl: null,
+  });
 
-  // const [albumTrackFile, setAlbumTrackFile] = useState(null);
+  const [tabs, setTabs] = useState([]);
+  const [tabsContent, setTabsContent] = useState([]);
 
-  const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-  const formattedDate = new Date(albumReleaseDate).toLocaleDateString(
-    'en-US',
-    dateOptions
-  );
-
-  const [tabs, setTabs] = useState([
-    <AlbumCreateAlbumTab
-      user={user}
-      albumName={albumName}
-      formattedDate={formattedDate}
-      albumArtUrl={albumArtUrl}
-      setSelectedTabIndex={setSelectedTabIndex}
-    />,
-  ]);
-
-  const [tabsContent, setTabsContent] = useState([
-    <AlbumForm
-      albumName={albumName}
-      setAlbumName={setAlbumName}
-      albumArtUrl={albumArtUrl}
-      setAlbumArtUrl={setAlbumArtUrl}
-      albumReleaseDate={albumReleaseDate}
-      setAlbumReleaseDate={setAlbumReleaseDate}
-      today={today}
-    />,
-  ]);
+  useEffect(() => {
+    setTabs([
+      <AlbumCreateAlbumTab
+        user={user}
+        albumName={album.name}
+        albumArtUrl={album.artUrl}
+        albumReleaseDate={album.releaseDate}
+        // formattedDate={formattedDate}
+        // setSelectedTabIndex={setSelectedTabIndex}
+      />,
+    ]);
+    setTabsContent([
+      <AlbumForm
+        // albumName={albumName}
+        // setAlbumName={setAlbumName}
+        // albumArtUrl={albumArtUrl}
+        // setAlbumArtUrl={setAlbumArtUrl}
+        // albumReleaseDate={albumReleaseDate}
+        // setAlbumReleaseDate={setAlbumReleaseDate}
+        album={album}
+        setAlbum={setAlbum}
+        today={today}
+        // handleAlbumNameChange={handleAlbumNameChange}
+      />,
+    ]);
+  }, [user, album, today]);
 
   const handleTrackUpload = (e) => {
     const file = e.currentTarget.files[0];
-    // setAlbumTrackFile(file);
-    // debugger;
+    // ATrackFile(file);
     const newTab = (
       <AlbumCreateTrackTab
         trackFileName={file.name}
@@ -62,6 +64,8 @@ const AlbumCreate = ({ user }) => {
 
     setSelectedTabIndex(tabs.length - 1);
   };
+
+  console.log(album);
 
   return (
     <div className="album-create">

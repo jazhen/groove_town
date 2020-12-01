@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const AlbumCreateAlbumTab = ({
   user,
   albumName,
-  formattedDate,
   albumArtUrl,
-  setSelectedTabIndex,
+  albumReleaseDate,
+  // setSelectedTabIndex,
 }) => {
+  const [formattedDate, setFormattedDate] = useState('');
+
+  useEffect(() => {
+    const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+
+    setFormattedDate(
+      new Date(albumReleaseDate).toLocaleDateString('en-US', dateOptions),
+      { timeZone: 'UTC' }
+    );
+  }, [albumReleaseDate]);
+
   return (
     <button
       type="button"
       className="album-create__album-tab"
-      onClick={() => setSelectedTabIndex(0)}
+      // onClick={() => setSelectedTabIndex(0)}
     >
       {albumArtUrl ? (
         <img
