@@ -25,7 +25,7 @@ const receiveSessionErrors = (errors) => {
   };
 };
 
-const clearAllErrors = () => {
+const clearErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS,
   };
@@ -61,6 +61,6 @@ export const demoLogin = () => {
   return login(demoUser);
 };
 
-export const clearErrors = () => (dispatch) => {
-  return dispatch(clearAllErrors());
+export const clearSessionErrors = () => (dispatch) => {
+  return dispatch(clearErrors());
 };

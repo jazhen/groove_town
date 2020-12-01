@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const AlbumCreate = () => {
+const AlbumCreate = ({ userId, createAlbum, nameError, artError }) => {
+  const today = new Date().toISOString().slice(0, 10);
   const [albumName, setAlbumName] = useState('');
-  const [albumReleaseDate, setAlbumReleaseDate] = useState(
-    new Date().toISOString().slice(0, 10)
-  );
-  const [albumArt, setAlbumArt] = useState(null);
+  const [albumReleaseDate, setAlbumReleaseDate] = useState(today);
+  const [albumArtFile, setAlbumArtFile] = useState(null);
+  const [albumArtUrl, setAlbumArtUrl] = useState(null);
 
   const handleAlbumNameChange = (e) => {
     setAlbumName(e.currentTarget.value);
@@ -18,17 +18,27 @@ const AlbumCreate = () => {
   const handleArtUpload = (e) => {
     const file = e.currentTarget.files[0];
     const url = URL.createObjectURL(file);
-    setAlbumArt(url);
+
+    setAlbumArtFile(file);
+    setAlbumArtUrl(url);
   };
 
   const handleArtRemove = () => {
-    setAlbumArt(null);
+    setAlbumArtUrl(null);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert(`album: ${albumName} | release: ${albumReleaseDate}`);
+    const formData = new FormData();
+    formData.append('album[name]', albumName);
+    formData.append('album[user_id]', userId);
+    formData.append('album[release_date]', albumReleaseDate);
+    if (albumArtFile) {
+      formData.append('album[art]', albumArtFile);
+    }
+
+    createAlbum(formData);
   };
 
   return (
@@ -39,23 +49,26 @@ const AlbumCreate = () => {
         onChange={handleAlbumNameChange}
         placeholder="album name"
       />
+      <div>{nameError}</div>
       <label>
         release date:
         <input
           type="date"
+          min="1900-01-01"
+          max={today}
           value={albumReleaseDate}
           onChange={handleAlbumReleaseDateChange}
           placeholder="optional"
         />
       </label>
 
-      {albumArt ? (
+      {albumArtUrl ? (
         <div
           className="album-create__file-input-container
             album-create__file-input-container--file"
         >
           <img
-            src={albumArt}
+            src={albumArtUrl}
             alt="album art"
             className="album-create__file-input-art"
           />
@@ -68,26 +81,29 @@ const AlbumCreate = () => {
           </button>
         </div>
       ) : (
-        <div
-          className="album-create__file-input-container
+        <>
+          <div
+            className="album-create__file-input-container
             album-create__file-input-container--empty"
-        >
-          <input
-            type="file"
-            id="album-create__file-input"
-            className="album-create__file-input"
-            accept="image/jpeg"
-            onChange={handleArtUpload}
-          />
-          <label
-            htmlFor="album-create__file-input"
-            className="album-create__file-label"
           >
-            Upload Album Art
-          </label>
-          <div>1400 x 1400 pixels minimum (bigger is better)</div>
-          <div>.jpg, .gif or .png, 10MB max</div>
-        </div>
+            <input
+              type="file"
+              id="album-create__file-input"
+              className="album-create__file-input"
+              accept="image/jpeg"
+              onChange={handleArtUpload}
+            />
+            <label
+              htmlFor="album-create__file-input"
+              className="album-create__file-label"
+            >
+              Upload Album Art
+            </label>
+            <div>1400 x 1400 pixels minimum (bigger is better)</div>
+            <div>.jpg, .gif or .png, 10MB max</div>
+          </div>
+          <div>{artError}</div>
+        </>
       )}
       <input type="submit" value="Submit" />
     </form>

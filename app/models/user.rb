@@ -12,9 +12,12 @@
 #  updated_at      :datetime         not null
 #
 
-require_relative './models_helpers/check_length_validator.rb'
+require_relative './models_helpers/user/check_length_validator.rb'
 
 class User < ApplicationRecord
+  has_many :albums, dependent: :destroy
+  has_many :tracks, dependent: :destroy
+
   validates :username,
             check_length: { minimum: 3 },
             uniqueness: { case_sensitive: true,
@@ -88,7 +91,4 @@ class User < ApplicationRecord
 
     session_token
   end
-
-  has_many :albums, dependent: :destroy
-  has_many :tracks, dependent: :destroy
 end

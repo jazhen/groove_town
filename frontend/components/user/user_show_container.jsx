@@ -4,8 +4,11 @@ import { fetchUser } from '../../actions/user_actions';
 import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
-const mapStateToProps = ({ entities: { users, albums } }, ownProps) => {
-  const user = users[ownProps.match.params.userId];
+const mapStateToProps = (
+  { entities: { users, albums } },
+  { match: { params } }
+) => {
+  const user = users[params.userId];
 
   const tabs = [
     { title: 'collection', content: '' },

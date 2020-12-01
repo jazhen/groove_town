@@ -15,10 +15,10 @@ class SignUpForm extends React.Component {
   }
 
   componentWillUnmount() {
-    const { errors, clearErrors } = this.props;
+    const { errors, clearSessionErrors } = this.props;
 
     if (Object.keys(errors).length) {
-      clearErrors();
+      clearSessionErrors();
     }
   }
 
