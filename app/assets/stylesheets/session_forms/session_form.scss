@@ -81,7 +81,8 @@
 
 .session-form__other-sessions-span {
   color: #818285;
-  font-size: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .session-form__other-sessions-link {
