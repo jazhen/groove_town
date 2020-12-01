@@ -10,10 +10,10 @@ const AlbumShowDiscography = ({ albums, albumIds }) => {
           {albumIds.map((albumId) => {
             const album = albums[albumId];
             const releaseDate = new Date(album.releaseDate);
-            const options = { month: 'short', year: 'numeric' };
+            const dateOptions = { month: 'short', year: 'numeric' };
             const formattedDate = releaseDate.toLocaleDateString(
               'en-US',
-              options
+              dateOptions
             );
 
             return (

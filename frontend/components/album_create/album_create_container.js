@@ -11,6 +11,7 @@ const mapStateToProps = ({
     users,
     albums,
     tracks,
+    user: users[id],
     userId: id,
     nameError: errors.albums.name,
     artError: errors.albums.art,

@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 
-const AlbumForm = ({ userId, createAlbum, nameError, artError }) => {
-  const today = new Date().toISOString().slice(0, 10);
-  const [albumName, setAlbumName] = useState('');
-  const [albumReleaseDate, setAlbumReleaseDate] = useState(today);
+const AlbumForm = ({
+  userId,
+  createAlbum,
+  nameError,
+  artError,
+  albumName,
+  setAlbumName,
+  albumArtUrl,
+  setAlbumArtUrl,
+  albumReleaseDate,
+  setAlbumReleaseDate,
+  today,
+}) => {
   const [albumArtFile, setAlbumArtFile] = useState(null);
-  const [albumArtUrl, setAlbumArtUrl] = useState(null);
 
   const handleAlbumNameChange = (e) => {
     setAlbumName(e.currentTarget.value);

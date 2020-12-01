@@ -15,3 +15,20 @@
   margin: 1.5rem;
 }
 
+.album-create__album-tab {
+  display: flex;
+}
+
+.album-create__album-tab-art {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.album-create__album-tab-art--file {
+
+}
+
+.album-create__album-tab-art--empty {
+
+}
