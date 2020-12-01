@@ -5,6 +5,7 @@ const AlbumCreate = () => {
   const [albumReleaseDate, setAlbumReleaseDate] = useState(
     new Date().toISOString().slice(0, 10)
   );
+  const [albumArt, setAlbumArt] = useState(null);
 
   const handleAlbumNameChange = (e) => {
     setAlbumName(e.currentTarget.value);
@@ -12,6 +13,16 @@ const AlbumCreate = () => {
 
   const handleAlbumReleaseDateChange = (e) => {
     setAlbumReleaseDate(e.currentTarget.value);
+  };
+
+  const handleArtUpload = (e) => {
+    const file = e.currentTarget.files[0];
+    const url = URL.createObjectURL(file);
+    setAlbumArt(url);
+  };
+
+  const handleArtRemove = () => {
+    setAlbumArt(null);
   };
 
   const handleSubmit = (e) => {
@@ -37,22 +48,47 @@ const AlbumCreate = () => {
           placeholder="optional"
         />
       </label>
-      <div className="album-create__file-input-container">
-        <input
-          type="file"
-          id="album-create__file-input"
-          className="album-create__file-input"
-          accept="audio/mp3"
-        />
-        <label
-          htmlFor="album-create__file-input"
-          className="album-create__file-label"
+
+      {albumArt ? (
+        <div
+          className="album-create__file-input-container
+            album-create__file-input-container--file"
         >
-          Upload Album Art
-        </label>
-        <div>1400 x 1400 pixels minimum (bigger is better)</div>
-        <div>.jpg, .gif or .png, 10MB max</div>
-      </div>
+          <img
+            src={albumArt}
+            alt="album art"
+            className="album-create__file-input-art"
+          />
+          <button
+            type="button"
+            className="album-create__file-input-remove"
+            onClick={handleArtRemove}
+          >
+            <i className="fas fa-times" />
+          </button>
+        </div>
+      ) : (
+        <div
+          className="album-create__file-input-container
+            album-create__file-input-container--empty"
+        >
+          <input
+            type="file"
+            id="album-create__file-input"
+            className="album-create__file-input"
+            accept="image/jpeg"
+            onChange={handleArtUpload}
+          />
+          <label
+            htmlFor="album-create__file-input"
+            className="album-create__file-label"
+          >
+            Upload Album Art
+          </label>
+          <div>1400 x 1400 pixels minimum (bigger is better)</div>
+          <div>.jpg, .gif or .png, 10MB max</div>
+        </div>
+      )}
       <input type="submit" value="Submit" />
     </form>
   );
