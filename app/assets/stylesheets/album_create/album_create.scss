@@ -5,12 +5,17 @@
   width: 100%;
 }
 
-.album-create__tabs {
+.album-create__tabs-container {
   display: flex;
   flex-direction: column;
   flex: 1;
   background-color: #F7F7F7;
   padding: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.album-create__tabs {
+  display: flex;
+  flex-direction: column;
 }
 
 .album-create__active-tab {
@@ -20,7 +25,7 @@
 
 .album-create__album-tab {
   display: flex;
-  padding: .5rem;
+  padding: .5rem 1.5rem .5rem .5rem;
   border: 1px solid gray;
   border-right: none;
 }

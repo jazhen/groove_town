@@ -1,0 +1,65 @@
+@import 'variables';
+
+.album-create__options {
+  color: $dark-gray;
+  font-size: .75rem;
+  margin-right: 1.5rem;
+}
+
+.album-create__options-tabs-title {
+  font-weight: bold;
+}
+
+.album-create__options-add-track {
+  align-items: center;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.album-create__options-add-track-description {
+  margin-left: 1rem;
+}
+
+.album-create__options-add-track-input {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.album-create__options-add-track-label {
+  color: $blue;
+  font-size: 1.5rem;
+}
+
+.album-create__options-add-track-label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.album-create__options-publish-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.album-create__options-publish {
+  border: 1px solid #51924c;
+  width: 100px;
+  height: 2rem;
+  background-color: #0EC200;
+  color: white;
+  font-weight: bold;
+}
+
+.album-create__options-publish:hover {
+  text-decoration: underline;
+}
+
+.album-create__options-cancel {
+  color: $blue;
+}
+
+.album-create__options-cancel:hover {
+  color: $blue;
+  text-decoration: underline;
+}
