@@ -53,9 +53,16 @@ const AlbumCreate = ({ user }) => {
           )}
 
           <div className="album-create__album-tab-description">
-            <div>{albumName || 'Untitled Album'}</div>
-            <div>by {user.band}</div>
-            <div>{formattedDate}</div>
+            <div className="album-create__album-tab-name">
+              {albumName || 'Untitled Album'}
+            </div>
+            <div className="album-create__album-tab-band">
+              by&nbsp;
+              <div className="album-create__album-tab-band-name">
+                {user.band}
+              </div>
+            </div>
+            <div className="album-create__album-tab-date">{formattedDate}</div>
           </div>
         </button>
         <button type="button" onClick={() => setSelectedTab('albumForm')}>
