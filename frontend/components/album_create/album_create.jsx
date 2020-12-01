@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AlbumCreateAlbumTab from './album_create_album_tab';
+import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumForm from './album_form';
+import TrackForm from './track_form';
 
 const AlbumCreate = ({ user }) => {
-  const [selectedTab, setSelectedTab] = useState('albumForm');
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const [albumName, setAlbumName] = useState('');
   const [albumArtUrl, setAlbumArtUrl] = useState(null);
   const today = new Date().toISOString().slice(0, 10);
   const [albumReleaseDate, setAlbumReleaseDate] = useState(today);
+
+  // const [albumTrackFile, setAlbumTrackFile] = useState(null);
 
   const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
   const formattedDate = new Date(albumReleaseDate).toLocaleDateString(
@@ -15,81 +20,59 @@ const AlbumCreate = ({ user }) => {
     dateOptions
   );
 
-  const tabs = {
-    albumForm: (
-      <AlbumForm
-        albumName={albumName}
-        setAlbumName={setAlbumName}
-        albumArtUrl={albumArtUrl}
-        setAlbumArtUrl={setAlbumArtUrl}
-        albumReleaseDate={albumReleaseDate}
-        setAlbumReleaseDate={setAlbumReleaseDate}
-        today={today}
-      />
-    ),
-    // product: <Product />,
-    // contact: <Contact />,
-  };
+  const [tabs, setTabs] = useState([
+    <AlbumCreateAlbumTab
+      user={user}
+      albumName={albumName}
+      formattedDate={formattedDate}
+      albumArtUrl={albumArtUrl}
+      setSelectedTabIndex={setSelectedTabIndex}
+    />,
+  ]);
 
-  const handleTrackUpload = () => {};
+  const [tabsContent, setTabsContent] = useState([
+    <AlbumForm
+      albumName={albumName}
+      setAlbumName={setAlbumName}
+      albumArtUrl={albumArtUrl}
+      setAlbumArtUrl={setAlbumArtUrl}
+      albumReleaseDate={albumReleaseDate}
+      setAlbumReleaseDate={setAlbumReleaseDate}
+      today={today}
+    />,
+  ]);
+
+  const handleTrackUpload = (e) => {
+    const file = e.currentTarget.files[0];
+    // setAlbumTrackFile(file);
+    // debugger;
+    const newTab = (
+      <AlbumCreateTrackTab
+        trackFileName={file.name}
+        setSelectedTabIndex={setSelectedTabIndex}
+        numTabs={tabs.length}
+      />
+    );
+    tabs.push(newTab);
+    setTabs(tabs);
+
+    const newTrackForm = <TrackForm />;
+    tabsContent.push(newTrackForm);
+    setTabsContent(tabsContent);
+
+    setSelectedTabIndex(tabs.length - 1);
+  };
 
   return (
     <div className="album-create">
       <div className="album-create__tabs-container">
         <div className="album-create__tabs">
-          <button
-            type="button"
-            className="album-create__album-tab"
-            onClick={() => setSelectedTab('albumForm')}
-          >
-            {albumArtUrl ? (
-              <img
-                className="album-create__album-tab-art
-                album-create__album-tab-art--file"
-                src={albumArtUrl}
-                alt="album art"
-              />
-            ) : (
-              <div
-                className="album-create__album-tab-art
-                album-create__album-tab-art--empty"
-              />
-            )}
-
-            <div className="album-create__album-tab-description">
-              <div className="album-create__album-tab-name">
-                {albumName || 'Untitled Album'}
-              </div>
-              <div className="album-create__album-tab-band">
-                by&nbsp;
-                <div className="album-create__album-tab-band-name">
-                  {user.band}
-                </div>
-              </div>
-              <div className="album-create__album-tab-date">
-                {formattedDate}
-              </div>
-            </div>
-          </button>
-          <button type="button" onClick={() => setSelectedTab('albumForm')}>
-            albumForm
-          </button>
-          <button type="button" onClick={() => setSelectedTab('albumForm')}>
-            albumForm
-          </button>
+          {tabs.map((tab, index) => {
+            return tabs[index];
+          })}
         </div>
         <div className="album-create__options">
           <div className="album-create__options-tabs-title">TRACKS</div>
-
-          {/* <div className="album-create__options-add-track">
-            <div className="album-create__options-add-track-input">
-              add track
-            </div>
-            <div className="album-create__options-add-track-description">
-              291MB max per track, lossless .wav, .aif or .flac
-            </div>
-          </div> */}
-
           <div className="album-create__options-add-track">
             <input
               type="file"
@@ -119,7 +102,9 @@ const AlbumCreate = ({ user }) => {
           </div>
         </div>
       </div>
-      <div className="album-create__active-tab">{tabs[selectedTab]}</div>
+      <div className="album-create__active-tab">
+        {tabsContent[selectedTabIndex]}
+      </div>
     </div>
   );
 };

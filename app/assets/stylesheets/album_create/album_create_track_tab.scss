@@ -1,0 +1,29 @@
+@import 'variables';
+
+.album-create__track-tab {
+  display: flex;
+  padding: .5rem 1.5rem .5rem .5rem;
+  border: 1px solid gray;
+  border-right: none;
+}
+
+.album-create__track-num {
+  width: 80px;
+  height: 60px;
+  margin-right: 1rem;
+  text-align: right;
+  color: $mid-gray;
+}
+
+.album-create__track-description {
+  display: flex;
+  flex-direction: column;
+  font-size: .75rem;
+  text-align: left;
+  color: $mid-gray;
+}
+
+.album-create__track-name {
+  color: $light-black;
+  font-size: 1rem;
+}
