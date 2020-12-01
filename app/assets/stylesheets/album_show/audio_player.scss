@@ -12,7 +12,7 @@
 
 .album-player__play-button {
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   font-size: 1.5rem;
   margin-right: .75rem;
@@ -61,7 +61,7 @@
 .album-player__seek-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   cursor: pointer;
   height: .9rem;
@@ -71,7 +71,7 @@
 
 .album-player__seek-bar::-moz-range-thumb {
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   height: .75rem;
   cursor: pointer;
@@ -80,7 +80,7 @@
 
 .album-player__seek-bar::-ms-thumb {
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   cursor: pointer;
   height: .75rem;
@@ -89,7 +89,7 @@
 
 .album-player__seek-bar::-webkit-slider-runnable-track {
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   height: .75rem;
   width: 100%;
@@ -97,7 +97,7 @@
 
 .album-player__seek-bar::-moz-range-track {
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   height: .75rem;
   width: 100%;
@@ -105,7 +105,7 @@
 
 .album-player__seek-bar::-ms-track {
   background-color: $white;
-  border: 1px solid #b9b9b9;
+  border: 1px solid $mid-gray;
   border-radius: 2px;
   height: .75rem;
   width: 100%;

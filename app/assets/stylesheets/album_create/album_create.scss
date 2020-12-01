@@ -1,41 +1,17 @@
-@import 'variables';
-
 .album-create {
   display: flex;
+  width: 100%;
+}
+
+.album-create__tabs {
+  display: flex;
   flex-direction: column;
+  flex: 1;
+  background-color: #F7F7F7;
 }
 
-.album-create__file-input {
-  height: 0;
-  overflow: hidden;
-  width: 0;
+.album-create__active-tab {
+  flex: 1;
+  margin: 1.5rem;
 }
 
-.album-create__file-label {
-  color: $blue;
-}
-
-.album-create__file-label:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.album-create__file-input-container {
-  width: 200px;
-  height: 200px;
-}
-
-.album-create__file-input-container--empty {
-  border: 1px dashed #777171;
-}
-
-.album-create__file-input-art {
-  width: 200px;
-  height: 200px;
-  position: absolute;
-}
-
-.album-create__file-input-remove {
-  position: relative;
-  background-color: pink;
-}
