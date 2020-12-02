@@ -86,6 +86,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
           setTracks={setTracks}
           tabIndex={i}
           errors={albumErrors}
+          clearAlbumErrors={clearAlbumErrors}
         />
       );
     }
@@ -121,6 +122,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
         setTracks={setTracks}
         tabIndex={tabs.length - 1}
         errors={albumErrors}
+        clearAlbumErrors={clearAlbumErrors}
       />
     );
 

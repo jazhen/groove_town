@@ -12,11 +12,14 @@
 #  duration   :string           not null
 #
 class Track < ApplicationRecord
-  validates :name, :ord, :user_id, presence: true
-
   belongs_to :user
   belongs_to :album
   has_one_attached :audio, dependent: :destroy
+
+  validates :ord, :user_id, presence: true
+  validates :name, length: { in: 1..100,
+                             too_short: 'Please enter a track name.',
+                             too_long: 'Track name is too long (100 characters max).' }
 
   validate :ensure_audio
 

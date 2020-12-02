@@ -1,7 +1,15 @@
 import React from 'react';
 
-const TrackForm = ({ tracks, setTracks, tabIndex, errors }) => {
+const TrackForm = ({
+  tracks,
+  setTracks,
+  tabIndex,
+  errors,
+  clearAlbumErrors,
+}) => {
   const handleTrackNameChange = (e) => {
+    clearAlbumErrors(errors, `tracks[${tabIndex}].name`);
+
     setTracks([
       ...tracks.slice(0, tabIndex),
       { ...tracks[tabIndex], name: e.currentTarget.value },
@@ -10,15 +18,25 @@ const TrackForm = ({ tracks, setTracks, tabIndex, errors }) => {
   };
 
   return (
-    <div className="album-form">
+    <div className="track-form">
       <input
         type="text"
-        className="album-form__name"
+        className={`track-form__name${
+          errors[`tracks[${tabIndex}].name`] &&
+          errors[`tracks[${tabIndex}].name`].length
+            ? ' track-form__input-error'
+            : ''
+        }`}
         value={tracks[tabIndex].name}
         onChange={handleTrackNameChange}
         placeholder="track name"
       />
-      <div>{Object.keys(errors).length ? errors.name[0] : null}</div>
+      <div className="track-form__error">
+        {errors[`tracks[${tabIndex}].name`] &&
+        errors[`tracks[${tabIndex}].name`].length
+          ? errors[`tracks[${tabIndex}].name`][0]
+          : null}
+      </div>
     </div>
   );
 };
