@@ -37,6 +37,20 @@
   width: 200px;
 }
 
+.user-albums__album-update-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-albums__album-update {
+  background-color: turquoise;
+}
+
+.user-albums__album-view {
+  background-color: turquoise;
+
+}
+
 @media only screen
 and (min-width: 576px) {
   .user-albums--min {
