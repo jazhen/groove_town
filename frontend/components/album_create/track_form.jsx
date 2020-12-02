@@ -1,17 +1,25 @@
 import React from 'react';
 
-const TrackForm = ({ trackName, handleTrackNameChange }) => {
+const TrackForm = ({ tracks, setTracks, tabIndex }) => {
+  const handleTrackNameChange = (e) => {
+    setTracks([
+      ...tracks.slice(0, tabIndex),
+      { ...tracks[tabIndex], name: e.currentTarget.value },
+      ...tracks.slice(tracks.length),
+    ]);
+  };
+
   return (
-    <form className="album-form" onSubmit="">
+    <div className="album-form">
       <input
         type="text"
         className="album-form__name"
-        value={trackName}
+        value={tracks[tabIndex].name}
         onChange={handleTrackNameChange}
         placeholder="track name"
       />
       {/* <div>{nameError}</div> */}
-    </form>
+    </div>
   );
 };
 

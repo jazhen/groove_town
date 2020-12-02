@@ -3,18 +3,19 @@ import { clearAlbumErrors, createAlbum } from '../../actions/album_actions';
 import AlbumCreate from './album_create';
 
 const mapStateToProps = ({
-  entities: { users, albums, tracks },
-  errors,
+  entities: { users },
+  // entities: { users, albums, tracks },
+  // errors,
   session: { id },
 }) => {
   return {
-    users,
-    albums,
-    tracks,
+    // users,
+    // albums,
+    // tracks,
     user: users[id],
-    userId: id,
-    nameError: errors.albums.name,
-    artError: errors.albums.art,
+    // userId: id,
+    // nameError: errors.albums.name,
+    // artError: errors.albums.art,
   };
 };
 

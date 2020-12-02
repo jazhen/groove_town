@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 const AlbumCreateAlbumTab = ({
-  user,
-  albumName,
-  albumArtUrl,
-  albumReleaseDate,
-  setSelectedTabIndex,
+  band,
+  name,
+  artUrl,
+  releaseDate,
+  setSelectedTab,
 }) => {
   const [formattedDate, setFormattedDate] = useState('');
 
@@ -13,22 +13,22 @@ const AlbumCreateAlbumTab = ({
     const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
 
     setFormattedDate(
-      new Date(albumReleaseDate).toLocaleDateString('en-US', dateOptions),
+      new Date(releaseDate).toLocaleDateString('en-US', dateOptions),
       { timeZone: 'UTC' }
     );
-  }, [albumReleaseDate]);
+  }, [releaseDate]);
 
   return (
     <button
       type="button"
       className="album-create__album-tab"
-      onClick={() => setSelectedTabIndex(0)}
+      onClick={() => setSelectedTab(0)}
     >
-      {albumArtUrl ? (
+      {artUrl ? (
         <img
           className="album-create__album-tab-art
         album-create__album-tab-art--file"
-          src={albumArtUrl}
+          src={artUrl}
           alt="album art"
         />
       ) : (
@@ -40,11 +40,11 @@ const AlbumCreateAlbumTab = ({
 
       <div className="album-create__album-tab-description">
         <div className="album-create__album-tab-name">
-          {albumName || 'Untitled Album'}
+          {name || 'Untitled Album'}
         </div>
         <div className="album-create__album-tab-band">
           by&nbsp;
-          <div className="album-create__album-tab-band-name">{user.band}</div>
+          <div className="album-create__album-tab-band-name">{band}</div>
         </div>
         <div className="album-create__album-tab-date">{formattedDate}</div>
       </div>

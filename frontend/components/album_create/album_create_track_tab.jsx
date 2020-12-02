@@ -1,23 +1,18 @@
 import React from 'react';
 
-const AlbumCreateTrackTab = ({
-  trackName,
-  trackFileName,
-  setSelectedTabIndex,
-  tabIndex,
-}) => {
+const AlbumCreateTrackTab = ({ name, fileName, tabIndex, setSelectedTab }) => {
   return (
     <button
       type="button"
       className="album-create__track-tab"
-      onClick={() => setSelectedTabIndex(tabIndex)}
+      onClick={() => setSelectedTab(tabIndex)}
     >
       <div className="album-create__track-num">{tabIndex}</div>
       <div className="album-create__track-description">
         <div className="album-create__track-name">
-          {trackName ? 'Untitled Track' : trackName}
+          {name || 'Untitled Track'}
         </div>
-        <div className="album-create__track-file-name">{trackFileName}</div>
+        <div className="album-create__track-file-name">{fileName}</div>
       </div>
     </button>
   );

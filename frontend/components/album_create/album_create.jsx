@@ -7,6 +7,10 @@ import TrackForm from './track_form';
 
 const AlbumCreate = ({ user }) => {
   const today = new Date().toISOString().slice(0, 10);
+
+  // const [album, setAlbum] = useState({ name: '' });
+  const [tracks, setTracks] = useState([]);
+
   const [album, setAlbum] = useState({
     name: '',
     releaseDate: today,
@@ -14,43 +18,93 @@ const AlbumCreate = ({ user }) => {
     artUrl: null,
   });
 
-  const [tracks, setTracks] = useState([]);
-  const [tabs, setTabs] = useState([]);
-  const [tabsContent, setTabsContent] = useState([]);
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const [tabs, setTabs] = useState([
+    <AlbumCreateAlbumTab
+      band={user.band}
+      name={album.name}
+      setSelectedTab={setSelectedTab}
+    />,
+  ]);
+
+  const [tabsContent, setTabsContent] = useState([
+    <AlbumForm album={album} setAlbum={setAlbum} />,
+  ]);
 
   useEffect(() => {
-    setTabs([
+    const updatedTabs = [
       <AlbumCreateAlbumTab
-        user={user}
-        albumName={album.name}
-        albumArtUrl={album.artUrl}
-        albumReleaseDate={album.releaseDate}
-        setSelectedTabIndex={setSelectedTabIndex}
+        band={user.band}
+        name={album.name}
+        artUrl={album.artUrl}
+        releaseDate={album.releaseDate}
+        setSelectedTab={setSelectedTab}
       />,
-    ]);
-    setTabsContent([
+    ];
+
+    for (let i = 0; i < tabs.length - 1; i++) {
+      updatedTabs.push(
+        <AlbumCreateTrackTab
+          name={tracks[i].name}
+          tracks={tracks}
+          fileName={tracks[i].fileName}
+          tabIndex={i + 1}
+          setSelectedTab={setSelectedTab}
+        />
+      );
+    }
+
+    setTabs(updatedTabs);
+  }, [user, album, tracks, tabs.length]);
+
+  useEffect(() => {
+    const updatedTabsContent = [
       <AlbumForm album={album} setAlbum={setAlbum} today={today} />,
-    ]);
-  }, [user, album, today]);
+    ];
+
+    for (let i = 0; i < tabs.length - 1; i++) {
+      updatedTabsContent.push(
+        <TrackForm
+          name={tracks[i].name}
+          tracks={tracks}
+          setTracks={setTracks}
+          tabIndex={i}
+        />
+      );
+    }
+
+    setTabsContent(updatedTabsContent);
+  }, [album, tracks, tabs.length, today]);
 
   const handleTrackUpload = (e) => {
     const file = e.currentTarget.files[0];
-    // ATrackFile(file);
+
+    const newTracks = [...tracks, { name: '', fileName: file.name }];
+    setTracks(newTracks);
+
     const newTab = (
       <AlbumCreateTrackTab
-        trackFileName={file.name}
-        setSelectedTabIndex={setSelectedTabIndex}
+        name=""
+        tracks={newTracks}
+        fileName={file.name}
         tabIndex={tabs.length}
+        setSelectedTab={setSelectedTab}
       />
     );
     setTabs([...tabs, newTab]);
 
-    const newTrackForm = <TrackForm />;
-    setTabsContent([...tabsContent, newTrackForm]);
+    const newTrackForm = (
+      <TrackForm
+        name=""
+        tracks={newTracks}
+        setTracks={setTracks}
+        tabIndex={tabs.length - 1}
+      />
+    );
 
-    setSelectedTabIndex(tabs.length - 1);
-    setTracks([...tracks, { name: '' }]);
+    setSelectedTab(tabs.length);
+    setTabsContent([...tabsContent, newTrackForm]);
   };
 
   return (
@@ -58,7 +112,8 @@ const AlbumCreate = ({ user }) => {
       <div className="album-create__tabs-container">
         <div className="album-create__tabs">
           {tabs.map((tab, index) => {
-            return tabs[index];
+            // eslint-disable-next-line react/no-array-index-key
+            return <React.Fragment key={index}>{tabs[index]}</React.Fragment>;
           })}
         </div>
         <div className="album-create__options">
@@ -92,9 +147,7 @@ const AlbumCreate = ({ user }) => {
           </div>
         </div>
       </div>
-      <div className="album-create__active-tab">
-        {tabsContent[selectedTabIndex]}
-      </div>
+      <div className="album-create__active-tab">{tabsContent[selectedTab]}</div>
     </div>
   );
 };

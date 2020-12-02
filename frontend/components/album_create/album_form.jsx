@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AlbumForm = ({ album, setAlbum, today }) => {
-  const handleAlbumNameChange = (e) => {
+  const handleNameChange = (e) => {
     setAlbum({ ...album, name: e.currentTarget.value });
   };
 
@@ -35,7 +35,7 @@ const AlbumForm = ({ album, setAlbum, today }) => {
   // };
 
   return (
-    <form
+    <div
       className="album-form"
       // onSubmit={handleSubmit}
     >
@@ -43,7 +43,7 @@ const AlbumForm = ({ album, setAlbum, today }) => {
         type="text"
         className="album-form__name"
         value={album.name}
-        onChange={handleAlbumNameChange}
+        onChange={handleNameChange}
         placeholder="album name"
       />
       {/* <div>{nameError}</div> */}
@@ -107,7 +107,7 @@ const AlbumForm = ({ album, setAlbum, today }) => {
         </>
       )}
       <input type="submit" value="Submit" />
-    </form>
+    </div>
   );
 };
 
