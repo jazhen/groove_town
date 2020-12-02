@@ -11,7 +11,7 @@ const mapStateToProps = ({ entities: { users }, errors, session: { id } }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   createAlbum: (album) => dispatch(createAlbum(album)),
-  clearAlbumErrors: () => dispatch(clearAlbumErrors),
+  clearAlbumErrors: (errors, key) => dispatch(clearAlbumErrors(errors, key)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumCreate);

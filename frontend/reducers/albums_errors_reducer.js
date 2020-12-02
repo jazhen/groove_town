@@ -10,7 +10,7 @@ const albumsErrorsReducer = (prevState = {}, action) => {
     case RECEIVE_ALBUM_ERRORS:
       return action.errors;
     case CLEAR_ALBUM_ERRORS:
-      return {};
+      return { ...action.errors, [action.key]: [] };
     default:
       return prevState;
   }

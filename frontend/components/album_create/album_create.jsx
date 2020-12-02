@@ -5,7 +5,7 @@ import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumForm from './album_form';
 import TrackForm from './track_form';
 
-const AlbumCreate = ({ user, createAlbum, albumErrors }) => {
+const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
   const today = new Date().toISOString().slice(0, 10);
 
   const [tracks, setTracks] = useState([]);
@@ -30,7 +30,12 @@ const AlbumCreate = ({ user, createAlbum, albumErrors }) => {
   ]);
 
   const [tabsContent, setTabsContent] = useState([
-    <AlbumForm album={album} setAlbum={setAlbum} errors={albumErrors} />,
+    <AlbumForm
+      album={album}
+      setAlbum={setAlbum}
+      errors={albumErrors}
+      clearAlbumErrors={clearAlbumErrors}
+    />,
   ]);
 
   useEffect(() => {
@@ -69,6 +74,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors }) => {
         setAlbum={setAlbum}
         today={today}
         errors={albumErrors}
+        clearAlbumErrors={clearAlbumErrors}
       />,
     ];
 
@@ -85,7 +91,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors }) => {
     }
 
     setTabsContent(updatedTabsContent);
-  }, [album, tracks, tabs.length, today, albumErrors]);
+  }, [album, tracks, tabs.length, today, albumErrors, clearAlbumErrors]);
 
   const handleTrackUpload = (e) => {
     const file = e.currentTarget.files[0];

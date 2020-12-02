@@ -1,7 +1,8 @@
 import React from 'react';
 
-const AlbumForm = ({ album, setAlbum, today, errors }) => {
+const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
   const handleNameChange = (e) => {
+    clearAlbumErrors(errors, 'name');
     setAlbum({ ...album, name: e.currentTarget.value });
   };
 
@@ -13,6 +14,7 @@ const AlbumForm = ({ album, setAlbum, today, errors }) => {
     const file = e.currentTarget.files[0];
     const url = URL.createObjectURL(file);
 
+    clearAlbumErrors(errors, 'art');
     setAlbum({ ...album, artFile: file, artUrl: url });
   };
 
@@ -25,14 +27,14 @@ const AlbumForm = ({ album, setAlbum, today, errors }) => {
       <input
         type="text"
         className={`album-form__name${
-          Object.keys(errors).length ? ' album-form__input-error' : ''
+          errors.name && errors.name.length ? ' album-form__input-error' : ''
         }`}
         value={album.name}
         onChange={handleNameChange}
         placeholder="album name"
       />
       <div className="album-form__error">
-        {Object.keys(errors).length ? errors.name[0] : null}
+        {errors.name && errors.name.length ? errors.name[0] : null}
       </div>
       <label className="album-form__date-label">
         release date:
@@ -91,7 +93,7 @@ const AlbumForm = ({ album, setAlbum, today, errors }) => {
             </div>
           </div>
           <div className="album-form__error">
-            {Object.keys(errors).length ? errors.art[0] : null}
+            {errors.art && errors.art.length ? errors.art[0] : null}
           </div>
         </>
       )}
