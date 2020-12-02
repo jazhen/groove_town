@@ -10,11 +10,10 @@ const AlbumShowDiscography = ({ albums, albumIds }) => {
           {albumIds.map((albumId) => {
             const album = albums[albumId];
             const releaseDate = new Date(album.releaseDate);
-            const dateOptions = { month: 'short', year: 'numeric' };
-            const formattedDate = releaseDate.toLocaleDateString(
-              'en-US',
-              dateOptions
-            );
+            const formattedDate = releaseDate.toLocaleDateString('en-US', {
+              month: 'short',
+              year: 'numeric',
+            });
 
             return (
               <li key={albumId} className="album-show-discography__list-item">

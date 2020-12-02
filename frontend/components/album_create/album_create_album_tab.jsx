@@ -10,11 +10,15 @@ const AlbumCreateAlbumTab = ({
   const [formattedDate, setFormattedDate] = useState('');
 
   useEffect(() => {
-    const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+    // const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
 
     setFormattedDate(
-      new Date(releaseDate).toLocaleDateString('en-US', dateOptions),
-      { timeZone: 'UTC' }
+      new Date(releaseDate).toLocaleDateString('en-US', {
+        timeZone: 'UTC',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })
     );
   }, [releaseDate]);
 
