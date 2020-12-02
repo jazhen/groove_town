@@ -78,7 +78,7 @@ const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
               type="file"
               id="album-form__file-input"
               className="album-form__file-input"
-              accept="image/jpeg"
+              accept="image/jpeg, image/png"
               onChange={handleArtUpload}
             />
             <label
@@ -92,11 +92,11 @@ const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
               <div>.jpg or .png, 5MB max</div>
             </div>
           </div>
-          <div className="album-form__error">
-            {errors.art && errors.art.length ? errors.art[0] : null}
-          </div>
         </>
       )}
+      <div className="album-form__error">
+        {errors.art && errors.art.length ? errors.art[0] : null}
+      </div>
     </div>
   );
 };

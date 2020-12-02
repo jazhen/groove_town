@@ -9,6 +9,7 @@
 #  updated_at   :datetime         not null
 #  release_date :datetime         not null
 #
+
 class Album < ApplicationRecord
   has_one_attached :art, dependent: :destroy
   belongs_to :user
@@ -21,11 +22,21 @@ class Album < ApplicationRecord
                              too_short: 'Please enter an album name.',
                              too_long: 'Album name is too long (100 characters max).' }
 
-  validate :ensure_art
+  validate :validate_art
 
   validates_associated :tracks
 
-  def ensure_art
-    errors[:art] << 'Please add cover art for this album.' unless art.attached?
+  def validate_art
+    if art.attached?
+      if art.blob.content_type.includes['image/jpeg', 'image/png']
+        errors[:art] << 'File is not of type .jpg or .png.'
+      elsif art.blob.byte_size > 5_000_000
+        errors[:art] << 'File size is larger than 5MB.'
+        # elsif art.metadata['width'].between(1, 10)
+      end
+      art.purge
+    else
+      errors[:art] << 'Please add cover art for this album.'
+    end
   end
 end

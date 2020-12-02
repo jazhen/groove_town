@@ -181,7 +181,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
               add track
             </label>
             <div className="album-create__options-add-track-description">
-              1911B max per track, lossless .wav, .aif or .flac
+              10MB max per track, .mp3 only
             </div>
           </div>
 

@@ -21,9 +21,18 @@ class Track < ApplicationRecord
                              too_short: 'Please enter a track name.',
                              too_long: 'Track name is too long (100 characters max).' }
 
-  validate :ensure_audio
+  validate :validate_audio
 
-  def ensure_audio
-    errors[:audio] << 'Please add audio for this album.' unless audio.attached?
+  def validate_audio
+    if audio.attached?
+      if audio.blob.byte_size > 10_000_000
+        errors[:errors] << 'File size is larger than 10MB.'
+      elsif audio.blob.content_type.includes['audio/mpeg', 'audio/mp3']
+        errors[:errors] << 'File is not of type .mp3.'
+      end
+      audio.purge
+    else
+      errors[:errors] << 'Please add audio for this album.'
+    end
   end
 end
