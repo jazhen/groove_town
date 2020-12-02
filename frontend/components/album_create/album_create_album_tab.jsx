@@ -5,6 +5,8 @@ const AlbumCreateAlbumTab = ({
   name,
   artUrl,
   releaseDate,
+  tabIndex,
+  selectedTab,
   setSelectedTab,
 }) => {
   const [formattedDate, setFormattedDate] = useState('');
@@ -21,36 +23,42 @@ const AlbumCreateAlbumTab = ({
   }, [releaseDate]);
 
   return (
-    <button
-      type="button"
-      className="album-create__album-tab"
-      onClick={() => setSelectedTab(0)}
-    >
-      {artUrl ? (
-        <img
-          className="album-create__album-tab-art
+    <>
+      <button
+        type="button"
+        // className="album-create__album-tab"
+        className={`album-create__album-tab${
+          tabIndex === selectedTab ? ' album-create__active-tab' : ''
+        }`}
+        onClick={() => setSelectedTab(0)}
+      >
+        {artUrl ? (
+          <img
+            className="album-create__album-tab-art
         album-create__album-tab-art--file"
-          src={artUrl}
-          alt="album art"
-        />
-      ) : (
-        <div
-          className="album-create__album-tab-art
+            src={artUrl}
+            alt="album art"
+          />
+        ) : (
+          <div
+            className="album-create__album-tab-art
         album-create__album-tab-art--empty"
-        />
-      )}
+          />
+        )}
 
-      <div className="album-create__album-tab-description">
-        <div className="album-create__album-tab-name">
-          {name || 'Untitled Album'}
+        <div className="album-create__album-tab-description">
+          <div className="album-create__album-tab-name">
+            {name || 'Untitled Album'}
+          </div>
+          <div className="album-create__album-tab-band">
+            by&nbsp;
+            <div className="album-create__album-tab-band-name">{band}</div>
+          </div>
+          <div className="album-create__album-tab-date">{formattedDate}</div>
         </div>
-        <div className="album-create__album-tab-band">
-          by&nbsp;
-          <div className="album-create__album-tab-band-name">{band}</div>
-        </div>
-        <div className="album-create__album-tab-date">{formattedDate}</div>
-      </div>
-    </button>
+      </button>
+      <div className="album-create__options-tabs-title">TRACKS</div>
+    </>
   );
 };
 

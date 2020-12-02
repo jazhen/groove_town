@@ -18,7 +18,7 @@ class Track < ApplicationRecord
   belongs_to :album
   has_one_attached :audio, dependent: :destroy
 
-  # validate :ensure_audio
+  validate :ensure_audio
 
   def ensure_audio
     errors[:audio] << 'Please add audio for this album.' unless audio.attached?

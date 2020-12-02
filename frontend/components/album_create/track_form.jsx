@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TrackForm = ({ tracks, setTracks, tabIndex }) => {
+const TrackForm = ({ tracks, setTracks, tabIndex, errors }) => {
   const handleTrackNameChange = (e) => {
     setTracks([
       ...tracks.slice(0, tabIndex),
@@ -18,7 +18,7 @@ const TrackForm = ({ tracks, setTracks, tabIndex }) => {
         onChange={handleTrackNameChange}
         placeholder="track name"
       />
-      {/* <div>{nameError}</div> */}
+      <div>{Object.keys(errors).length ? errors.name[0] : null}</div>
     </div>
   );
 };

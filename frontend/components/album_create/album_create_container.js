@@ -2,20 +2,10 @@ import { connect } from 'react-redux';
 import { clearAlbumErrors, createAlbum } from '../../actions/album_actions';
 import AlbumCreate from './album_create';
 
-const mapStateToProps = ({
-  entities: { users },
-  // entities: { users, albums, tracks },
-  // errors,
-  session: { id },
-}) => {
+const mapStateToProps = ({ entities: { users }, errors, session: { id } }) => {
   return {
-    // users,
-    // albums,
-    // tracks,
     user: users[id],
-    // userId: id,
-    // nameError: errors.albums.name,
-    // artError: errors.albums.art,
+    albumErrors: errors.albums,
   };
 };
 

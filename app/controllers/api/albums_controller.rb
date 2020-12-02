@@ -36,7 +36,7 @@ class Api::AlbumsController < ApplicationController
     if @album.save
       render :show
     else
-      # puts @album.errors.messages
+      puts @album.errors.messages
       render json: @album.errors.messages, status: 409
     end
   end

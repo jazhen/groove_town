@@ -9,7 +9,6 @@
   height: 3rem;
   border: 1px solid $mid-gray;
   padding: 0 1rem;
-  margin-bottom: 1.5rem;
   color: $mid-gray;
   font-weight: 500;
 }
@@ -21,8 +20,7 @@
 .album-form__date-label {
   padding-bottom: 1.5rem;
   border-bottom: 1px dotted $mid-gray;
-  margin-bottom: 1.5rem;
-  font-size: .75rem;
+  margin: 0 0 2rem 0;
   color: $light-black;
 }
 
@@ -53,8 +51,8 @@
 }
 
 .album-form__file-input-container {
-  width: 200px;
-  height: 200px;
+  width: 600px;
+  height: 600px;
 }
 
 .album-form__file-input-container--empty {
@@ -85,8 +83,8 @@
 }
 
 .album-form__file-input-art {
-  width: 200px;
-  height: 200px;
+  width: 600px;
+  height: 600px;
   position: absolute;
 }
 
@@ -102,4 +100,16 @@
   height: 24px;
   justify-content: center;
   align-items: center;
+}
+
+.album-form__error {
+  font-size: .75rem;
+  color: $red;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.album-form__input-error {
+  border: 1px solid $red;
 }

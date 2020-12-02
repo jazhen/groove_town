@@ -1,10 +1,18 @@
 import React from 'react';
 
-const AlbumCreateTrackTab = ({ name, fileName, tabIndex, setSelectedTab }) => {
+const AlbumCreateTrackTab = ({
+  name,
+  fileName,
+  tabIndex,
+  selectedTab,
+  setSelectedTab,
+}) => {
   return (
     <button
       type="button"
-      className="album-create__track-tab"
+      className={`album-create__track-tab${
+        tabIndex === selectedTab ? ' album-create__active-tab' : ''
+      }`}
       onClick={() => setSelectedTab(tabIndex)}
     >
       <div className="album-create__track-num">{tabIndex}</div>

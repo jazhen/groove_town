@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AlbumForm = ({ album, setAlbum, today }) => {
+const AlbumForm = ({ album, setAlbum, today, errors }) => {
   const handleNameChange = (e) => {
     setAlbum({ ...album, name: e.currentTarget.value });
   };
@@ -24,12 +24,16 @@ const AlbumForm = ({ album, setAlbum, today }) => {
     <div className="album-form">
       <input
         type="text"
-        className="album-form__name"
+        className={`album-form__name${
+          Object.keys(errors).length ? ' album-form__input-error' : ''
+        }`}
         value={album.name}
         onChange={handleNameChange}
         placeholder="album name"
       />
-      {/* <div>{nameError}</div> */}
+      <div className="album-form__error">
+        {Object.keys(errors).length ? errors.name[0] : null}
+      </div>
       <label className="album-form__date-label">
         release date:
         <input
@@ -86,10 +90,11 @@ const AlbumForm = ({ album, setAlbum, today }) => {
               <div>.jpg or .png, 5MB max</div>
             </div>
           </div>
-          {/* <div>{artError}</div> */}
+          <div className="album-form__error">
+            {Object.keys(errors).length ? errors.art[0] : null}
+          </div>
         </>
       )}
-      <input type="submit" value="Submit" />
     </div>
   );
 };

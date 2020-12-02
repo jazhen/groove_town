@@ -3,7 +3,13 @@
 .album-create__track-tab {
   display: flex;
   padding: .5rem 1.5rem .5rem .5rem;
-  border: 1px solid gray;
+  border: 1px dotted $mid-gray;
+  border-right: none;
+}
+
+.album-create__active-tab {
+  background-color: $white;
+  border: 1px solid #ddd;
   border-right: none;
 }
 

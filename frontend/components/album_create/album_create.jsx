@@ -5,7 +5,7 @@ import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumForm from './album_form';
 import TrackForm from './track_form';
 
-const AlbumCreate = ({ user, createAlbum }) => {
+const AlbumCreate = ({ user, createAlbum, albumErrors }) => {
   const today = new Date().toISOString().slice(0, 10);
 
   const [tracks, setTracks] = useState([]);
@@ -23,12 +23,14 @@ const AlbumCreate = ({ user, createAlbum }) => {
     <AlbumCreateAlbumTab
       band={user.band}
       name={album.name}
+      tabIndex={0}
+      selectedTab={selectedTab}
       setSelectedTab={setSelectedTab}
     />,
   ]);
 
   const [tabsContent, setTabsContent] = useState([
-    <AlbumForm album={album} setAlbum={setAlbum} />,
+    <AlbumForm album={album} setAlbum={setAlbum} errors={albumErrors} />,
   ]);
 
   useEffect(() => {
@@ -38,6 +40,8 @@ const AlbumCreate = ({ user, createAlbum }) => {
         name={album.name}
         artUrl={album.artUrl}
         releaseDate={album.releaseDate}
+        tabIndex={0}
+        selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />,
     ];
@@ -49,17 +53,23 @@ const AlbumCreate = ({ user, createAlbum }) => {
           tracks={tracks}
           fileName={tracks[i].fileName}
           tabIndex={i + 1}
+          selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
         />
       );
     }
 
     setTabs(updatedTabs);
-  }, [user, album, tracks, tabs.length]);
+  }, [user, album, tracks, tabs.length, selectedTab]);
 
   useEffect(() => {
     const updatedTabsContent = [
-      <AlbumForm album={album} setAlbum={setAlbum} today={today} />,
+      <AlbumForm
+        album={album}
+        setAlbum={setAlbum}
+        today={today}
+        errors={albumErrors}
+      />,
     ];
 
     for (let i = 0; i < tabs.length - 1; i++) {
@@ -69,12 +79,13 @@ const AlbumCreate = ({ user, createAlbum }) => {
           tracks={tracks}
           setTracks={setTracks}
           tabIndex={i}
+          errors={albumErrors}
         />
       );
     }
 
     setTabsContent(updatedTabsContent);
-  }, [album, tracks, tabs.length, today]);
+  }, [album, tracks, tabs.length, today, albumErrors]);
 
   const handleTrackUpload = (e) => {
     const file = e.currentTarget.files[0];
@@ -91,6 +102,7 @@ const AlbumCreate = ({ user, createAlbum }) => {
         tracks={newTracks}
         fileName={file.name}
         tabIndex={tabs.length}
+        selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
     );
@@ -102,6 +114,7 @@ const AlbumCreate = ({ user, createAlbum }) => {
         tracks={newTracks}
         setTracks={setTracks}
         tabIndex={tabs.length - 1}
+        errors={albumErrors}
       />
     );
 
@@ -145,7 +158,6 @@ const AlbumCreate = ({ user, createAlbum }) => {
           })}
         </div>
         <div className="album-create__options">
-          <div className="album-create__options-tabs-title">TRACKS</div>
           <div className="album-create__options-add-track">
             <input
               type="file"
@@ -175,7 +187,9 @@ const AlbumCreate = ({ user, createAlbum }) => {
           </div>
         </div>
       </div>
-      <div className="album-create__active-tab">{tabsContent[selectedTab]}</div>
+      <div className="album-create__active-form">
+        {tabsContent[selectedTab]}
+      </div>
     </form>
   );
 };

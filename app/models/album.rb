@@ -21,7 +21,7 @@ class Album < ApplicationRecord
                              too_short: 'Please enter an album name.',
                              too_long: 'Album name is too long (100 characters max).' }
 
-  # validate :ensure_art
+  validate :ensure_art
 
   validates_associated :tracks
 
