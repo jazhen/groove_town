@@ -9,17 +9,17 @@
   height: 3rem;
   border: 1px solid $mid-gray;
   padding: 0 1rem;
-  color: $mid-gray;
+  color: $mid-gray2;
   font-weight: 500;
 }
 
 .album-form__name::placeholder {
-  color: $mid-gray;
+  color: $mid-gray2;
 }
 
 .album-form__date-label {
   padding-bottom: 1.5rem;
-  border-bottom: 1px dotted $mid-gray;
+  border-bottom: 1px dotted $mid-gray2;
   margin: 0 0 2rem 0;
   color: $light-black;
 }
@@ -32,7 +32,7 @@
 
 
 .album-form__date-description {
-  color: $mid-gray;
+  color: $mid-gray2;
 }
 
 .album-form__file-input {
@@ -56,7 +56,7 @@
 }
 
 .album-form__file-input-container--empty {
-  border: 1px dashed $mid-gray;
+  border: 1px dashed $light-gray;
   display: flex;
   flex-direction: column;
   justify-content: center;

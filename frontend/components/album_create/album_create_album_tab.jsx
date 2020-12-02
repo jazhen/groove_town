@@ -26,7 +26,6 @@ const AlbumCreateAlbumTab = ({
     <>
       <button
         type="button"
-        // className="album-create__album-tab"
         className={`album-create__album-tab${
           tabIndex === selectedTab ? ' album-create__active-tab' : ''
         }`}

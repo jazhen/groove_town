@@ -8,7 +8,12 @@ const TrackForm = ({
   clearAlbumErrors,
 }) => {
   const handleTrackNameChange = (e) => {
-    clearAlbumErrors(errors, `tracks[${tabIndex}].name`);
+    if (
+      errors[`tracks[${tabIndex}].name`] &&
+      errors[`tracks[${tabIndex}].name`].length
+    ) {
+      clearAlbumErrors(errors, `tracks[${tabIndex}].name`);
+    }
 
     setTracks([
       ...tracks.slice(0, tabIndex),

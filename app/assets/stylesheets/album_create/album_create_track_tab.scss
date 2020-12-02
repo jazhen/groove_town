@@ -29,7 +29,25 @@
   color: $mid-gray;
 }
 
+.album-create__track-name-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .album-create__track-name {
   color: $light-black;
   font-size: 1rem;
+}
+
+.album-create__track-delete {
+  margin-left: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.album-create__track-delete:hover {
+  background-color: $light-gray;
 }

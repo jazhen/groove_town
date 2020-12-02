@@ -1,8 +1,16 @@
 @import 'variables';
 
 .album-create {
+  width: 100%;
+  min-height: 100%;
+  background-color: #F7F7F7;
+}
+
+.album-create__form {
   display: flex;
   margin: 0 auto;
+  height: 100%;
+  max-width: 1200px;
 }
 
 .album-create__tabs-container {
@@ -20,7 +28,8 @@
 
 .album-create__active-form {
   flex: 1;
-  margin: 1.5rem;
+  padding: 1.5rem;
+  background-color: $white;
 }
 
 .album-create__album-tab {
@@ -42,7 +51,7 @@
 }
 
 .album-create__album-tab-art--empty {
-  border: 1px dashed $mid-gray;
+  border: 1px dashed $light-gray;
 }
 
 .album-create__album-tab-description {
@@ -64,5 +73,5 @@
 }
 
 .album-create__album-tab-date {
-  color: $mid-gray;
+  color: $mid-gray2;
 }

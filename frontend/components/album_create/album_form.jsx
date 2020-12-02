@@ -2,7 +2,9 @@ import React from 'react';
 
 const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
   const handleNameChange = (e) => {
-    clearAlbumErrors(errors, 'name');
+    if (errors.name && errors.name.length) {
+      clearAlbumErrors(errors, 'name');
+    }
     setAlbum({ ...album, name: e.currentTarget.value });
   };
 
@@ -14,7 +16,10 @@ const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
     const file = e.currentTarget.files[0];
     const url = URL.createObjectURL(file);
 
-    clearAlbumErrors(errors, 'art');
+    if (errors.art && errors.art.length) {
+      clearAlbumErrors(errors, 'art');
+    }
+
     setAlbum({ ...album, artFile: file, artUrl: url });
   };
 
