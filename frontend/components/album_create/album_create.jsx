@@ -5,10 +5,9 @@ import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumForm from './album_form';
 import TrackForm from './track_form';
 
-const AlbumCreate = ({ user }) => {
+const AlbumCreate = ({ user, createAlbum }) => {
   const today = new Date().toISOString().slice(0, 10);
 
-  // const [album, setAlbum] = useState({ name: '' });
   const [tracks, setTracks] = useState([]);
 
   const [album, setAlbum] = useState({
@@ -80,7 +79,10 @@ const AlbumCreate = ({ user }) => {
   const handleTrackUpload = (e) => {
     const file = e.currentTarget.files[0];
 
-    const newTracks = [...tracks, { name: '', fileName: file.name }];
+    const newTracks = [
+      ...tracks,
+      { name: '', fileName: file.name, audioFile: file },
+    ];
     setTracks(newTracks);
 
     const newTab = (
@@ -107,8 +109,34 @@ const AlbumCreate = ({ user }) => {
     setTabsContent([...tabsContent, newTrackForm]);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('album[name]', album.name);
+    formData.append('album[user_id]', user.id);
+    formData.append('album[release_date]', album.releaseDate);
+    if (album.artFile) {
+      formData.append('album[art]', album.artFile);
+    }
+
+    tracks.forEach((track, ord) => {
+      formData.append(`album[tracks_attributes][${ord}][name]`, track.name);
+      formData.append(`album[tracks_attributes][${ord}][ord]`, ord + 1);
+      formData.append(`album[tracks_attributes][${ord}][user_id]`, user.id);
+      formData.append(`album[tracks_attributes][${ord}][album_id]`, 1);
+      formData.append(`album[tracks_attributes][${ord}][duration]`, '1:23');
+      formData.append(
+        `album[tracks_attributes][${ord}][audio]`,
+        track.audioFile
+      );
+    });
+
+    createAlbum(formData);
+  };
+
   return (
-    <div className="album-create">
+    <form className="album-create" onSubmit={handleSubmit}>
       <div className="album-create__tabs-container">
         <div className="album-create__tabs">
           {tabs.map((tab, index) => {
@@ -133,12 +161,12 @@ const AlbumCreate = ({ user }) => {
               add track
             </label>
             <div className="album-create__options-add-track-description">
-              291MB max per track, lossless .wav, .aif or .flac
+              1911B max per track, lossless .wav, .aif or .flac
             </div>
           </div>
 
           <div className="album-create__options-publish-container">
-            <button type="button" className="album-create__options-publish">
+            <button type="submit" className="album-create__options-publish">
               Publish
             </button>
             <Link to="/" className="album-create__options-cancel">
@@ -148,7 +176,7 @@ const AlbumCreate = ({ user }) => {
         </div>
       </div>
       <div className="album-create__active-tab">{tabsContent[selectedTab]}</div>
-    </div>
+    </form>
   );
 };
 

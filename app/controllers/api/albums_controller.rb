@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'mp3info'
+
 class Api::AlbumsController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
@@ -14,13 +17,26 @@ class Api::AlbumsController < ApplicationController
   end
 
   def create
+    num_tracks = album_params[:tracks_attributes].to_h.length
+
+    (0...num_tracks).each do |index|
+      audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
+      params[:album][:tracks_attributes][index.to_s][:duration] =
+        Mp3Info.open(audio).length
+    end
+
+    # debugger
     @album = Album.new(album_params)
+    # debugger
     user = User.find_by(id: album_params[:user_id])
+    # debugger
     @album.user = user
+    # debugger
 
     if @album.save
       render :show
     else
+      # puts @album.errors.messages
       render json: @album.errors.messages, status: 409
     end
   end
@@ -28,6 +44,12 @@ class Api::AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:name, :user_id, :release_date, :art)
+    params.require(:album).permit(
+      :name,
+      :user_id,
+      :release_date,
+      :art,
+      tracks_attributes: %i[name ord user_id album_id duration audio]
+    )
   end
 end

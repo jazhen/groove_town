@@ -20,25 +20,8 @@ const AlbumForm = ({ album, setAlbum, today }) => {
     setAlbum({ ...album, artFile: null, artUrl: null });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const formData = new FormData();
-  //   formData.append('album[name]', albumName);
-  //   formData.append('album[user_id]', userId);
-  //   formData.append('album[release_date]', albumReleaseDate);
-  //   if (albumArtFile) {
-  //     formData.append('album[art]', albumArtFile);
-  //   }
-
-  //   createAlbum(formData);
-  // };
-
   return (
-    <div
-      className="album-form"
-      // onSubmit={handleSubmit}
-    >
+    <div className="album-form">
       <input
         type="text"
         className="album-form__name"
