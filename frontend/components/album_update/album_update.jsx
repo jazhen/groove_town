@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import AlbumUpdateAlbumForm from './album_form';
+import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
 // import AlbumUpdateTrackTab from './album_update_track_tab';
 
 const AlbumUpdate = ({
   user,
   albums,
+  albumTracks,
   albumId,
   fetchAlbum,
   albumErrors,
@@ -33,6 +34,17 @@ const AlbumUpdate = ({
       });
     }
   }, [fetchAlbum, albumId, albums]);
+
+  // eslint-disable-next-line no-unused-vars
+  const [tracks, setTracks] = useState([]);
+
+  useEffect(() => {
+    const prevAlbums = Object.values(albumTracks);
+
+    if (prevAlbums.length) {
+      setTracks(prevAlbums);
+    }
+  }, [albumTracks]);
 
   const [tabs, setTabs] = useState([
     <AlbumUpdateAlbumTab
@@ -114,10 +126,6 @@ const AlbumUpdate = ({
   }, [album, tabs.length, albumErrors, clearAlbumErrors]);
 
   const handleSubmit = () => {};
-
-  if (!Object.keys(albums).length) {
-    return null;
-  }
 
   return (
     <div className="album-update">

@@ -21,12 +21,6 @@ const receiveAlbum = ({ album, tracks }) => {
   };
 };
 
-export const fetchAlbums = () => (dispatch) => {
-  return albumAPIUtil
-    .fetchAlbums()
-    .then((albums) => dispatch(receiveAlbums(albums)));
-};
-
 export const receiveAlbumErrors = (errors) => {
   return {
     type: RECEIVE_ALBUM_ERRORS,
@@ -40,6 +34,12 @@ export const clearErrors = (errors, key) => {
     errors,
     key,
   };
+};
+
+export const fetchAlbums = () => (dispatch) => {
+  return albumAPIUtil
+    .fetchAlbums()
+    .then((albums) => dispatch(receiveAlbums(albums)));
 };
 
 export const fetchAlbum = (albumId) => (dispatch) => {

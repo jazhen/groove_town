@@ -1,0 +1,53 @@
+@import 'variables';
+
+.album-update__track-tab {
+  display: flex;
+  padding: .5rem 1.5rem .5rem .5rem;
+  border: 1px dotted $mid-gray;
+  border-right: none;
+}
+
+.album-update__active-tab {
+  background-color: $white;
+  border: 1px solid #ddd;
+  border-right: none;
+}
+
+.album-update__track-num {
+  width: 80px;
+  height: 60px;
+  margin-right: 1rem;
+  text-align: right;
+  color: $mid-gray;
+}
+
+.album-update__track-description {
+  display: flex;
+  flex-direction: column;
+  font-size: .75rem;
+  text-align: left;
+  color: $mid-gray;
+}
+
+.album-update__track-name-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.album-update__track-name {
+  color: $light-black;
+  font-size: 1rem;
+}
+
+.album-update__track-delete {
+  margin-left: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.album-update__track-delete:hover {
+  background-color: $light-gray;
+}

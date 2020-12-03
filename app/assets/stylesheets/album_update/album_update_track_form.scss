@@ -1,0 +1,30 @@
+@import 'variables';
+
+.album-update-track-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-update-track-form__name {
+  height: 3rem;
+  border: 1px solid $mid-gray;
+  padding: 0 1rem;
+  color: $mid-gray;
+  font-weight: 500;
+}
+
+.album-update-track-form__name::placeholder {
+  color: $mid-gray;
+}
+
+.album-update-track-form__input-error {
+  border: 1px solid $red;
+}
+
+.album-update-track-form__error {
+  font-size: .75rem;
+  color: $red;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
