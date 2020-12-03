@@ -1,0 +1,78 @@
+@import 'variables';
+
+
+.album-update {
+  width: 100%;
+  min-height: 100%;
+  background-color: #F7F7F7;
+}
+
+.album-update__form {
+  display: flex;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1200px;
+}
+
+.album-update__tabs-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #F7F7F7;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.album-update__tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-update__active-form {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: $white;
+}
+
+.album-update__album-tab {
+  display: flex;
+  padding: .5rem 1.5rem .5rem .5rem;
+  border: 1px solid $mid-gray;
+  border-left: none;
+  border-right: none;
+}
+
+.album-update__album-tab-art {
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+}
+
+.album-update__album-tab-art--file {
+  border: 1px solid $light-gray;
+}
+
+.album-update__album-tab-art--empty {
+  border: 1px dashed $light-gray;
+}
+
+.album-update__album-tab-description {
+  color: $light-black;
+  font-size: .75rem;
+  text-align: left;
+}
+
+.album-update__album-tab-name {
+  font-size: 1.25rem;
+}
+
+.album-update__album-tab-band {
+  display: flex;
+}
+
+.album-update__album-tab-band-name {
+  font-weight: bold;
+}
+
+.album-update__album-tab-date {
+  color: $mid-gray2;
+}
