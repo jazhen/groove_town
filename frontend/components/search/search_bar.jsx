@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SearchBar = ({ users, albums, tracks, fetchAll }) => {
@@ -6,10 +6,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [trackSearchResults, setTrackSearchResults] = useState([]);
   const [bandSearchResults, setBandSearchResults] = useState([]);
   const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    fetchAll();
-  }, [fetchAll]);
+  const [fetched, setFetched] = useState(false);
 
   const updateSeachResults = (value) => {
     let numSearchResults = 0;
@@ -78,6 +75,11 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   };
 
   const handleFocus = (e) => {
+    if (!fetched) {
+      fetchAll();
+      setFetched(true);
+    }
+
     if (e.currentTarget.value !== '') {
       setActive(true);
     }
