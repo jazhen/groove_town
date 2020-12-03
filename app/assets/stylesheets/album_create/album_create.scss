@@ -3,7 +3,7 @@
 .album-create {
   width: 100%;
   min-height: 100%;
-  background-color: #F7F7F7;
+  background-color: $light-gray;
 }
 
 .album-create__form {
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: #F7F7F7;
+  background-color: $light-gray;
   padding: 1.5rem 0 1.5rem 1.5rem;
 }
 
@@ -30,6 +30,7 @@
   flex: 1;
   padding: 1.5rem;
   background-color: $white;
+  border: 1px solid $mid-gray;
 }
 
 .album-create__album-tab {
@@ -47,11 +48,11 @@
 }
 
 .album-create__album-tab-art--file {
-  border: 1px solid $light-gray;
+  border: 1px solid $mid-gray;
 }
 
 .album-create__album-tab-art--empty {
-  border: 1px dashed $light-gray;
+  border: 1px dashed $mid-gray;
 }
 
 .album-create__album-tab-description {

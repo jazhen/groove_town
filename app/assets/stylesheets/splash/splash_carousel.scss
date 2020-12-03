@@ -1,5 +1,7 @@
+@import 'variables';
+
 .albums-index__carousel {
-  background-color: #222222;
+  background-color: $light-black;
   justify-content: center;
   width: 100%;
 }
@@ -13,7 +15,7 @@
 
 .albums-index__carousel-main-img-container,
 .albums-index__carousel-sub-img-container {
-  border: 1px solid #222222;
+  border: 1px solid $light-black;
 }
 
 .albums-index__carousel-main-img-container:hover,

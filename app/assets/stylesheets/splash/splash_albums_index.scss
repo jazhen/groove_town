@@ -1,6 +1,8 @@
+@import 'variables';
+
 .albums-index {
   align-items: center;
-  background-color: #EEF2F3;
+  background-color: $light-gray;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -25,8 +27,7 @@
 }
 
 .albums-index__album-art-container {
-  background-color: gray;
-  border: 1px solid #F2F2F2;
+  background-color: $mid-gray;
   height: 200px;
   width: 200px
 }
@@ -49,7 +50,7 @@
 
 .albums-index__album-name {
   font-weight: bold;
-  text-decoration: black;
+  text-decoration: $light-black;
 }
 
 .albums-index__album-name:hover {

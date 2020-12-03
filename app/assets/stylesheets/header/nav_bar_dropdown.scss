@@ -9,9 +9,9 @@
 
 .nav-bar__dropdown-menu {
   background-color: $white;
-  border: 1px solid #EEEEEE;
+  border: 1px solid $light-gray;
   border-radius: 5px;
-  color: black;
+  color: $light-black;
   display: none;
   line-height: 2rem;
   padding: 10px 0;

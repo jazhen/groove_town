@@ -11,7 +11,7 @@
 .session-form
 {
   background-color: $light-gray;
-  color: #333;
+  color: $light-black;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -26,7 +26,7 @@
 }
 
 .session-form__header-divider {
-  border: 2px dotted #ccc;
+  border: 2px dotted $mid-gray;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -44,16 +44,16 @@
 }
 
 .session-form__input {
-  border: 1px solid #ccc;
+  border: 1px solid $mid-gray;
   padding: 0 1em;
 }
 
 .session-form__input--error {
-  border: 1px solid #c43329;
+  border: 1px solid $red;
 }
 
 .session-form__errors {
-  color: #c43329;
+  color: $red;
   font-size: 0.9rem;
   text-align: center;
   height: 2rem;
@@ -64,7 +64,7 @@
 }
 
 .session-form__button {
-  background-color: #00A1C6;
+  background-color: $blue;
   border: none;
   color: $white;
   font-weight: bold;
@@ -80,13 +80,13 @@
 }
 
 .session-form__other-sessions-span {
-  color: #818285;
+  color: $dark-gray;
   display: flex;
   justify-content: center;
 }
 
 .session-form__other-sessions-link {
-  color: #00A1C6;
+  color: $blue;
 }
 
 .session-form__last {

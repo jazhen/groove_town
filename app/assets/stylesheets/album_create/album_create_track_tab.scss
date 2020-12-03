@@ -9,7 +9,7 @@
 
 .album-create__active-tab {
   background-color: $white;
-  border: 1px solid #ddd;
+  border: 1px solid $mid-gray;
   border-right: none;
   margin-right: -1px;
   z-index: 1;
@@ -28,7 +28,7 @@
   flex-direction: column;
   font-size: .75rem;
   text-align: left;
-  color: $mid-gray;
+  color: $mid-gray2;
 }
 
 .album-create__track-name-container {
