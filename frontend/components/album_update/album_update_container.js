@@ -1,9 +1,17 @@
 import { connect } from 'react-redux';
-import { clearAlbumErrors, fetchAlbum } from '../../actions/album_actions';
+import {
+  fetchAlbum,
+  clearAlbumErrors,
+  clearAllAlbumErrors,
+} from '../../actions/album_actions';
 import AlbumUpdate from './album_update';
 
 const mapStateToProps = (
-  { entities: { users, tracks, albums }, errors, session: { id } },
+  {
+    entities: { users, albums, tracks },
+    ui: { errors, loading },
+    session: { id },
+  },
   { match: { params } }
 ) => {
   return {
@@ -11,13 +19,15 @@ const mapStateToProps = (
     oldAlbum: albums[params.albumId],
     albumId: params.albumId,
     allTracks: tracks,
-    albumErrors: errors.albums,
+    errors: errors.albums,
+    loading: loading.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
-  clearAlbumErrors: (errors, key) => dispatch(clearAlbumErrors(errors, key)),
+  clearErrors: (errors, key) => dispatch(clearAlbumErrors(errors, key)),
+  clearAllErrors: () => dispatch(clearAllAlbumErrors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumUpdate);

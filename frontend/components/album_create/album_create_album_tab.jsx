@@ -27,7 +27,11 @@ const AlbumCreateAlbumTab = ({
         type="button"
         className={`album-create__album-tab${
           tabIndex === selectedTab ? ' album-create__active-tab' : ''
-        }${errors.name || errors.art ? ' album-create__album-tab--error' : ''}`}
+        }${
+          errors.name || errors.art
+            ? ' album-create__album-tab--error'
+            : ' album-create__album-tab--no-error'
+        }`}
         onClick={() => setSelectedTab(0)}
       >
         {album.artUrl ? (

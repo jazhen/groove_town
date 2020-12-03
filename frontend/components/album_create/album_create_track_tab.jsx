@@ -52,13 +52,13 @@ const AlbumCreateTrackTab = ({
         </div>
         <input
           type="file"
-          id="album-create__track-replace-input"
+          id={`album-create__track-replace-input-${tabIndex}`}
           className="album-create__track-replace-input"
           accept="audio/mpeg"
           onChange={handleReplace}
         />
         <label
-          htmlFor="album-create__track-replace-input"
+          htmlFor={`album-create__track-replace-input-${tabIndex}`}
           className="album-create__track-replace-label"
         >
           replace

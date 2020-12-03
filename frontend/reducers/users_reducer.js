@@ -10,7 +10,10 @@ const usersReducer = (prevState = {}, action) => {
     case RECEIVE_ALL:
       return action.users;
     case RECEIVE_USER:
-      return { ...prevState, [action.user.id]: action.user };
+      return {
+        ...prevState,
+        [Object.values(action.user)[0].id]: Object.values(action.user)[0],
+      };
     default:
       return prevState;
   }

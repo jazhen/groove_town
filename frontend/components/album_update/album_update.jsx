@@ -11,11 +11,16 @@ const AlbumUpdate = ({
   allTracks,
   albumId,
   fetchAlbum,
-  albumErrors,
-  clearAlbumErrors,
+  errors,
+  clearErrors,
+  clearAllErrors,
 }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [album, setAlbum] = useState(null);
+
+  useEffect(() => {
+    clearAllErrors();
+  }, [clearAllErrors]);
 
   useEffect(() => {
     fetchAlbum(albumId);
@@ -66,6 +71,17 @@ const AlbumUpdate = ({
         />,
       ];
 
+      const updatedTabsContent = [
+        <AlbumUpdateAlbumForm
+          album={newAlbum}
+          setAlbum={setAlbum}
+          oldReleaseDate={oldAlbum.releaseDate}
+          today={today}
+          errors={errors}
+          clearErrors={clearErrors}
+        />,
+      ];
+
       for (let i = 0; i < oldTracks.length; i++) {
         updatedTabs.push(
           <AlbumUpdateTrackTab
@@ -80,34 +96,20 @@ const AlbumUpdate = ({
             setSelectedTab={setSelectedTab}
           />
         );
-      }
 
-      setTabs(updatedTabs);
-
-      const updatedTabsContent = [
-        <AlbumUpdateAlbumForm
-          album={newAlbum}
-          setAlbum={setAlbum}
-          oldReleaseDate={oldAlbum.releaseDate}
-          today={today}
-          errors={albumErrors}
-          clearAlbumErrors={clearAlbumErrors}
-        />,
-      ];
-
-      for (let i = 0; i < updatedTabs.length - 1; i++) {
         updatedTabsContent.push(
           <AlbumUpdateTrackForm
             name={oldTracks[i].name}
             tracks={oldTracks}
             setTracks={setTracks}
             tabIndex={i}
-            errors={albumErrors}
-            clearAlbumErrors={clearAlbumErrors}
+            errors={errors}
+            clearErrors={clearErrors}
           />
         );
       }
 
+      setTabs(updatedTabs);
       setTabsContent(updatedTabsContent);
     }
   }, [
@@ -115,8 +117,8 @@ const AlbumUpdate = ({
     album,
     user.band,
     selectedTab,
-    albumErrors,
-    clearAlbumErrors,
+    errors,
+    clearErrors,
     allTracks,
     tabs,
     today,
@@ -160,8 +162,8 @@ const AlbumUpdate = ({
           setAlbum={setAlbum}
           oldReleaseDate={oldReleaseDate}
           today={today}
-          errors={albumErrors}
-          clearAlbumErrors={clearAlbumErrors}
+          errors={errors}
+          clearErrors={clearErrors}
         />,
       ];
 
@@ -172,8 +174,8 @@ const AlbumUpdate = ({
             tracks={tracks}
             setTracks={setTracks}
             tabIndex={i}
-            errors={albumErrors}
-            clearAlbumErrors={clearAlbumErrors}
+            errors={errors}
+            clearErrors={clearErrors}
           />
         );
       }
@@ -185,8 +187,8 @@ const AlbumUpdate = ({
     album,
     user.band,
     selectedTab,
-    albumErrors,
-    clearAlbumErrors,
+    errors,
+    clearErrors,
     tracks,
     oldReleaseDate,
     today,

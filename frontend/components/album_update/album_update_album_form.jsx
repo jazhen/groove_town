@@ -6,7 +6,7 @@ const AlbumUpdateAlbumForm = ({
   oldReleaseDate,
   today,
   errors,
-  clearAlbumErrors,
+  clearErrors,
 }) => {
   const [formattedReleaseDate, setFormattedReleaseDate] = useState(today);
 
@@ -16,7 +16,7 @@ const AlbumUpdateAlbumForm = ({
 
   const handleNameChange = (e) => {
     if (errors.name && errors.name.length) {
-      clearAlbumErrors(errors, 'name');
+      clearErrors(errors, 'name');
     }
     setAlbum({ ...album, name: e.currentTarget.value });
   };
@@ -30,7 +30,7 @@ const AlbumUpdateAlbumForm = ({
     const url = URL.createObjectURL(file);
 
     if (errors.art && errors.art.length) {
-      clearAlbumErrors(errors, 'art');
+      clearErrors(errors, 'art');
     }
 
     setAlbum({ ...album, artFile: file, artUrl: url });

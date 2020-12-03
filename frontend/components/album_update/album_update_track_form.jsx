@@ -5,14 +5,14 @@ const AlbumUpdateTrackForm = ({
   setTracks,
   tabIndex,
   errors,
-  clearAlbumErrors,
+  clearErrors,
 }) => {
   const handleTrackNameChange = (e) => {
     if (
       errors[`tracks[${tabIndex}].name`] &&
       errors[`tracks[${tabIndex}].name`].length
     ) {
-      clearAlbumErrors(errors, `tracks[${tabIndex}].name`);
+      clearErrors(errors, `tracks[${tabIndex}].name`);
     }
 
     setTracks([

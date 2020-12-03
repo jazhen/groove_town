@@ -24,11 +24,11 @@ class Album < ApplicationRecord
 
   validate :validate_art
 
-  validates_associated :tracks
+  # validates_associated :tracks
 
   def validate_art
     if art.attached?
-      if ['image/jpeg', 'image/png'].include?(art.blob.content_type)
+      if !['image/jpeg', 'image/png'].include?(art.blob.content_type)
         errors[:art] << 'File is not of type .jpg or .png.'
       elsif art.blob.byte_size > 5_000_000
         errors[:art] << 'File size is larger than 5MB.'

@@ -30,6 +30,7 @@
 }
 
 .track-form__track-info {
+  align-items: center;
   display: flex;
 }
 
@@ -39,4 +40,5 @@
 
 .track-form__track-description {
   color: $mid-gray2;
+  font-size: .75rem;
 }
