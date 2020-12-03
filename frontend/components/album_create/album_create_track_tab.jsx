@@ -3,30 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AlbumCreateTrackTab = ({
-  name,
-  fileName,
-  fileSize,
-  tracks,
-  setTracks,
+  track,
   tabIndex,
-  tabs,
-  setTabs,
   selectedTab,
   setSelectedTab,
+  handleTrackDelete,
 }) => {
   const handleDelete = () => {
-    const tabsCopy = tabs;
-    tabsCopy.splice(tabIndex, 1);
-    setTabs(tabsCopy);
-
-    const tracksCopy = tracks;
-    tracksCopy.splice(tabIndex - 1, 1);
-    setTracks(tracksCopy);
+    handleTrackDelete(tabIndex);
   };
 
-  const handleReplace = () => {
-    // const track = tracks[tabIndex];
-  };
+  // const handleReplace = () => {
+  // handleTrackReplace(tabIndex);
+  // };
 
   return (
     <button
@@ -40,7 +29,7 @@ const AlbumCreateTrackTab = ({
       <div className="album-create__track-description">
         <div className="album-create__track-name-container">
           <div className="album-create__track-name">
-            {name || 'Untitled Track'}
+            {track.name || 'Untitled Track'}
           </div>
 
           <Link
@@ -52,15 +41,21 @@ const AlbumCreateTrackTab = ({
           </Link>
         </div>
         <div className="album-create__track-file-name">
-          {fileName} | {fileSize}
+          {track.fileName} | {track.fileSize}
         </div>
-        <Link
-          to="#"
-          className="album-create__track-file-replace"
-          onClick={handleReplace}
+        <input
+          type="file"
+          id="album-create__track-replace-input"
+          className="album-create__track-replace-input"
+          accept="audio/mpeg"
+          onChange=""
+        />
+        <label
+          htmlFor="album-create__track-replace-input"
+          className="album-create__track-replace-label"
         >
           replace
-        </Link>
+        </label>
       </div>
     </button>
   );

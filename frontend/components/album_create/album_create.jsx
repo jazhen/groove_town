@@ -6,13 +6,22 @@ import AlbumCreateAlbumForm from './album_create_album_form';
 import AlbumCreateTrackForm from './album_create_track_form';
 
 const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
-  // const today = new Date().toISOString().slice(0, 10);
   const [today] = useState(new Date().toISOString().slice(0, 10));
   const [selectedTab, setSelectedTab] = useState(0);
   const [album, setAlbum] = useState(null);
   const [tracks, setTracks] = useState([]);
   const [tabs, setTabs] = useState([]);
   const [tabsContent, setTabsContent] = useState([]);
+
+  const handleTrackDelete = (tabIndex) => {
+    const tabsCopy = tabs;
+    tabsCopy.splice(tabIndex, 1);
+    setTabs(tabsCopy);
+
+    const tracksCopy = tracks;
+    tracksCopy.splice(tabIndex - 1, 1);
+    setTracks(tracksCopy);
+  };
 
   useEffect(() => {
     if (!album) {
@@ -39,16 +48,11 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
       for (let i = 0; i < tabs.length - 1; i++) {
         updatedTabs.push(
           <AlbumCreateTrackTab
-            name={tracks[i].name}
-            tracks={tracks}
-            setTracks={setTracks}
-            fileName={tracks[i].fileName}
-            fileSize={tracks[i].fileSize}
+            track={tracks[i]}
             tabIndex={i + 1}
-            tabs={tabs}
-            setTabs={setTabs}
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
+            handleTrackDelete={handleTrackDelete}
           />
         );
       }
@@ -94,48 +98,16 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
   const handleTrackUpload = (e) => {
     const bytesToMB = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
     const file = e.currentTarget.files[0];
-    const fileSize = bytesToMB(file.size);
-
-    const newTracks = [
-      ...tracks,
-      {
-        name: '',
-        fileName: file.name,
-        fileSize,
-        audioFile: file,
-      },
-    ];
-    setTracks(newTracks);
-
-    const newTab = (
-      <AlbumCreateTrackTab
-        name=""
-        tracks={newTracks}
-        setTracks={setTracks}
-        fileName={file.name}
-        fileSize={fileSize}
-        tabIndex={tabs.length}
-        tabs={tabs}
-        setTabs={setTabs}
-        selectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
-      />
-    );
-    setTabs([...tabs, newTab]);
-
-    const newTrackForm = (
-      <AlbumCreateTrackForm
-        name=""
-        tracks={newTracks}
-        setTracks={setTracks}
-        tabIndex={tabs.length - 1}
-        errors={albumErrors}
-        clearAlbumErrors={clearAlbumErrors}
-      />
-    );
-
+    const newTrack = {
+      name: '',
+      fileName: file.name,
+      fileSize: bytesToMB(file.size),
+      audio: file,
+    };
+    setTracks([...tracks, newTrack]);
+    setTabs([...tabs, null]);
+    setTabsContent([...tabsContent, null]);
     setSelectedTab(tabs.length);
-    setTabsContent([...tabsContent, newTrackForm]);
   };
 
   const handleSubmit = (e) => {

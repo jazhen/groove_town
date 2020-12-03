@@ -51,14 +51,20 @@
 }
 
 .album-create__track-delete:hover {
-  background-color: $light-gray;
+  background-color: $mid-gray;
 }
 
-.album-create__track-file-replace {
+.album-create__track-replace-input {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.album-create__track-replace-label {
   color: $blue;
 }
 
-.album-create__track-file-replace:hover {
-  color: $blue;
+.album-create__track-replace-label:hover {
+  cursor: pointer;
   text-decoration: underline;
 }
