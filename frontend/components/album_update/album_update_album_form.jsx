@@ -63,7 +63,7 @@ const AlbumUpdateAlbumForm = ({
           min="1900-01-01"
           max={today}
           className="album-update-album-form__date-input"
-          value={formattedReleaseDate}
+          value={formattedReleaseDate || ''}
           onChange={handleAlbumReleaseDateChange}
         />
         <span className="album-update-album-form__date-description">
