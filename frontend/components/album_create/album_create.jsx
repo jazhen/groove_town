@@ -6,104 +6,104 @@ import AlbumCreateAlbumForm from './album_create_album_form';
 import AlbumCreateTrackForm from './album_create_track_form';
 
 const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
-  const today = new Date().toISOString().slice(0, 10);
-
-  const [tracks, setTracks] = useState([]);
-
-  const [album, setAlbum] = useState({
-    name: '',
-    releaseDate: today,
-    artFile: null,
-    artUrl: null,
-  });
-
+  // const today = new Date().toISOString().slice(0, 10);
+  const [today] = useState(new Date().toISOString().slice(0, 10));
   const [selectedTab, setSelectedTab] = useState(0);
-
-  const [tabs, setTabs] = useState([
-    <AlbumCreateAlbumTab
-      band={user.band}
-      name={album.name}
-      tabIndex={0}
-      selectedTab={selectedTab}
-      setSelectedTab={setSelectedTab}
-    />,
-  ]);
-
-  const [tabsContent, setTabsContent] = useState([
-    <AlbumCreateAlbumForm
-      album={album}
-      setAlbum={setAlbum}
-      errors={albumErrors}
-      clearAlbumErrors={clearAlbumErrors}
-    />,
-  ]);
+  const [album, setAlbum] = useState(null);
+  const [tracks, setTracks] = useState([]);
+  const [tabs, setTabs] = useState([]);
+  const [tabsContent, setTabsContent] = useState([]);
 
   useEffect(() => {
-    const updatedTabs = [
-      <AlbumCreateAlbumTab
-        band={user.band}
-        name={album.name}
-        artUrl={album.artUrl}
-        releaseDate={album.releaseDate}
-        tabIndex={0}
-        selectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
-      />,
-    ];
+    if (!album) {
+      setAlbum({
+        name: '',
+        releaseDate: today,
+        artUrl: '',
+      });
+    }
+  }, [album, today]);
 
-    for (let i = 0; i < tabs.length - 1; i++) {
-      updatedTabs.push(
-        <AlbumCreateTrackTab
-          name={tracks[i].name}
-          tracks={tracks}
-          setTracks={setTracks}
-          fileName={tracks[i].fileName}
-          tabIndex={i + 1}
-          tabs={tabs}
-          setTabs={setTabs}
+  useEffect(() => {
+    if (album) {
+      const updatedTabs = [
+        <AlbumCreateAlbumTab
+          band={user.band}
+          album={album}
+          tabIndex={0}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
-        />
-      );
-    }
+        />,
+      ];
 
-    setTabs(updatedTabs);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, album, tracks, tabs.length, selectedTab]);
+      for (let i = 0; i < tabs.length - 1; i++) {
+        updatedTabs.push(
+          <AlbumCreateTrackTab
+            name={tracks[i].name}
+            tracks={tracks}
+            setTracks={setTracks}
+            fileName={tracks[i].fileName}
+            fileSize={tracks[i].fileSize}
+            tabIndex={i + 1}
+            tabs={tabs}
+            setTabs={setTabs}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+          />
+        );
+      }
 
-  useEffect(() => {
-    const updatedTabsContent = [
-      <AlbumCreateAlbumForm
-        album={album}
-        setAlbum={setAlbum}
-        today={today}
-        errors={albumErrors}
-        clearAlbumErrors={clearAlbumErrors}
-      />,
-    ];
+      setTabs(updatedTabs);
 
-    for (let i = 0; i < tabs.length - 1; i++) {
-      updatedTabsContent.push(
-        <AlbumCreateTrackForm
-          name={tracks[i].name}
-          tracks={tracks}
-          setTracks={setTracks}
-          tabIndex={i}
+      const updatedTabsContent = [
+        <AlbumCreateAlbumForm
+          album={album}
+          setAlbum={setAlbum}
+          today={today}
           errors={albumErrors}
           clearAlbumErrors={clearAlbumErrors}
-        />
-      );
-    }
+        />,
+      ];
 
-    setTabsContent(updatedTabsContent);
-  }, [album, tracks, tabs.length, today, albumErrors, clearAlbumErrors]);
+      for (let i = 0; i < tabs.length - 1; i++) {
+        updatedTabsContent.push(
+          <AlbumCreateTrackForm
+            name={tracks[i].name}
+            tracks={tracks}
+            setTracks={setTracks}
+            tabIndex={i}
+            errors={albumErrors}
+            clearAlbumErrors={clearAlbumErrors}
+          />
+        );
+      }
+
+      setTabsContent(updatedTabsContent);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    user.band,
+    album,
+    tracks,
+    selectedTab,
+    today,
+    albumErrors,
+    clearAlbumErrors,
+  ]);
 
   const handleTrackUpload = (e) => {
+    const bytesToMB = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
     const file = e.currentTarget.files[0];
+    const fileSize = bytesToMB(file.size);
 
     const newTracks = [
       ...tracks,
-      { name: '', fileName: file.name, audioFile: file },
+      {
+        name: '',
+        fileName: file.name,
+        fileSize,
+        audioFile: file,
+      },
     ];
     setTracks(newTracks);
 
@@ -113,6 +113,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
         tracks={newTracks}
         setTracks={setTracks}
         fileName={file.name}
+        fileSize={fileSize}
         tabIndex={tabs.length}
         tabs={tabs}
         setTabs={setTabs}

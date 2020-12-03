@@ -53,3 +53,12 @@
 .album-create__track-delete:hover {
   background-color: $light-gray;
 }
+
+.album-create__track-file-replace {
+  color: $blue;
+}
+
+.album-create__track-file-replace:hover {
+  color: $blue;
+  text-decoration: underline;
+}

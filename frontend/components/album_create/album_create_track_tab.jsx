@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const AlbumCreateTrackTab = ({
   name,
   fileName,
+  fileSize,
   tracks,
   setTracks,
   tabIndex,
@@ -21,6 +22,10 @@ const AlbumCreateTrackTab = ({
     const tracksCopy = tracks;
     tracksCopy.splice(tabIndex - 1, 1);
     setTracks(tracksCopy);
+  };
+
+  const handleReplace = () => {
+    // const track = tracks[tabIndex];
   };
 
   return (
@@ -46,7 +51,16 @@ const AlbumCreateTrackTab = ({
             <i className="fas fa-times" />
           </Link>
         </div>
-        <div className="album-create__track-file-name">{fileName}</div>
+        <div className="album-create__track-file-name">
+          {fileName} | {fileSize}
+        </div>
+        <Link
+          to="#"
+          className="album-create__track-file-replace"
+          onClick={handleReplace}
+        >
+          replace
+        </Link>
       </div>
     </button>
   );
