@@ -14,13 +14,27 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
   const [tabsContent, setTabsContent] = useState([]);
 
   const handleTrackDelete = (tabIndex) => {
-    const tabsCopy = tabs;
-    tabsCopy.splice(tabIndex, 1);
-    setTabs(tabsCopy);
+    const tabsDup = tabs;
+    tabsDup.splice(tabIndex, 1);
+    setTabs(tabsDup);
 
-    const tracksCopy = tracks;
-    tracksCopy.splice(tabIndex - 1, 1);
-    setTracks(tracksCopy);
+    const tracksDup = tracks;
+    tracksDup.splice(tabIndex - 1, 1);
+    setTracks(tracksDup);
+  };
+
+  const handleTrackReplace = (trackIndex, newFile) => {
+    const bytesToMB = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    const track = tracks[trackIndex];
+    const newTrack = {
+      ...track,
+      fileName: newFile.name,
+      fileSize: bytesToMB(newFile.size),
+      audio: newFile,
+    };
+    const tracksDup = tracks;
+    tracksDup[trackIndex] = newTrack;
+    setTracks([...tracksDup]);
   };
 
   useEffect(() => {
@@ -53,6 +67,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
             handleTrackDelete={handleTrackDelete}
+            handleTrackReplace={handleTrackReplace}
           />
         );
       }

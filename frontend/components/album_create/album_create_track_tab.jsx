@@ -8,14 +8,15 @@ const AlbumCreateTrackTab = ({
   selectedTab,
   setSelectedTab,
   handleTrackDelete,
+  handleTrackReplace,
 }) => {
   const handleDelete = () => {
     handleTrackDelete(tabIndex);
   };
 
-  // const handleReplace = () => {
-  // handleTrackReplace(tabIndex);
-  // };
+  const handleReplace = (e) => {
+    handleTrackReplace(tabIndex - 1, e.currentTarget.files[0]);
+  };
 
   return (
     <button
@@ -48,7 +49,7 @@ const AlbumCreateTrackTab = ({
           id="album-create__track-replace-input"
           className="album-create__track-replace-input"
           accept="audio/mpeg"
-          onChange=""
+          onChange={handleReplace}
         />
         <label
           htmlFor="album-create__track-replace-input"
