@@ -11,6 +11,8 @@
   background-color: $white;
   border: 1px solid #ddd;
   border-right: none;
+  margin-right: -1px;
+  z-index: 1;
 }
 
 .album-create__track-num {
