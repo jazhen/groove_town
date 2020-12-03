@@ -139,10 +139,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
       formData.append(`album[tracks_attributes][${ord}][user_id]`, user.id);
       formData.append(`album[tracks_attributes][${ord}][album_id]`, 1);
       formData.append(`album[tracks_attributes][${ord}][duration]`, '1:23');
-      formData.append(
-        `album[tracks_attributes][${ord}][audio]`,
-        track.audioFile
-      );
+      formData.append(`album[tracks_attributes][${ord}][audio]`, track.audio);
     });
 
     createAlbum(formData);
