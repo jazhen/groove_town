@@ -9,6 +9,7 @@ const AlbumCreateTrackTab = ({
   setSelectedTab,
   handleTrackDelete,
   handleTrackReplace,
+  errors,
 }) => {
   const handleDelete = () => {
     handleTrackDelete(tabIndex);
@@ -23,6 +24,10 @@ const AlbumCreateTrackTab = ({
       type="button"
       className={`album-create__track-tab${
         tabIndex === selectedTab ? ' album-create__active-tab' : ''
+      }${
+        errors[`tracks[${tabIndex - 1}].errors`]
+          ? ' album-create__track-tab--error'
+          : ' album-create__track-tab--no-error'
       }`}
       onClick={() => setSelectedTab(tabIndex)}
     >

@@ -5,7 +5,7 @@ import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumCreateAlbumForm from './album_create_album_form';
 import AlbumCreateTrackForm from './album_create_track_form';
 
-const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
+const AlbumCreate = ({ user, createAlbum, errors, clearErrors, loading }) => {
   const [today] = useState(new Date().toISOString().slice(0, 10));
   const [selectedTab, setSelectedTab] = useState(0);
   const [album, setAlbum] = useState(null);
@@ -56,6 +56,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
           tabIndex={0}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
+          errors={errors}
         />,
       ];
 
@@ -64,8 +65,8 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
           album={album}
           setAlbum={setAlbum}
           today={today}
-          errors={albumErrors}
-          clearAlbumErrors={clearAlbumErrors}
+          errors={errors}
+          clearErrors={clearErrors}
         />,
       ];
 
@@ -78,6 +79,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
             setSelectedTab={setSelectedTab}
             handleTrackDelete={handleTrackDelete}
             handleTrackReplace={handleTrackReplace}
+            errors={errors}
           />
         );
 
@@ -87,8 +89,8 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
             tracks={tracks}
             setTracks={setTracks}
             tabIndex={i}
-            errors={albumErrors}
-            clearAlbumErrors={clearAlbumErrors}
+            errors={errors}
+            clearErrors={clearErrors}
           />
         );
       }
@@ -97,15 +99,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
       setTabsContent(updatedTabsContent);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    user.band,
-    album,
-    tracks,
-    selectedTab,
-    today,
-    albumErrors,
-    clearAlbumErrors,
-  ]);
+  }, [user.band, album, tracks, selectedTab, today, errors, clearErrors]);
 
   const handleTrackUpload = (e) => {
     const bytesToMB = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
@@ -144,6 +138,10 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
 
     createAlbum(formData);
   };
+
+  if (loading) {
+    return <h1>LOADING</h1>;
+  }
 
   return (
     <div className="album-create">

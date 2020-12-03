@@ -6,6 +6,7 @@ const AlbumCreateAlbumTab = ({
   tabIndex,
   selectedTab,
   setSelectedTab,
+  errors,
 }) => {
   const [formattedDate, setFormattedDate] = useState('');
 
@@ -26,7 +27,7 @@ const AlbumCreateAlbumTab = ({
         type="button"
         className={`album-create__album-tab${
           tabIndex === selectedTab ? ' album-create__active-tab' : ''
-        }`}
+        }${errors.name || errors.art ? ' album-create__album-tab--error' : ''}`}
         onClick={() => setSelectedTab(0)}
       >
         {album.artUrl ? (

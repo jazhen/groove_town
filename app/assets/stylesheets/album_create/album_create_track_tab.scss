@@ -7,12 +7,12 @@
   border-right: none;
 }
 
-.album-create__active-tab {
-  background-color: $white;
-  border: 1px solid $mid-gray;
-  border-right: none;
-  margin-right: -1px;
-  z-index: 1;
+.album-create__track-tab--error {
+  border-left: 1px solid $red;
+}
+
+.album-create__track-tab--no-error {
+  border-left: 1px solid $blue;
 }
 
 .album-create__track-num {
@@ -62,6 +62,7 @@
 
 .album-create__track-replace-label {
   color: $blue;
+  width: fit-content;
 }
 
 .album-create__track-replace-label:hover {

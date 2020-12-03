@@ -28,3 +28,15 @@
   display: flex;
   align-items: center;
 }
+
+.track-form__track-info {
+  display: flex;
+}
+
+.track-form__track-label {
+  color: $light-black;
+}
+
+.track-form__track-description {
+  color: $mid-gray2;
+}

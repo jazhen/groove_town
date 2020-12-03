@@ -5,14 +5,14 @@ const AlbumCreateTrackForm = ({
   setTracks,
   tabIndex,
   errors,
-  clearAlbumErrors,
+  clearErrors,
 }) => {
   const handleTrackNameChange = (e) => {
     if (
       errors[`tracks[${tabIndex}].name`] &&
       errors[`tracks[${tabIndex}].name`].length
     ) {
-      clearAlbumErrors(errors, `tracks[${tabIndex}].name`);
+      clearErrors(errors, `tracks[${tabIndex}].name`);
     }
 
     const track = tracks[tabIndex];
@@ -45,8 +45,28 @@ const AlbumCreateTrackForm = ({
           ? errors[`tracks[${tabIndex}].name`][0]
           : null}
       </div>
+      <div className="track-form__track-info">
+        <div className="track-form__track-label">file name:&nbsp;</div>
+        <div className="track-form__track-description">
+          {tracks[tabIndex].fileName}
+        </div>
+      </div>
+      <div className="track-form__track-info">
+        <div className="track-form__track-label">file size:&nbsp;</div>
+        <div className="track-form__track-description">
+          {tracks[tabIndex].fileSize}
+        </div>
+      </div>
+      <div className="track-form__error">
+        {errors[`tracks[${tabIndex}].errors`] &&
+        errors[`tracks[${tabIndex}].errors`].length
+          ? errors[`tracks[${tabIndex}].errors`][0]
+          : null}
+      </div>
     </div>
   );
 };
 
 export default AlbumCreateTrackForm;
+
+// tracks[0].errors
