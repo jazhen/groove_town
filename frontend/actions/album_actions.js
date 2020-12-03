@@ -4,6 +4,7 @@ export const RECEIVE_ALBUMS = 'RECEIVE_ALBUMS';
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
+export const CLEAR_ALL_ALBUM_ERRORS = 'CLEAR_ALL_ALBUM_ERRORS';
 export const CREATING_ALBUM = 'CREATING_ALBUM';
 
 const receiveAlbums = ({ albums, tracks }) => {
@@ -37,6 +38,12 @@ export const clearErrors = (errors, keys) => {
   };
 };
 
+export const clearAllErrors = () => {
+  return {
+    type: CLEAR_ALL_ALBUM_ERRORS,
+  };
+};
+
 export const creatingAlbum = () => ({
   type: CREATING_ALBUM,
 });
@@ -65,4 +72,8 @@ export const createAlbum = (album) => (dispatch) => {
 
 export const clearAlbumErrors = (errors, keys) => (dispatch) => {
   return dispatch(clearErrors(errors, keys));
+};
+
+export const clearAllAlbumErrors = () => (dispatch) => {
+  return dispatch(clearAllErrors());
 };

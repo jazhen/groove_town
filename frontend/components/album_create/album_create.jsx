@@ -5,7 +5,14 @@ import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumCreateAlbumForm from './album_create_album_form';
 import AlbumCreateTrackForm from './album_create_track_form';
 
-const AlbumCreate = ({ user, createAlbum, errors, clearErrors, loading }) => {
+const AlbumCreate = ({
+  user,
+  createAlbum,
+  errors,
+  clearErrors,
+  clearAllErrors,
+  loading,
+}) => {
   const [today] = useState(new Date().toISOString().slice(0, 10));
   const [selectedTab, setSelectedTab] = useState(0);
   const [album, setAlbum] = useState(null);
@@ -41,6 +48,10 @@ const AlbumCreate = ({ user, createAlbum, errors, clearErrors, loading }) => {
     tracksDup[trackIndex] = newTrack;
     setTracks([...tracksDup]);
   };
+
+  useEffect(() => {
+    clearAllErrors();
+  }, [clearAllErrors]);
 
   useEffect(() => {
     if (!album) {

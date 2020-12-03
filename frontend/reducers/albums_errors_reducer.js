@@ -1,6 +1,7 @@
 import {
   RECEIVE_ALBUM_ERRORS,
   CLEAR_ALBUM_ERRORS,
+  CLEAR_ALL_ALBUM_ERRORS,
 } from '../actions/album_actions';
 
 const albumsErrorsReducer = (prevState = {}, action) => {
@@ -15,6 +16,8 @@ const albumsErrorsReducer = (prevState = {}, action) => {
         nextState[key] = [];
       });
       return nextState;
+    case CLEAR_ALL_ALBUM_ERRORS:
+      return {};
     default:
       return prevState;
   }
