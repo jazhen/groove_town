@@ -15,11 +15,14 @@ const AlbumCreateTrackForm = ({
       clearAlbumErrors(errors, `tracks[${tabIndex}].name`);
     }
 
-    setTracks([
-      ...tracks.slice(0, tabIndex),
-      { ...tracks[tabIndex], name: e.currentTarget.value },
-      ...tracks.slice(tracks.length),
-    ]);
+    const track = tracks[tabIndex];
+    const newTrack = {
+      ...track,
+      name: e.currentTarget.value,
+    };
+    const tracksDup = tracks;
+    tracksDup[tabIndex] = newTrack;
+    setTracks([...tracksDup]);
   };
 
   return (

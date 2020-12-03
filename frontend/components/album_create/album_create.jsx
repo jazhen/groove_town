@@ -59,21 +59,6 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
         />,
       ];
 
-      for (let i = 0; i < tabs.length - 1; i++) {
-        updatedTabs.push(
-          <AlbumCreateTrackTab
-            track={tracks[i]}
-            tabIndex={i + 1}
-            selectedTab={selectedTab}
-            setSelectedTab={setSelectedTab}
-            handleTrackDelete={handleTrackDelete}
-            handleTrackReplace={handleTrackReplace}
-          />
-        );
-      }
-
-      setTabs(updatedTabs);
-
       const updatedTabsContent = [
         <AlbumCreateAlbumForm
           album={album}
@@ -84,7 +69,18 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
         />,
       ];
 
-      for (let i = 0; i < tabs.length - 1; i++) {
+      for (let i = 0; i < tracks.length; i++) {
+        updatedTabs.push(
+          <AlbumCreateTrackTab
+            track={tracks[i]}
+            tabIndex={i + 1}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            handleTrackDelete={handleTrackDelete}
+            handleTrackReplace={handleTrackReplace}
+          />
+        );
+
         updatedTabsContent.push(
           <AlbumCreateTrackForm
             name={tracks[i].name}
@@ -97,6 +93,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
         );
       }
 
+      setTabs(updatedTabs);
       setTabsContent(updatedTabsContent);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
