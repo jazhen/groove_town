@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AlbumCreateAlbumTab from './album_create_album_tab';
 import AlbumCreateTrackTab from './album_create_track_tab';
-import AlbumForm from './album_form';
-import TrackForm from './track_form';
+import AlbumCreateAlbumForm from './album_create_album_form';
+import AlbumCreateTrackForm from './album_create_track_form';
 
 const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
   const today = new Date().toISOString().slice(0, 10);
@@ -30,7 +30,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
   ]);
 
   const [tabsContent, setTabsContent] = useState([
-    <AlbumForm
+    <AlbumCreateAlbumForm
       album={album}
       setAlbum={setAlbum}
       errors={albumErrors}
@@ -73,7 +73,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
 
   useEffect(() => {
     const updatedTabsContent = [
-      <AlbumForm
+      <AlbumCreateAlbumForm
         album={album}
         setAlbum={setAlbum}
         today={today}
@@ -84,7 +84,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
 
     for (let i = 0; i < tabs.length - 1; i++) {
       updatedTabsContent.push(
-        <TrackForm
+        <AlbumCreateTrackForm
           name={tracks[i].name}
           tracks={tracks}
           setTracks={setTracks}
@@ -123,7 +123,7 @@ const AlbumCreate = ({ user, createAlbum, albumErrors, clearAlbumErrors }) => {
     setTabs([...tabs, newTab]);
 
     const newTrackForm = (
-      <TrackForm
+      <AlbumCreateTrackForm
         name=""
         tracks={newTracks}
         setTracks={setTracks}

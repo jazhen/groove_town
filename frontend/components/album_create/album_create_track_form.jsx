@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TrackForm = ({
+const AlbumCreateTrackForm = ({
   tracks,
   setTracks,
   tabIndex,
@@ -46,4 +46,4 @@ const TrackForm = ({
   );
 };
 
-export default TrackForm;
+export default AlbumCreateTrackForm;

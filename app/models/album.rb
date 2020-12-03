@@ -28,11 +28,10 @@ class Album < ApplicationRecord
 
   def validate_art
     if art.attached?
-      if art.blob.content_type.includes['image/jpeg', 'image/png']
+      if ['image/jpeg', 'image/png'].include?(art.blob.content_type)
         errors[:art] << 'File is not of type .jpg or .png.'
       elsif art.blob.byte_size > 5_000_000
         errors[:art] << 'File size is larger than 5MB.'
-        # elsif art.metadata['width'].between(1, 10)
       end
       art.purge
     else

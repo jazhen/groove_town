@@ -1,6 +1,12 @@
 import React from 'react';
 
-const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
+const AlbumCreateAlbumForm = ({
+  album,
+  setAlbum,
+  today,
+  errors,
+  clearAlbumErrors,
+}) => {
   const handleNameChange = (e) => {
     if (errors.name && errors.name.length) {
       clearAlbumErrors(errors, 'name');
@@ -106,4 +112,4 @@ const AlbumForm = ({ album, setAlbum, today, errors, clearAlbumErrors }) => {
   );
 };
 
-export default AlbumForm;
+export default AlbumCreateAlbumForm;
