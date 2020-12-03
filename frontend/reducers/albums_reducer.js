@@ -8,7 +8,10 @@ const albumsReducer = (prevState = {}, action) => {
     case RECEIVE_ALBUMS:
       return action.albums;
     case RECEIVE_ALBUM:
-      return { ...prevState, [action.album.id]: action.album };
+      return {
+        ...prevState,
+        [Object.values(action.album)[0].id]: Object.values(action.album)[0],
+      };
     case RECEIVE_USER:
       return { ...prevState, ...action.albums };
     case RECEIVE_ALL:
