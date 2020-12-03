@@ -25,9 +25,9 @@ const AlbumUpdateAlbumForm = ({
   }, [album.releaseDate]);
 
   const handleNameChange = (e) => {
-    // if (errors.name && errors.name.length) {
-    //   clearAlbumErrors(errors, 'name');
-    // }
+    if (errors.name && errors.name.length) {
+      clearAlbumErrors(errors, 'name');
+    }
     setAlbum({ ...album, name: e.currentTarget.value });
   };
 
@@ -54,16 +54,17 @@ const AlbumUpdateAlbumForm = ({
     <div className="album-update-album-form">
       <input
         type="text"
-        // className={`album-update-album-form__name${
-        //   errors.name && errors.name.length ?
-        // ' album-update-album-form__input-error' : ''
-        // }`}
+        className={`album-update-album-form__name${
+          errors.name && errors.name.length
+            ? ' album-update-album-form__input-error'
+            : ''
+        }`}
         value={album.name}
         onChange={handleNameChange}
         placeholder="album name"
       />
       <div className="album-update-album-form__error">
-        {/* {errors.name && errors.name.length ? errors.name[0] : null} */}
+        {errors.name && errors.name.length ? errors.name[0] : null}
       </div>
       <label className="album-update-album-form__date-label">
         release date:
@@ -129,7 +130,7 @@ const AlbumUpdateAlbumForm = ({
         </>
       )}
       <div className="album-update-album-form__error">
-        {/* {errors.art && errors.art.length ? errors.art[0] : null} */}
+        {errors.art && errors.art.length ? errors.art[0] : null}
       </div>
     </div>
   );

@@ -4,7 +4,14 @@ import AlbumUpdateAlbumForm from './album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
 // import AlbumUpdateTrackTab from './album_update_track_tab';
 
-const AlbumUpdate = ({ user, albums, albumId, fetchAlbum }) => {
+const AlbumUpdate = ({
+  user,
+  albums,
+  albumId,
+  fetchAlbum,
+  albumErrors,
+  clearAlbumErrors,
+}) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const [album, setAlbum] = useState({
@@ -22,7 +29,7 @@ const AlbumUpdate = ({ user, albums, albumId, fetchAlbum }) => {
         name: albums[albumId].name,
         releaseDate: albums[albumId].releaseDate,
         artFile: null,
-        artUrl: null,
+        artUrl: albums[albumId].artUrl,
       });
     }
   }, [fetchAlbum, albumId, albums]);
@@ -41,8 +48,8 @@ const AlbumUpdate = ({ user, albums, albumId, fetchAlbum }) => {
     <AlbumUpdateAlbumForm
       album={album}
       setAlbum={setAlbum}
-      // errors={albumErrors}
-      // clearAlbumErrors={clearAlbumErrors}
+      errors={albumErrors}
+      clearAlbumErrors={clearAlbumErrors}
     />,
   ]);
 
@@ -85,8 +92,8 @@ const AlbumUpdate = ({ user, albums, albumId, fetchAlbum }) => {
         album={album}
         setAlbum={setAlbum}
         // today={today}
-        // errors={albumErrors}
-        // clearAlbumErrors={clearAlbumErrors}
+        errors={albumErrors}
+        clearAlbumErrors={clearAlbumErrors}
       />,
     ];
 
@@ -104,7 +111,7 @@ const AlbumUpdate = ({ user, albums, albumId, fetchAlbum }) => {
     // }
 
     setTabsContent(updatedTabsContent);
-  }, [album, tabs.length]);
+  }, [album, tabs.length, albumErrors, clearAlbumErrors]);
 
   const handleSubmit = () => {};
 
