@@ -25,7 +25,8 @@ const AlbumCreateTrackTab = ({
       className={`album-create__track-tab${
         tabIndex === selectedTab ? ' album-create__active-tab' : ''
       }${
-        errors[`tracks[${tabIndex - 1}].errors`]
+        errors[`tracks[${tabIndex - 1}].errors`] &&
+        errors[`tracks[${tabIndex - 1}].errors`].length
           ? ' album-create__track-tab--error'
           : ' album-create__track-tab--no-error'
       }`}

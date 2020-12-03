@@ -21,6 +21,11 @@ const AlbumCreate = ({ user, createAlbum, errors, clearErrors, loading }) => {
     const tracksDup = tracks;
     tracksDup.splice(tabIndex - 1, 1);
     setTracks(tracksDup);
+
+    clearErrors(errors, [
+      `tracks[${tabIndex - 1}].name`,
+      `tracks[${tabIndex - 1}].errors`,
+    ]);
   };
 
   const handleTrackReplace = (trackIndex, newFile) => {

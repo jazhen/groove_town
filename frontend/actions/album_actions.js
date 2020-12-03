@@ -29,11 +29,11 @@ export const receiveAlbumErrors = (errors) => {
   };
 };
 
-export const clearErrors = (errors, key) => {
+export const clearErrors = (errors, keys) => {
   return {
     type: CLEAR_ALBUM_ERRORS,
     errors,
-    key,
+    keys,
   };
 };
 
@@ -63,6 +63,6 @@ export const createAlbum = (album) => (dispatch) => {
   );
 };
 
-export const clearAlbumErrors = (errors, key) => (dispatch) => {
-  return dispatch(clearErrors(errors, key));
+export const clearAlbumErrors = (errors, keys) => (dispatch) => {
+  return dispatch(clearErrors(errors, keys));
 };

@@ -5,12 +5,16 @@ import {
 
 const albumsErrorsReducer = (prevState = {}, action) => {
   Object.freeze(prevState);
+  const nextState = { ...prevState };
 
   switch (action.type) {
     case RECEIVE_ALBUM_ERRORS:
       return action.errors;
     case CLEAR_ALBUM_ERRORS:
-      return { ...action.errors, [action.key]: [] };
+      action.keys.forEach((key) => {
+        nextState[key] = [];
+      });
+      return nextState;
     default:
       return prevState;
   }
