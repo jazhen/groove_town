@@ -18,7 +18,7 @@ const AlbumUpdateTrackForm = ({
     setTracks([
       ...tracks.slice(0, tabIndex),
       { ...tracks[tabIndex], name: e.currentTarget.value },
-      ...tracks.slice(tracks.length),
+      ...tracks.slice(tabIndex + 1, tracks.length),
     ]);
   };
 

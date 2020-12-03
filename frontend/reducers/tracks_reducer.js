@@ -1,4 +1,4 @@
-import { RECEIVE_ALBUMS } from '../actions/album_actions';
+import { RECEIVE_ALBUMS, RECEIVE_ALBUM } from '../actions/album_actions';
 import { RECEIVE_ALL, RECEIVE_USER } from '../actions/user_actions';
 
 const tracksReducer = (prevState = {}, action) => {
@@ -9,6 +9,8 @@ const tracksReducer = (prevState = {}, action) => {
       return { ...prevState, ...action.tracks };
     case RECEIVE_ALBUMS:
       return action.tracks;
+    case RECEIVE_ALBUM:
+      return { ...prevState, ...action.tracks };
     case RECEIVE_ALL:
       return action.tracks;
     default:

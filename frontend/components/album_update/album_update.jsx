@@ -2,128 +2,195 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
-// import AlbumUpdateTrackTab from './album_update_track_tab';
+import AlbumUpdateTrackForm from './album_update_track_form';
+import AlbumUpdateTrackTab from './album_update_track_tab';
 
 const AlbumUpdate = ({
   user,
-  albums,
-  albumTracks,
+  oldAlbum,
+  allTracks,
   albumId,
   fetchAlbum,
   albumErrors,
   clearAlbumErrors,
 }) => {
   const [selectedTab, setSelectedTab] = useState(0);
-
-  const [album, setAlbum] = useState({
-    name: '',
-    releaseDate: '',
-    artFile: null,
-    artUrl: null,
-  });
+  const [album, setAlbum] = useState(null);
 
   useEffect(() => {
     fetchAlbum(albumId);
+  }, [fetchAlbum, albumId]);
 
-    if (Object.keys(albums).length) {
-      setAlbum({
-        name: albums[albumId].name,
-        releaseDate: albums[albumId].releaseDate,
+  const [tracks, setTracks] = useState(null);
+  const [tabs, setTabs] = useState([]);
+  const [tabsContent, setTabsContent] = useState([]);
+  const [oldReleaseDate, setOldReleaseDate] = useState(null);
+  const [today, setToday] = useState(null);
+
+  useEffect(() => {
+    setToday(new Date().toISOString().slice(0, 10));
+  }, []);
+
+  useEffect(() => {
+    if (oldAlbum && !album) {
+      const newAlbum = {
+        name: oldAlbum.name,
+        releaseDate: oldAlbum.releaseDate,
         artFile: null,
-        artUrl: albums[albumId].artUrl,
+        artUrl: oldAlbum.artUrl,
+      };
+
+      setAlbum(newAlbum);
+      setOldReleaseDate(
+        new Date(oldAlbum.releaseDate).toLocaleDateString('en-US', {
+          timeZone: 'UTC',
+        })
+      );
+
+      const oldTracks = [];
+      oldAlbum.trackIds.forEach((trackId) => {
+        oldTracks.push(allTracks[trackId]);
       });
+
+      setTracks(oldTracks);
+
+      const updatedTabs = [
+        <AlbumUpdateAlbumTab
+          band={user.band}
+          name={oldAlbum.name}
+          artUrl={oldAlbum.artUrl}
+          releaseDate={oldAlbum.releaseDate}
+          tabIndex={0}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        />,
+      ];
+
+      for (let i = 0; i < oldTracks.length; i++) {
+        updatedTabs.push(
+          <AlbumUpdateTrackTab
+            name={oldTracks[i].name}
+            tracks={oldTracks}
+            setTracks={oldTracks}
+            // fileName={tracks[i].fileName}
+            tabIndex={i + 1}
+            tabs={tabs}
+            setTabs={setTabs}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+          />
+        );
+      }
+
+      setTabs(updatedTabs);
+
+      const updatedTabsContent = [
+        <AlbumUpdateAlbumForm
+          album={newAlbum}
+          setAlbum={setAlbum}
+          oldReleaseDate={oldAlbum.releaseDate}
+          today={today}
+          errors={albumErrors}
+          clearAlbumErrors={clearAlbumErrors}
+        />,
+      ];
+
+      for (let i = 0; i < updatedTabs.length - 1; i++) {
+        updatedTabsContent.push(
+          <AlbumUpdateTrackForm
+            name={oldTracks[i].name}
+            tracks={oldTracks}
+            setTracks={setTracks}
+            tabIndex={i}
+            errors={albumErrors}
+            clearAlbumErrors={clearAlbumErrors}
+          />
+        );
+      }
+
+      setTabsContent(updatedTabsContent);
     }
-  }, [fetchAlbum, albumId, albums]);
-
-  // eslint-disable-next-line no-unused-vars
-  const [tracks, setTracks] = useState([]);
-
-  useEffect(() => {
-    const prevAlbums = Object.values(albumTracks);
-
-    if (prevAlbums.length) {
-      setTracks(prevAlbums);
-    }
-  }, [albumTracks]);
-
-  const [tabs, setTabs] = useState([
-    <AlbumUpdateAlbumTab
-      band={user.band}
-      name={album.name}
-      tabIndex={0}
-      selectedTab={selectedTab}
-      setSelectedTab={setSelectedTab}
-    />,
+  }, [
+    oldAlbum,
+    album,
+    user.band,
+    selectedTab,
+    albumErrors,
+    clearAlbumErrors,
+    allTracks,
+    tabs,
+    today,
   ]);
 
-  const [tabsContent, setTabsContent] = useState([
-    <AlbumUpdateAlbumForm
-      album={album}
-      setAlbum={setAlbum}
-      errors={albumErrors}
-      clearAlbumErrors={clearAlbumErrors}
-    />,
-  ]);
-
   useEffect(() => {
-    const updatedTabs = [
-      <AlbumUpdateAlbumTab
-        band={user.band}
-        name={album.name}
-        artUrl={album.artUrl}
-        releaseDate={album.releaseDate}
-        tabIndex={0}
-        selectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
-      />,
-    ];
+    if (album) {
+      const updatedTabs = [
+        <AlbumUpdateAlbumTab
+          band={user.band}
+          name={album.name}
+          artUrl={album.artUrl}
+          releaseDate={album.releaseDate}
+          tabIndex={0}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        />,
+      ];
 
-    // for (let i = 0; i < tabs.length - 1; i++) {
-    //   updatedTabs.push(
-    //     <AlbumUpdateTrackTab
-    //       name={tracks[i].name}
-    //       tracks={tracks}
-    //       setTracks={setTracks}
-    //       fileName={tracks[i].fileName}
-    //       tabIndex={i + 1}
-    //       tabs={tabs}
-    //       setTabs={setTabs}
-    //       selectedTab={selectedTab}
-    //       setSelectedTab={setSelectedTab}
-    //     />
-    //   );
-    // }
+      for (let i = 0; i < tracks.length; i++) {
+        updatedTabs.push(
+          <AlbumUpdateTrackTab
+            name={tracks[i].name}
+            tracks={tracks}
+            setTracks={tracks}
+            // fileName={tracks[i].fileName}
+            tabIndex={i + 1}
+            tabs={tabs}
+            setTabs={setTabs}
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+          />
+        );
+      }
 
-    setTabs(updatedTabs);
+      setTabs(updatedTabs);
+
+      const updatedTabsContent = [
+        <AlbumUpdateAlbumForm
+          album={album}
+          setAlbum={setAlbum}
+          oldReleaseDate={oldReleaseDate}
+          today={today}
+          errors={albumErrors}
+          clearAlbumErrors={clearAlbumErrors}
+        />,
+      ];
+
+      for (let i = 0; i < updatedTabs.length - 1; i++) {
+        updatedTabsContent.push(
+          <AlbumUpdateTrackForm
+            name={tracks[i].name}
+            tracks={tracks}
+            setTracks={setTracks}
+            tabIndex={i}
+            errors={albumErrors}
+            clearAlbumErrors={clearAlbumErrors}
+          />
+        );
+      }
+
+      setTabsContent(updatedTabsContent);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, album, tabs.length, selectedTab]);
-
-  useEffect(() => {
-    const updatedTabsContent = [
-      <AlbumUpdateAlbumForm
-        album={album}
-        setAlbum={setAlbum}
-        // today={today}
-        errors={albumErrors}
-        clearAlbumErrors={clearAlbumErrors}
-      />,
-    ];
-
-    // for (let i = 0; i < tabs.length - 1; i++) {
-    //   updatedTabsContent.push(
-    //     <TrackForm
-    //       name={tracks[i].name}
-    //       tracks={tracks}
-    //       setTracks={setTracks}
-    //       tabIndex={i}
-    //       errors={albumErrors}
-    //       clearAlbumErrors={clearAlbumErrors}
-    //     />
-    //   );
-    // }
-
-    setTabsContent(updatedTabsContent);
-  }, [album, tabs.length, albumErrors, clearAlbumErrors]);
+  }, [
+    album,
+    user.band,
+    selectedTab,
+    albumErrors,
+    clearAlbumErrors,
+    tracks,
+    oldReleaseDate,
+    today,
+  ]);
 
   const handleSubmit = () => {};
 

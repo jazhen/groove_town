@@ -1,5 +1,5 @@
 import { RECEIVE_ALL, RECEIVE_USER } from '../actions/user_actions';
-import { RECEIVE_ALBUMS } from '../actions/album_actions';
+import { RECEIVE_ALBUMS, RECEIVE_ALBUM } from '../actions/album_actions';
 
 const albumsReducer = (prevState = {}, action) => {
   Object.freeze(prevState);
@@ -7,6 +7,8 @@ const albumsReducer = (prevState = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALBUMS:
       return action.albums;
+    case RECEIVE_ALBUM:
+      return { ...prevState, [action.album.id]: action.album };
     case RECEIVE_USER:
       return { ...prevState, ...action.albums };
     case RECEIVE_ALL:

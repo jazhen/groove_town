@@ -8,9 +8,9 @@ const mapStateToProps = (
 ) => {
   return {
     user: users[id],
-    albums,
+    oldAlbum: albums[params.albumId],
     albumId: params.albumId,
-    albumTracks: tracks,
+    allTracks: tracks,
     albumErrors: errors.albums,
   };
 };

@@ -3,25 +3,15 @@ import React, { useEffect, useState } from 'react';
 const AlbumUpdateAlbumForm = ({
   album,
   setAlbum,
+  oldReleaseDate,
+  today,
   errors,
   clearAlbumErrors,
 }) => {
-  const [today, setToday] = useState(new Date().toISOString().slice(0, 10));
-
-  useEffect(() => {
-    setToday(new Date().toISOString().slice(0, 10));
-  }, []);
-
   const [formattedReleaseDate, setFormattedReleaseDate] = useState(today);
 
   useEffect(() => {
-    if (album.releaseDate) {
-      setFormattedReleaseDate(
-        new Date(album.releaseDate).toLocaleDateString('en-US', {
-          timeZone: 'UTC',
-        })
-      );
-    }
+    setFormattedReleaseDate(album.releaseDate.slice(0, 10));
   }, [album.releaseDate]);
 
   const handleNameChange = (e) => {
@@ -73,15 +63,11 @@ const AlbumUpdateAlbumForm = ({
           min="1900-01-01"
           max={today}
           className="album-update-album-form__date-input"
-          value={
-            album.releaseDate
-              ? new Date(album.releaseDate).toISOString().slice(0, 10)
-              : today
-          }
+          value={formattedReleaseDate}
           onChange={handleAlbumReleaseDateChange}
         />
         <span className="album-update-album-form__date-description">
-          last published date was {formattedReleaseDate}
+          last published date was {oldReleaseDate}
         </span>
       </label>
 
