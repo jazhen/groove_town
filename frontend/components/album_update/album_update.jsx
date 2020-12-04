@@ -173,10 +173,8 @@ const AlbumUpdate = ({
         updatedTabs.push(
           <AlbumUpdateTrackTab
             track={tracks[i]}
-            // name={tracks[i].name}
             tracks={tracks}
             setTracks={tracks}
-            // fileName={tracks[i].fileName}
             tabIndex={i + 1}
             tabs={tabs}
             setTabs={setTabs}
@@ -229,6 +227,21 @@ const AlbumUpdate = ({
     // handleTrackDelete,
   ]);
 
+  const handleTrackUpload = (e) => {
+    const bytesToMB = (bytes) => bytes / (1024 * 1024);
+    const file = e.currentTarget.files[0];
+    const newTrack = {
+      name: '',
+      audioFileName: file.name,
+      audioFileSize: bytesToMB(file.size),
+      audio: file,
+    };
+    setTracks([...tracks, newTrack]);
+    setTabs([...tabs, null]);
+    setTabsContent([...tabsContent, null]);
+    setSelectedTab(tabs.length);
+  };
+
   const handleSubmit = () => {};
 
   return (
@@ -248,7 +261,7 @@ const AlbumUpdate = ({
                 id="album-update__options-add-track-input"
                 className="album-update__options-add-track-input"
                 accept="audio/mpeg"
-                // onChange={handleTrackUpload}
+                onChange={handleTrackUpload}
               />
               <label
                 htmlFor="album-update__options-add-track-input"
