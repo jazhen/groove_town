@@ -22,6 +22,10 @@ const AlbumUpdateTrackForm = ({
     ]);
   };
 
+  if (!tracks[tabIndex]) {
+    return null;
+  }
+
   return (
     <div className="album-update-track-form">
       <input

@@ -15,15 +15,16 @@ const AlbumCreateTrackForm = ({
       clearErrors(errors, [`tracks[${tabIndex}].name`]);
     }
 
-    const track = tracks[tabIndex];
-    const newTrack = {
-      ...track,
-      name: e.currentTarget.value,
-    };
-    const tracksDup = tracks;
-    tracksDup[tabIndex] = newTrack;
-    setTracks([...tracksDup]);
+    setTracks([
+      ...tracks.slice(0, tabIndex),
+      { ...tracks[tabIndex], name: e.currentTarget.value },
+      ...tracks.slice(tabIndex + 1, tracks.length),
+    ]);
   };
+
+  if (!tracks[tabIndex]) {
+    return null;
+  }
 
   return (
     <div className="track-form">
