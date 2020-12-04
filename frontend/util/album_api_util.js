@@ -23,3 +23,13 @@ export const createAlbum = (album) => {
     processData: false,
   });
 };
+
+export const updateAlbum = (album, albumId) => {
+  return $.ajax({
+    url: `api/albums/${albumId}`,
+    method: 'PATCH',
+    data: album,
+    contentType: false,
+    processData: false,
+  });
+};

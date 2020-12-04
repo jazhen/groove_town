@@ -11,10 +11,11 @@ const AlbumUpdate = ({
   allTracks,
   albumId,
   fetchAlbum,
+  updateAlbum,
   errors,
   clearErrors,
   clearAllErrors,
-  createAlbum,
+  loading,
 }) => {
   const [oldReleaseDate, setOldReleaseDate] = useState(null);
   const [today, setToday] = useState(null);
@@ -225,7 +226,6 @@ const AlbumUpdate = ({
     tracks,
     oldReleaseDate,
     today,
-    // handleTrackDelete,
   ]);
 
   const handleTrackUpload = (e) => {
@@ -275,8 +275,12 @@ const AlbumUpdate = ({
       }
     });
 
-    createAlbum(formData);
+    updateAlbum(formData, albumId);
   };
+
+  if (loading) {
+    return <h1>LOADING</h1>;
+  }
 
   return (
     <div className="album-update">

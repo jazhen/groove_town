@@ -3,7 +3,7 @@ import {
   fetchAlbum,
   clearAlbumErrors,
   clearAllAlbumErrors,
-  createAlbum,
+  updateAlbum,
 } from '../../actions/album_actions';
 import AlbumUpdate from './album_update';
 
@@ -27,7 +27,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
-  createAlbum: (album) => dispatch(createAlbum(album)),
+  updateAlbum: (album, albumId) => dispatch(updateAlbum(album, albumId)),
   clearErrors: (errors, key) => dispatch(clearAlbumErrors(errors, key)),
   clearAllErrors: () => dispatch(clearAllAlbumErrors()),
 });

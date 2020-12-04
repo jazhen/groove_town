@@ -70,6 +70,16 @@ export const createAlbum = (album) => (dispatch) => {
   );
 };
 
+export const updateAlbum = (album, albumId) => (dispatch) => {
+  dispatch(creatingAlbum());
+  return albumAPIUtil.updateAlbum(album, albumId).then(
+    (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
+    (errors) => {
+      dispatch(receiveAlbumErrors(errors.responseJSON));
+    }
+  );
+};
+
 export const clearAlbumErrors = (errors, keys) => (dispatch) => {
   return dispatch(clearErrors(errors, keys));
 };
