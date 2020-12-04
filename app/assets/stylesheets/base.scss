@@ -61,3 +61,14 @@ a, a:hover, a:focus {
   cursor: pointer;
   outline: none;
 }
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.loading-spinner {
+  color: $green;
+}

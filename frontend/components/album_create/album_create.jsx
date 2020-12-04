@@ -4,6 +4,7 @@ import AlbumCreateAlbumTab from './album_create_album_tab';
 import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumCreateAlbumForm from './album_create_album_form';
 import AlbumCreateTrackForm from './album_create_track_form';
+import Loading from '../loading/loading';
 
 const AlbumCreate = ({
   user,
@@ -156,7 +157,7 @@ const AlbumCreate = ({
   };
 
   if (loading) {
-    return <h1>LOADING</h1>;
+    return <Loading />;
   }
 
   return (

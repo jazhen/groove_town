@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Loading from '../loading/loading';
 import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
 import AlbumUpdateTrackForm from './album_update_track_form';
@@ -288,7 +289,7 @@ const AlbumUpdate = ({
   };
 
   if (loading) {
-    return <h1>LOADING</h1>;
+    return <Loading />;
   }
 
   return (
