@@ -16,21 +16,21 @@ const NavBarSiteList = () => {
   );
 };
 
-const AuthenticatedHeader = ({ currentUserId, logout }) => {
+const AuthenticatedHeader = ({ currentUser, logout }) => {
   return (
     <ul className="nav-bar__dropdown">
       <button type="button" className="nav-bar__dropdown-button" tabIndex="0">
         <img
-          src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/general/default-profile-pic.svg"
+          src={currentUser.avatarUrl}
           className="nav-bar__profile-picture"
-          alt="default profile"
+          alt="profile pic"
         />
       </button>
       <li className="nav-bar__dropdown-menu">
         <ul className="nav-bar__dropdown-content">
           <li className="nav-bar__dropdown-content-list-item">
             <Link
-              to={`/users/${currentUserId}`}
+              to={`/users/${currentUser.id}`}
               className="nav-bar__dropdown-link"
             >
               view collection
@@ -43,7 +43,7 @@ const AuthenticatedHeader = ({ currentUserId, logout }) => {
           </li>
           <li className="nav-bar__dropdown-content-list-item">
             <Link
-              to={`/users/${currentUserId}`}
+              to={`/users/${currentUser.id}`}
               className="nav-bar__dropdown-link"
             >
               edit profile
@@ -89,7 +89,7 @@ const Header = ({ currentUser, logout }) => {
       <nav className="nav-bar">
         <NavBarSiteList />
         {currentUser ? (
-          <AuthenticatedHeader currentUserId={currentUser.id} logout={logout} />
+          <AuthenticatedHeader currentUser={currentUser} logout={logout} />
         ) : (
           <UnauthenticatedHeader />
         )}

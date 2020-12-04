@@ -78,8 +78,11 @@ const AlbumShowTracks = ({
               <ul className="album-show__track-options-container">
                 <li>
                   <a
+                    target="_blank"
+                    rel="noreferrer"
                     href={track.audioUrl}
                     className="album-show__track-download"
+                    type="audio/mpeg"
                     download
                   >
                     download

@@ -43,8 +43,6 @@ class Api::AlbumsController < ApplicationController
     (0...num_tracks).each do |index|
       next unless params[:album][:tracks_attributes][index.to_s][:audio]
 
-      # debugger
-
       audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
       params[:album][:tracks_attributes][index.to_s][:duration] =
         Mp3Info.open(audio).length

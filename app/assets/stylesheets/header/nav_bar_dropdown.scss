@@ -26,10 +26,8 @@
 }
 
 .nav-bar__profile-picture {
-  width: 40px;
-  border: 1px solid transparent;
+  width: 45px;
   border-radius: 90%;
-  background: radial-gradient($white 0%, #797979 100%);
 }
 
 .nav-bar__dropdown-button:focus ~ .nav-bar__dropdown-menu,

@@ -67,9 +67,9 @@ class UserShow extends React.Component {
               <div className="user-show__profile-picture-container">
                 <div className="user-show__profile-picture-background">
                   <img
-                    src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/general/default-profile-pic.svg"
+                    src={user.avatarUrl}
                     className="user-show__profile-picture"
-                    alt="default profile"
+                    alt="avatar"
                   />
                 </div>
               </div>

@@ -245,7 +245,6 @@ const AlbumUpdate = ({
 
     const formData = new FormData();
 
-    // debugger;
     formData.append('album[id]', oldAlbum.id);
     formData.append('album[name]', album.name);
     formData.append('album[user_id]', user.id);

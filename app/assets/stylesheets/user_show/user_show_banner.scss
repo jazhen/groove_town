@@ -26,12 +26,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient($white 0%, #797979 100%);
 }
 
 .user-show__profile-picture {
-  height: 175px;
-  width: 175px;
+  width: 100%;
+  height: auto;
 }
 
 .user-show__profile-container {
