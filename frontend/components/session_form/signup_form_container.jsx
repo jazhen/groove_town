@@ -6,8 +6,8 @@ import {
   clearSessionErrors,
 } from '../../actions/session_actions';
 
-const mapStateToProps = (state) => ({
-  errors: state.errors.session,
+const mapStateToProps = ({ ui: { errors } }) => ({
+  errors: errors.session,
 });
 
 const mapDispatchToProps = (dispatch) => ({

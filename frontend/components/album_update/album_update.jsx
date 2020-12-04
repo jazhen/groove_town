@@ -15,8 +15,42 @@ const AlbumUpdate = ({
   clearErrors,
   clearAllErrors,
 }) => {
+  const [oldReleaseDate, setOldReleaseDate] = useState(null);
+  const [today, setToday] = useState(null);
   const [selectedTab, setSelectedTab] = useState(0);
   const [album, setAlbum] = useState(null);
+  const [tracks, setTracks] = useState(null);
+  const [tabs, setTabs] = useState([]);
+  const [tabsContent, setTabsContent] = useState([]);
+
+  // const handleTrackDelete = (tabIndex) => {
+  //   const tabsDup = tabs;
+  //   tabsDup.splice(tabIndex, 1);
+  //   setTabs(tabsDup);
+
+  //   const tracksDup = tracks;
+  //   tracksDup.splice(tabIndex - 1, 1);
+  //   setTracks(tracksDup);
+
+  //   clearErrors(errors, [
+  //     `tracks[${tabIndex - 1}].name`,
+  //     `tracks[${tabIndex - 1}].errors`,
+  //   ]);
+  // };
+
+  // const handleTrackReplace = (trackIndex, newFile) => {
+  //   const bytesToMB = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+  //   const track = tracks[trackIndex];
+  //   const newTrack = {
+  //     ...track,
+  //     fileName: newFile.name,
+  //     fileSize: bytesToMB(newFile.size),
+  //     audio: newFile,
+  //   };
+  //   const tracksDup = tracks;
+  //   tracksDup[trackIndex] = newTrack;
+  //   setTracks([...tracksDup]);
+  // };
 
   useEffect(() => {
     clearAllErrors();
@@ -25,12 +59,6 @@ const AlbumUpdate = ({
   useEffect(() => {
     fetchAlbum(albumId);
   }, [fetchAlbum, albumId]);
-
-  const [tracks, setTracks] = useState(null);
-  const [tabs, setTabs] = useState([]);
-  const [tabsContent, setTabsContent] = useState([]);
-  const [oldReleaseDate, setOldReleaseDate] = useState(null);
-  const [today, setToday] = useState(null);
 
   useEffect(() => {
     setToday(new Date().toISOString().slice(0, 10));
@@ -62,9 +90,7 @@ const AlbumUpdate = ({
       const updatedTabs = [
         <AlbumUpdateAlbumTab
           band={user.band}
-          name={oldAlbum.name}
-          artUrl={oldAlbum.artUrl}
-          releaseDate={oldAlbum.releaseDate}
+          oldAlbum={oldAlbum}
           tabIndex={0}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
@@ -86,14 +112,11 @@ const AlbumUpdate = ({
         updatedTabs.push(
           <AlbumUpdateTrackTab
             name={oldTracks[i].name}
-            tracks={oldTracks}
-            setTracks={oldTracks}
-            // fileName={tracks[i].fileName}
             tabIndex={i + 1}
-            tabs={tabs}
-            setTabs={setTabs}
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
+            // handleTrackDelete={handleTrackDelete}
+            // handleTrackReplace={handleTrackReplace}
           />
         );
 
@@ -122,6 +145,8 @@ const AlbumUpdate = ({
     allTracks,
     tabs,
     today,
+    // handleTrackDelete,
+    // handleTrackReplace,
   ]);
 
   useEffect(() => {
@@ -141,7 +166,8 @@ const AlbumUpdate = ({
       for (let i = 0; i < tracks.length; i++) {
         updatedTabs.push(
           <AlbumUpdateTrackTab
-            name={tracks[i].name}
+            track={tracks[i]}
+            // name={tracks[i].name}
             tracks={tracks}
             setTracks={tracks}
             // fileName={tracks[i].fileName}

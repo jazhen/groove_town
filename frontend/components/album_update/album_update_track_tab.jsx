@@ -3,25 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AlbumUpdateTrackTab = ({
-  name,
-  fileName,
-  tracks,
-  setTracks,
+  track,
   tabIndex,
-  tabs,
-  setTabs,
   selectedTab,
   setSelectedTab,
+  // handleDelete,
+  // handleReplace,
 }) => {
-  const handleDelete = () => {
-    const tabsCopy = tabs;
-    tabsCopy.splice(tabIndex, 1);
-    setTabs(tabsCopy);
-
-    const tracksCopy = tracks;
-    tracksCopy.splice(tabIndex - 1, 1);
-    setTracks(tracksCopy);
-  };
+  if (!track) {
+    return null;
+  }
 
   return (
     <button
@@ -35,18 +26,33 @@ const AlbumUpdateTrackTab = ({
       <div className="album-update__track-description">
         <div className="album-update__track-name-container">
           <div className="album-update__track-name">
-            {name || 'Untitled Track'}
+            {track.name || 'Untitled Track'}
           </div>
 
           <Link
             to="#"
             className="album-update__track-delete"
-            onClick={handleDelete}
+            // onClick={handleDelete}
           >
             <i className="fas fa-times" />
           </Link>
         </div>
-        <div className="album-update__track-file-name">{fileName}</div>
+        <div className="album-update__track-file-name">
+          {track.audioFileName} | {`${track.audioFileSize.toFixed(2)} MB`}
+        </div>
+        <input
+          type="file"
+          id={`album-update__track-replace-input-${tabIndex}`}
+          className="album-update__track-replace-input"
+          accept="audio/mpeg"
+          // onChange={handleReplace}
+        />
+        <label
+          htmlFor={`album-update__track-replace-input-${tabIndex}`}
+          className="album-update__track-replace-label"
+        >
+          replace
+        </label>
       </div>
     </button>
   );

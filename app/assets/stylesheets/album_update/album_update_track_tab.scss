@@ -7,12 +7,12 @@
   border-right: none;
 }
 
-.album-update__active-tab {
-  background-color: $white;
-  border: 1px solid $mid-gray;
-  border-right: none;
-  margin-right: -1px;
-  z-index: 1;
+.album-update__track-tab--error {
+  border-left: 1px solid $red;
+}
+
+.album-update__track-tab--no-error {
+  border-left: 1px solid $blue;
 }
 
 .album-update__track-num {
@@ -20,7 +20,7 @@
   height: 60px;
   margin-right: 1rem;
   text-align: right;
-  color: $mid-gray;
+  color: $mid-gray2;
 }
 
 .album-update__track-description {
@@ -29,6 +29,7 @@
   font-size: .75rem;
   text-align: left;
   color: $mid-gray2;
+  width: 100%;
 }
 
 .album-update__track-name-container {
@@ -52,4 +53,20 @@
 
 .album-update__track-delete:hover {
   background-color: $mid-gray;
+}
+
+.album-update__track-replace-input {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.album-update__track-replace-label {
+  color: $blue;
+  width: fit-content;
+}
+
+.album-update__track-replace-label:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

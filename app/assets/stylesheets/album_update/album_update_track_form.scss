@@ -28,3 +28,17 @@
   display: flex;
   align-items: center;
 }
+
+.album-update-track-form__track-info {
+  align-items: center;
+  display: flex;
+}
+
+.album-update-track-form__track-label {
+  color: $light-black;
+}
+
+.album-update-track-form__track-description {
+  color: $mid-gray2;
+  font-size: .75rem;
+}
