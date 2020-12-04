@@ -7,9 +7,17 @@ const AlbumUpdateTrackTab = ({
   tabIndex,
   selectedTab,
   setSelectedTab,
-  // handleDelete,
-  // handleReplace,
+  handleTrackDelete,
+  handleTrackReplace,
 }) => {
+  const handleDelete = () => {
+    handleTrackDelete(tabIndex);
+  };
+
+  const handleReplace = (e) => {
+    handleTrackReplace(tabIndex - 1, e.currentTarget.files[0]);
+  };
+
   if (!track) {
     return null;
   }
@@ -32,7 +40,7 @@ const AlbumUpdateTrackTab = ({
           <Link
             to="#"
             className="album-update__track-delete"
-            // onClick={handleDelete}
+            onClick={handleDelete}
           >
             <i className="fas fa-times" />
           </Link>
@@ -45,7 +53,7 @@ const AlbumUpdateTrackTab = ({
           id={`album-update__track-replace-input-${tabIndex}`}
           className="album-update__track-replace-input"
           accept="audio/mpeg"
-          // onChange={handleReplace}
+          onChange={handleReplace}
         />
         <label
           htmlFor={`album-update__track-replace-input-${tabIndex}`}

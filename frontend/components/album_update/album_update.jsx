@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
@@ -23,34 +23,40 @@ const AlbumUpdate = ({
   const [tabs, setTabs] = useState([]);
   const [tabsContent, setTabsContent] = useState([]);
 
-  // const handleTrackDelete = (tabIndex) => {
-  //   const tabsDup = tabs;
-  //   tabsDup.splice(tabIndex, 1);
-  //   setTabs(tabsDup);
+  const handleTrackDelete = useCallback(
+    (tabIndex) => {
+      const tabsDup = tabs;
+      tabsDup.splice(tabIndex, 1);
+      setTabs(tabsDup);
 
-  //   const tracksDup = tracks;
-  //   tracksDup.splice(tabIndex - 1, 1);
-  //   setTracks(tracksDup);
+      const tracksDup = tracks;
+      tracksDup.splice(tabIndex - 1, 1);
+      setTracks(tracksDup);
 
-  //   clearErrors(errors, [
-  //     `tracks[${tabIndex - 1}].name`,
-  //     `tracks[${tabIndex - 1}].errors`,
-  //   ]);
-  // };
+      clearErrors(errors, [
+        `tracks[${tabIndex - 1}].name`,
+        `tracks[${tabIndex - 1}].errors`,
+      ]);
+    },
+    [tabs, tracks, errors, clearErrors]
+  );
 
-  // const handleTrackReplace = (trackIndex, newFile) => {
-  //   const bytesToMB = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
-  //   const track = tracks[trackIndex];
-  //   const newTrack = {
-  //     ...track,
-  //     fileName: newFile.name,
-  //     fileSize: bytesToMB(newFile.size),
-  //     audio: newFile,
-  //   };
-  //   const tracksDup = tracks;
-  //   tracksDup[trackIndex] = newTrack;
-  //   setTracks([...tracksDup]);
-  // };
+  const handleTrackReplace = useCallback(
+    (trackIndex, newFile) => {
+      const bytesToMB = (bytes) => bytes / (1024 * 1024);
+      const track = tracks[trackIndex];
+      const newTrack = {
+        ...track,
+        audioFileName: newFile.name,
+        audioFileSize: bytesToMB(newFile.size),
+        audio: newFile,
+      };
+      const tracksDup = tracks;
+      tracksDup[trackIndex] = newTrack;
+      setTracks([...tracksDup]);
+    },
+    [tracks]
+  );
 
   useEffect(() => {
     clearAllErrors();
@@ -115,8 +121,8 @@ const AlbumUpdate = ({
             tabIndex={i + 1}
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
-            // handleTrackDelete={handleTrackDelete}
-            // handleTrackReplace={handleTrackReplace}
+            handleTrackDelete={handleTrackDelete}
+            handleTrackReplace={handleTrackReplace}
           />
         );
 
@@ -145,8 +151,8 @@ const AlbumUpdate = ({
     allTracks,
     tabs,
     today,
-    // handleTrackDelete,
-    // handleTrackReplace,
+    handleTrackDelete,
+    handleTrackReplace,
   ]);
 
   useEffect(() => {
@@ -176,6 +182,8 @@ const AlbumUpdate = ({
             setTabs={setTabs}
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
+            handleTrackDelete={handleTrackDelete}
+            handleTrackReplace={handleTrackReplace}
           />
         );
       }
@@ -218,6 +226,7 @@ const AlbumUpdate = ({
     tracks,
     oldReleaseDate,
     today,
+    // handleTrackDelete,
   ]);
 
   const handleSubmit = () => {};
