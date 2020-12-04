@@ -58,22 +58,34 @@ const AlbumShowTracks = ({
 
         return (
           <li key={trackId}>
-            {/* <AlbumShowTrack track={tracks[trackId]} /> */}
             <ul className="album-show__track">
-              <li>
-                <AlbumShowTrackButton
-                  track={track}
-                  player={player}
-                  playing={playing}
-                  setPlaying={setPlaying}
-                  currentTrack={currentTrack}
-                  setCurrentTrack={setCurrentTrack}
-                  handlePlay={handlePlay}
-                />
-              </li>
-              <li>{`${track.ord}.`}</li>
-              <li className="album-show__track-name">{track.name}</li>
-              <li>{formatTime(track.duration)}</li>
+              <ul className="album-show__track-info-container">
+                <li>
+                  <AlbumShowTrackButton
+                    track={track}
+                    player={player}
+                    playing={playing}
+                    setPlaying={setPlaying}
+                    currentTrack={currentTrack}
+                    setCurrentTrack={setCurrentTrack}
+                    handlePlay={handlePlay}
+                  />
+                </li>
+                <li>{`${track.ord}.`}</li>
+                <li className="album-show__track-name">{track.name}</li>
+                <li>{formatTime(track.duration)}</li>
+              </ul>
+              <ul className="album-show__track-options-container">
+                <li>
+                  <a
+                    href="/images/myw3schoolsimage.jpg"
+                    className="album-show__track-download"
+                    download
+                  >
+                    download
+                  </a>
+                </li>
+              </ul>
             </ul>
           </li>
         );
