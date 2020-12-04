@@ -78,7 +78,7 @@ const AlbumShowTracks = ({
               <ul className="album-show__track-options-container">
                 <li>
                   <a
-                    href="/images/myw3schoolsimage.jpg"
+                    href={track.audioUrl}
                     className="album-show__track-download"
                     download
                   >

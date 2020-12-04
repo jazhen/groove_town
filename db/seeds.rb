@@ -22,24 +22,21 @@ Track.connection.execute('ALTER SEQUENCE tracks_id_seq RESTART WITH 1')
 
 ################################################################################
 
-demo_user = User.create!(username: 'demoUser',
-                        email: 'demouser@groovetown.com',
-                        password: 'password',
-                        band: 'Demo Band')
+# demo_user = User.create!(username: 'demoUser',
+#                         email: 'demouser@groovetown.com',
+#                         password: 'password',
+#                         band: 'Demo Band')
 
-################################################################################
-###############################################################################
-
-# band_name = 'Phoebe Bridgers'
-# formatted_band_name = band_name.downcase.split.join('_')
-# band = User.create!(username: formatted_band_name,
-#                    email: "#{formatted_band_name}@groovetown.com",
-#                    password: 'password',
-#                    band: band_name)
 
 ################################################################################
 
 seeds = [
+  {
+    user: {
+      band_name: 'Demo Band'
+    },
+    albums: []
+  },
   {
     user: {
       band_name: 'Phoebe Bridgers'
@@ -56,43 +53,46 @@ seeds = [
         release_date: [2020, 6, 18]
       }
     ]
+  },
+  {
+    user: {
+      band_name: 'A Tribe Called Quest'
+    },
+    albums: [
+      {
+        album_name: 'The Low End Theory',
+        track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
+        release_date: [1991, 9, 24]
+      },
+      {
+        album_name: 'Midnight Marauders',
+        track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
+        release_date: [1993, 11, 9]
+      },
+      {
+        album_name: 'Beats, Rhymes and Life',
+        track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
+        release_date: [1996, 7, 30]
+      },
+      {
+        album_name: 'We Got It from Here... Thank You 4 Your Service',
+        track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
+        release_date: [2016, 11, 11]
+      }
+    ]
   }
-  # {
-  #   user: {
-  #     band_name: 'A Tribe Called Quest'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: 'The Low End Theory',
-  #       track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
-  #       release_date: [1991, 9, 24]
-  #     },
-  #     {
-  #       album_name: 'Midnight Marauders',
-  #       track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
-  #       release_date: [1993, 11, 9]
-  #     },
-  #     {
-  #       album_name: 'Beats, Rhymes and Life',
-  #       track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
-  #       release_date: [1996, 7, 30]
-  #     },
-  #     {
-  #       album_name: 'We Got It from Here... Thank You 4 Your Service',
-  #       track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
-  #       release_date: [2016, 11, 11]
-  #     }
-  #   ]
-  # }
 ]
 
 seeds.each do |seed|
   band_name = seed[:user][:band_name]
   formatted_band_name = band_name.delete('.,').downcase.split.join('_')
+  profile_pic_filename = "#{formatted_band_name}-profile-pic"
+  profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}.jpg")
   band = User.new(username: formatted_band_name,
                      email: "#{formatted_band_name}@groovetown.com",
                      password: 'password',
                      band: band_name)
+  band.avatar.attach(io: profile_pic_url, filename: profile_pic_filename)
   band.save!
 
   seed[:albums].each do |seed_album|

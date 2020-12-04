@@ -17,6 +17,7 @@ require_relative './models_helpers/user/check_length_validator.rb'
 class User < ApplicationRecord
   has_many :albums, dependent: :destroy
   has_many :tracks, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
 
   validates :username,
             check_length: { minimum: 3 },
