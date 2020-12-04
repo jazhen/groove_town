@@ -99,7 +99,7 @@ const AlbumCreateAlbumForm = ({
               Upload Album Art
             </label>
             <div className="album-form__file-input-description">
-              <div>1000 x 1000 pixels minimum</div>
+              <div>no dimension limit (larger is better)</div>
               <div>.jpg or .png, 5MB max</div>
             </div>
           </div>

@@ -21,6 +21,8 @@
 .footer__link,
 .footer__logout {
   color: $white;
+  display: flex;
+  align-items: center;
 }
 
 .footer__logout {
@@ -42,6 +44,10 @@
 
 .footer__session-action {
   margin-top: 1rem;
+}
+
+.footer__bandcamp {
+  margin-bottom: 1rem;
 }
 
 // sticky footer

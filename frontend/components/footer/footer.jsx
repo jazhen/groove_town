@@ -8,10 +8,10 @@ const FooterCredentials = () => {
         target="_blank"
         rel="noreferrer"
         href="https://bandcamp.com/"
-        className="footer__link"
+        className="footer__link footer__bandcamp"
       >
         <i className="fab fa-bandcamp footer__icon" />
-        Clone of bandcamp.com
+        Clone of bandcamp
       </a>
       <a
         target="_blank"
