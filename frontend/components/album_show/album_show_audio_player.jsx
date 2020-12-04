@@ -35,7 +35,9 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
               </Link>
             </div>
           </div>
-          <AudioPlayer album={album} tracks={tracks} />
+          {album.trackIds.length ? (
+            <AudioPlayer album={album} tracks={tracks} />
+          ) : null}
         </div>
 
         <div className="album-player__sidebar">
