@@ -42,6 +42,24 @@ const AlbumUpdateTrackForm = ({
           ? errors[`tracks[${tabIndex}].name`][0]
           : null}
       </div>
+      <div className="track-form__track-info">
+        <div className="track-form__track-label">file name:&nbsp;</div>
+        <div className="track-form__track-description">
+          {tracks[tabIndex].audioFileName}
+        </div>
+      </div>
+      <div className="track-form__track-info">
+        <div className="track-form__track-label">file size:&nbsp;</div>
+        <div className="track-form__track-description">
+          {tracks[tabIndex].audioFileSize}
+        </div>
+      </div>
+      <div className="track-form__error">
+        {errors[`tracks[${tabIndex}].errors`] &&
+        errors[`tracks[${tabIndex}].errors`].length
+          ? errors[`tracks[${tabIndex}].errors`][0]
+          : null}
+      </div>
     </div>
   );
 };

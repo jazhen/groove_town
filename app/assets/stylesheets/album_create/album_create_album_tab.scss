@@ -8,6 +8,14 @@
   border-right: none;
 }
 
+.album-create__album-tab--error {
+  border-left: 1px solid $red;
+}
+
+.album-create__album-tab--no-error {
+  border-left: 1px solid $blue;
+}
+
 .album-create__album-tab-art {
   width: 100px;
   height: 100px;
@@ -42,8 +50,4 @@
 
 .album-create__album-tab-date {
   color: $mid-gray2;
-}
-
-.album-create__album-tab--error {
-  border-left: 1px solid $red;
 }

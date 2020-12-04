@@ -9,6 +9,7 @@ const AlbumUpdateTrackTab = ({
   setSelectedTab,
   handleTrackDelete,
   handleTrackReplace,
+  errors,
 }) => {
   const handleDelete = () => {
     handleTrackDelete(tabIndex);
@@ -27,6 +28,11 @@ const AlbumUpdateTrackTab = ({
       type="button"
       className={`album-update__track-tab${
         tabIndex === selectedTab ? ' album-update__active-tab' : ''
+      }${
+        errors[`tracks[${tabIndex - 1}].errors`] &&
+        errors[`tracks[${tabIndex - 1}].errors`].length
+          ? ' album-update__track-tab--error'
+          : ' album-update__track-tab--no-error'
       }`}
       onClick={() => setSelectedTab(tabIndex)}
     >

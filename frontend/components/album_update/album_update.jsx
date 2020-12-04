@@ -102,6 +102,7 @@ const AlbumUpdate = ({
           tabIndex={0}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
+          errors={errors}
         />,
       ];
 
@@ -119,12 +120,13 @@ const AlbumUpdate = ({
       for (let i = 0; i < oldTracks.length; i++) {
         updatedTabs.push(
           <AlbumUpdateTrackTab
-            name={oldTracks[i].name}
+            track={oldTracks[i]}
             tabIndex={i + 1}
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
             handleTrackDelete={handleTrackDelete}
             handleTrackReplace={handleTrackReplace}
+            errors
           />
         );
 
@@ -151,7 +153,6 @@ const AlbumUpdate = ({
     errors,
     clearErrors,
     allTracks,
-    tabs,
     today,
     handleTrackDelete,
     handleTrackReplace,
@@ -162,12 +163,11 @@ const AlbumUpdate = ({
       const updatedTabs = [
         <AlbumUpdateAlbumTab
           band={user.band}
-          name={album.name}
-          artUrl={album.artUrl}
-          releaseDate={album.releaseDate}
+          album={album}
           tabIndex={0}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
+          errors={errors}
         />,
       ];
 
@@ -175,15 +175,12 @@ const AlbumUpdate = ({
         updatedTabs.push(
           <AlbumUpdateTrackTab
             track={tracks[i]}
-            tracks={tracks}
-            setTracks={tracks}
             tabIndex={i + 1}
-            tabs={tabs}
-            setTabs={setTabs}
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
             handleTrackDelete={handleTrackDelete}
             handleTrackReplace={handleTrackReplace}
+            errors={errors}
           />
         );
       }

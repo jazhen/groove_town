@@ -2,25 +2,30 @@ import React, { useEffect, useState } from 'react';
 
 const AlbumUpdateAlbumTab = ({
   band,
-  name,
-  artUrl,
-  releaseDate,
+  album,
   tabIndex,
   selectedTab,
   setSelectedTab,
+  errors,
 }) => {
   const [formattedDate, setFormattedDate] = useState('');
 
   useEffect(() => {
-    setFormattedDate(
-      new Date(releaseDate).toLocaleDateString('en-US', {
-        timeZone: 'UTC',
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      })
-    );
-  }, [releaseDate]);
+    if (album) {
+      setFormattedDate(
+        new Date(album.releaseDate).toLocaleDateString('en-US', {
+          timeZone: 'UTC',
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        })
+      );
+    }
+  }, [album]);
+
+  if (!album) {
+    return null;
+  }
 
   return (
     <>
@@ -28,14 +33,18 @@ const AlbumUpdateAlbumTab = ({
         type="button"
         className={`album-update__album-tab${
           tabIndex === selectedTab ? ' album-update__active-tab' : ''
+        }${
+          errors.name || errors.art
+            ? ' album-update__album-tab--error'
+            : ' album-update__album-tab--no-error'
         }`}
         onClick={() => setSelectedTab(0)}
       >
-        {artUrl ? (
+        {album.artUrl ? (
           <img
             className="album-update__album-tab-art
         album-update__album-tab-art--file"
-            src={artUrl}
+            src={album.artUrl}
             alt="album art"
           />
         ) : (
@@ -47,7 +56,7 @@ const AlbumUpdateAlbumTab = ({
 
         <div className="album-update__album-tab-description">
           <div className="album-update__album-tab-name">
-            {name || 'Untitled Album'}
+            {album.name || 'Untitled Album'}
           </div>
           <div className="album-update__album-tab-band">
             by&nbsp;

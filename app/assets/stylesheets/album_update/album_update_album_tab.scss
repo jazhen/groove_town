@@ -8,6 +8,14 @@
   border-right: none;
 }
 
+.album-update__album-tab--error {
+  border-left: 1px solid $red;
+}
+
+.album-update__album-tab--no-error {
+  border-left: 1px solid $blue;
+}
+
 .album-update__album-tab-art {
   width: 100px;
   height: 100px;
@@ -44,6 +52,3 @@
   color: $mid-gray2;
 }
 
-.album-create__album-tab--error {
-  border-left: 1px solid $red;
-}
