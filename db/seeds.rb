@@ -15,14 +15,14 @@ Album.destroy_all
 Album.connection.execute('ALTER SEQUENCE albums_id_seq RESTART WITH 1')
 Track.destroy_all
 Track.connection.execute('ALTER SEQUENCE tracks_id_seq RESTART WITH 1')
-ActiveStorage::Blob.destroy_all
-ActiveStorage::Blob.connection.execute('ALTER SEQUENCE active_storage_blob_id_seq RESTART WITH 1')
-ActiveStorage::Attachment.destroy_all
-ActiveStorage::Attachment.connection.execute('ALTER SEQUENCE active_storage_attachment_id_seq RESTART WITH 1')
+# ActiveStorage::Blob.destroy_all
+# ActiveStorage::Blob.connection.execute('ALTER SEQUENCE active_storage_blob_id_seq RESTART WITH 1')
+# ActiveStorage::Attachment.destroy_all
+# ActiveStorage::Attachment.connection.execute('ALTER SEQUENCE active_storage_attachment_id_seq RESTART WITH 1')
 
 ################################################################################
 
-demo_user = User.create(username: 'demoUser',
+demo_user = User.create!(username: 'demoUser',
                         email: 'demouser@groovetown.com',
                         password: 'password',
                         band: 'Demo Band')
@@ -32,97 +32,100 @@ demo_user = User.create(username: 'demoUser',
 
 # band_name = 'Phoebe Bridgers'
 # formatted_band_name = band_name.downcase.split.join('_')
-# band = User.create(username: formatted_band_name,
+# band = User.create!(username: formatted_band_name,
 #                    email: "#{formatted_band_name}@groovetown.com",
 #                    password: 'password',
 #                    band: band_name)
 
 ################################################################################
 
-# seeds = [
-#   {
-#     user: {
-#       band_name: 'Phoebe Bridgers'
-#     },
-#     albums: [
-#       {
-#         album_name: 'Stranger in the Alps',
-#         track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street'],
-#         release_date: [2017, 9, 22]
-#       },
-#       {
-#         album_name: 'Punisher',
-#         track_names: ['DVD Menu', 'Garden Song', 'Kyoto', 'Punisher', 'Halloween'],
-#         release_date: [2020, 6, 18]
-#       }
-#     ]
-#   },
-#   {
-#     user: {
-#       band_name: 'A Tribe Called Quest'
-#     },
-#     albums: [
-#       {
-#         album_name: 'The Low End Theory',
-#         track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
-#         release_date: [1991, 9, 24]
-#       },
-#       {
-#         album_name: 'Midnight Marauders',
-#         track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
-#         release_date: [1993, 11, 9]
-#       },
-#       {
-#         album_name: 'Beats, Rhymes and Life',
-#         track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
-#         release_date: [1996, 7, 30]
-#       },
-#       {
-#         album_name: 'We Got It from Here... Thank You 4 Your Service',
-#         track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
-#         release_date: [2016, 11, 11]
-#       }
-#     ]
-#   }
-# ]
+seeds = [
+  {
+    user: {
+      band_name: 'Phoebe Bridgers'
+    },
+    albums: [
+      {
+        album_name: 'Stranger in the Alps',
+        track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street'],
+        release_date: [2017, 9, 22]
+      },
+      {
+        album_name: 'Punisher',
+        track_names: ['DVD Menu', 'Garden Song', 'Kyoto', 'Punisher', 'Halloween'],
+        release_date: [2020, 6, 18]
+      }
+    ]
+  }
+  # {
+  #   user: {
+  #     band_name: 'A Tribe Called Quest'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'The Low End Theory',
+  #       track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
+  #       release_date: [1991, 9, 24]
+  #     },
+  #     {
+  #       album_name: 'Midnight Marauders',
+  #       track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
+  #       release_date: [1993, 11, 9]
+  #     },
+  #     {
+  #       album_name: 'Beats, Rhymes and Life',
+  #       track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
+  #       release_date: [1996, 7, 30]
+  #     },
+  #     {
+  #       album_name: 'We Got It from Here... Thank You 4 Your Service',
+  #       track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
+  #       release_date: [2016, 11, 11]
+  #     }
+  #   ]
+  # }
+]
 
-# seeds.each do |seed|
-#   band_name = seed[:user][:band_name]
-#   formatted_band_name = band_name.delete('.,').downcase.split.join('_')
-#   band = User.create(username: formatted_band_name,
-#                      email: "#{formatted_band_name}@groovetown.com",
-#                      password: 'password',
-#                      band: band_name)
+seeds.each do |seed|
+  band_name = seed[:user][:band_name]
+  formatted_band_name = band_name.delete('.,').downcase.split.join('_')
+  band = User.new(username: formatted_band_name,
+                     email: "#{formatted_band_name}@groovetown.com",
+                     password: 'password',
+                     band: band_name)
+  band.save!
 
-#   seed[:albums].each do |seed_album|
-#     formatted_album_name = seed_album[:album_name].delete('.,').downcase.split.join('_')
-#     filename = "#{formatted_band_name}-#{formatted_album_name}"
-#     album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
-#     puts filename
-#     puts
-#     album = Album.create(name: seed_album[:album_name],
-#                          user_id: band.id,
-#                          release_date: DateTime.new(seed_album[:release_date][0], seed_album[:release_date][1], seed_album[:release_date][2]).in_time_zone)
-#     album.art.attach(io: album_art_url, filename: filename)
+  seed[:albums].each do |seed_album|
+    formatted_album_name = seed_album[:album_name].delete('.,').downcase.split.join('_')
+    filename = "#{formatted_band_name}-#{formatted_album_name}"
+    album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
+    puts filename
+    puts
+    album = Album.new(name: seed_album[:album_name],
+                         user_id: band.id,
+                         release_date: DateTime.new(seed_album[:release_date][0], seed_album[:release_date][1], seed_album[:release_date][2]).in_time_zone)
+    album.art.attach(io: album_art_url, filename: filename)
+    album.save!
 
-#     seed_album[:track_names].each_with_index do |track_name, index|
-#       track_filename = "#{filename}-0#{index + 1}.mp3"
-#       puts track_filename
-#       puts
-#       track_audio = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}")
+    seed_album[:track_names].each_with_index do |track_name, index|
+      track_filename = "#{filename}-0#{index + 1}.mp3"
+      puts track_filename
+      puts
+      track_audio = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}")
 
-#       track_duration = Mp3Info.open(track_audio).length
-#       track = Track.create(name: track_name,
-#                            ord: index + 1,
-#                            user_id: band.id,
-#                            album_id: album.id,
-#                            duration: track_duration)
+      track_duration = Mp3Info.open(track_audio).length
+      track = Track.new(name: track_name,
+                           ord: index + 1,
+                           user_id: band.id,
+                           album_id: album.id,
+                           duration: track_duration)
 
-#       track.audio.attach(io: track_audio,
-#                          filename: track_filename)
-#     end
-#   end
-# end
+      track.audio.attach(io: track_audio,
+                         filename: track_filename)
+      track.save!
+    end
+  end
+end
 
 ################################################################################
 
