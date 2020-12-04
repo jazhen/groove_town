@@ -26,7 +26,7 @@
 }
 
 .album-show__tabs-header-list {
-  background-color: #dbdbdb;
+  background-color: $mid-gray;
   display: flex;
 }
 
@@ -38,8 +38,8 @@
 }
 
 .album-show__tabs-header-list-item--active {
-  border-top: 2px solid black;
-  color: black;
+  border-top: 2px solid $light-black;
+  color: $light-black;
 }
 
 .album-show__tabs-header-list-item--inactive:hover {
@@ -60,7 +60,8 @@
 
 .album-show__tab-content {
   padding: 1.5rem 2rem;
-  background-color: #fff;
+  background-color: $white;
+  margin-bottom: 3rem;
 }
 
 @media only screen

@@ -90,10 +90,10 @@
 
 .album-form__file-input-remove {
   position: relative;
-  background-color: #fff;
+  background-color: $white;
   display: flex;
   padding: .25rem;
-  border: 1px outset lightgray;
+  border: 1px outset $light-gray;
   color: $blue;
   margin: .25rem;
   width: 1.5rem;
