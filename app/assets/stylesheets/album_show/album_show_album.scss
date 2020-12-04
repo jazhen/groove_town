@@ -19,15 +19,24 @@
   text-decoration: underline;
 }
 
-.album-player__artist-name {
+.album-player__artist {
   font-weight: bold;
   text-align: center;
+}
+
+.album-player__artist-name {
+  margin-bottom: .5rem;
 }
 
 .album-player__metadata-container {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+}
+
+.album-player__artist-pic {
+  width: 100%;
+  height: auto;
 }
 
 @media only screen
