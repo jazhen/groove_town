@@ -62,12 +62,12 @@ export const fetchAlbum = (albumId) => (dispatch) => {
 
 export const createAlbum = (album) => (dispatch) => {
   dispatch(creatingAlbum());
-  return albumAPIUtil.createAlbum(album).then(
-    (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
-    (errors) => {
+  return albumAPIUtil
+    .createAlbum(album)
+    .then((createdAlbum) => dispatch(receiveAlbum(createdAlbum)))
+    .fail((errors) => {
       dispatch(receiveAlbumErrors(errors.responseJSON));
-    }
-  );
+    });
 };
 
 export const updateAlbum = (album, albumId) => (dispatch) => {

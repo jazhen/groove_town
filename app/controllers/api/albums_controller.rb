@@ -32,7 +32,6 @@ class Api::AlbumsController < ApplicationController
     if @album.save
       render :show
     else
-      puts @album.errors.messages
       render json: @album.errors.messages, status: 409
     end
   end
@@ -55,8 +54,17 @@ class Api::AlbumsController < ApplicationController
     if @album.update(album_params)
       render :show
     else
-      puts @album.errors.messages
       render json: @album.errors.messages, status: 409
+    end
+  end
+
+  def destroy
+    @album = Album.find_by(id: params[:id])
+
+    if @album
+      @album.destroy
+    else
+      render json: @album.errors.messages, status: 404
     end
   end
 

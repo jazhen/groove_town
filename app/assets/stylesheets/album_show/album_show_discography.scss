@@ -26,7 +26,9 @@
 }
 
 .album-show-discography__art {
-  width: 100%;
+  width: 175px;
+  height: 175px;
+  object-fit: cover;
 }
 
 .album-show-discography__link {

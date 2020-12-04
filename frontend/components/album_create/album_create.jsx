@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AlbumCreateAlbumTab from './album_create_album_tab';
 import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumCreateAlbumForm from './album_create_album_form';
@@ -13,6 +13,7 @@ const AlbumCreate = ({
   clearErrors,
   clearAllErrors,
   loading,
+  history,
 }) => {
   const [today] = useState(new Date().toISOString().slice(0, 10));
   const [selectedTab, setSelectedTab] = useState(0);
@@ -153,7 +154,10 @@ const AlbumCreate = ({
       formData.append(`album[tracks_attributes][${ord}][audio]`, track.audio);
     });
 
-    createAlbum(formData);
+    createAlbum(formData).then((res) => {
+      const newAlbumId = Object.keys(res.album)[0];
+      history.push(`/albums/${newAlbumId}`);
+    });
   };
 
   if (loading) {
@@ -208,4 +212,4 @@ const AlbumCreate = ({
   );
 };
 
-export default AlbumCreate;
+export default withRouter(AlbumCreate);

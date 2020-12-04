@@ -324,7 +324,10 @@ const AlbumUpdate = ({
 
             <div className="album-update__options-publish-container">
               <button type="submit" className="album-update__options-publish">
-                Publish
+                Update
+              </button>
+              <button type="submit" className="album-update__options-delete">
+                Delete
               </button>
               <Link to="/" className="album-update__options-cancel">
                 cancel

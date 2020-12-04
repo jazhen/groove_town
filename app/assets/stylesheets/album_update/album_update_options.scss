@@ -14,7 +14,7 @@
 }
 
 .album-update__options-add-track {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   margin: 1rem 0;
 }
@@ -50,6 +50,19 @@
   width: 100px;
   height: 2rem;
   background-color: #0EC200;
+  color: white;
+  font-weight: bold;
+}
+
+.album-update__options-delete:hover {
+  text-decoration: underline;
+}
+
+.album-update__options-delete {
+  border: 1px solid $red;
+  width: 100px;
+  height: 2rem;
+  background-color: #df392e;
   color: white;
   font-weight: bold;
 }

@@ -1,12 +1,15 @@
 @import 'variables';
 
 .album-player__art {
-  width: 100%;
-  height: auto;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
 }
 
 .album-player__title {
   font-weight: 900;
+  display: flex;
+  align-items: flex-end;
 }
 
 .album-player__artist {
@@ -37,6 +40,7 @@
 .album-player__artist-pic {
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 @media only screen
