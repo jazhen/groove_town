@@ -19,24 +19,29 @@ class Api::AlbumsController < ApplicationController
   def create
     num_tracks = album_params[:tracks_attributes].to_h.length
 
+    debugger
     (0...num_tracks).each do |index|
+      next unless params[:album][:tracks_attributes][index.to_s][:audio]
+
+      debugger
       audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
       params[:album][:tracks_attributes][index.to_s][:duration] =
         Mp3Info.open(audio).length
     end
 
-    # debugger
-    @album = Album.new(album_params)
-    # debugger
+    debugger
+    @album = Album.find_by(id: params[:album][:id])
+    # @album = Album.new(album_params)
     user = User.find_by(id: album_params[:user_id])
-    # debugger
     @album.user = user
-    # debugger
 
-    if @album.save
+    if @album.update(album_params)
+      debugger
       render :show
     else
+      debugger
       puts @album.errors.messages
+      puts @album.errors.full_messages
       render json: @album.errors.messages, status: 409
     end
   end
@@ -45,11 +50,12 @@ class Api::AlbumsController < ApplicationController
 
   def album_params
     params.require(:album).permit(
+      :id,
       :name,
       :user_id,
       :release_date,
       :art,
-      tracks_attributes: %i[name ord user_id album_id duration audio]
+      tracks_attributes: %i[id name ord user_id album_id duration audio]
     )
   end
 end

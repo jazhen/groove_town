@@ -12,7 +12,7 @@ const AlbumUpdateTrackForm = ({
       errors[`tracks[${tabIndex}].name`] &&
       errors[`tracks[${tabIndex}].name`].length
     ) {
-      clearErrors(errors, `tracks[${tabIndex}].name`);
+      clearErrors(errors, [`tracks[${tabIndex}].name`]);
     }
 
     setTracks([

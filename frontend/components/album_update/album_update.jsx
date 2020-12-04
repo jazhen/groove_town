@@ -14,6 +14,7 @@ const AlbumUpdate = ({
   errors,
   clearErrors,
   clearAllErrors,
+  createAlbum,
 }) => {
   const [oldReleaseDate, setOldReleaseDate] = useState(null);
   const [today, setToday] = useState(null);
@@ -242,7 +243,40 @@ const AlbumUpdate = ({
     setSelectedTab(tabs.length);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    // debugger;
+    formData.append('album[id]', oldAlbum.id);
+    formData.append('album[name]', album.name);
+    formData.append('album[user_id]', user.id);
+    formData.append('album[release_date]', album.releaseDate);
+    if (album.artFile) {
+      formData.append('album[art]', album.artFile);
+    }
+
+    tracks.forEach((track, ord) => {
+      if (track.id) {
+        // debugger;
+        formData.append(`album[tracks_attributes][${ord}][id]`, track.id);
+      }
+      formData.append(`album[tracks_attributes][${ord}][name]`, track.name);
+      formData.append(`album[tracks_attributes][${ord}][ord]`, ord + 1);
+      formData.append(`album[tracks_attributes][${ord}][user_id]`, user.id);
+      formData.append(
+        `album[tracks_attributes][${ord}][album_id]`,
+        oldAlbum.id
+      );
+      if (track.audio) {
+        formData.append(`album[tracks_attributes][${ord}][duration]`, '1:23');
+        formData.append(`album[tracks_attributes][${ord}][audio]`, track.audio);
+      }
+    });
+
+    createAlbum(formData);
+  };
 
   return (
     <div className="album-update">

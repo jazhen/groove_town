@@ -14,7 +14,7 @@ class Album < ApplicationRecord
   has_one_attached :art, dependent: :destroy
   belongs_to :user
   has_many :tracks, dependent: :destroy, index_errors: true, inverse_of: :album
-  accepts_nested_attributes_for :tracks
+  accepts_nested_attributes_for :tracks, update_only: true
 
   validates :user_id, :release_date, presence: true
 
@@ -24,16 +24,17 @@ class Album < ApplicationRecord
 
   validate :validate_art
 
-  # validates_associated :tracks
+  validates_associated :tracks
 
   def validate_art
     if art.attached?
       if !['image/jpeg', 'image/png'].include?(art.blob.content_type)
         errors[:art] << 'File is not of type .jpg or .png.'
+        art.purge
       elsif art.blob.byte_size > 5_000_000
         errors[:art] << 'File size is larger than 5MB.'
+        art.purge
       end
-      art.purge
     else
       errors[:art] << 'Please add cover art for this album.'
     end

@@ -16,7 +16,7 @@ const AlbumUpdateAlbumForm = ({
 
   const handleNameChange = (e) => {
     if (errors.name && errors.name.length) {
-      clearErrors(errors, 'name');
+      clearErrors([errors, 'name']);
     }
     setAlbum({ ...album, name: e.currentTarget.value });
   };
@@ -30,7 +30,7 @@ const AlbumUpdateAlbumForm = ({
     const url = URL.createObjectURL(file);
 
     if (errors.art && errors.art.length) {
-      clearErrors(errors, 'art');
+      clearErrors([errors, 'art']);
     }
 
     setAlbum({ ...album, artFile: file, artUrl: url });
