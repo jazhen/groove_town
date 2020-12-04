@@ -71,7 +71,7 @@ class Api::AlbumsController < ApplicationController
       :user_id,
       :release_date,
       :art,
-      tracks_attributes: %i[id name ord user_id album_id duration audio]
+      tracks_attributes: %i[id name ord user_id album_id duration audio _destroy]
     )
   end
 end
