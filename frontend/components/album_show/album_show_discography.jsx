@@ -7,7 +7,7 @@ const AlbumShowDiscography = ({ albums, albumIds }) => {
   return (
     <>
       <div className="album-show-discography">
-        <div className="album-show-discography__header">discography</div>
+        <p className="album-show-discography__header">discography</p>
         <ul className="album-show-discography__list">
           {albumIds.map((albumId) => {
             const album = albums[albumId];

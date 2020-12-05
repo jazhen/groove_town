@@ -328,9 +328,9 @@ const AlbumUpdate = ({
               >
                 add track
               </label>
-              <div className="album-update__options-add-track-description">
+              <span className="album-update__options-add-track-description">
                 10MB max per track, .mp3 only
-              </div>
+              </span>
             </div>
 
             <div className="album-update__options-publish-container">

@@ -55,17 +55,17 @@ const AlbumUpdateAlbumTab = ({
         )}
 
         <div className="album-update__album-tab-description">
-          <div className="album-update__album-tab-name">
+          <p className="album-update__album-tab-name">
             {album.name || 'Untitled Album'}
-          </div>
+          </p>
           <div className="album-update__album-tab-band">
             by&nbsp;
-            <div className="album-update__album-tab-band-name">{band}</div>
+            <p className="album-update__album-tab-band-name">{band}</p>
           </div>
-          <div className="album-update__album-tab-date">{formattedDate}</div>
+          <p className="album-update__album-tab-date">{formattedDate}</p>
         </div>
       </button>
-      <div className="album-update__options-tabs-title">TRACKS</div>
+      <p className="album-update__options-tabs-title">TRACKS</p>
     </>
   );
 };

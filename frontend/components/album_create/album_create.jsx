@@ -190,9 +190,9 @@ const AlbumCreate = ({
               >
                 add track
               </label>
-              <div className="album-create__options-add-track-description">
+              <p className="album-create__options-add-track-description">
                 10MB max per track, .mp3 only
-              </div>
+              </p>
             </div>
 
             <div className="album-create__options-publish-container">

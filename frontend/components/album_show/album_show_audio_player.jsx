@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AlbumShowDiscography from './album_show_discography';
 import AudioPlayer from './audio_player';
 
 const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
   const album = albums[albumId];
+
+  const [formattedDate, setFormattedDate] = useState('');
+
+  useEffect(() => {
+    setFormattedDate(
+      new Date(album.releaseDate).toLocaleDateString('en-US', {
+        timeZone: 'UTC',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })
+    );
+  }, [album.releaseDate]);
 
   return (
     <div className="album-player">
@@ -34,12 +47,13 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
           {album.trackIds.length ? (
             <AudioPlayer album={album} tracks={tracks} />
           ) : null}
+          <p className="album-player__release-date">released {formattedDate}</p>
         </div>
 
         <div className="album-player__sidebar">
           <div className="album-player__artist">
             <Link to={`/users/${user.id}`}>
-              <div className="album-player__artist-name">{user.band}</div>
+              <p className="album-player__artist-name">{user.band}</p>
               <img
                 src={user.avatarUrl}
                 alt="profile pic"

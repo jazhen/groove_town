@@ -109,8 +109,8 @@ const AlbumUpdateAlbumForm = ({
               Upload Album Art
             </label>
             <div className="album-update-album-form__file-input-description">
-              <div>1000 x 1000 pixels minimum</div>
-              <div>.jpg or .png, 5MB max</div>
+              <p>1000 x 1000 pixels minimum</p>
+              <p>.jpg or .png, 5MB max</p>
             </div>
           </div>
         </>

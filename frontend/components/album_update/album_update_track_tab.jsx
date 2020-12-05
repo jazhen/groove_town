@@ -47,9 +47,9 @@ const AlbumUpdateTrackTab = ({
       <div className="album-update__track-num">{tabIndex}</div>
       <div className="album-update__track-description">
         <div className="album-update__track-name-container">
-          <div className="album-update__track-name">
+          <p className="album-update__track-name">
             {track.name || 'Untitled Track'}
-          </div>
+          </p>
 
           <Link
             to="#"
@@ -59,9 +59,9 @@ const AlbumUpdateTrackTab = ({
             <i className="fas fa-times" />
           </Link>
         </div>
-        <div className="album-update__track-file-name">
+        <p className="album-update__track-file-name">
           {track.audioFileName} | {`${track.audioFileSize.toFixed(2)} MB`}
-        </div>
+        </p>
         <input
           type="file"
           id={`album-update__track-replace-input-${tabIndex}`}

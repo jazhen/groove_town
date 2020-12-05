@@ -52,7 +52,7 @@ const AlbumShowTracks = ({
   formatTime,
 }) => {
   return (
-    <ul>
+    <ul className="album-show__tracks">
       {trackIds.map((trackId) => {
         const track = tracks[trackId];
 

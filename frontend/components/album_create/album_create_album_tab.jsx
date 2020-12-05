@@ -49,17 +49,17 @@ const AlbumCreateAlbumTab = ({
         )}
 
         <div className="album-create__album-tab-description">
-          <div className="album-create__album-tab-name">
+          <p className="album-create__album-tab-name">
             {album.name || 'Untitled Album'}
-          </div>
+          </p>
           <div className="album-create__album-tab-band">
             by&nbsp;
-            <div className="album-create__album-tab-band-name">{band}</div>
+            <p className="album-create__album-tab-band-name">{band}</p>
           </div>
-          <div className="album-create__album-tab-date">{formattedDate}</div>
+          <p className="album-create__album-tab-date">{formattedDate}</p>
         </div>
       </button>
-      <div className="album-create__options-tabs-title">TRACKS</div>
+      <p className="album-create__options-tabs-title">TRACKS</p>
     </>
   );
 };

@@ -34,13 +34,18 @@
 .album-player__metadata-container {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .album-player__artist-pic {
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.album-player__release-date {
+  font-size: .75rem;
+  margin: 2rem 0;
 }
 
 @media only screen

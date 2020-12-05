@@ -26,11 +26,11 @@ const mapStateToProps = (
         />
       ),
     },
-    { title: 'merch', content: '' },
-    {
-      title: 'community',
-      content: '',
-    },
+    // { title: 'merch', content: '' },
+    // {
+    //   title: 'community',
+    //   content: '',
+    // },
   ];
 
   return {
