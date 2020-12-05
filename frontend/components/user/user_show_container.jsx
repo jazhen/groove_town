@@ -5,7 +5,7 @@ import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
 const mapStateToProps = (
-  { entities: { users, albums } },
+  { entities: { users, albums }, session },
   { match: { params } }
 ) => {
   const user = users[params.userId];
@@ -15,7 +15,13 @@ const mapStateToProps = (
     { title: 'following', content: '' },
     {
       title: 'albums',
-      content: <UserShowAlbums user={user} albums={albums} />,
+      content: (
+        <UserShowAlbums
+          user={user}
+          albums={albums}
+          currentUserId={session.id}
+        />
+      ),
     },
   ];
 

@@ -28,7 +28,6 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs }) => {
 
 const AlbumShow = ({
   user,
-  users,
   albums,
   userId,
   albumId,
@@ -39,10 +38,8 @@ const AlbumShow = ({
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
-    if (!users[userId]) {
-      fetchUser(userId);
-    }
-  }, [users, userId, fetchUser]);
+    fetchUser(userId);
+  }, [userId, fetchUser]);
 
   const tab = tabs[selectedTab];
   const album = albums[albumId];

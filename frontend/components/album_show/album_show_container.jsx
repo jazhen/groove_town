@@ -35,7 +35,6 @@ const mapStateToProps = (
 
   return {
     user,
-    users,
     albums,
     userId,
     albumId,

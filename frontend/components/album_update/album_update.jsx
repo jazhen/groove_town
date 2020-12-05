@@ -70,10 +70,8 @@ const AlbumUpdate = ({
   }, [errors, clearAllErrors]);
 
   useEffect(() => {
-    if (!oldAlbum) {
-      fetchAlbum(albumId);
-    }
-  }, [fetchAlbum, albumId, oldAlbum]);
+    fetchAlbum(albumId);
+  }, [fetchAlbum, albumId]);
 
   useEffect(() => {
     setToday(new Date().toISOString().slice(0, 10));

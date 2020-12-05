@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserShowAlbumsList = ({ album }) => {
+const UserShowAlbumsList = ({ album, currentUserId }) => {
   return (
     <li key={album.id} className="user-albums__list-item">
       <div className="user-albums__album-container">
@@ -16,17 +16,16 @@ const UserShowAlbumsList = ({ album }) => {
               alt={`${album.band}-${album.name}`}
             />
           </Link>
-          <div className="user-albums__album-update-container">
-            <Link
-              to={`/albums/${album.id}/edit`}
-              className="user-albums__album-update"
-            >
-              edit
-            </Link>
-            <button type="button" className="user-albums__album-view">
-              view
-            </button>
-          </div>
+          {album.userId === currentUserId ? (
+            <div className="user-albums__album-update-container">
+              <Link
+                to={`/albums/${album.id}/edit`}
+                className="user-albums__album-update"
+              >
+                edit
+              </Link>
+            </div>
+          ) : null}
         </div>
         <ul className="user-albums__metadata-list">
           <li className="user-albums__metadata-list-item">
@@ -43,7 +42,7 @@ const UserShowAlbumsList = ({ album }) => {
   );
 };
 
-const UserShowAlbums = ({ user, albums }) => {
+const UserShowAlbums = ({ user, albums, currentUserId }) => {
   const { albumIds } = user;
 
   return (
@@ -52,7 +51,11 @@ const UserShowAlbums = ({ user, albums }) => {
     >
       <ul className="user-albums__list">
         {albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
+          <UserShowAlbumsList
+            key={albumId}
+            album={albums[albumId]}
+            currentUserId={currentUserId}
+          />
         ))}
       </ul>
     </div>
