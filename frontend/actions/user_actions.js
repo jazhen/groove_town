@@ -32,3 +32,10 @@ export const fetchUser = (userId) => (dispatch) => {
     .fetchUser(userId)
     .then((data) => dispatch(receiveUser(data)));
 };
+
+export const updateUser = (user, userId) => (dispatch) => {
+  dispatch(setLoading());
+  return userAPIUtil
+    .updateUser(user, userId)
+    .then((data) => dispatch(receiveUser(data)));
+};

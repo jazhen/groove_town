@@ -39,11 +39,9 @@ const UserShow = ({
   fetchUser,
   tabs,
   loading,
+  updateUser,
 }) => {
-  const [profile, setProfile] = useState({
-    avatarFile: null,
-    artUrl: null,
-  });
+  const [profile, setProfile] = useState({});
   const [selectedTab, setSelectedTab] = useState(0);
   const [editing, setEditing] = useState(false);
 
@@ -51,13 +49,30 @@ const UserShow = ({
     fetchUser(userId);
   }, [fetchUser, userId]);
 
-  // const handleProfileClick = () => {};
-
   const handleAvatarUpload = (e) => {
     const file = e.currentTarget.files[0];
     const url = URL.createObjectURL(file);
 
-    setProfile({ ...user, avatarFile: file, avatarUrl: url });
+    setProfile({ ...profile, avatarFile: file, avatarUrl: url });
+  };
+
+  const handleCancel = () => {
+    setProfile({});
+    setEditing(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('user[id]', userId);
+    if (profile.avatarFile) {
+      formData.append('user[avatar]', profile.avatarFile);
+    }
+
+    updateUser(formData, userId).then(() => {
+      handleCancel();
+    });
   };
 
   if (loading) {
@@ -108,9 +123,22 @@ const UserShow = ({
               {user.band ? user.band : user.username}
             </p>
             {editing ? (
-              <button type="button" onClick={() => setEditing(false)}>
-                Save Changes | Cancel
-              </button>
+              <div className="user-show__profile-edit-button-container">
+                <button
+                  type="button"
+                  className="user-show__profile-edit-button"
+                  onClick={handleSubmit}
+                >
+                  Save Changes
+                </button>
+                <button
+                  type="button"
+                  className="user-show__profile-edit-button"
+                  onClick={handleCancel}
+                >
+                  Cancel
+                </button>
+              </div>
             ) : (
               <button type="button" onClick={() => setEditing(true)}>
                 Edit Profile

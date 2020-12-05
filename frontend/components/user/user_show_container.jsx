@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, updateUser } from '../../actions/user_actions';
 import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
@@ -36,6 +36,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
+  updateUser: (user, userId) => dispatch(updateUser(user, userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow);
