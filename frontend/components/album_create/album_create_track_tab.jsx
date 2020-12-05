@@ -21,8 +21,8 @@ const AlbumCreateTrackTab = ({
 
   const trackTabErrors = () => {
     return (
-      (errors[`tracks[${tabIndex - 1}].errors`] &&
-        errors[`tracks[${tabIndex - 1}].errors`].length) ||
+      (errors[`tracks[${tabIndex - 1}].audio`] &&
+        errors[`tracks[${tabIndex - 1}].audio`].length) ||
       (errors[`tracks[${tabIndex - 1}].name`] &&
         errors[`tracks[${tabIndex - 1}].name`].length)
     );

@@ -59,9 +59,9 @@ const AlbumCreateTrackForm = ({
         </div>
       </div>
       <div className="track-form__error">
-        {errors[`tracks[${tabIndex}].errors`] &&
-        errors[`tracks[${tabIndex}].errors`].length
-          ? errors[`tracks[${tabIndex}].errors`][0]
+        {errors[`tracks[${tabIndex}].audio`] &&
+        errors[`tracks[${tabIndex}].audio`].length
+          ? errors[`tracks[${tabIndex}].audio`][0]
           : null}
       </div>
     </div>

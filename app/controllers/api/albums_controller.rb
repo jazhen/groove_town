@@ -42,20 +42,30 @@ class Api::AlbumsController < ApplicationController
   def update
     tracks_attributes = album_params[:tracks_attributes]
     num_tracks = tracks_attributes.to_h.length
+    @album = Album.find_by(id: album_params[:id])
 
     (0...num_tracks).each do |index|
       track_attributes = tracks_attributes[index.to_s]
       next unless track_attributes[:audio]
 
-      audio = open(track_attributes[:audio])
-      track_attributes[:duration] = Mp3Info.open(audio).length
+      begin
+        audio = open(track_attributes[:audio])
+        track_attributes[:duration] = Mp3Info.open(audio).length
+      rescue Mp3InfoEOFError
+        next
+      end
     end
-
-    @album = Album.find_by(id: album_params[:id])
 
     if @album.update(album_params)
       render :show
     else
+      # @album.tracks.each_with_index do |track, index|
+      #   next if track.errors.messages.empty?
+
+      #   debugger
+      #   @album.errors["tracks[#{index}].audio"] << track.errors.messages[:audio].first
+      # end
+
       render json: @album.errors.messages, status: 409
     end
   end

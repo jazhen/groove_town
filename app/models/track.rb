@@ -26,14 +26,14 @@ class Track < ApplicationRecord
   def validate_audio
     if audio.attached?
       if audio.blob.byte_size > 10_000_000
-        errors[:errors] << 'File size is larger than 10MB.'
+        errors[:audio] << 'File size is larger than 10MB.'
         audio.purge
       elsif !['audio/mpeg', 'audio/mp3'].include?(audio.blob.content_type)
-        errors[:errors] << 'File is not of type .mp3.'
+        errors[:audio] << 'File is not of type .mp3.'
         audio.purge
       end
     else
-      errors[:errors] << 'Please add audio for this album.'
+      errors[:audio] << 'Please add audio for this album.'
     end
   end
 end
