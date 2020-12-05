@@ -55,21 +55,21 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
     }
   };
 
-  const handleFocus = (e) => {
+  const handleFocus = () => {
     if (!fetched) {
       fetchAll();
       setFetched(true);
     }
 
-    if (e.currentTarget.value !== '') {
-      setActive(true);
-    }
+    // if (e.currentTarget.value !== '') {
+    //   setActive(true);
+    // }
   };
 
-  const handleBlur = () => {
-    searchInput.current.value = '';
-    setActive(false);
-  };
+  // const handleBlur = () => {
+  //   searchInput.current.value = '';
+  //   // setActive(false);
+  // };
 
   // const handleBlur2 = () => {
   //   setActive(false);
@@ -95,8 +95,8 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${album.userId}/albums/${album.id}`}
                 key={album.id}
-                onClick={handleBlur}
               >
+                {/* onClick={handleBlur} */}
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
@@ -126,8 +126,8 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${track.userId}/albums/${track.albumId}`}
                 key={track.id}
-                onClick={handleBlur}
               >
+                {/* onClick={handleBlur} */}
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
@@ -154,7 +154,8 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
           })}
           {bandSearchResults.map((user) => {
             return (
-              <Link to={`/users/${user.id}`} key={user.id} onClick={handleBlur}>
+              <Link to={`/users/${user.id}`} key={user.id}>
+                {/* <Link to={`/users/${user.id}`} key={user.id} onClick={handleBlur}> */}
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
