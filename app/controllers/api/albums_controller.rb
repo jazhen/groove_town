@@ -17,12 +17,15 @@ class Api::AlbumsController < ApplicationController
   end
 
   def create
-    num_tracks = album_params[:tracks_attributes].to_h.length
+    tracks_attributes = album_params[:tracks_attributes]
+    num_tracks = tracks_attributes.to_h.length
 
     (0...num_tracks).each do |index|
-      audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
-      params[:album][:tracks_attributes][index.to_s][:duration] =
-        Mp3Info.open(audio).length
+      track_attributes = tracks_attributes[index.to_s]
+      # next unless track_attributes[:audio]
+
+      audio = open(track_attributes[:audio])
+      track_attributes[:duration] = Mp3Info.open(audio).length
     end
 
     @album = Album.new(album_params)
@@ -37,19 +40,18 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
-    num_tracks = album_params[:tracks_attributes].to_h.length
+    tracks_attributes = album_params[:tracks_attributes]
+    num_tracks = tracks_attributes.to_h.length
 
     (0...num_tracks).each do |index|
-      next unless params[:album][:tracks_attributes][index.to_s][:audio]
+      track_attributes = tracks_attributes[index.to_s]
+      next unless track_attributes[:audio]
 
-      audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
-      params[:album][:tracks_attributes][index.to_s][:duration] =
-        Mp3Info.open(audio).length
+      audio = open(track_attributes[:audio])
+      track_attributes[:duration] = Mp3Info.open(audio).length
     end
 
-    @album = Album.find_by(id: params[:album][:id])
-    user = User.find_by(id: album_params[:user_id])
-    @album.user = user
+    @album = Album.find_by(id: album_params[:id])
 
     if @album.update(album_params)
       render :show

@@ -273,7 +273,9 @@ const AlbumUpdate = ({
     }
 
     tracks.forEach((track, ord) => {
-      formData.append(`album[tracks_attributes][${ord}][id]`, track.id);
+      if (track.id) {
+        formData.append(`album[tracks_attributes][${ord}][id]`, track.id);
+      }
       formData.append(`album[tracks_attributes][${ord}][name]`, track.name);
       formData.append(`album[tracks_attributes][${ord}][ord]`, ord + 1);
       formData.append(`album[tracks_attributes][${ord}][user_id]`, user.id);

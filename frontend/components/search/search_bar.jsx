@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SearchBar = ({ users, albums, tracks, fetchAll }) => {
@@ -9,14 +9,6 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [bandSearchResults, setBandSearchResults] = useState([]);
   const [active, setActive] = useState(false);
   const [fetched, setFetched] = useState(false);
-
-  useEffect(() => {
-    // if (searchInput.current.value !== '') {
-    //   searchInput.current.value = '';
-    // }
-    return () => console.log('unmounting...');
-    // return () => (searchInput.current.value = '');
-  }, []);
 
   const updateSeachResults = (value) => {
     const albumMatches = [];
