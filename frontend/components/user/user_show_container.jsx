@@ -5,14 +5,12 @@ import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
 const mapStateToProps = (
-  { entities: { users, albums }, session },
+  { entities: { users, albums }, session, ui: { loading } },
   { match: { params } }
 ) => {
   const user = users[params.userId];
 
   const tabs = [
-    { title: 'collection', content: '' },
-    { title: 'following', content: '' },
     {
       title: 'albums',
       content: (
@@ -23,12 +21,15 @@ const mapStateToProps = (
         />
       ),
     },
+    // { title: 'collection', content: '' },
+    // { title: 'following', content: '' },
   ];
 
   return {
     user,
     tabs,
     userId: params.userId,
+    loading,
   };
 };
 

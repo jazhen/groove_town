@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../loading/loading';
 
 const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
   const active = selectedTab;
@@ -51,10 +52,14 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user, tabs } = this.props;
+    const { user, tabs, loading } = this.props;
     const { selectedTab } = this.state;
 
     const tab = tabs[selectedTab];
+
+    if (loading) {
+      return <Loading />;
+    }
 
     return (
       <div className="user-show">

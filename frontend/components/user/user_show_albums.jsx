@@ -6,16 +6,6 @@ const UserShowAlbumsList = ({ album, currentUserId }) => {
     <li key={album.id} className="user-albums__list-item">
       <div className="user-albums__album-container">
         <div className="user-albums__album-art-container">
-          <Link
-            to={`/users/${album.userId}/albums/${album.id}`}
-            className="user-albums__album-link"
-          >
-            <img
-              className="albums-index__album-art"
-              src={album.artUrl}
-              alt={`${album.band}-${album.name}`}
-            />
-          </Link>
           {album.userId === currentUserId ? (
             <div className="user-albums__album-update-container">
               <Link
@@ -26,6 +16,16 @@ const UserShowAlbumsList = ({ album, currentUserId }) => {
               </Link>
             </div>
           ) : null}
+          <Link
+            to={`/users/${album.userId}/albums/${album.id}`}
+            className="user-albums__album-link"
+          >
+            <img
+              className="albums-index__album-art"
+              src={album.artUrl}
+              alt={`${album.band}-${album.name}`}
+            />
+          </Link>
         </div>
         <ul className="user-albums__metadata-list">
           <li className="user-albums__metadata-list-item">
@@ -44,6 +44,10 @@ const UserShowAlbumsList = ({ album, currentUserId }) => {
 
 const UserShowAlbums = ({ user, albums, currentUserId }) => {
   const { albumIds } = user;
+
+  if (!Object.keys(albums).length) {
+    return null;
+  }
 
   return (
     <div
