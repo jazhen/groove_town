@@ -52,10 +52,9 @@ const AlbumCreate = ({
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length) {
-      clearAllErrors();
-    }
-  }, [errors, clearAllErrors]);
+    clearAllErrors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!album) {

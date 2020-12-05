@@ -19,6 +19,7 @@ const AlbumCreateTrackTab = ({
     handleTrackReplace(tabIndex - 1, e.currentTarget.files[0]);
   };
 
+  // debugger;
   return (
     <button
       type="button"
