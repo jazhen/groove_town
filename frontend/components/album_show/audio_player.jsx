@@ -19,11 +19,13 @@ const AudioPlayer = ({ album, tracks }) => {
   }, [tracks, trackIds]);
 
   useEffect(() => {
-    if (player.current) {
-      player.current.onloadedmetadata = () => {
+    // if (player.current) {
+    player.current.onloadedmetadata = () => {
+      if (player.current) {
         setCurrentTime(player.current.currentTime);
-      };
-    }
+      }
+    };
+    // }
   }, [player]);
 
   useEffect(() => {
