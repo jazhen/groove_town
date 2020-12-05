@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SearchBar = ({ users, albums, tracks, fetchAll }) => {
+  const searchInput = useRef(null);
+
   const [albumSearchResults, setAlbumSearchResults] = useState([]);
   const [trackSearchResults, setTrackSearchResults] = useState([]);
   const [bandSearchResults, setBandSearchResults] = useState([]);
@@ -65,18 +67,23 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   };
 
   const handleBlur = () => {
-    // debugger;
+    searchInput.current.value = '';
     setActive(false);
   };
+
+  // const handleBlur2 = () => {
+  //   setActive(false);
+  // };
 
   return (
     <div className="nav-bar__search-bar">
       <input
         className="nav-bar__search-bar-input"
         placeholder="Search and discover music"
+        ref={searchInput}
         onChange={handleChange}
         onFocus={handleFocus}
-        onBlur={handleBlur}
+        // onBlur={handleBlur2}
       />
       <button type="button" className="nav-bar__search-bar-icon">
         <i className="fas fa-search" />
@@ -88,6 +95,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${album.userId}/albums/${album.id}`}
                 key={album.id}
+                onClick={handleBlur}
               >
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
@@ -118,6 +126,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${track.userId}/albums/${track.albumId}`}
                 key={track.id}
+                onClick={handleBlur}
               >
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
@@ -145,11 +154,11 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
           })}
           {bandSearchResults.map((user) => {
             return (
-              <Link to={`/users/${user.id}`} key={user.id}>
+              <Link to={`/users/${user.id}`} key={user.id} onClick={handleBlur}>
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
-                    src={albums[1].artUrl}
+                    src={user.avatarUrl}
                     alt="track album art"
                   />
                   <ul className="nav-bar__search-bar-results-data-list">

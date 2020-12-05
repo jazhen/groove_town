@@ -72,3 +72,10 @@
 .nav-bar__search-bar-results-list-item--bold {
   font-weight: 700;
 }
+
+// .nav-bar__search-bar-input:focus ~ .nav-bar__search-bar-results-list,
+// .nav-bar__search-bar-results-list:active,
+.nav-bar__search-bar-results-list-item
+{
+  display: flex;
+}
