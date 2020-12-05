@@ -43,17 +43,15 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
-    tracks_attributes = album_params[:tracks_attributes]
-    num_tracks = tracks_attributes.to_h.length
+    num_tracks = album_params[:tracks_attributes].to_h.length
     @album = Album.find_by(id: album_params[:id])
 
     (0...num_tracks).each do |index|
-      track_attributes = tracks_attributes[index.to_s]
-      next unless track_attributes[:audio]
+      next unless params[:album][:tracks_attributes][index.to_s][:audio]
 
       begin
-        audio = open(track_attributes[:audio])
-        track_attributes[:duration] = Mp3Info.open(audio).length
+        audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
+        params[:album][:tracks_attributes][index.to_s][:duration] = Mp3Info.open(audio).length
       rescue Mp3InfoEOFError
         next
       end
