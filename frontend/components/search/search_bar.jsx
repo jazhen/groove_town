@@ -9,54 +9,33 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [fetched, setFetched] = useState(false);
 
   const updateSeachResults = (value) => {
-    let numSearchResults = 0;
-
     const albumMatches = [];
     const albumsList = Object.values(albums);
 
     for (let i = 0; i < albumsList.length; i++) {
-      if (numSearchResults >= 10) {
-        break;
-      }
-
       if (albumsList[i].name.toLowerCase().includes(value.toLowerCase())) {
         albumMatches.push(albumsList[i]);
-        numSearchResults += 1;
       }
     }
 
     const trackMatches = [];
+    const tracksList = Object.values(tracks);
 
-    if (numSearchResults < 10) {
-      const tracksList = Object.values(tracks);
-      for (let i = 0; i < tracksList.length; i++) {
-        if (numSearchResults >= 10) {
-          break;
-        }
-
-        if (tracksList[i].name.toLowerCase().includes(value.toLowerCase())) {
-          trackMatches.push(tracksList[i]);
-          numSearchResults += 1;
-        }
+    for (let i = 0; i < tracksList.length; i++) {
+      if (tracksList[i].name.toLowerCase().includes(value.toLowerCase())) {
+        trackMatches.push(tracksList[i]);
       }
     }
 
     const bandMatches = [];
+    const usersList = Object.values(users);
 
-    if (numSearchResults < 10) {
-      const usersList = Object.values(users);
-      for (let i = 0; i < usersList.length; i++) {
-        if (numSearchResults >= 10) {
-          break;
-        }
-
-        if (
-          usersList[i].band &&
-          usersList[i].band.toLowerCase().includes(value.toLowerCase())
-        ) {
-          bandMatches.push(usersList[i]);
-          numSearchResults += 1;
-        }
+    for (let i = 0; i < usersList.length; i++) {
+      if (
+        usersList[i].band &&
+        usersList[i].band.toLowerCase().includes(value.toLowerCase())
+      ) {
+        bandMatches.push(usersList[i]);
       }
     }
 
@@ -86,6 +65,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   };
 
   const handleBlur = () => {
+    // debugger;
     setActive(false);
   };
 

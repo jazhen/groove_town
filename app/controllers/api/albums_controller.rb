@@ -2,12 +2,12 @@ require 'open-uri'
 require 'mp3info'
 
 class Api::AlbumsController < ApplicationController
-  before_action :require_logged_in, only: [:create]
+  before_action :require_logged_in, only: %i[create update destroy]
 
   def index
     # @albums = Album.all.order('RANDOM()')
-    # @albums = Album.all.order(release_date: :desc)
-    @albums = Album.all
+    @albums = Album.all.order(release_date: :desc)
+    # @albums = Album.all
     render :index
   end
 
