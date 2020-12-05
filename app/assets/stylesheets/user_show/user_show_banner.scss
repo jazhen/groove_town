@@ -24,6 +24,7 @@
   width: 200px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -42,7 +43,7 @@
   width: 240px;
 }
 
-.user-show__profile-span {
+.user-show__profile-name {
   font-size: 1.5em;
   font-weight: bold;
 }

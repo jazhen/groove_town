@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../loading/loading';
 
-const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
+const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   const active = selectedTab;
   const headers = tabs.map((tab, index) => {
     const { title } = tab;
@@ -16,7 +16,7 @@ const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
         <button
           type="button"
           className={`user-show__tabs-header-button user-show__tabs-header-button--${selected}`}
-          onClick={() => onTabChosen(index)}
+          onClick={() => setSelectedTab(index)}
         >
           <span className="user-show__tab-title">{title}</span>
           {title === 'albums' ? (
@@ -32,76 +32,79 @@ const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
   return <ul className="user-show__tabs-header-list">{headers}</ul>;
 };
 
-class UserShow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 0,
-    };
-    this.selectTab = this.selectTab.bind(this);
-  }
+const UserShow = ({
+  user,
+  userId,
+  // currentUserId,
+  fetchUser,
+  tabs,
+  loading,
+}) => {
+  const [selectedTab, setSelectedTab] = useState(0);
 
-  componentDidMount() {
-    const { fetchUser, userId } = this.props;
-
+  useEffect(() => {
     fetchUser(userId);
+  }, [fetchUser, userId]);
+
+  const handleProfileClick = () => {};
+
+  if (loading) {
+    return <Loading />;
   }
 
-  selectTab(num) {
-    this.setState({ selectedTab: num });
-  }
-
-  render() {
-    const { user, tabs, loading } = this.props;
-    const { selectedTab } = this.state;
-
-    const tab = tabs[selectedTab];
-
-    if (loading) {
-      return <Loading />;
-    }
-
-    return (
-      <div className="user-show">
-        <div className="user-show__main-container">
-          <div className="user-show__user-profile">
-            <div className="user-show__banner">
-              <div className="user-show__profile-picture-container">
-                <div className="user-show__profile-picture-background">
-                  <img
-                    src={user.avatarUrl}
-                    className="user-show__profile-picture"
-                    alt="avatar"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="user-show__profile-container">
-            <div className="user-show__profile-placeholder" />
-            <div className="user-show__profile">
-              <span className="user-show__profile-span">
-                {user.band ? user.band : user.username}
-              </span>
-            </div>
-          </div>
-          <div className="user-show__collection-container">
-            <TabHeaders
-              selectedTab={selectedTab}
-              onTabChosen={this.selectTab}
-              tabs={tabs}
-              numAlbums={user.albumIds.length}
-            />
-            <div className="user-show__tab-content">
-              <div className="user-show__tab-content-container">
-                {tab.content}
+  return (
+    <div className="user-show">
+      <div className="user-show__main-container">
+        <div className="user-show__user-profile">
+          <div className="user-show__banner">
+            <div className="user-show__profile-picture-container">
+              <div className="user-show__profile-picture-background">
+                {/* {user.id === currentUserId ? (
+                    <div className="user-albums__profile-picture-update-container">
+                      <div
+                        // to={`/albums/${album.id}/edit`}
+                        className="user-albums__profile-picture-update"
+                      >
+                        edit
+                      </div>
+                    </div>
+                  ) : null} */}
+                <img
+                  src={user.avatarUrl}
+                  className="user-show__profile-picture"
+                  alt="avatar"
+                />
               </div>
             </div>
           </div>
         </div>
+        <div className="user-show__profile-container">
+          <div className="user-show__profile-placeholder" />
+          <div className="user-show__profile">
+            <p className="user-show__profile-name">
+              {user.band ? user.band : user.username}
+            </p>
+            <button type="button" onClick={handleProfileClick}>
+              Edit Profile
+            </button>
+          </div>
+        </div>
+        <div className="user-show__collection-container">
+          <TabHeaders
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            tabs={tabs}
+            numAlbums={user.albumIds.length}
+          />
+          <div className="user-show__tab-content">
+            <div className="user-show__tab-content-container">
+              {tabs[selectedTab].content}
+            </div>
+          </div>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default UserShow;
