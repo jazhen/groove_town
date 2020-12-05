@@ -24,13 +24,16 @@ class Api::AlbumsController < ApplicationController
       track_attributes = tracks_attributes[index.to_s]
       next unless track_attributes[:audio]
 
-      audio = open(track_attributes[:audio])
-      track_attributes[:duration] = Mp3Info.open(audio).length
+      begin
+        audio = open(track_attributes[:audio])
+        track_attributes[:duration] = Mp3Info.open(audio).length
+      rescue Mp3InfoEOFError
+        next
+      end
     end
 
     @album = Album.new(album_params)
-    user = User.find_by(id: album_params[:user_id])
-    @album.user = user
+    @album.user = User.find_by(id: album_params[:user_id])
 
     if @album.save
       render :show
