@@ -42,14 +42,6 @@ const AuthenticatedHeader = ({ currentUser, logout }) => {
             </Link>
           </li>
           <li className="nav-bar__dropdown-content-list-item">
-            <Link
-              to={`/users/${currentUser.id}`}
-              className="nav-bar__dropdown-link"
-            >
-              edit profile
-            </Link>
-          </li>
-          <li className="nav-bar__dropdown-content-list-item">
             <Link to="/">
               <button
                 className="nav-bar__logout"

@@ -32,10 +32,38 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   return <ul className="user-show__tabs-header-list">{headers}</ul>;
 };
 
+const EditProfile = ({ editing, handleEdit, handleSubmit, handleCancel }) => {
+  if (editing) {
+    return (
+      <div className="user-show__profile-edit-button-container">
+        <button
+          type="button"
+          className="user-show__profile-edit-button"
+          onClick={handleSubmit}
+        >
+          Save Changes
+        </button>
+        <button
+          type="button"
+          className="user-show__profile-edit-button"
+          onClick={handleCancel}
+        >
+          Cancel
+        </button>
+      </div>
+    );
+  }
+  return (
+    <button type="button" onClick={handleEdit}>
+      Edit Profile
+    </button>
+  );
+};
+
 const UserShow = ({
   user,
   userId,
-  // currentUserId,
+  currentUserId,
   fetchUser,
   tabs,
   loading,
@@ -54,6 +82,10 @@ const UserShow = ({
     const url = URL.createObjectURL(file);
 
     setProfile({ ...profile, avatarFile: file, avatarUrl: url });
+  };
+
+  const handleEdit = () => {
+    setEditing(true);
   };
 
   const handleCancel = () => {
@@ -122,28 +154,16 @@ const UserShow = ({
             <p className="user-show__profile-name">
               {user.band ? user.band : user.username}
             </p>
-            {editing ? (
-              <div className="user-show__profile-edit-button-container">
-                <button
-                  type="button"
-                  className="user-show__profile-edit-button"
-                  onClick={handleSubmit}
-                >
-                  Save Changes
-                </button>
-                <button
-                  type="button"
-                  className="user-show__profile-edit-button"
-                  onClick={handleCancel}
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : (
-              <button type="button" onClick={() => setEditing(true)}>
-                Edit Profile
-              </button>
-            )}
+            {userId === currentUserId ? (
+              <EditProfile
+                editing={editing}
+                handleEdit={handleEdit}
+                handleSubmit={handleSubmit}
+                handleCancel={handleCancel}
+                userId={userId}
+                currentUserId={currentUserId}
+              />
+            ) : null}
           </div>
         </div>
         <div className="user-show__collection-container">

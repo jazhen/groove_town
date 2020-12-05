@@ -29,7 +29,7 @@ const mapStateToProps = (
     user,
     tabs,
     userId: params.userId,
-    currentUserId: session.id,
+    currentUserId: `${session.id}`,
     loading,
   };
 };
