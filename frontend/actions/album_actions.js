@@ -45,12 +45,14 @@ export const clearAllErrors = () => {
 };
 
 export const fetchAlbums = () => (dispatch) => {
+  dispatch(setLoading());
   return albumAPIUtil
     .fetchAlbums()
     .then((albums) => dispatch(receiveAlbums(albums)));
 };
 
 export const fetchAlbum = (albumId) => (dispatch) => {
+  dispatch(setLoading());
   return albumAPIUtil
     .fetchAlbum(albumId)
     .then((album) => dispatch(receiveAlbum(album)));
