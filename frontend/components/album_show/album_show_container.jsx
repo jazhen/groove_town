@@ -5,11 +5,15 @@ import AlbumShow from './album_show';
 import AlbumShowAudioPlayer from './album_show_audio_player';
 
 const mapStateToProps = (
-  { entities: { users, albums, tracks } },
-  { match: { params } }
+  { entities: { users, albums, tracks }, ui: { loading } },
+  {
+    match: {
+      params: { userId, albumId },
+    },
+  }
 ) => {
-  const { userId, albumId } = params;
   const user = users[userId];
+
   const tabs = [
     {
       title: 'music',
@@ -32,7 +36,10 @@ const mapStateToProps = (
   return {
     user,
     albums,
+    userId,
+    albumId,
     tabs,
+    loading,
   };
 };
 

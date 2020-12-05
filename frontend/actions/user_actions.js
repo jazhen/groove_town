@@ -1,4 +1,5 @@
 import * as userAPIUtil from '../util/user_api_util';
+import { setLoading } from './general_actions';
 
 export const RECEIVE_ALL = 'RECEIVE_ALL';
 export const RECEIVE_USER = 'RECEIVE_USER';
@@ -26,6 +27,7 @@ export const fetchAll = () => (dispatch) => {
 };
 
 export const fetchUser = (userId) => (dispatch) => {
+  dispatch(setLoading());
   return userAPIUtil
     .fetchUser(userId)
     .then((data) => dispatch(receiveUser(data)));

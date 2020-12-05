@@ -58,19 +58,17 @@ export const fetchAlbum = (albumId) => (dispatch) => {
 
 export const createAlbum = (album) => (dispatch) => {
   dispatch(setLoading());
-  return albumAPIUtil
-    .createAlbum(album)
-    .then((createdAlbum) => dispatch(receiveAlbum(createdAlbum)))
-    .fail((errors) => dispatch(receiveAlbumErrors(errors.responseJSON)));
+  return albumAPIUtil.createAlbum(album).then(
+    (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
+    (errors) => dispatch(receiveAlbumErrors(errors.responseJSON))
+  );
 };
 
 export const updateAlbum = (album, albumId) => (dispatch) => {
   dispatch(setLoading());
   return albumAPIUtil.updateAlbum(album, albumId).then(
     (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
-    (errors) => {
-      dispatch(receiveAlbumErrors(errors.responseJSON));
-    }
+    (errors) => dispatch(receiveAlbumErrors(errors.responseJSON))
   );
 };
 
