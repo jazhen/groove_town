@@ -1,8 +1,8 @@
 @import 'variables';
 
 .album-player__art {
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -83,5 +83,10 @@ and (min-width: 992px) {
 
   .album-player__artist-name {
     text-align: initial;
+  }
+
+  .album-player__art {
+    width: 350px;
+    height: 350px;
   }
 }

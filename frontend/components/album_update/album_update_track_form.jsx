@@ -55,7 +55,7 @@ const AlbumUpdateTrackForm = ({
       <div className="track-form__track-info">
         <div className="track-form__track-label">file size:&nbsp;</div>
         <div className="track-form__track-description">
-          {tracks[tabIndex].audioFileSize}
+          {`${tracks[tabIndex].audioFileSize.toFixed(2)} MB`}
         </div>
       </div>
       <div className="track-form__error">

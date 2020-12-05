@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Loading from '../loading/loading';
 import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
@@ -13,10 +13,12 @@ const AlbumUpdate = ({
   albumId,
   fetchAlbum,
   updateAlbum,
+  deleteAlbum,
   errors,
   clearErrors,
   clearAllErrors,
   loading,
+  history,
 }) => {
   const [oldReleaseDate, setOldReleaseDate] = useState(null);
   const [today, setToday] = useState(null);
@@ -285,7 +287,13 @@ const AlbumUpdate = ({
       }
     });
 
-    updateAlbum(formData, albumId);
+    updateAlbum(formData, albumId).then(() => {
+      history.push(`users/${user.id}/albums/${albumId}`);
+    });
+  };
+
+  const handleAlbumDelete = () => {
+    deleteAlbum(albumId).then(() => history.push('/'));
   };
 
   if (loading) {
@@ -294,7 +302,7 @@ const AlbumUpdate = ({
 
   return (
     <div className="album-update">
-      <form className="album-update__form" onSubmit={handleSubmit}>
+      <div className="album-update__form">
         <div className="album-update__tabs-container">
           <div className="album-update__tabs">
             {tabs.map((tab, index) => {
@@ -323,10 +331,18 @@ const AlbumUpdate = ({
             </div>
 
             <div className="album-update__options-publish-container">
-              <button type="submit" className="album-update__options-publish">
+              <button
+                type="button"
+                className="album-update__options-publish"
+                onClick={handleSubmit}
+              >
                 Update
               </button>
-              <button type="submit" className="album-update__options-delete">
+              <button
+                type="button"
+                className="album-update__options-delete"
+                onClick={handleAlbumDelete}
+              >
                 Delete
               </button>
               <Link to="/" className="album-update__options-cancel">
@@ -338,9 +354,9 @@ const AlbumUpdate = ({
         <div className="album-update__active-form">
           {tabsContent[selectedTab]}
         </div>
-      </form>
+      </div>
     </div>
   );
 };
 
-export default AlbumUpdate;
+export default withRouter(AlbumUpdate);

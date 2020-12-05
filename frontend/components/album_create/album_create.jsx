@@ -156,7 +156,7 @@ const AlbumCreate = ({
 
     createAlbum(formData).then((res) => {
       const newAlbumId = Object.keys(res.album)[0];
-      history.push(`/albums/${newAlbumId}`);
+      history.push(`users/${user.id}/albums/${newAlbumId}`);
     });
   };
 
@@ -166,7 +166,7 @@ const AlbumCreate = ({
 
   return (
     <div className="album-create">
-      <form className="album-create__form" onSubmit={handleSubmit}>
+      <form className="album-create__form">
         <div className="album-create__tabs-container">
           <div className="album-create__tabs">
             {tabs.map((tab, index) => {
@@ -195,7 +195,11 @@ const AlbumCreate = ({
             </div>
 
             <div className="album-create__options-publish-container">
-              <button type="submit" className="album-create__options-publish">
+              <button
+                type="submit"
+                className="album-create__options-publish"
+                onClick={handleSubmit}
+              >
                 Publish
               </button>
               <Link to="/" className="album-create__options-cancel">

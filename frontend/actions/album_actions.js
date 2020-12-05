@@ -65,9 +65,7 @@ export const createAlbum = (album) => (dispatch) => {
   return albumAPIUtil
     .createAlbum(album)
     .then((createdAlbum) => dispatch(receiveAlbum(createdAlbum)))
-    .fail((errors) => {
-      dispatch(receiveAlbumErrors(errors.responseJSON));
-    });
+    .fail((errors) => dispatch(receiveAlbumErrors(errors.responseJSON)));
 };
 
 export const updateAlbum = (album, albumId) => (dispatch) => {

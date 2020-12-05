@@ -5,6 +5,7 @@ import {
   clearAllAlbumErrors,
   updateAlbum,
 } from '../../actions/album_actions';
+import { deleteAlbum } from '../../util/album_api_util';
 import AlbumUpdate from './album_update';
 
 const mapStateToProps = (
@@ -28,6 +29,7 @@ const mapStateToProps = (
 const mapDispatchToProps = (dispatch) => ({
   fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
   updateAlbum: (album, albumId) => dispatch(updateAlbum(album, albumId)),
+  deleteAlbum: (albumId) => deleteAlbum(albumId),
   clearErrors: (errors, key) => dispatch(clearAlbumErrors(errors, key)),
   clearAllErrors: () => dispatch(clearAllAlbumErrors()),
 });
