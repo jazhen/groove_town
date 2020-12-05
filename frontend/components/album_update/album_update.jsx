@@ -290,7 +290,7 @@ const AlbumUpdate = ({
     });
 
     updateAlbum(formData, albumId).then(() => {
-      history.push(`users/${user.id}/albums/${albumId}`);
+      history.push(`/users/${user.id}/albums/${albumId}`);
     });
   };
 

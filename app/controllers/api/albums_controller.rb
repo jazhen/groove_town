@@ -22,7 +22,7 @@ class Api::AlbumsController < ApplicationController
 
     (0...num_tracks).each do |index|
       track_attributes = tracks_attributes[index.to_s]
-      # next unless track_attributes[:audio]
+      next unless track_attributes[:audio]
 
       audio = open(track_attributes[:audio])
       track_attributes[:duration] = Mp3Info.open(audio).length

@@ -22,7 +22,7 @@ const mapStateToProps = (
     albumId: params.albumId,
     allTracks: tracks,
     errors: errors.albums,
-    loading: loading.loading,
+    loading,
   };
 };
 

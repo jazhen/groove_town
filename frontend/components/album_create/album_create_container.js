@@ -14,7 +14,7 @@ const mapStateToProps = ({
   return {
     user: users[id],
     errors: errors.albums,
-    loading: loading.loading,
+    loading,
   };
 };
 

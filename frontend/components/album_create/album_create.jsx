@@ -156,7 +156,7 @@ const AlbumCreate = ({
 
     createAlbum(formData).then((res) => {
       const newAlbumId = Object.keys(res.album)[0];
-      history.push(`users/${user.id}/albums/${newAlbumId}`);
+      history.push(`/users/${user.id}/albums/${newAlbumId}`);
     });
   };
 

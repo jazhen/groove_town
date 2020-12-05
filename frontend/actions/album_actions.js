@@ -1,11 +1,11 @@
 import * as albumAPIUtil from '../util/album_api_util';
+import { setLoading } from './general_actions';
 
 export const RECEIVE_ALBUMS = 'RECEIVE_ALBUMS';
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 export const CLEAR_ALL_ALBUM_ERRORS = 'CLEAR_ALL_ALBUM_ERRORS';
-export const CREATING_ALBUM = 'CREATING_ALBUM';
 
 const receiveAlbums = ({ albums, tracks }) => {
   return {
@@ -44,10 +44,6 @@ export const clearAllErrors = () => {
   };
 };
 
-export const creatingAlbum = () => ({
-  type: CREATING_ALBUM,
-});
-
 export const fetchAlbums = () => (dispatch) => {
   return albumAPIUtil
     .fetchAlbums()
@@ -61,7 +57,7 @@ export const fetchAlbum = (albumId) => (dispatch) => {
 };
 
 export const createAlbum = (album) => (dispatch) => {
-  dispatch(creatingAlbum());
+  dispatch(setLoading());
   return albumAPIUtil
     .createAlbum(album)
     .then((createdAlbum) => dispatch(receiveAlbum(createdAlbum)))
@@ -69,7 +65,7 @@ export const createAlbum = (album) => (dispatch) => {
 };
 
 export const updateAlbum = (album, albumId) => (dispatch) => {
-  dispatch(creatingAlbum());
+  dispatch(setLoading());
   return albumAPIUtil.updateAlbum(album, albumId).then(
     (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
     (errors) => {
