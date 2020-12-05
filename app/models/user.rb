@@ -42,6 +42,8 @@ class User < ApplicationRecord
   validates :password_digest,
             presence: true
 
+  validate :validate_avatar
+
   after_initialize :ensure_session_token
 
   attr_reader :password
@@ -91,5 +93,19 @@ class User < ApplicationRecord
     end
 
     session_token
+  end
+
+  def validate_avatar
+    if avatar.attached?
+      if !['image/jpeg', 'image/png'].include?(avatar.blob.content_type)
+        errors[:avatar] << 'File is not of type .jpg or .png.'
+        avatar.purge
+      elsif avatar.blob.byte_size > 5_000_000
+        errors[:avatar] << 'File size is larger than 5MB.'
+        avatar.purge
+      end
+    else
+      errors[:avatar] << 'Please add an avatar.'
+    end
   end
 end

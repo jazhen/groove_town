@@ -38,14 +38,14 @@ const EditProfile = ({ editing, handleEdit, handleSubmit, handleCancel }) => {
       <div className="user-show__profile-edit-button-container">
         <button
           type="button"
-          className="user-show__profile-edit-button"
+          className="user-show__profile-edit-save-button"
           onClick={handleSubmit}
         >
           Save Changes
         </button>
         <button
           type="button"
-          className="user-show__profile-edit-button"
+          className="user-show__profile-edit-cancel-button"
           onClick={handleCancel}
         >
           Cancel
@@ -54,8 +54,13 @@ const EditProfile = ({ editing, handleEdit, handleSubmit, handleCancel }) => {
     );
   }
   return (
-    <button type="button" onClick={handleEdit}>
-      Edit Profile
+    <button
+      type="button"
+      onClick={handleEdit}
+      className="user-show__profile-edit-button"
+    >
+      <i className="far fa-edit" />
+      &nbsp;Edit Profile
     </button>
   );
 };
