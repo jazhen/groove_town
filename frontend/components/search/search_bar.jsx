@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SearchBar = ({ users, albums, tracks, fetchAll }) => {
@@ -9,6 +9,14 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [bandSearchResults, setBandSearchResults] = useState([]);
   const [active, setActive] = useState(false);
   const [fetched, setFetched] = useState(false);
+
+  useEffect(() => {
+    // if (searchInput.current.value !== '') {
+    //   searchInput.current.value = '';
+    // }
+    return () => console.log('unmounting...');
+    // return () => (searchInput.current.value = '');
+  }, []);
 
   const updateSeachResults = (value) => {
     const albumMatches = [];
@@ -60,20 +68,11 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
       fetchAll();
       setFetched(true);
     }
-
-    // if (e.currentTarget.value !== '') {
-    //   setActive(true);
-    // }
   };
 
-  // const handleBlur = () => {
-  //   searchInput.current.value = '';
-  //   // setActive(false);
-  // };
-
-  // const handleBlur2 = () => {
-  //   setActive(false);
-  // };
+  const handleClick = () => {
+    searchInput.current.value = '';
+  };
 
   return (
     <div className="nav-bar__search-bar">
@@ -83,7 +82,6 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
         ref={searchInput}
         onChange={handleChange}
         onFocus={handleFocus}
-        // onBlur={handleBlur2}
       />
       <button type="button" className="nav-bar__search-bar-icon">
         <i className="fas fa-search" />
@@ -95,8 +93,8 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${album.userId}/albums/${album.id}`}
                 key={album.id}
+                onClick={handleClick}
               >
-                {/* onClick={handleBlur} */}
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
@@ -126,8 +124,8 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${track.userId}/albums/${track.albumId}`}
                 key={track.id}
+                onClick={handleClick}
               >
-                {/* onClick={handleBlur} */}
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
@@ -154,8 +152,11 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
           })}
           {bandSearchResults.map((user) => {
             return (
-              <Link to={`/users/${user.id}`} key={user.id}>
-                {/* <Link to={`/users/${user.id}`} key={user.id} onClick={handleBlur}> */}
+              <Link
+                to={`/users/${user.id}`}
+                key={user.id}
+                onClick={handleClick}
+              >
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
