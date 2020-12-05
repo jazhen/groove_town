@@ -40,13 +40,25 @@ const UserShow = ({
   tabs,
   loading,
 }) => {
+  const [profile, setProfile] = useState({
+    avatarFile: null,
+    artUrl: null,
+  });
   const [selectedTab, setSelectedTab] = useState(0);
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     fetchUser(userId);
   }, [fetchUser, userId]);
 
-  const handleProfileClick = () => {};
+  // const handleProfileClick = () => {};
+
+  const handleAvatarUpload = (e) => {
+    const file = e.currentTarget.files[0];
+    const url = URL.createObjectURL(file);
+
+    setProfile({ ...user, avatarFile: file, avatarUrl: url });
+  };
 
   if (loading) {
     return <Loading />;
@@ -59,21 +71,32 @@ const UserShow = ({
           <div className="user-show__banner">
             <div className="user-show__profile-picture-container">
               <div className="user-show__profile-picture-background">
-                {/* {user.id === currentUserId ? (
-                    <div className="user-albums__profile-picture-update-container">
-                      <div
-                        // to={`/albums/${album.id}/edit`}
-                        className="user-albums__profile-picture-update"
-                      >
-                        edit
-                      </div>
-                    </div>
-                  ) : null} */}
                 <img
-                  src={user.avatarUrl}
-                  className="user-show__profile-picture"
+                  src={profile.avatarUrl || user.avatarUrl}
+                  className={
+                    editing
+                      ? 'user-show__profile-picture user-show__profile-picture--edit'
+                      : 'user-show__profile-picture'
+                  }
                   alt="avatar"
                 />
+                {editing ? (
+                  <>
+                    <input
+                      type="file"
+                      id="user-show__profile-picture-input"
+                      className="user-show__profile-picture-input"
+                      accept="image/jpeg, image/png"
+                      onChange={handleAvatarUpload}
+                    />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                    <label
+                      htmlFor="user-show__profile-picture-input"
+                      className="user-show__profile-picture-label"
+                    />
+                    <i className="fas fa-3x fa-camera user-show__profile-picture-edit-icon" />
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
@@ -84,9 +107,15 @@ const UserShow = ({
             <p className="user-show__profile-name">
               {user.band ? user.band : user.username}
             </p>
-            <button type="button" onClick={handleProfileClick}>
-              Edit Profile
-            </button>
+            {editing ? (
+              <button type="button" onClick={() => setEditing(false)}>
+                Save Changes | Cancel
+              </button>
+            ) : (
+              <button type="button" onClick={() => setEditing(true)}>
+                Edit Profile
+              </button>
+            )}
           </div>
         </div>
         <div className="user-show__collection-container">
