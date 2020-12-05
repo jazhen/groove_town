@@ -19,6 +19,15 @@ const AlbumUpdateTrackTab = ({
     handleTrackReplace(tabIndex - 1, e.currentTarget.files[0]);
   };
 
+  const trackTabErrors = () => {
+    return (
+      (errors[`tracks[${tabIndex - 1}].errors`] &&
+        errors[`tracks[${tabIndex - 1}].errors`].length) ||
+      (errors[`tracks[${tabIndex - 1}].name`] &&
+        errors[`tracks[${tabIndex - 1}].name`].length)
+    );
+  };
+
   if (!track) {
     return null;
   }
@@ -29,8 +38,7 @@ const AlbumUpdateTrackTab = ({
       className={`album-update__track-tab${
         tabIndex === selectedTab ? ' album-update__active-tab' : ''
       }${
-        errors[`tracks[${tabIndex - 1}].errors`] &&
-        errors[`tracks[${tabIndex - 1}].errors`].length
+        trackTabErrors()
           ? ' album-update__track-tab--error'
           : ' album-update__track-tab--no-error'
       }`}

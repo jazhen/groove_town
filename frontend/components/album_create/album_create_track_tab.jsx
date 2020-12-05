@@ -19,15 +19,22 @@ const AlbumCreateTrackTab = ({
     handleTrackReplace(tabIndex - 1, e.currentTarget.files[0]);
   };
 
-  // debugger;
+  const trackTabErrors = () => {
+    return (
+      (errors[`tracks[${tabIndex - 1}].errors`] &&
+        errors[`tracks[${tabIndex - 1}].errors`].length) ||
+      (errors[`tracks[${tabIndex - 1}].name`] &&
+        errors[`tracks[${tabIndex - 1}].name`].length)
+    );
+  };
+
   return (
     <button
       type="button"
       className={`album-create__track-tab${
         tabIndex === selectedTab ? ' album-create__active-tab' : ''
       }${
-        errors[`tracks[${tabIndex - 1}].errors`] &&
-        errors[`tracks[${tabIndex - 1}].errors`].length
+        trackTabErrors()
           ? ' album-create__track-tab--error'
           : ' album-create__track-tab--no-error'
       }`}
