@@ -41,8 +41,11 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
-    const { fetchUser, match } = this.props;
-    fetchUser(match.params.userId);
+    const { user, fetchUser, userId } = this.props;
+
+    if (!user) {
+      fetchUser(userId);
+    }
   }
 
   selectTab(num) {
@@ -54,10 +57,6 @@ class UserShow extends React.Component {
     const { selectedTab } = this.state;
 
     const tab = tabs[selectedTab];
-
-    if (!user) {
-      return null;
-    }
 
     return (
       <div className="user-show">

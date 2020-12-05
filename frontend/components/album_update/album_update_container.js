@@ -17,6 +17,7 @@ const mapStateToProps = (
   { match: { params } }
 ) => {
   return {
+    users,
     user: users[id],
     oldAlbum: albums[params.albumId],
     albumId: params.albumId,

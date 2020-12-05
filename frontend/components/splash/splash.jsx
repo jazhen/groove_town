@@ -2,16 +2,10 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import IndexAlbum from './album_index';
 
-const Splash = ({ albums, fetchAlbums }) => {
+const Splash = ({ albums, albumIds, fetchAlbums }) => {
   useEffect(() => {
     fetchAlbums();
   }, [fetchAlbums]);
-
-  const albumIds = Object.keys(albums);
-
-  if (!albumIds.length) {
-    return null;
-  }
 
   return (
     <div className="albums-index">

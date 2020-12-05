@@ -46,19 +46,10 @@ const UserShowAlbumsList = ({ album }) => {
 const UserShowAlbums = ({ user, albums }) => {
   const { albumIds } = user;
 
-  if (!albumIds.length) {
-    return null;
-  }
-
-  let userAlbumsClassModifier;
-  if (albumIds.length < 5) {
-    userAlbumsClassModifier = 'user-albums--min';
-  } else {
-    userAlbumsClassModifier = '';
-  }
-
   return (
-    <div className={`user-albums ${userAlbumsClassModifier}`}>
+    <div
+      className={`user-albums ${albumIds.length < 5 ? 'user-albums--min' : ''}`}
+    >
       <ul className="user-albums__list">
         {albumIds.map((albumId) => (
           <UserShowAlbumsList key={albumId} album={albums[albumId]} />

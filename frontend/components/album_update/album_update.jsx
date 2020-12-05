@@ -64,12 +64,16 @@ const AlbumUpdate = ({
   );
 
   useEffect(() => {
-    clearAllErrors();
-  }, [clearAllErrors]);
+    if (Object.keys(errors).length) {
+      clearAllErrors();
+    }
+  }, [errors, clearAllErrors]);
 
   useEffect(() => {
-    fetchAlbum(albumId);
-  }, [fetchAlbum, albumId]);
+    if (!oldAlbum) {
+      fetchAlbum(albumId);
+    }
+  }, [fetchAlbum, albumId, oldAlbum]);
 
   useEffect(() => {
     setToday(new Date().toISOString().slice(0, 10));

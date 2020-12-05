@@ -22,6 +22,7 @@ const mapStateToProps = (
   return {
     user,
     tabs,
+    userId: params.userId,
   };
 };
 

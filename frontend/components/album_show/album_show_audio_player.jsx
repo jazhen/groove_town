@@ -6,11 +6,6 @@ import AudioPlayer from './audio_player';
 const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
   const album = albums[albumId];
 
-  // debugger;
-  // if (!user) {
-  //   return null;
-  // }
-
   return (
     <div className="album-player">
       <div className="album-player__container">

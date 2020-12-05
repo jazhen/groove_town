@@ -28,6 +28,7 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs }) => {
 
 const AlbumShow = ({
   user,
+  users,
   albums,
   userId,
   albumId,
@@ -38,8 +39,10 @@ const AlbumShow = ({
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
-    fetchUser(userId);
-  }, [fetchUser, userId]);
+    if (!users[userId]) {
+      fetchUser(userId);
+    }
+  }, [users, userId, fetchUser]);
 
   const tab = tabs[selectedTab];
   const album = albums[albumId];
@@ -48,7 +51,7 @@ const AlbumShow = ({
     return <Loading />;
   }
 
-  if (Object.keys(albums).length < user.albumIds.length) {
+  if (!user || Object.keys(albums).length < user.albumIds.length) {
     return null;
   }
 
