@@ -52,8 +52,10 @@ const AlbumCreate = ({
   };
 
   useEffect(() => {
-    clearAllErrors();
-  }, [clearAllErrors]);
+    if (Object.keys(errors).length) {
+      clearAllErrors();
+    }
+  }, [errors, clearAllErrors]);
 
   useEffect(() => {
     if (!album) {
