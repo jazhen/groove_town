@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser, updateUser } from '../../actions/user_actions';
+import {
+  clearAllUserErrors,
+  fetchUser,
+  updateUser,
+} from '../../actions/user_actions';
 import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
@@ -38,6 +42,7 @@ const mapStateToProps = (
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   updateUser: (user, userId) => dispatch(updateUser(user, userId)),
+  clearAllErrors: () => dispatch(clearAllUserErrors()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow);
