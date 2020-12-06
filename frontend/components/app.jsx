@@ -49,7 +49,6 @@ const App = ({ loading }) => {
             component={AlbumUpdateContainer}
           />
           <Route path="/users/:userId" component={UserShowContainer} />
-          {/* <Route path="/users/:userId/edit" component={UserUpdateContainer} /> */}
           <Route path="/albums/new" component={AlbumCreateContainer} />
           <Route path="*">
             <Redirect to="/" />
@@ -63,7 +62,7 @@ const App = ({ loading }) => {
 
 const mapStateToProps = ({ ui: { loading } }) => {
   return {
-    loading,
+    loading: loading.form,
   };
 };
 

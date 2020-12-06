@@ -75,6 +75,7 @@ const UserShow = ({
   errors,
   updateUser,
   clearAllErrors,
+  loading,
 }) => {
   const [profile, setProfile] = useState({});
   const [selectedTab, setSelectedTab] = useState(0);
@@ -118,6 +119,10 @@ const UserShow = ({
       handleCancel();
     });
   };
+
+  if (loading || !user) {
+    return null;
+  }
 
   return (
     <div className="user-show">

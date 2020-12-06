@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const UserShowAlbumsList = ({ album, currentUserId }) => {
+  if (!album) {
+    return null;
+  }
   return (
     <li key={album.id} className="user-albums__list-item">
       <div className="user-albums__album-container">
@@ -44,10 +47,6 @@ const UserShowAlbumsList = ({ album, currentUserId }) => {
 
 const UserShowAlbums = ({ user, albums, currentUserId }) => {
   const { albumIds } = user;
-
-  if (!Object.keys(albums).length) {
-    return null;
-  }
 
   return (
     <div

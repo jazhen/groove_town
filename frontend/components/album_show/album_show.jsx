@@ -25,7 +25,15 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs }) => {
   return <ul className="album-show__tabs-header-list">{headers}</ul>;
 };
 
-const AlbumShow = ({ user, albums, userId, albumId, tabs, fetchUser }) => {
+const AlbumShow = ({
+  user,
+  albums,
+  userId,
+  albumId,
+  tabs,
+  fetchUser,
+  loading,
+}) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
@@ -34,6 +42,10 @@ const AlbumShow = ({ user, albums, userId, albumId, tabs, fetchUser }) => {
 
   const tab = tabs[selectedTab];
   const album = albums[albumId];
+
+  if (loading) {
+    return null;
+  }
 
   if (!user || Object.keys(albums).length < user.albumIds.length) {
     return null;

@@ -46,16 +46,20 @@ class Api::AlbumsController < ApplicationController
       next unless params[:album][:tracks_attributes][index.to_s][:audio]
 
       begin
+        debugger
         audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
         params[:album][:tracks_attributes][index.to_s][:duration] = Mp3Info.open(audio).length
       rescue Mp3InfoEOFError
+        debugger
         next
-      end
+    end
     end
 
+    debugger
     if @album.update(album_params)
       render :show
     else
+      debugger
       # @album.tracks.each_with_index do |track, index|
       #   next if track.errors.messages.empty?
 

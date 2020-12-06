@@ -1,5 +1,5 @@
 import * as albumAPIUtil from '../util/album_api_util';
-import { setLoading } from './general_actions';
+import { setFormLoading, setStandardLoading } from './general_actions';
 
 export const RECEIVE_ALBUMS = 'RECEIVE_ALBUMS';
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
@@ -46,21 +46,21 @@ export const clearAllErrors = () => {
 };
 
 export const fetchAlbums = () => (dispatch) => {
-  // dispatch(setLoading());
+  dispatch(setStandardLoading());
   return albumAPIUtil
     .fetchAlbums()
     .then((data) => dispatch(receiveAlbums(data)));
 };
 
 export const fetchAlbum = (albumId) => (dispatch) => {
-  // dispatch(setLoading());
+  // dispatch(setFormLoading());
   return albumAPIUtil
     .fetchAlbum(albumId)
     .then((data) => dispatch(receiveAlbum(data)));
 };
 
 export const createAlbum = (album) => (dispatch) => {
-  dispatch(setLoading());
+  dispatch(setFormLoading());
   return albumAPIUtil.createAlbum(album).then(
     (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
     (errors) => dispatch(receiveAlbumErrors(errors.responseJSON))
@@ -68,7 +68,7 @@ export const createAlbum = (album) => (dispatch) => {
 };
 
 export const updateAlbum = (album, albumId) => (dispatch) => {
-  dispatch(setLoading());
+  dispatch(setFormLoading());
   return albumAPIUtil.updateAlbum(album, albumId).then(
     (updatedAlbum) => dispatch(receiveAlbum(updatedAlbum)),
     (errors) => dispatch(receiveAlbumErrors(errors.responseJSON))
