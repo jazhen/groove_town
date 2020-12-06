@@ -46,6 +46,7 @@ class Api::AlbumsController < ApplicationController
   end
 
   def update
+    debugger
     num_tracks = album_params[:tracks_attributes].to_h.length
     @album = Album.find_by(id: album_params[:id])
 
