@@ -8,10 +8,27 @@
   width: 100%;
 }
 
+.albums-index__notification {
+  font-size: 1.25rem;
+  margin: 40px 2rem 0 2rem;
+}
+
+.albums-index__notification-bold {
+  font-weight: bold;
+  vertical-align: baseline;
+}
+
+.albums-index__new-and-notable {
+  margin: 2rem 0;
+  color: $blue;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 .albums-index__list {
   display: flex;
   flex-wrap: wrap;
-  margin: 40px 0;
+  margin: 0 0 40px 0;
   max-width: 220px;
   padding: 5px 0;
   text-align: center;

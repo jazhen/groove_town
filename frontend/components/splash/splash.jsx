@@ -82,6 +82,18 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
           </div>
         </div>
       </div>
+      <div className="albums-index__notification">
+        Fans have streamed songs for&nbsp;
+        <span className="albums-index__notification-bold">
+          274 million&nbsp;
+        </span>
+        hours using groovetown, and&nbsp;
+        <span className="albums-index__notification-bold">
+          31 million&nbsp;
+        </span>
+        hours in the last 30 days alone.
+      </div>
+      <p className="albums-index__new-and-notable">New and Notable</p>
       <ul className="albums-index__list">
         {albumIds.map((albumId) => {
           return <IndexAlbum key={albumId} album={albums[albumId]} />;
