@@ -27,9 +27,12 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-main.jpg"
                   alt="splash main"
                 />
-                <p className="albums-index__carousel-main-description">
-                  listen now
-                </p>
+                <div className="albums-index__carousel-main-description">
+                  A Tribe Called Quest&apos;s 1991 The Low End Theory:
+                  <p className="albums-index__carousel-main-description-secondary">
+                    A milestone in alternative hip hop
+                  </p>
+                </div>
               </Link>
             </div>
           </div>
@@ -44,9 +47,12 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_1.jpg"
                   alt="splash sub 1"
                 />
-                <p className="albums-index__carousel-sub-description">
-                  listen now
-                </p>
+                <div className="albums-index__carousel-sub-description">
+                  Merriweather Post Pavillion
+                  <p className="albums-index__carousel-sub-description-secondary">
+                    Tactile electronic pop
+                  </p>
+                </div>
               </Link>
             </div>
             <div className="albums-index__carousel-sub-img-container">
@@ -59,9 +65,12 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_2.jpg"
                   alt="splash sub 2"
                 />
-                <p className="albums-index__carousel-sub-description">
-                  listen now
-                </p>
+                <div className="albums-index__carousel-sub-description">
+                  Music Has the Right to Children
+                  <p className="albums-index__carousel-sub-description-secondary">
+                    Nostaligic psychedelia
+                  </p>
+                </div>
               </Link>
             </div>
             <div className="albums-index__carousel-sub-img-container">
@@ -74,9 +83,12 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_3.jpg"
                   alt="splash sub 3"
                 />
-                <p className="albums-index__carousel-sub-description">
-                  listen now
-                </p>
+                <div className="albums-index__carousel-sub-description">
+                  Leon Bridges and Lucky Daye
+                  <p className="albums-index__carousel-sub-description-secondary">
+                    Channelling ‘90s R&B
+                  </p>
+                </div>
               </Link>
             </div>
           </div>
