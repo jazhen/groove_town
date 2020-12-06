@@ -24,8 +24,8 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
               >
                 <img
                   className="albums-index__carousel-main-img"
-                  src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-main.png"
-                  alt=""
+                  src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-main.jpg"
+                  alt="splash main"
                 />
               </Link>
             </div>
@@ -39,7 +39,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                 <img
                   className="albums-index__carousel-sub-img"
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_1.jpg"
-                  alt=""
+                  alt="splash sub 1"
                 />
               </Link>
             </div>
@@ -51,7 +51,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                 <img
                   className="albums-index__carousel-sub-img"
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_2.jpg"
-                  alt=""
+                  alt="splash sub 2"
                 />
               </Link>
             </div>
@@ -63,7 +63,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                 <img
                   className="albums-index__carousel-sub-img"
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_3.jpg"
-                  alt=""
+                  alt="splash sub 3"
                 />
               </Link>
             </div>
