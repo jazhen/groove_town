@@ -257,38 +257,48 @@ const AlbumUpdate = ({
       formData.append('album[art]', album.artFile);
     }
 
-    const trackNumDifference = oldAlbum.trackIds.length - tracks.length;
-    if (trackNumDifference > 0) {
-      const deleteTrackIds = oldAlbum.trackIds.slice(trackNumDifference);
+    if (tracks.length === 0) {
+      oldAlbum.trackIds.forEach((trackId, index) => {
+        formData.append(`album[tracks_attributes][${index}][id]`, trackId);
+        formData.append(`album[tracks_attributes][${index}][_destroy]`, 1);
+      });
+    } else {
+      const trackNumDifference = oldAlbum.trackIds.length - tracks.length;
+      if (trackNumDifference > 0) {
+        const deleteTrackIds = oldAlbum.trackIds.slice(trackNumDifference);
 
-      deleteTrackIds.forEach((trackId, index) => {
+        deleteTrackIds.forEach((trackId, index) => {
+          formData.append(
+            `album[tracks_attributes][${trackNumDifference + index}][id]`,
+            trackId
+          );
+          formData.append(
+            `album[tracks_attributes][${trackNumDifference + index}][_destroy]`,
+            1
+          );
+        });
+      }
+
+      tracks.forEach((track, ord) => {
+        if (track.id) {
+          formData.append(`album[tracks_attributes][${ord}][id]`, track.id);
+        }
+        formData.append(`album[tracks_attributes][${ord}][name]`, track.name);
+        formData.append(`album[tracks_attributes][${ord}][ord]`, ord + 1);
+        formData.append(`album[tracks_attributes][${ord}][user_id]`, user.id);
         formData.append(
-          `album[tracks_attributes][${trackNumDifference + index}][id]`,
-          trackId
+          `album[tracks_attributes][${ord}][album_id]`,
+          oldAlbum.id
         );
-        formData.append(
-          `album[tracks_attributes][${trackNumDifference + index}][_destroy]`,
-          1
-        );
+        if (track.audio) {
+          formData.append(`album[tracks_attributes][${ord}][duration]`, '1:23');
+          formData.append(
+            `album[tracks_attributes][${ord}][audio]`,
+            track.audio
+          );
+        }
       });
     }
-
-    tracks.forEach((track, ord) => {
-      if (track.id) {
-        formData.append(`album[tracks_attributes][${ord}][id]`, track.id);
-      }
-      formData.append(`album[tracks_attributes][${ord}][name]`, track.name);
-      formData.append(`album[tracks_attributes][${ord}][ord]`, ord + 1);
-      formData.append(`album[tracks_attributes][${ord}][user_id]`, user.id);
-      formData.append(
-        `album[tracks_attributes][${ord}][album_id]`,
-        oldAlbum.id
-      );
-      if (track.audio) {
-        formData.append(`album[tracks_attributes][${ord}][duration]`, '1:23');
-        formData.append(`album[tracks_attributes][${ord}][audio]`, track.audio);
-      }
-    });
 
     updateAlbum(formData, albumId).then(() => {
       history.push(`/users/${user.id}/albums/${albumId}`);
