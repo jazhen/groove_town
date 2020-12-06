@@ -4,7 +4,7 @@ import {
   RECEIVE_ALBUM_ERRORS,
 } from '../actions/album_actions';
 import { SET_LOADING } from '../actions/general_actions';
-import { RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_USER, RECEIVE_USER_ERRORS } from '../actions/user_actions';
 
 const loadingReducer = (prevState = false, action) => {
   Object.freeze(prevState);
@@ -19,6 +19,8 @@ const loadingReducer = (prevState = false, action) => {
     case RECEIVE_ALBUMS:
       return false;
     case RECEIVE_ALBUM_ERRORS:
+      return false;
+    case RECEIVE_USER_ERRORS:
       return false;
     default:
       return prevState;

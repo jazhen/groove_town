@@ -5,7 +5,7 @@ import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
 const mapStateToProps = (
-  { entities: { users, albums }, session, ui: { loading } },
+  { entities: { users, albums }, session, ui: { errors, loading } },
   { match: { params } }
 ) => {
   const user = users[params.userId];
@@ -30,6 +30,7 @@ const mapStateToProps = (
     tabs,
     userId: params.userId,
     currentUserId: `${session.id}`,
+    errors: errors.users,
     loading,
   };
 };

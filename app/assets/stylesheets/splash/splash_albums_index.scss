@@ -28,13 +28,14 @@
 
 .albums-index__album-art-container {
   background-color: $mid-gray;
-  height: 200px;
-  width: 200px
+  height: 202px;
+  width: 202px
 }
 
 .albums-index__album-art {
-  height: 200px;
-  width: 200px;
+  border: 1px solid $mid-gray;
+  height: 202px;
+  width: 202px;
   object-fit: cover;
 }
 

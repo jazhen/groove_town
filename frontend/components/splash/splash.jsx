@@ -27,7 +27,9 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-main.jpg"
                   alt="splash main"
                 />
-                {/* <p>listen to the 1991 classic</p> */}
+                <p className="albums-index__carousel-main-description">
+                  listen now
+                </p>
               </Link>
             </div>
           </div>
@@ -42,6 +44,9 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_1.jpg"
                   alt="splash sub 1"
                 />
+                <p className="albums-index__carousel-sub-description">
+                  listen now
+                </p>
               </Link>
             </div>
             <div className="albums-index__carousel-sub-img-container">
@@ -54,6 +59,9 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_2.jpg"
                   alt="splash sub 2"
                 />
+                <p className="albums-index__carousel-sub-description">
+                  listen now
+                </p>
               </Link>
             </div>
             <div className="albums-index__carousel-sub-img-container">
@@ -66,6 +74,9 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-sub_3.jpg"
                   alt="splash sub 3"
                 />
+                <p className="albums-index__carousel-sub-description">
+                  listen now
+                </p>
               </Link>
             </div>
           </div>

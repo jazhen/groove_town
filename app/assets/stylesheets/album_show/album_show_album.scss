@@ -51,15 +51,14 @@
 @media only screen
 and (min-width: 992px) {
   .album-player__art-container {
-    flex: 2;
+    flex: 6;
     order: 1;
     margin: 0 2rem;
   }
 
   .album-player__sidebar {
-    flex: 1;
+    flex: 2;
     order: 2;
-    max-width: 16rem;
   }
 
   .album-player {
@@ -69,7 +68,7 @@ and (min-width: 992px) {
 
   .album-player__metadata {
     display: flex;
-    flex: 2;
+    flex: 5;
     flex-direction: column;
   }
 
@@ -91,7 +90,7 @@ and (min-width: 992px) {
   }
 
   .album-player__art {
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
   }
 }

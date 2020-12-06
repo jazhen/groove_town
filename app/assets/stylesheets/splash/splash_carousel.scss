@@ -48,6 +48,30 @@
   width: 100%;
 }
 
+.albums-index__carousel-link {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.albums-index__carousel-main-description {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 3rem;
+  margin: 2rem;
+}
+
+.albums-index__carousel-sub-description {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 1rem;
+  margin: 1rem;
+}
+
 @media only screen
 and (min-width: 992px) {
   .albums-index__carousel {

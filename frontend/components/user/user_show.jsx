@@ -32,25 +32,38 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   return <ul className="user-show__tabs-header-list">{headers}</ul>;
 };
 
-const EditProfile = ({ editing, handleEdit, handleSubmit, handleCancel }) => {
+const EditProfile = ({
+  editing,
+  handleEdit,
+  handleSubmit,
+  handleCancel,
+  // errors,
+}) => {
   if (editing) {
     return (
-      <div className="user-show__profile-edit-button-container">
-        <button
-          type="button"
-          className="user-show__profile-edit-save-button"
-          onClick={handleSubmit}
-        >
-          Save Changes
-        </button>
-        <button
-          type="button"
-          className="user-show__profile-edit-cancel-button"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-      </div>
+      <>
+        {/* <div className="user-show__profile-edit-errors">
+          <p className="user-show__profile-edit-avatar-error">
+            {errors.avatar && errors.avatar.length ? errors.avatar[0] : null}
+          </p>
+        </div> */}
+        <div className="user-show__profile-edit-button-container">
+          <button
+            type="button"
+            className="user-show__profile-edit-save-button"
+            onClick={handleSubmit}
+          >
+            Save Changes
+          </button>
+          <button
+            type="button"
+            className="user-show__profile-edit-cancel-button"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        </div>
+      </>
     );
   }
   return (
@@ -71,6 +84,7 @@ const UserShow = ({
   currentUserId,
   fetchUser,
   tabs,
+  errors,
   loading,
   updateUser,
 }) => {
@@ -147,6 +161,11 @@ const UserShow = ({
                       className="user-show__profile-picture-label"
                     />
                     <i className="fas fa-3x fa-camera user-show__profile-picture-edit-icon" />
+                    <p className="user-show__profile-pic-edit-errors">
+                      {errors.avatar && errors.avatar.length
+                        ? errors.avatar[0]
+                        : null}
+                    </p>
                   </>
                 ) : null}
               </div>
@@ -165,8 +184,7 @@ const UserShow = ({
                 handleEdit={handleEdit}
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}
-                userId={userId}
-                currentUserId={currentUserId}
+                // errors={errors}
               />
             ) : null}
           </div>

@@ -18,14 +18,13 @@
 }
 
 .user-show__profile-picture-background {
-  height: 200px;
+  height: 224px;
   position: absolute;
   top: 60px;
   width: 200px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -69,7 +68,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  opacity: 0.3;
+  opacity: 0.4;
   background-color: $light-black;
   display: flex;
   justify-content: center;
@@ -79,6 +78,9 @@
 .user-show__profile-picture-edit-icon {
   position: absolute;
   color: $white;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .user-show__profile-picture-label:hover {
@@ -121,4 +123,16 @@
 
 .user-show__profile {
   min-width: 240px;
+}
+
+.user-show__profile-pic-edit-errors {
+  color: $red;
+  font-size: .75rem;
+  padding-top: 6px;
+  width: 100%;
+  text-align: center;
+}
+
+.user-show__profile-edit-avatar-error {
+  margin: 1rem 0;
 }
