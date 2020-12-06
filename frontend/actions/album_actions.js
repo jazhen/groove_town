@@ -7,11 +7,12 @@ export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 export const CLEAR_ALL_ALBUM_ERRORS = 'CLEAR_ALL_ALBUM_ERRORS';
 
-const receiveAlbums = ({ albums, tracks }) => {
+const receiveAlbums = ({ albums, tracks, albumIds }) => {
   return {
     type: RECEIVE_ALBUMS,
     albums,
     tracks,
+    albumIds,
   };
 };
 
@@ -48,14 +49,14 @@ export const fetchAlbums = () => (dispatch) => {
   dispatch(setLoading());
   return albumAPIUtil
     .fetchAlbums()
-    .then((albums) => dispatch(receiveAlbums(albums)));
+    .then((data) => dispatch(receiveAlbums(data)));
 };
 
 export const fetchAlbum = (albumId) => (dispatch) => {
   dispatch(setLoading());
   return albumAPIUtil
     .fetchAlbum(albumId)
-    .then((album) => dispatch(receiveAlbum(album)));
+    .then((data) => dispatch(receiveAlbum(data)));
 };
 
 export const createAlbum = (album) => (dispatch) => {
@@ -69,7 +70,7 @@ export const createAlbum = (album) => (dispatch) => {
 export const updateAlbum = (album, albumId) => (dispatch) => {
   dispatch(setLoading());
   return albumAPIUtil.updateAlbum(album, albumId).then(
-    (createdAlbum) => dispatch(receiveAlbum(createdAlbum)),
+    (updatedAlbum) => dispatch(receiveAlbum(updatedAlbum)),
     (errors) => dispatch(receiveAlbumErrors(errors.responseJSON))
   );
 };

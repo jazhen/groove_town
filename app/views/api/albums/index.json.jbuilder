@@ -9,3 +9,5 @@
     end
   end
 end
+
+json.albumIds @albums.pluck(:id)
