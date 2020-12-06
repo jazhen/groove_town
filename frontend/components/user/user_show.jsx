@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import EditProfile from './user_show_edit_profile';
 
 const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   const active = selectedTab;
@@ -29,41 +30,6 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   });
 
   return <ul className="user-show__tabs-header-list">{headers}</ul>;
-};
-
-const EditProfile = ({ editing, handleEdit, handleSubmit, handleCancel }) => {
-  if (editing) {
-    return (
-      <>
-        <div className="user-show__profile-edit-button-container">
-          <button
-            type="button"
-            className="user-show__profile-edit-save-button"
-            onClick={handleSubmit}
-          >
-            Save Changes
-          </button>
-          <button
-            type="button"
-            className="user-show__profile-edit-cancel-button"
-            onClick={handleCancel}
-          >
-            Cancel
-          </button>
-        </div>
-      </>
-    );
-  }
-  return (
-    <button
-      type="button"
-      onClick={handleEdit}
-      className="user-show__profile-edit-button"
-    >
-      <i className="far fa-edit" />
-      &nbsp;Edit Profile
-    </button>
-  );
 };
 
 const UserShow = ({
@@ -169,13 +135,26 @@ const UserShow = ({
         <div className="user-show__profile-container">
           <div className="user-show__profile-placeholder" />
           <div className="user-show__profile">
-            <p className="user-show__profile-name">
-              {user.band ? user.band : user.username}
-            </p>
-            {userId === currentUserId ? (
+            <div className="user-show__profile-edit-container">
+              <p className="user-show__profile-name">
+                {user.band || user.username}
+              </p>
+              {userId === currentUserId && !editing ? (
+                <button
+                  type="button"
+                  onClick={handleEdit}
+                  className="user-show__profile-edit-button"
+                >
+                  <i className="far fa-edit" />
+                  &nbsp;Edit Profile
+                </button>
+              ) : null}
+            </div>
+            {user.location ? (
+              <p className="user-show__profile-location">{user.location}</p>
+            ) : null}
+            {userId === currentUserId && editing ? (
               <EditProfile
-                editing={editing}
-                handleEdit={handleEdit}
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}
               />

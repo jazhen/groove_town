@@ -50,7 +50,6 @@
 .user-show__profile-name {
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: .5rem;
 }
 
 .user-show__tab-title {
@@ -89,6 +88,7 @@
 .user-show__profile-edit-button-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .user-show__profile-edit-button {
@@ -99,6 +99,8 @@
   color: $dark-gray;
   display: flex;
   align-items: center;
+  margin-left: 2rem;
+  height: 1.75rem;
 }
 
 .user-show__profile-edit-save-button {
@@ -135,4 +137,24 @@
 
 .user-show__profile-edit-avatar-error {
   margin: 1rem 0;
+}
+
+.user-show__profile-edit-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-show__profile-edit-location-label {
+  margin: .5rem 0 .5rem 0;
+  font-size: .75rem;
+  display: flex;
+  flex-direction: column;
+  color: $dark-gray;
+}
+
+.user-show__profile-edit-location-input {
+  height: 2rem;
+  border: 1px solid $dark-gray;
+  padding: 0 1rem;
+  color: $light-black;
 }
