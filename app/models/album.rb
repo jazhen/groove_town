@@ -13,7 +13,7 @@
 class Album < ApplicationRecord
   has_one_attached :art, dependent: :destroy
   belongs_to :user
-  has_many :tracks, dependent: :destroy, index_errors: true, inverse_of: :album
+  has_many :tracks, dependent: :destroy, inverse_of: :album #, index_errors: true
   accepts_nested_attributes_for :tracks, allow_destroy: true
 
   validates :user_id, :release_date, presence: true
