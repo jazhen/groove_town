@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import AlbumShowDiscography from './album_show_discography';
 import AudioPlayer from './audio_player';
 
-const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
+const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId, sessionId }) => {
   const album = albums[albumId];
 
   const [formattedDate, setFormattedDate] = useState('');
@@ -45,7 +45,7 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId }) => {
             </div>
           </div>
           {album.trackIds.length ? (
-            <AudioPlayer album={album} tracks={tracks} />
+            <AudioPlayer album={album} tracks={tracks} sessionId={sessionId} />
           ) : null}
           <p className="album-player__release-date">released {formattedDate}</p>
         </div>

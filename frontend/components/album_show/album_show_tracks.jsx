@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import AlbumShowTrack from './album_show_track';
-
 const AlbumShowTrackButton = ({
   track,
   player,
@@ -50,6 +48,7 @@ const AlbumShowTracks = ({
   setCurrentTrack,
   handlePlay,
   formatTime,
+  sessionId,
 }) => {
   return (
     <ul className="album-show__tracks">
@@ -76,18 +75,20 @@ const AlbumShowTracks = ({
                 <li>{formatTime(track.duration)}</li>
               </ul>
               <ul className="album-show__track-options-container">
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={track.audioUrl}
-                    className="album-show__track-download"
-                    type="audio/mpeg"
-                    download
-                  >
-                    download
-                  </a>
-                </li>
+                {sessionId ? (
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={track.audioUrl}
+                      className="album-show__track-download"
+                      type="audio/mpeg"
+                      download
+                    >
+                      download
+                    </a>
+                  </li>
+                ) : null}
               </ul>
             </ul>
           </li>

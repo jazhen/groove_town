@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AlbumShowTracks from './album_show_tracks';
 
-const AudioPlayer = ({ album, tracks }) => {
+const AudioPlayer = ({ album, tracks, sessionId }) => {
   const { trackIds } = album;
 
   const player = useRef();
@@ -175,6 +175,7 @@ const AudioPlayer = ({ album, tracks }) => {
         setCurrentTrack={setCurrentTrack}
         handlePlay={handlePlay}
         formatTime={formatTime}
+        sessionId={sessionId}
       />
     </>
   );
