@@ -34,6 +34,13 @@ class Api::AlbumsController < ApplicationController
     if @album.save
       render :show
     else
+      @album.tracks.each_with_index do |track, index|
+        next if track.errors.messages.empty?
+
+        @album.errors["tracks[#{index}].name"] << track.errors.messages[:name].first
+        @album.errors["tracks[#{index}].audio"] << track.errors.messages[:audio].first
+      end
+
       render json: @album.errors.messages, status: 409
     end
   end

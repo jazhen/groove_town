@@ -33,7 +33,7 @@ class Track < ApplicationRecord
         audio.purge
       end
     else
-      errors[:audio] << 'Please add audio for this album.'
+      errors[:audio] << 'Please add audio for this track.'
     end
   end
 end
