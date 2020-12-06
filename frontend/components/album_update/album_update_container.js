@@ -9,11 +9,7 @@ import { deleteAlbum } from '../../util/album_api_util';
 import AlbumUpdate from './album_update';
 
 const mapStateToProps = (
-  {
-    entities: { users, albums, tracks },
-    ui: { errors, loading },
-    session: { id },
-  },
+  { entities: { users, albums, tracks }, ui: { errors }, session: { id } },
   { match: { params } }
 ) => {
   return {
@@ -23,7 +19,6 @@ const mapStateToProps = (
     albumId: params.albumId,
     allTracks: tracks,
     errors: errors.albums,
-    loading,
   };
 };
 

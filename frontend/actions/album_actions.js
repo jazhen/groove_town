@@ -46,14 +46,14 @@ export const clearAllErrors = () => {
 };
 
 export const fetchAlbums = () => (dispatch) => {
-  dispatch(setLoading());
+  // dispatch(setLoading());
   return albumAPIUtil
     .fetchAlbums()
     .then((data) => dispatch(receiveAlbums(data)));
 };
 
 export const fetchAlbum = (albumId) => (dispatch) => {
-  dispatch(setLoading());
+  // dispatch(setLoading());
   return albumAPIUtil
     .fetchAlbum(albumId)
     .then((data) => dispatch(receiveAlbum(data)));

@@ -4,7 +4,6 @@ import AlbumCreateAlbumTab from './album_create_album_tab';
 import AlbumCreateTrackTab from './album_create_track_tab';
 import AlbumCreateAlbumForm from './album_create_album_form';
 import AlbumCreateTrackForm from './album_create_track_form';
-import Loading from '../loading/loading';
 
 const AlbumCreate = ({
   user,
@@ -12,7 +11,6 @@ const AlbumCreate = ({
   errors,
   clearErrors,
   clearAllErrors,
-  loading,
   history,
 }) => {
   const [today] = useState(new Date().toISOString().slice(0, 10));
@@ -160,10 +158,6 @@ const AlbumCreate = ({
       history.push(`/users/${user.id}/albums/${newAlbumId}`);
     });
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="album-create">

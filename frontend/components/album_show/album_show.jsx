@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Loading from '../loading/loading';
 
 const TabHeaders = ({ selectedTab, setSelectedTab, tabs }) => {
   const headers = tabs.map((tab, index) => {
@@ -26,15 +25,7 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs }) => {
   return <ul className="album-show__tabs-header-list">{headers}</ul>;
 };
 
-const AlbumShow = ({
-  user,
-  albums,
-  userId,
-  albumId,
-  tabs,
-  fetchUser,
-  loading,
-}) => {
+const AlbumShow = ({ user, albums, userId, albumId, tabs, fetchUser }) => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
@@ -43,10 +34,6 @@ const AlbumShow = ({
 
   const tab = tabs[selectedTab];
   const album = albums[albumId];
-
-  if (loading) {
-    return <Loading />;
-  }
 
   if (!user || Object.keys(albums).length < user.albumIds.length) {
     return null;

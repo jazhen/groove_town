@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Loading from '../loading/loading';
 import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
 import AlbumUpdateTrackForm from './album_update_track_form';
@@ -17,7 +16,6 @@ const AlbumUpdate = ({
   errors,
   clearErrors,
   clearAllErrors,
-  loading,
   history,
 }) => {
   const [oldReleaseDate, setOldReleaseDate] = useState(null);
@@ -308,10 +306,6 @@ const AlbumUpdate = ({
   const handleAlbumDelete = () => {
     deleteAlbum(albumId).then(() => history.push('/'));
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="album-update">

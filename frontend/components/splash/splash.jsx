@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import IndexAlbum from './album_index';
-import Loading from '../loading/loading';
 
-const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
+const Splash = ({ albums, albumIds, fetchAlbums }) => {
   useEffect(() => {
     fetchAlbums();
   }, [fetchAlbums]);
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="albums-index">

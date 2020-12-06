@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Loading from '../loading/loading';
 
 const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   const active = selectedTab;
@@ -32,21 +31,10 @@ const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   return <ul className="user-show__tabs-header-list">{headers}</ul>;
 };
 
-const EditProfile = ({
-  editing,
-  handleEdit,
-  handleSubmit,
-  handleCancel,
-  // errors,
-}) => {
+const EditProfile = ({ editing, handleEdit, handleSubmit, handleCancel }) => {
   if (editing) {
     return (
       <>
-        {/* <div className="user-show__profile-edit-errors">
-          <p className="user-show__profile-edit-avatar-error">
-            {errors.avatar && errors.avatar.length ? errors.avatar[0] : null}
-          </p>
-        </div> */}
         <div className="user-show__profile-edit-button-container">
           <button
             type="button"
@@ -85,7 +73,6 @@ const UserShow = ({
   fetchUser,
   tabs,
   errors,
-  loading,
   updateUser,
   clearAllErrors,
 }) => {
@@ -131,10 +118,6 @@ const UserShow = ({
       handleCancel();
     });
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="user-show">
@@ -190,7 +173,6 @@ const UserShow = ({
                 handleEdit={handleEdit}
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}
-                // errors={errors}
               />
             ) : null}
           </div>

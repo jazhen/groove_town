@@ -9,12 +9,11 @@ import AlbumCreate from './album_create';
 const mapStateToProps = ({
   entities: { users },
   session: { id },
-  ui: { errors, loading },
+  ui: { errors },
 }) => {
   return {
     user: users[id],
     errors: errors.albums,
-    loading,
   };
 };
 
