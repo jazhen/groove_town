@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const searchInput = useRef(null);
@@ -9,6 +9,12 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
   const [bandSearchResults, setBandSearchResults] = useState([]);
   const [active, setActive] = useState(false);
   const [fetched, setFetched] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    searchInput.current.value = '';
+  }, [location]);
 
   const updateSeachResults = (value) => {
     const albumMatches = [];
@@ -62,10 +68,6 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
     }
   };
 
-  const handleClick = () => {
-    searchInput.current.value = '';
-  };
-
   return (
     <div className="nav-bar__search-bar">
       <input
@@ -85,7 +87,6 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${album.userId}/albums/${album.id}`}
                 key={album.id}
-                onClick={handleClick}
               >
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
@@ -116,7 +117,6 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
               <Link
                 to={`/users/${track.userId}/albums/${track.albumId}`}
                 key={track.id}
-                onClick={handleClick}
               >
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
@@ -144,11 +144,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
           })}
           {bandSearchResults.map((user) => {
             return (
-              <Link
-                to={`/users/${user.id}`}
-                key={user.id}
-                onClick={handleClick}
-              >
+              <Link to={`/users/${user.id}`} key={user.id}>
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
