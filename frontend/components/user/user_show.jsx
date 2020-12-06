@@ -63,6 +63,10 @@ const UserShow = ({
     setProfile({ ...profile, avatarFile: file, avatarUrl: url });
   };
 
+  const handleOnLocationChange = (e) => {
+    setProfile({ ...profile, location: e.currentTarget.value });
+  };
+
   const handleEdit = () => {
     setEditing(true);
   };
@@ -77,6 +81,7 @@ const UserShow = ({
 
     const formData = new FormData();
     formData.append('user[id]', userId);
+    formData.append('user[location]', profile.location);
     if (profile.avatarFile) {
       formData.append('user[avatar]', profile.avatarFile);
     }
@@ -155,6 +160,7 @@ const UserShow = ({
             ) : null}
             {userId === currentUserId && editing ? (
               <EditProfile
+                handleOnLocationChange={handleOnLocationChange}
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}
               />
