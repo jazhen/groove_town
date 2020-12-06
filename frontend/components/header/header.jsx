@@ -36,11 +36,13 @@ const AuthenticatedHeader = ({ currentUser, logout }) => {
               view collection
             </Link>
           </li>
-          <li className="nav-bar__dropdown-content-list-item">
-            <Link to="/albums/new" className="nav-bar__dropdown-link">
-              add music
-            </Link>
-          </li>
+          {currentUser.band ? (
+            <li className="nav-bar__dropdown-content-list-item">
+              <Link to="/albums/new" className="nav-bar__dropdown-link">
+                add music
+              </Link>
+            </li>
+          ) : null}
           <li className="nav-bar__dropdown-content-list-item">
             <Link to="/">
               <button
