@@ -1,7 +1,7 @@
 @import 'variables';
 
 .albums-index__carousel {
-  background-color: $light-black;
+  background-color: #222222;
   justify-content: center;
   width: 100%;
 }
@@ -15,7 +15,15 @@
 
 .albums-index__carousel-main-img-container,
 .albums-index__carousel-sub-img-container {
-  border: 1px solid $light-black;
+  border: 2px solid #222222;
+}
+
+.albums-index__carousel-main-img-container {
+  border-bottom: none;
+}
+
+.albums-index__carousel-sub-img-container:not(:last-child) {
+  border-bottom: none;
 }
 
 .albums-index__carousel-main-img-container:hover,
@@ -24,10 +32,10 @@
   transition: opacity 0.1s ease-out;
 }
 
-
 .albums-index__carousel-sub {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .albums-index__carousel-main-img {
@@ -58,10 +66,6 @@ and (min-width: 992px) {
     flex: 1;
   }
 
-  .albums-index__carousel-main-img-container {
-    border: none;
-  }
-
   .albums-index__carousel-sub-img-container {
     flex: 1;
   }
@@ -70,5 +74,18 @@ and (min-width: 992px) {
   .albums-index__carousel-sub-img {
     display: flex;
     height: 100%;
+  }
+
+  .albums-index__carousel-main-img-container,
+  .albums-index__carousel-sub-img-container {
+    border: none;
+  }
+
+  .albums-index__carousel-main-img-container {
+    border-right: 2px solid #222222;
+  }
+
+  .albums-index__carousel-sub-img-container:not(:last-child) {
+    border-bottom: 2px solid #222222;
   }
 }

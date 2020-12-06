@@ -27,6 +27,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/splash/splash-main.jpg"
                   alt="splash main"
                 />
+                {/* <p>listen to the 1991 classic</p> */}
               </Link>
             </div>
           </div>
