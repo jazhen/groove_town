@@ -352,7 +352,10 @@ const AlbumUpdate = ({
               >
                 Delete
               </button>
-              <Link to="/" className="album-update__options-cancel">
+              <Link
+                to={`/users/${user.id}`}
+                className="album-update__options-cancel"
+              >
                 cancel
               </Link>
             </div>
