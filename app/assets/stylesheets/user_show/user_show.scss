@@ -15,8 +15,9 @@
 }
 
 .user-show__tabs-header-list-item--active {
-  color: $light-black;
-  border-bottom: 2px solid $light-black;
+  border-bottom: 2px solid $blue;
+  // color: $light-black;
+  // border-bottom: 2px solid $light-black;
 }
 
 .user-show__tabs-header-button--inactive {
@@ -33,4 +34,5 @@
 
 .user-show__tabs-header-button {
   padding: 10px 20px;
+  color: $blue;
 }
