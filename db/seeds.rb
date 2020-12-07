@@ -208,7 +208,7 @@ seeds = [
       },
       {
         album_name: 'Loveless',
-        track_names: ['Only Shallow', 'Loomer', 'Touched" (instrumental)', 'To Here Knows When', 'When You Sleep'],
+        track_names: ['Only Shallow', 'Loomer', 'Touched', 'To Here Knows When', 'When You Sleep'],
         release_date: [1991, 11, 4]
       },
       {

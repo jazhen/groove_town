@@ -9,6 +9,11 @@
 
 .album-show__track-name {
   margin: 0 .5rem 0 .25rem;
+  display: flex;
+}
+
+.album-show__track-name-span {
+  margin-right: .5rem;
 }
 
 .album-show__track-play-button {
