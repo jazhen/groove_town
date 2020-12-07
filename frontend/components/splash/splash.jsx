@@ -18,7 +18,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
           <div className="albums-index__carousel-main albums-index__carousel-col">
             <div className="albums-index__carousel-main-img-container">
               <Link
-                to="/users/10/albums/12"
+                to="/users/2/albums/2"
                 className="albums-index__carousel-link"
               >
                 <img
@@ -38,7 +38,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
           <div className="albums-index__carousel-sub albums-index__carousel-col">
             <div className="albums-index__carousel-sub-img-container">
               <Link
-                to="/users/19/albums/27"
+                to="/users/4/albums/11"
                 className="albums-index__carousel-link"
               >
                 <img
@@ -56,7 +56,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
             </div>
             <div className="albums-index__carousel-sub-img-container">
               <Link
-                to="/users/20/albums/28"
+                to="/users/3/albums/6"
                 className="albums-index__carousel-link"
               >
                 <img
@@ -74,7 +74,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
             </div>
             <div className="albums-index__carousel-sub-img-container">
               <Link
-                to="/users/21/albums/29"
+                to="/users/1/albums/1"
                 className="albums-index__carousel-link"
               >
                 <img

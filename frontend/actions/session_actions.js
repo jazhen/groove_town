@@ -54,8 +54,8 @@ export const signup = (user) => (dispatch) => {
 
 export const demoLogin = () => {
   const demoUser = {
-    username_or_email: 'demo_band',
-    password: 'password',
+    username_or_email: 'radiohead@groovetown.com',
+    password: 'me4SNq^3eJL3Jhfs',
   };
 
   return login(demoUser);
