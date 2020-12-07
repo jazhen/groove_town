@@ -158,7 +158,7 @@ seeds = [
         release_date: [2020, 4, 10]
       }
     ]
-  }
+  },
   {
     user: {
       band_name: 'Phoebe Bridgers',
@@ -263,7 +263,7 @@ seeds = [
         release_date: [1980, 10, 8]
       }
     ]
-  },
+  }
 ]
 
 seeds.each do |seed|
