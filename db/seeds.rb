@@ -116,7 +116,7 @@ seeds = [
     albums: [
       {
         album_name: 'OK Computer',
-        track_names: ['Airbag', 'Soft as Snow (But Warm Inside)', ' Subterranean Homesick Alien', ' Exit Music (For a Film)', ' Let Down'],
+        track_names: ['Airbag', 'Soft as Snow (But Warm Inside)', 'Subterranean Homesick Alien', 'Exit Music (For a Film)', ' Let Down'],
         release_date: [1997, 6, 16]
       },
       {
@@ -126,7 +126,7 @@ seeds = [
       },
       {
         album_name: 'In Rainbows',
-        track_names: ['15 Step', 'Bodysnatchers', 'Nude', 'Weird Fishes / Arpeggi', ' All I Need'],
+        track_names: ['15 Step', 'Bodysnatchers', 'Nude', 'Weird Fishes / Arpeggi', 'All I Need'],
         release_date: [2007, 10, 10]
       }
     ]
@@ -269,8 +269,15 @@ seeds = [
 seeds.each do |seed|
   band_name = seed[:user][:band_name]
   location = seed[:user][:location]
-  formatted_band_name = band_name.delete(".,'-?():&").downcase.split.join('_')
+  formatted_band_name = band_name.delete(".,'-?():&/").downcase.split.join('_')
   profile_pic_filename = "#{formatted_band_name}-profile_pic"
+
+  puts
+  puts
+  puts profile_pic_filename
+  puts
+  puts
+
   profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}.jpg")
   band = User.new(username: formatted_band_name,
                   email: "#{formatted_band_name}@groovetown.com",
@@ -281,11 +288,16 @@ seeds.each do |seed|
   band.save!
 
   seed[:albums].each do |seed_album|
-    formatted_album_name = seed_album[:album_name].delete(".,'-?():&").downcase.split.join('_')
+    formatted_album_name = seed_album[:album_name].delete(".,'-?():&/").downcase.split.join('_')
     filename = "#{formatted_band_name}-#{formatted_album_name}"
     album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
+
+    puts
+    puts
     puts filename
     puts
+    puts
+
     album = Album.new(name: seed_album[:album_name],
                       user_id: band.id,
                       release_date: DateTime.new(seed_album[:release_date][0], seed_album[:release_date][1], seed_album[:release_date][2]).in_time_zone)
@@ -294,8 +306,13 @@ seeds.each do |seed|
 
     seed_album[:track_names].each_with_index do |track_name, index|
       track_filename = "#{filename}-0#{index + 1}.mp3"
+
+      puts
+      puts
       puts track_filename
       puts
+      puts
+
       track_audio = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}")
 
       track_duration = Mp3Info.open(track_audio).length
