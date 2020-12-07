@@ -6,7 +6,7 @@ const usersReducer = (prevState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return { ...prevState, ...action.currentUser };
+      return { ...prevState, ...action.user };
     case RECEIVE_ALL:
       return action.users;
     case RECEIVE_USER:

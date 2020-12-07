@@ -17,6 +17,10 @@ const NavBarSiteList = () => {
 };
 
 const AuthenticatedHeader = ({ currentUser, logout }) => {
+  if (!currentUser) {
+    return null;
+  }
+
   return (
     <ul className="nav-bar__dropdown">
       <button type="button" className="nav-bar__dropdown-button" tabIndex="0">
