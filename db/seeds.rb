@@ -159,111 +159,111 @@ seeds = [
       }
     ]
   }
-  # {
-  #   user: {
-  #     band_name: 'Phoebe Bridgers',
-  #     location: 'Los Angeles, CA'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: 'Stranger in the Alps',
-  #       track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street'],
-  #       release_date: [2017, 9, 22]
-  #     },
-  #     {
-  #       album_name: 'Punisher',
-  #       track_names: ['DVD Menu', 'Garden Song', 'Kyoto', 'Punisher', 'Halloween'],
-  #       release_date: [2020, 6, 18]
-  #     }
-  #   ]
-  # },
-  # {
-  #   user: {
-  #     band_name: 'Patti Smith',
-  #     location: 'Chicago, IL'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: 'Horses',
-  #       track_names: ['Gloria', 'Redondo Beach', 'Birdland', 'Free Money', 'Kimberly'],
-  #       release_date: [1975, 12, 13]
-  #     },
-  #     {
-  #       album_name: 'Radio Ethiopia',
-  #       track_names: ['Ask the Angels', "Ain't It Strange", 'Poppies', 'Pissing in a River', 'Pumping (My Heart)'],
-  #       release_date: [1976, 10, 22]
-  #     }
-  #   ]
-  # },
-  # {
-  #   user: {
-  #     band_name: 'My Bloody Valentine',
-  #     location: 'Dublin, Ireland'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: "Isn't Anything",
-  #       track_names: ['Soft as Snow (But Warm Inside)', 'Lose My Breath', 'Cupid Come', "(When You Wake) You're Still in a Dream", 'No More Sorry'],
-  #       release_date: [1988, 11, 21]
-  #     },
-  #     {
-  #       album_name: 'Loveless',
-  #       track_names: ['Only Shallow', 'Loomer', 'Touched" (instrumental)', 'To Here Knows When', 'When You Sleep'],
-  #       release_date: [1991, 11, 4]
-  #     },
-  #     {
-  #       album_name: 'm b v',
-  #       track_names: ['She Found Now', 'Only Tomorrow', 'Who Sees You', 'Is This and Yes', 'If I Am'],
-  #       release_date: [2013, 2, 2]
-  #     }
-  #   ]
-  # },
-  # {
-  #   user: {
-  #     band_name: 'The Antlers',
-  #     location: 'New York, NY'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: 'Hospice',
-  #       track_names: %w[Prologue Kettering Sylvia Atrophy Bear],
-  #       release_date: [2009, 3, 23]
-  #     },
-  #     {
-  #       album_name: 'Familiars',
-  #       track_names: %w[Palace Doppelgänger Hotel Intruders Director],
-  #       release_date: [2014, 6, 417]
-  #     }
-  #   ]
-  # },
-  # {
-  #   user: {
-  #     band_name: 'Talking Heads',
-  #     location: 'New York, NY'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: '77',
-  #       track_names: ['Uh-Oh, Love Comes to Town', 'New Feeling', 'Tentative Decisions', 'Happy Day', 'Who Is It?'],
-  #       release_date: [1977, 9, 16]
-  #     },
-  #     {
-  #       album_name: 'More Songs About Buildings and Food',
-  #       track_names: ['Thank You for Sending Me an Angel', 'With Our Love', 'The Good Thing', 'Warning Sign', 'The Girls Want to Be With the Girls'],
-  #       release_date: [1978, 7, 7]
-  #     },
-  #     {
-  #       album_name: 'Fear of Music',
-  #       track_names: ['I Zimbra', 'Mind', 'Paper', 'Cities', 'Life During Wartime'],
-  #       release_date: [1979, 8, 3]
-  #     },
-  #     {
-  #       album_name: 'Remain in Light',
-  #       track_names: ['Born Under Punches (The Heat Goes On)', 'Crosseyed and Painless', 'The Great Curve', 'Once in a Lifetime', 'Houses in Motion'],
-  #       release_date: [1980, 10, 8]
-  #     }
-  #   ]
-  # },
+  {
+    user: {
+      band_name: 'Phoebe Bridgers',
+      location: 'Los Angeles, CA'
+    },
+    albums: [
+      {
+        album_name: 'Stranger in the Alps',
+        track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street'],
+        release_date: [2017, 9, 22]
+      },
+      {
+        album_name: 'Punisher',
+        track_names: ['DVD Menu', 'Garden Song', 'Kyoto', 'Punisher', 'Halloween'],
+        release_date: [2020, 6, 18]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'Patti Smith',
+      location: 'Chicago, IL'
+    },
+    albums: [
+      {
+        album_name: 'Horses',
+        track_names: ['Gloria', 'Redondo Beach', 'Birdland', 'Free Money', 'Kimberly'],
+        release_date: [1975, 12, 13]
+      },
+      {
+        album_name: 'Radio Ethiopia',
+        track_names: ['Ask the Angels', "Ain't It Strange", 'Poppies', 'Pissing in a River', 'Pumping (My Heart)'],
+        release_date: [1976, 10, 22]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'My Bloody Valentine',
+      location: 'Dublin, Ireland'
+    },
+    albums: [
+      {
+        album_name: "Isn't Anything",
+        track_names: ['Soft as Snow (But Warm Inside)', 'Lose My Breath', 'Cupid Come', "(When You Wake) You're Still in a Dream", 'No More Sorry'],
+        release_date: [1988, 11, 21]
+      },
+      {
+        album_name: 'Loveless',
+        track_names: ['Only Shallow', 'Loomer', 'Touched" (instrumental)', 'To Here Knows When', 'When You Sleep'],
+        release_date: [1991, 11, 4]
+      },
+      {
+        album_name: 'm b v',
+        track_names: ['She Found Now', 'Only Tomorrow', 'Who Sees You', 'Is This and Yes', 'If I Am'],
+        release_date: [2013, 2, 2]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'The Antlers',
+      location: 'New York, NY'
+    },
+    albums: [
+      {
+        album_name: 'Hospice',
+        track_names: %w[Prologue Kettering Sylvia Atrophy Bear],
+        release_date: [2009, 3, 23]
+      },
+      {
+        album_name: 'Familiars',
+        track_names: %w[Palace Doppelgänger Hotel Intruders Director],
+        release_date: [2014, 6, 417]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'Talking Heads',
+      location: 'New York, NY'
+    },
+    albums: [
+      {
+        album_name: '77',
+        track_names: ['Uh-Oh, Love Comes to Town', 'New Feeling', 'Tentative Decisions', 'Happy Day', 'Who Is It?'],
+        release_date: [1977, 9, 16]
+      },
+      {
+        album_name: 'More Songs About Buildings and Food',
+        track_names: ['Thank You for Sending Me an Angel', 'With Our Love', 'The Good Thing', 'Warning Sign', 'The Girls Want to Be With the Girls'],
+        release_date: [1978, 7, 7]
+      },
+      {
+        album_name: 'Fear of Music',
+        track_names: ['I Zimbra', 'Mind', 'Paper', 'Cities', 'Life During Wartime'],
+        release_date: [1979, 8, 3]
+      },
+      {
+        album_name: 'Remain in Light',
+        track_names: ['Born Under Punches (The Heat Goes On)', 'Crosseyed and Painless', 'The Great Curve', 'Once in a Lifetime', 'Houses in Motion'],
+        release_date: [1980, 10, 8]
+      }
+    ]
+  },
 ]
 
 seeds.each do |seed|
