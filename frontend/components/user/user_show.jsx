@@ -43,7 +43,11 @@ const UserShow = ({
   clearAllErrors,
   loading,
 }) => {
-  const [profile, setProfile] = useState({ location: user.location });
+  const [profile, setProfile] = useState({
+    location: '',
+    avatarFile: null,
+    avatarUrl: '',
+  });
 
   const [selectedTab, setSelectedTab] = useState(0);
   const [editing, setEditing] = useState(false);
@@ -69,11 +73,13 @@ const UserShow = ({
   };
 
   const handleEdit = () => {
+    setProfile({ location: user.location });
     setEditing(true);
   };
 
   const handleCancel = () => {
     setProfile({ location: user.location });
+    clearAllErrors();
     setEditing(false);
   };
 
