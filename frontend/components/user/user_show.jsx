@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import EditProfile from './user_show_edit_profile';
 
-const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
+const TabHeaders = ({ selectedTab, setSelectedTab, tabs, numAlbums }) => {
   const active = selectedTab;
   const headers = tabs.map((tab, index) => {
     const { title } = tab;
@@ -15,7 +16,7 @@ const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
         <button
           type="button"
           className={`user-show__tabs-header-button user-show__tabs-header-button--${selected}`}
-          onClick={() => onTabChosen(index)}
+          onClick={() => setSelectedTab(index)}
         >
           <span className="user-show__tab-title">{title}</span>
           {title === 'albums' ? (
@@ -31,75 +32,159 @@ const TabHeaders = ({ selectedTab, onTabChosen, tabs, numAlbums }) => {
   return <ul className="user-show__tabs-header-list">{headers}</ul>;
 };
 
-class UserShow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 0,
-    };
-    this.selectTab = this.selectTab.bind(this);
-  }
+const UserShow = ({
+  user,
+  userId,
+  currentUserId,
+  fetchUser,
+  tabs,
+  errors,
+  updateUser,
+  clearAllErrors,
+  loading,
+}) => {
+  const [profile, setProfile] = useState({ location: user.location });
 
-  componentDidMount() {
-    const { fetchUser, match } = this.props;
-    fetchUser(match.params.userId);
-  }
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [editing, setEditing] = useState(false);
 
-  selectTab(num) {
-    this.setState({ selectedTab: num });
-  }
+  useEffect(() => {
+    clearAllErrors();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  render() {
-    const { user, tabs } = this.props;
-    const { selectedTab } = this.state;
+  useEffect(() => {
+    fetchUser(userId);
+  }, [fetchUser, userId]);
 
-    const tab = tabs[selectedTab];
+  const handleAvatarUpload = (e) => {
+    const file = e.currentTarget.files[0];
+    const url = URL.createObjectURL(file);
 
-    if (!user) {
-      return null;
+    setProfile({ ...profile, avatarFile: file, avatarUrl: url });
+  };
+
+  const handleOnLocationChange = (e) => {
+    setProfile({ ...profile, location: e.currentTarget.value });
+  };
+
+  const handleEdit = () => {
+    setEditing(true);
+  };
+
+  const handleCancel = () => {
+    setProfile({ location: user.location });
+    setEditing(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('user[id]', userId);
+    formData.append('user[location]', profile.location);
+    if (profile.avatarFile) {
+      formData.append('user[avatar]', profile.avatarFile);
     }
 
-    return (
-      <div className="user-show">
-        <div className="user-show__main-container">
-          <div className="user-show__user-profile">
-            <div className="user-show__banner">
-              <div className="user-show__profile-picture-container">
-                <div className="user-show__profile-picture-background">
-                  <img
-                    src="https://groove-town-seeds.s3-us-west-1.amazonaws.com/general/default-profile-pic.svg"
-                    className="user-show__profile-picture"
-                    alt="default profile"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="user-show__profile-container">
-            <div className="user-show__profile-placeholder" />
-            <div className="user-show__profile">
-              <span className="user-show__profile-span">
-                {user.band ? user.band : user.username}
-              </span>
-            </div>
-          </div>
-          <div className="user-show__collection-container">
-            <TabHeaders
-              selectedTab={selectedTab}
-              onTabChosen={this.selectTab}
-              tabs={tabs}
-              numAlbums={user.albumIds.length}
-            />
-            <div className="user-show__tab-content">
-              <div className="user-show__tab-content-container">
-                {tab.content}
+    updateUser(formData, userId).then(() => {
+      setProfile({ location: profile.location });
+      setEditing(false);
+    });
+  };
+
+  if (loading || !user) {
+    return null;
+  }
+
+  return (
+    <div className="user-show">
+      <div className="user-show__main-container">
+        <div className="user-show__user-profile">
+          <div className="user-show__banner">
+            <div className="user-show__profile-picture-container">
+              <div className="user-show__profile-picture-background">
+                <img
+                  src={profile.avatarUrl || user.avatarUrl}
+                  className={
+                    editing
+                      ? 'user-show__profile-picture user-show__profile-picture--edit'
+                      : 'user-show__profile-picture'
+                  }
+                  alt="avatar"
+                />
+                {editing ? (
+                  <>
+                    <input
+                      type="file"
+                      id="user-show__profile-picture-input"
+                      className="user-show__profile-picture-input"
+                      accept="image/jpeg, image/png"
+                      onChange={handleAvatarUpload}
+                    />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                    <label
+                      htmlFor="user-show__profile-picture-input"
+                      className="user-show__profile-picture-label"
+                    />
+                    <i className="fas fa-3x fa-camera user-show__profile-picture-edit-icon" />
+                    <p className="user-show__profile-pic-edit-errors">
+                      {errors.avatar && errors.avatar.length
+                        ? errors.avatar[0]
+                        : null}
+                    </p>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
         </div>
+        <div className="user-show__profile-container">
+          <div className="user-show__profile-placeholder" />
+          <div className="user-show__profile">
+            <div className="user-show__profile-edit-container">
+              <p className="user-show__profile-name">
+                {user.band || user.username}
+              </p>
+              {userId === currentUserId && !editing ? (
+                <button
+                  type="button"
+                  onClick={handleEdit}
+                  className="user-show__profile-edit-button"
+                >
+                  <i className="far fa-edit" />
+                  &nbsp;Edit Profile
+                </button>
+              ) : null}
+            </div>
+            {user.location ? (
+              <p className="user-show__profile-location">{user.location}</p>
+            ) : null}
+            {userId === currentUserId && editing ? (
+              <EditProfile
+                profile={profile}
+                handleOnLocationChange={handleOnLocationChange}
+                handleSubmit={handleSubmit}
+                handleCancel={handleCancel}
+              />
+            ) : null}
+          </div>
+        </div>
+        <div className="user-show__collection-container">
+          <TabHeaders
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            tabs={tabs}
+            numAlbums={user.albumIds.length}
+          />
+          <div className="user-show__tab-content">
+            <div className="user-show__tab-content-container">
+              {tabs[selectedTab].content}
+            </div>
+          </div>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default UserShow;

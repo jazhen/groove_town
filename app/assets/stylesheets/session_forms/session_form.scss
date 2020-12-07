@@ -1,4 +1,5 @@
 @import 'base';
+@import 'variables';
 
 .session-form__other-sessions,
 .session-form__header,
@@ -9,8 +10,8 @@
 
 .session-form
 {
-  background-color: #F3F3F3;
-  color: #333;
+  background-color: $light-gray;
+  color: $light-black;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -19,13 +20,13 @@
 .session-form__header {
   align-items: center;
   display: flex;
-  font-size: $ms1;
+  font-size: 1.25rem;
   justify-content: center;
   margin-top: 50px;
 }
 
 .session-form__header-divider {
-  border: 2px dotted #ccc;
+  border: 2px dotted $mid-gray;
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -43,52 +44,53 @@
 }
 
 .session-form__input {
-  border: 1px solid #ccc;
+  border: 1px solid $mid-gray;
   padding: 0 1em;
 }
 
 .session-form__input--error {
-  border: 1px solid #c43329;
+  border: 1px solid $red;
 }
 
 .session-form__errors {
-  color: #c43329;
-  font-size: $ms-2;
+  color: $red;
+  font-size: 0.9rem;
   text-align: center;
-  height: $ms6;
+  height: 2rem;
 }
 
 .session-form--box {
-  height: $ms9;
+  height: 2.25rem;
 }
 
 .session-form__button {
-  background-color: #00A1C6;
+  background-color: $blue;
   border: none;
-  color: #fff;
+  color: $white;
   font-weight: bold;
   outline: inherit;
 }
 
 .session-form__button {
-  margin: $ms-6 0;
+  margin: 0.5rem 0;
 }
 
 .session-form__button--demo {
-  margin-bottom: $ms6;
+  margin-bottom: 2rem;
 }
 
 .session-form__other-sessions-span {
-  color: #818285;
-  font-size: $ms-3;
+  color: $dark-gray;
+  display: flex;
+  justify-content: center;
 }
 
 .session-form__other-sessions-link {
-  color: #00A1C6;
+  color: $blue;
 }
 
 .session-form__last {
-  margin-bottom: $ms16;
+  margin-bottom: 5rem;
 }
 
 @media only screen
@@ -115,7 +117,7 @@ and (min-width: 992px) {
 
   .session-form--left {
     flex: 1;
-    line-height: $ms9;
+    line-height: 2.25rem;
     text-align: right;
     white-space: nowrap;
   }

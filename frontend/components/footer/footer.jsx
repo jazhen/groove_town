@@ -3,21 +3,44 @@ import { Link } from 'react-router-dom';
 
 const FooterCredentials = () => {
   return (
-    <ul className="footer__credentials-menu">
-      <li className="footer__credentials-menu-item">
-        <span>Clone of </span>
-        <Link to="https://bandcamp.com/" className="footer__link">
-          bandcamp
-        </Link>
-      </li>
-      <li className="footer__credentials-menu-item">
-        <Link
-          to="https://github.com/jazhen/groove_town"
-          className="footer__link">
-          Github
-        </Link>
-      </li>
-    </ul>
+    <>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://bandcamp.com/"
+        className="footer__link footer__bandcamp"
+      >
+        <i className="fab fa-bandcamp footer__icon" />
+        Clone of bandcamp
+      </a>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://github.com/jazhen/groove_town/"
+        className="footer__link"
+      >
+        <i className="fab fa-github footer__icon" />
+        Github
+      </a>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://www.linkedin.com/in/jazhen/"
+        className="footer__link"
+      >
+        <i className="fab fa-linkedin footer__icon" />
+        Linkedin
+      </a>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://angel.co/u/jazhen"
+        className="footer__link"
+      >
+        <i className="fab fa-angellist footer__icon" />
+        AngelList
+      </a>
+    </>
   );
 };
 
@@ -26,13 +49,15 @@ const AuthenticatedFooter = ({ logout }) => {
     <footer className="footer">
       <div className="footer__container">
         <FooterCredentials />
-        <ul className="footer__site-menu">
-          <li className="footer__site-menu-item">
-            <button className="footer__logout" onClick={() => logout()}>
-              Log out
-            </button>
-          </li>
-        </ul>
+        <Link to="/">
+          <button
+            type="button"
+            onClick={logout}
+            className="footer__session-action footer__logout"
+          >
+            Log out
+          </button>
+        </Link>
       </div>
     </footer>
   );
@@ -43,13 +68,9 @@ const UnauthenticatedFooter = () => {
     <footer className="footer">
       <div className="footer__container">
         <FooterCredentials />
-        <ul className="footer__site-menu">
-          <li className="footer__site-menu-item">
-            <Link className="footer__link" to="/login">
-              Log in
-            </Link>
-          </li>
-        </ul>
+        <Link to="/login" className="footer__session-action footer__link">
+          Log in
+        </Link>
       </div>
     </footer>
   );

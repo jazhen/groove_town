@@ -7,226 +7,307 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'open-uri'
+require 'mp3info'
 
 User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 Album.destroy_all
 Album.connection.execute('ALTER SEQUENCE albums_id_seq RESTART WITH 1')
+Track.destroy_all
+Track.connection.execute('ALTER SEQUENCE tracks_id_seq RESTART WITH 1')
+# ActiveStorage::Blob.destroy_all
+# ActiveStorage::Blob.connection.execute('ALTER SEQUENCE active_storage_blob_id_seq RESTART WITH 1')
+# ActiveStorage::Attachment.destroy_all
+# ActiveStorage::Attachment.connection.execute('ALTER SEQUENCE active_storage_attachment_id_seq RESTART WITH 1')
 
-demo_user = User.create(username: 'demoUser',
-                        email: 'demouser@groovetown.com',
-                        password: 'password',
-                        band: 'Demo Band')
+seeds = [
+  {
+    user: {
+      band_name: 'Leon Bridges',
+      location: 'Atlanta, GA'
+    },
+    albums: [
+      {
+        album_name: 'All About You',
+        track_names: ['All About You'],
+        release_date: [2020, 10, 16]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'A Tribe Called Quest',
+      location: 'New York, NY'
+    },
+    albums: [
+      {
+        album_name: 'The Low End Theory',
+        track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
+        release_date: [1991, 9, 24]
+      },
+      {
+        album_name: 'Midnight Marauders',
+        track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
+        release_date: [1993, 11, 9]
+      },
+      {
+        album_name: 'Beats, Rhymes and Life',
+        track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
+        release_date: [1996, 7, 30]
+      },
+      {
+        album_name: 'We Got It from Here... Thank You 4 Your Service',
+        track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
+        release_date: [2016, 11, 11]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'Boards of Canada',
+      location: 'Edinburgh, United Kingdom'
+    },
+    albums: [
+      {
+        album_name: 'Music Has the Right to Children',
+        track_names: ['Wildlife Analysis', 'An Eagle in Your Mind', 'The Color of the Fire', 'Telephasic Workshop', 'Triangles & Rhombuses'],
+        release_date: [1998, 4, 20]
+      },
+      {
+        album_name: 'Geogaddi',
+        track_names: ['Ready Lets Go', 'Music Is Math', 'Beware the Friendly Stranger', 'Gyroscope', 'Dandelion'],
+        release_date: [2002, 2, 13]
+      },
+      {
+        album_name: 'The Campfire Headphase',
+        track_names: ['Into the Rainbow Vein', 'Chromakey Dreamcoat', 'Satellite Anthem Icarus', 'Peacock Tail', 'Dayvan Cowboy'],
+        release_date: [2005, 10, 17]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'Animal Collective',
+      location: 'Baltimore, MD'
+    },
+    albums: [
+      {
+        album_name: "Spirit They've Gone Spirit They've Vanished",
+        track_names: ["Spirit They've Vanished", 'April and the Phantom', 'Untitled', 'Penny Dreadfuls', 'Chocolate Girl'],
+        release_date: [2000, 7, 31]
+      },
+      {
+        album_name: 'Sung Tongs',
+        track_names: ['Leaf House', 'Who Could Win a Rabbit', 'The Softest Voice', 'Winters Love', 'Kids on Holiday'],
+        release_date: [2004, 5, 3]
+      },
+      {
+        album_name: 'Merriweather Post Pavilion',
+        track_names: ['In the Flowers', 'My Girls', 'Also Frightened', 'Summertime Clothes', 'Daily Routine'],
+        release_date: [1993, 11, 9]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'Radiohead',
+      location: 'Abingdon, United Kingdom'
+    },
+    albums: [
+      {
+        album_name: 'OK Computer',
+        track_names: ['Airbag', 'Soft as Snow (But Warm Inside)', ' Subterranean Homesick Alien', ' Exit Music (For a Film)', ' Let Down'],
+        release_date: [1997, 6, 16]
+      },
+      {
+        album_name: 'Kid A ',
+        track_names: ['Everything in Its Right Place', 'Kid A', 'The National Anthem', 'How to Disappear Completely', ' Treefingers'],
+        release_date: [2000, 10, 3]
+      },
+      {
+        album_name: 'In Rainbows',
+        track_names: ['15 Step', 'Bodysnatchers', 'Nude', 'Weird Fishes / Arpeggi', ' All I Need'],
+        release_date: [2007, 10, 10]
+      }
+    ]
+  },
+  {
+    user: {
+      band_name: 'The Strokes',
+      location: 'New York, NY'
+    },
+    albums: [
+      {
+        album_name: 'Is This It',
+        track_names: ['Is This It', 'The Modern Age', 'Soma', 'Barely Legal', 'Someday'],
+        release_date: [2001, 8, 20]
+      },
+      {
+        album_name: 'Room on Fire',
+        track_names: ['What Ever Happened?', 'Reptilia', 'Automatic Stop', '12:51', 'You Talk Way Too Much'],
+        release_date: [2003, 10, 28]
+      },
+      {
+        album_name: 'Comedown Machine',
+        track_names: ['Tap Out', 'All the Time', 'One Way Trigger', 'Welcome to Japan', "80's Comedown Machine"],
+        release_date: [2013, 3, 26]
+      },
+      {
+        album_name: 'The New Abnormal',
+        track_names: ['The Adults Are Talking', 'Selfless', 'Brooklyn Bridge to Chorus', 'Bad Decisions', 'Eternal Summer'],
+        release_date: [2020, 4, 10]
+      }
+    ]
+  }
+  # {
+  #   user: {
+  #     band_name: 'Phoebe Bridgers',
+  #     location: 'Los Angeles, CA'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'Stranger in the Alps',
+  #       track_names: ['Motion Sickness', 'Smoke Signals', 'Funeral', 'Demi Moore', 'Scott Street'],
+  #       release_date: [2017, 9, 22]
+  #     },
+  #     {
+  #       album_name: 'Punisher',
+  #       track_names: ['DVD Menu', 'Garden Song', 'Kyoto', 'Punisher', 'Halloween'],
+  #       release_date: [2020, 6, 18]
+  #     }
+  #   ]
+  # },
+  # {
+  #   user: {
+  #     band_name: 'Patti Smith',
+  #     location: 'Chicago, IL'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'Horses',
+  #       track_names: ['Gloria', 'Redondo Beach', 'Birdland', 'Free Money', 'Kimberly'],
+  #       release_date: [1975, 12, 13]
+  #     },
+  #     {
+  #       album_name: 'Radio Ethiopia',
+  #       track_names: ['Ask the Angels', "Ain't It Strange", 'Poppies', 'Pissing in a River', 'Pumping (My Heart)'],
+  #       release_date: [1976, 10, 22]
+  #     }
+  #   ]
+  # },
+  # {
+  #   user: {
+  #     band_name: 'My Bloody Valentine',
+  #     location: 'Dublin, Ireland'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: "Isn't Anything",
+  #       track_names: ['Soft as Snow (But Warm Inside)', 'Lose My Breath', 'Cupid Come', "(When You Wake) You're Still in a Dream", 'No More Sorry'],
+  #       release_date: [1988, 11, 21]
+  #     },
+  #     {
+  #       album_name: 'Loveless',
+  #       track_names: ['Only Shallow', 'Loomer', 'Touched" (instrumental)', 'To Here Knows When', 'When You Sleep'],
+  #       release_date: [1991, 11, 4]
+  #     },
+  #     {
+  #       album_name: 'm b v',
+  #       track_names: ['She Found Now', 'Only Tomorrow', 'Who Sees You', 'Is This and Yes', 'If I Am'],
+  #       release_date: [2013, 2, 2]
+  #     }
+  #   ]
+  # },
+  # {
+  #   user: {
+  #     band_name: 'The Antlers',
+  #     location: 'New York, NY'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'Hospice',
+  #       track_names: %w[Prologue Kettering Sylvia Atrophy Bear],
+  #       release_date: [2009, 3, 23]
+  #     },
+  #     {
+  #       album_name: 'Familiars',
+  #       track_names: %w[Palace Doppelgänger Hotel Intruders Director],
+  #       release_date: [2014, 6, 417]
+  #     }
+  #   ]
+  # },
+  # {
+  #   user: {
+  #     band_name: 'Talking Heads',
+  #     location: 'New York, NY'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: '77',
+  #       track_names: ['Uh-Oh, Love Comes to Town', 'New Feeling', 'Tentative Decisions', 'Happy Day', 'Who Is It?'],
+  #       release_date: [1977, 9, 16]
+  #     },
+  #     {
+  #       album_name: 'More Songs About Buildings and Food',
+  #       track_names: ['Thank You for Sending Me an Angel', 'With Our Love', 'The Good Thing', 'Warning Sign', 'The Girls Want to Be With the Girls'],
+  #       release_date: [1978, 7, 7]
+  #     },
+  #     {
+  #       album_name: 'Fear of Music',
+  #       track_names: ['I Zimbra', 'Mind', 'Paper', 'Cities', 'Life During Wartime'],
+  #       release_date: [1979, 8, 3]
+  #     },
+  #     {
+  #       album_name: 'Remain in Light',
+  #       track_names: ['Born Under Punches (The Heat Goes On)', 'Crosseyed and Painless', 'The Great Curve', 'Once in a Lifetime', 'Houses in Motion'],
+  #       release_date: [1980, 10, 8]
+  #     }
+  #   ]
+  # },
+]
 
-patti_smith = User.create(username: 'pattismith',
-                          email: 'patti@pattismith.net',
-                          password: 'password',
-                          band: 'Patti Smith')
+seeds.each do |seed|
+  band_name = seed[:user][:band_name]
+  location = seed[:user][:location]
+  formatted_band_name = band_name.delete(".,'-?():&").downcase.split.join('_')
+  profile_pic_filename = "#{formatted_band_name}-profile_pic"
+  profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}.jpg")
+  band = User.new(username: formatted_band_name,
+                  email: "#{formatted_band_name}@groovetown.com",
+                  password: 'me4SNq^3eJL3Jhfs',
+                  band: band_name,
+                  location: location)
+  band.avatar.attach(io: profile_pic_url, filename: profile_pic_filename)
+  band.save!
 
-horses = Album.create(name: 'Horses',
-                      user_id: patti_smith.id)
-horses_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/patti_smith-horses.jpg')
-horses.art.attach(io: horses_art, filename: 'patti_smith-horses.jpg')
+  seed[:albums].each do |seed_album|
+    formatted_album_name = seed_album[:album_name].delete(".,'-?():&").downcase.split.join('_')
+    filename = "#{formatted_band_name}-#{formatted_album_name}"
+    album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
+    puts filename
+    puts
+    album = Album.new(name: seed_album[:album_name],
+                      user_id: band.id,
+                      release_date: DateTime.new(seed_album[:release_date][0], seed_album[:release_date][1], seed_album[:release_date][2]).in_time_zone)
+    album.art.attach(io: album_art_url, filename: filename)
+    album.save!
 
-joy_division = User.create(username: 'joydivision',
-                           email: 'joydivision@joydivision.com',
-                           password: 'password',
-                           band: 'Joy Division')
+    seed_album[:track_names].each_with_index do |track_name, index|
+      track_filename = "#{filename}-0#{index + 1}.mp3"
+      puts track_filename
+      puts
+      track_audio = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}")
 
-unknown_pleasures = Album.create(name: 'Unknown Pleasures', user_id: joy_division.id)
-unknown_pleasures_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/joy_division-unknown_pleasures.jpg')
-unknown_pleasures.art.attach(io: unknown_pleasures_art, filename: 'joy_division-unknown_pleasures.jpg')
+      track_duration = Mp3Info.open(track_audio).length
+      track = Track.new(name: track_name,
+                        ord: index + 1,
+                        user_id: band.id,
+                        album_id: album.id,
+                        duration: track_duration)
 
-new_order = User.create(username: 'neworder',
-                        email: 'neworder@neworder.com',
-                        password: 'password',
-                        band: 'New Order')
-
-power_corruption_lies = Album.create(name: 'Power, Corruption & Lies', user_id: new_order.id)
-power_corruption_lies_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/new_order-power_corruption_lies.jpg')
-power_corruption_lies.art.attach(io: power_corruption_lies_art, filename: 'new_order-power_corruption_lies.jpg')
-
-the_strokes = User.create(username: 'thestrokes',
-                          email: 'thestrokes@thestrokes.com',
-                          password: 'password',
-                          band: 'The Strokes')
-
-is_this_it = Album.create(name: 'Is This It', user_id: the_strokes.id)
-is_this_it_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/the_strokes-is_this_it.jpg')
-is_this_it.art.attach(io: is_this_it_art, filename: 'the_strokes-is_this_it.jpg')
-
-the_new_abnormal = Album.create(name: 'The New Abnormal', user_id: the_strokes.id)
-the_new_abnormal_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/the_strokes-the_new_abnormal.jpg')
-the_new_abnormal.art.attach(io: the_new_abnormal_art, filename: 'the_strokes-the_new_abnormal.jpg')
-
-talking_heads = User.create(username: 'talkingheads',
-                            email: 'talkingheads@talkingheads.com',
-                            password: 'password',
-                            band: 'Talking Heads')
-
-seventy_seven_77 = Album.create(name: '77', user_id: talking_heads.id)
-seventy_seven_77_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/talking_heads-77.jpg')
-seventy_seven_77.art.attach(io: seventy_seven_77_art, filename: 'talking_heads-77.jpg')
-
-remain_in_light = Album.create(name: 'Remain in Light', user_id: talking_heads.id)
-remain_in_light_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/talking_heads-remain_in_light.jpg')
-remain_in_light.art.attach(io: remain_in_light_art, filename: 'talking_heads-remain_in_light.jpg')
-
-television = User.create(username: 'television',
-                       email: 'television@television.com',
-                       password: 'password',
-                       band: 'Television')
-marquee_moon = Album.create(name: 'Marquee Moon', user_id: television.id)
-marquee_moon_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/television-marquee_moon.jpg')
-marquee_moon.art.attach(io: marquee_moon_art, filename: 'television-marquee_moon.jpg')
-
-adventure = Album.create(name: 'Adventure', user_id: television.id)
-adventure_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/television-adventure.jpg')
-adventure.art.attach(io: adventure_art, filename: 'television-adventure.jpg')
-
-weyes_blood = User.create(username: 'weyesblood',
-                          email: 'weyesblood@weyesblood.com',
-                          password: 'password',
-                          band: 'Weyes Blood')
-titanic_rising = Album.create(name: 'Titanic Rising', user_id: weyes_blood.id)
-titanic_rising_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/weyes_blood-titanic_rising.jpg')
-titanic_rising.art.attach(io: titanic_rising_art, filename: 'weyes_blood-titanic_rising.jpg')
-
-my_bloody_valentine = User.create(username: 'mybloodyvalentine',
-                                  email: 'mybloodyvalentine@mybloodyvalentine.com',
-                                  password: 'password',
-                                  band: 'My Bloody Valentine')
-
-loveless = Album.create(name: 'Loveless', user_id: my_bloody_valentine.id)
-loveless_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/my_bloody_valentine-loveless.jpg')
-loveless.art.attach(io: loveless_art, filename: 'my_bloody_valentine-loveless.jpg')
-
-tribe_called_quest = User.create(username: 'tribecalledquest',
-                                 email: 'tribecalledquest@tribecalledquest.com',
-                                 password: 'password',
-                                 band: 'A Tribe Called Quest')
-
-low_end_theory = Album.create(name: 'The Low End Theory', user_id: tribe_called_quest.id)
-low_end_theory_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/tribe_called_quest-low_end_theory.jpg')
-low_end_theory.art.attach(io: low_end_theory_art, filename: 'tribe_called_quest-low_end_theory.jpg')
-
-midnight_marauders = Album.create(name: 'Midnight Marauders', user_id: tribe_called_quest.id)
-midnight_marauders_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/tribe_called_quest-midnight_marauders.jpg')
-midnight_marauders.art.attach(io: midnight_marauders_art, filename: 'tribe_called_quest-midnight_marauders.jpg')
-
-we_got_it_from_here = Album.create(name: 'We Got It from Here... Thank You 4 Your Service', user_id: tribe_called_quest.id)
-we_got_it_from_here_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/tribe_called_quest-we_got_it_from_here.jpg')
-we_got_it_from_here.art.attach(io: we_got_it_from_here_art, filename: 'tribe_called_quest-we_got_it_from_here.jpg')
-
-godspeed_you = User.create(username: 'godspeedyoublackemporer',
-                           email: 'godspeedyoublackemporer@godspeedyoublackemporer.com',
-                           password: 'password',
-                           band: 'Godspeed You! Black Emperor')
-lift_your_skinny_fists = Album.create(name: 'Lift Your Skinny Fists Like Antennas to Heaven', user_id: godspeed_you.id)
-lift_your_skinny_fists_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/godspeed_you-lift_your_skinny_fists.jpg')
-lift_your_skinny_fists.art.attach(io: lift_your_skinny_fists_art, filename: 'godspeed_you-lift_your_skinny_fists.jpg')
-
-allelujah_dont_bend_ascend = Album.create(name: "Allelujah! Don't Bend! Ascend!", user_id: godspeed_you.id)
-allelujah_dont_bend_ascend_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/godspeed_you-allelujah_dont_bend_ascend.jpg')
-allelujah_dont_bend_ascend.art.attach(io: allelujah_dont_bend_ascend_art, filename: 'godspeed_you-allelujah_dont_bend_ascend.jpg')
-
-king_crimson = User.create(username: 'kingcrimson',
-                           email: 'kingcrimson@kingcrimson.com',
-                           password: 'password',
-                           band: 'King Crimson')
-
-in_the_court_of_the_crimson_king = Album.create(name: 'In the Court of the Crimson King', user_id: king_crimson.id)
-in_the_court_of_the_crimson_king_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/king_crimson-in_the_court_of_the_crimson_king.jpg')
-in_the_court_of_the_crimson_king.art.attach(io: in_the_court_of_the_crimson_king_art, filename: 'king_crimson-in_the_court_of_the_crimson_king.jpg')
-
-madvillain = User.create(username: 'madvillain',
-                         email: 'madvillain@madvillain.com',
-                         password: 'password',
-                         band: 'Madvillain')
-
-madvillainy = Album.create(name: 'Madvillainy', user_id: madvillain.id)
-madvillainy_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/madvillain-madvillainy.jpg')
-madvillainy.art.attach(io: madvillainy_art, filename: 'madvillain-madvillainy.jpg')
-
-idles = User.create(username: 'idles',
-                    email: 'idles@idles.com',
-                    password: 'password',
-                    band: 'IDLES')
-brutalism = Album.create(name: 'Brutalism', user_id: idles.id)
-brutalism_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/idles-brutalism.jpg')
-brutalism.art.attach(io: brutalism_art, filename: 'idles-brutalism.jpg')
-
-ultra_mono = Album.create(name: 'Ultra Mono', user_id: idles.id)
-ultra_mono_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/idles-ultra_mono.jpg')
-ultra_mono.art.attach(io: ultra_mono_art, filename: 'idles-ultra_mono.jpg')
-
-sun_kil_moon = User.create(username: 'sunkilmoon',
-                           email: 'sunkilmoon@sunkilmoon.com',
-                           password: 'password',
-                           band: 'Sun Kil Moon')
-benji = Album.create(name: 'Benji', user_id: sun_kil_moon.id)
-benji_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/sun_kil_moon-benji.jpg')
-benji.art.attach(io: benji_art, filename: 'sun_kil_moon-benji.jpg')
-
-common_as_light_and_love = Album.create(name: 'Common as Light and Love Are Red Valleys of Blood', user_id: sun_kil_moon.id)
-common_as_light_and_love_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/sun_kil_moon-common_as_light_and_love.jpg')
-common_as_light_and_love.art.attach(io: common_as_light_and_love_art, filename: 'sun_kil_moon-common_as_light_and_love.jpg')
-
-
-the_antlers = User.create(username: 'theantlers',
-  email: 'theantlers@theantlers.com',
-  password: 'password',
-  band: 'The Antlers')
-
-hospice = Album.create(name: 'Hospice', user_id: the_antlers.id)
-hospice_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/the_antlers-hospice.jpg')
-hospice.art.attach(io: hospice_art, filename: 'the_antlers-hospice.jpg')
-
-familiars = Album.create(name: 'Familiars', user_id: the_antlers.id)
-familiars_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/the_antlers-familiars.jpg')
-familiars.art.attach(io: familiars_art, filename: 'the_antlers-familiars.jpg')
-
-giles_corey = User.create(username: 'gilescorey',
-  email: 'gilescorey@gilescorey.com',
-  password: 'password',
-  band: 'Giles Corey')
-
-giles_corey_album = Album.create(name: 'Giles Corey', user_id: giles_corey.id)
-giles_corey_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/giles_corey-giles_corey.jpg')
-giles_corey_album.art.attach(io: giles_corey_art, filename: 'giles_corey-giles_corey.jpg')
-
-merzbow = User.create(username: 'merzbow',
-  email: 'merzbow@merzbow.com',
-  password: 'password',
-  band: 'Merzbow')
-
-pulse_demon = Album.create(name: 'Pulse Demon', user_id: merzbow.id)
-pulse_demon_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/merzbow-pulse_demon.jpg')
-pulse_demon.art.attach(io: pulse_demon_art, filename: 'merzbow-pulse_demon.jpg')
-
-animal_collective = User.create(username: 'animalcollective',
-  email: 'animalcollective@animalcollective.com',
-  password: 'password',
-  band: 'Animal Collective')
-
-merriweather_post_pavilion = Album.create(name: 'Merriweather Post Pavilion', user_id: animal_collective.id)
-merriweather_post_pavilion_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/animal_collective-merriweather_post_pavilion.jpg')
-merriweather_post_pavilion.art.attach(io: merriweather_post_pavilion_art, filename: 'animal_collective-merriweather_post_pavilion.jpg')
-
-boards_of_canada = User.create(username: 'boardsofcanada',
-  email: 'boardsofcanada@boardsofcanada.com',
-  password: 'password',
-  band: 'Boards of Canada')
-
-music_has_the_right_to_children = Album.create(name: 'Music Has the Right to Children', user_id: boards_of_canada.id)
-music_has_the_right_to_children_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/boards_of_canada-music_has_the_right_to_children.jpg')
-music_has_the_right_to_children.art.attach(io: music_has_the_right_to_children_art, filename: 'boards_of_canada-music_has_the_right_to_children.jpg')
-
-leon_bridges = User.create(username: 'leonbridges',
-  email: 'leonbridges@leonbridges.com',
-  password: 'password',
-  band: 'Leon Bridges & Lucky Daye')
-
-all_about_you = Album.create(name: 'All About You', user_id: leon_bridges.id)
-all_about_you_art = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/leon_bridges-all_about_you.jpg')
-all_about_you.art.attach(io: all_about_you_art, filename: 'leon_bridges-all_about_you.jpg')
+      track.audio.attach(io: track_audio,
+                         filename: track_filename)
+      track.save!
+    end
+  end
+end

@@ -3,18 +3,16 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-// TESTING START
-// import { signup, login, logout, demoLogin } from './actions/session_actions';
-// import { fetchUser } from './actions/user_actions';
-// import { fetchAlbums } from './actions/album_actions';
-// TESTING END
-
 const createStore = () => {
+  const currentUser = Object.values(window.currentUser);
+
   const preloadedState = {
     entities: {
-      users: { [window.currentUser.id]: window.currentUser },
+      users: {
+        [currentUser[0].id]: currentUser[0],
+      },
     },
-    session: { id: window.currentUser.id },
+    session: { id: currentUser[0].id },
   };
 
   delete window.currentUser;
@@ -24,17 +22,5 @@ const createStore = () => {
 document.addEventListener('DOMContentLoaded', () => {
   const store = window.currentUser ? createStore() : configureStore();
   const root = document.getElementById('root');
-
-  // TESTING START
-  // window.signup = signup;
-  // window.login = login;
-  // window.logout = logout;
-  // window.demoLogin = demoLogin;
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-  // window.fetchUser = fetchUser;
-  // window.fetchAlbums = fetchAlbums;
-  // TESTING END
-
   ReactDOM.render(<Root store={store} />, root);
 });

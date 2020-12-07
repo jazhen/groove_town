@@ -1,37 +1,53 @@
-@import 'base';
+@import 'variables';
 
 .footer {
-  align-items: center;
-  background-color: #477987;
+  background-color: $green;
   display: flex;
-  font-size: $ms-1;
-  height: 10vh;
   justify-content: center;
-  min-height: 60px;
-}
-
-.footer__container {
   text-align: center;
 }
 
-.footer,
-.footer__logout {
-  color: #bfd7dd;
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.footer__icon {
+  margin-right: 0.25rem;
 }
 
 .footer__link,
 .footer__logout {
-  color: #fff;
+  color: $white;
+  display: flex;
+  align-items: center;
+}
+
+.footer__logout {
+  background: none;
+  outline: none;
+  text-align: left;
 }
 
 .footer__link:hover,
 .footer__logout:hover {
-  color: #fff;
+  color: $white;
   text-decoration: underline;
 }
 
-.footer__site-menu {
-  margin-top: 10px;
+.footer__link:focus,
+.footer__logout:focus {
+  color: $white;
+}
+
+.footer__session-action {
+  margin-top: 1rem;
+}
+
+.footer__bandcamp {
+  margin-bottom: 1rem;
 }
 
 // sticky footer
@@ -45,20 +61,4 @@
 .main {
   display: flex;
   flex: 1;
-}
-
-@media only screen
-and (min-width: 768px) {
-  .footer__container {
-    display: flex;
-    justify-content: space-between;
-    width: 1300px;
-    margin: 0 40px;
-    text-align: left;
-  }
-
-  .footer__site-menu {
-    margin: 0;
-  }
-
 }

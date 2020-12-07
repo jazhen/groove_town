@@ -1,0 +1,42 @@
+@import 'variables';
+
+.album-create {
+  width: 100%;
+  min-height: 100%;
+  background-color: $light-gray;
+}
+
+.album-create__form {
+  display: flex;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1200px;
+}
+
+.album-create__tabs-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: $light-gray;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.album-create__tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-create__active-form {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: $white;
+  border: 1px solid $mid-gray;
+}
+
+.album-create__active-tab {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-right: none;
+  margin-right: -1px;
+  z-index: 1;
+}

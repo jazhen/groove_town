@@ -5,10 +5,10 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
-const receiveCurrentUser = ({ currentUser }) => {
+const receiveCurrentUser = ({ user }) => {
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser,
+    user,
   };
 };
 
@@ -25,7 +25,7 @@ const receiveSessionErrors = (errors) => {
   };
 };
 
-const clearAllErrors = () => {
+const clearErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS,
   };
@@ -54,13 +54,13 @@ export const signup = (user) => (dispatch) => {
 
 export const demoLogin = () => {
   const demoUser = {
-    username_or_email: 'demoUser',
-    password: 'password',
+    username_or_email: 'radiohead@groovetown.com',
+    password: 'me4SNq^3eJL3Jhfs',
   };
 
   return login(demoUser);
 };
 
-export const clearErrors = () => (dispatch) => {
-  return dispatch(clearAllErrors());
+export const clearSessionErrors = () => (dispatch) => {
+  return dispatch(clearErrors());
 };

@@ -1,0 +1,122 @@
+@import 'variables';
+
+// chrome: -webkit-slider-thumb
+// firefox: -moz-range-thumb
+// ie: -ms-thumb
+
+.album-player__audio-container {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.album-player__play-button {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  margin-right: .75rem;
+  padding: 1rem;
+}
+
+.album-player__track-name {
+  margin-right: .5rem;
+}
+
+.album-player__main-container {
+  flex: 1;
+}
+
+.album-player__track-info-container {
+  font-size: .75rem;
+}
+
+.album-player__seek-container {
+  align-items: center;
+  display: flex;
+}
+
+.album-player__seek-controls {
+  display: flex;
+  flex: 1;
+}
+
+.album-player__previous-button {
+  margin: 0 .75rem;
+}
+
+.album-player__previous-button:disabled {
+  cursor: default;
+}
+
+.album-player__next-button:disabled {
+  cursor: default;
+}
+
+.album-player__seek-bar {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+.album-player__seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  cursor: pointer;
+  height: .9rem;
+  margin-top: -2.5px;
+  width: 1.75rem;
+}
+
+.album-player__seek-bar::-moz-range-thumb {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  height: .75rem;
+  cursor: pointer;
+  width: 1.75rem;
+}
+
+.album-player__seek-bar::-ms-thumb {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  cursor: pointer;
+  height: .75rem;
+  width: 1.75rem;
+}
+
+.album-player__seek-bar::-webkit-slider-runnable-track {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  height: .75rem;
+  width: 100%;
+}
+
+.album-player__seek-bar::-moz-range-track {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  height: .75rem;
+  width: 100%;
+}
+
+.album-player__seek-bar::-ms-track {
+  background-color: $white;
+  border: 1px solid $mid-gray;
+  border-radius: 2px;
+  height: .75rem;
+  width: 100%;
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-player__container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}

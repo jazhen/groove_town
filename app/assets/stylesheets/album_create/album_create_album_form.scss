@@ -1,0 +1,142 @@
+@import 'variables';
+
+.album-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-form__name {
+  height: 3rem;
+  border: 1px solid $mid-gray;
+  padding: 0 1rem;
+  color: $mid-gray2;
+  font-weight: 500;
+}
+
+.album-form__name::placeholder {
+  color: $mid-gray2;
+}
+
+.album-form__date-label {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dotted $mid-gray2;
+  margin: 0 0 2rem 0;
+  color: $light-black;
+}
+
+.album-form__date-input {
+  border: 1px solid $mid-gray;
+  margin: 0 1rem;
+  color: $light-black;
+}
+
+
+.album-form__date-description {
+  color: $mid-gray2;
+}
+
+.album-form__file-input {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.album-form__file-label {
+  color: $blue;
+}
+
+.album-form__file-label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.album-form__file-input-container {
+  width: 200px;
+  height: 200px;
+}
+
+.album-form__file-input-container--empty {
+  border: 1px dashed $mid-gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.album-form__file-input-description {
+  font-size: .75rem;
+  color: $dark-gray;
+}
+
+.album-form__file-input-description > :first-child {
+  margin: .5rem 0;
+}
+
+.album-form__file-input-container--file {
+  border: 1px solid $mid-gray;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  box-sizing: initial;
+}
+
+.album-form__file-input-art {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.album-form__file-input-remove {
+  position: relative;
+  background-color: $white;
+  display: flex;
+  padding: .25rem;
+  border: 1px outset $light-gray;
+  color: $blue;
+  margin: .25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.album-form__error {
+  font-size: .75rem;
+  color: $red;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.album-form__input-error {
+  border: 1px solid $red;
+}
+
+@media only screen
+and (min-width: 768px) {
+  .album-form__file-input-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .album-form__file-input-art {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-form__file-input-container {
+    width: 560px;
+    height: 560px;
+  }
+
+  .album-form__file-input-art {
+    width: 560px;
+    height: 560px;
+  }
+}

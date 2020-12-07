@@ -1,6 +1,9 @@
+@import 'variables';
+
 .album-show {
-  background-color: rgb(255, 255, 255);
   width: 100%;
+  background-size: cover;
+  background-position: center center;
 }
 
 .album-show__container {
@@ -17,53 +20,59 @@
   background-size: 100%;
   background-position: center;
   filter: blur(5px);
-  height: 140px;
+  height: 160px;
   margin: 0 auto;
+  margin-top: 3px;
   width: 100%;
+  transform-origin : 50% 100%;
 }
 
 .album-show__tabs-header-list {
-  background-color: rgb(219, 219, 219);
+  background-color: $mid-gray;
   display: flex;
 }
 
 .album-show__tabs-header-list-item {
   border: 2px solid transparent;
   flex: 1;
-  margin: 0 5px;
+  margin: 0 .25rem;
   text-align: center;
 }
 
-.album-show__tabs-header-button {
-  padding: 4px 16px;
-}
-
 .album-show__tabs-header-list-item--active {
-  border-top: 2px solid black;
-  color: black;
-}
-
-.album-show__tabs-header-button--inactive {
-  color: #00A1C6;
+  border-top: 2px solid $blue;
+  // border-top: 2px solid $light-black;
+  // color: $light-black;
 }
 
 .album-show__tabs-header-list-item--inactive:hover {
-  border-top: 2px solid #00A1C6;
+  border-top: 2px solid $blue;
 }
 
+.album-show__tabs-header-button {
+  padding: .25rem 1rem;
+  color: $blue;
+  cursor: default;
+}
+
+.album-show__tabs-header-button--inactive {
+  color: $blue;
+}
 
 .album-show__tab-title {
   font-weight: bold;
 }
 
 .album-show__tab-content {
-  margin: 30px 40px;
+  padding: 1.5rem 2rem;
+  background-color: $white;
+  margin-bottom: 3rem;
 }
 
 @media only screen
 and (min-width: 992px) {
   .album-show__tabs-header-list {
-    padding: 0 20px;
+    padding: 0 1.25rem;
   }
 
   .album-show__tabs-header-list-item {

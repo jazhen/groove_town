@@ -2,9 +2,13 @@ import { connect } from 'react-redux';
 import Splash from './splash';
 import { fetchAlbums } from '../../actions/album_actions';
 
-const mapStateToProps = ({ entities: { albums } }) => ({
-  albums,
-});
+const mapStateToProps = ({ entities: { albums }, ids, ui: { loading } }) => {
+  return {
+    albums,
+    albumIds: ids.albums,
+    loading: loading.standard,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAlbums: () => dispatch(fetchAlbums()),

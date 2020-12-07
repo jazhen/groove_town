@@ -6,6 +6,7 @@ import {
 
 const sessionErrorsReducer = (prevState = {}, action) => {
   Object.freeze(prevState);
+
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
       return action.errors;

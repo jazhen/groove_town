@@ -1,3 +1,5 @@
+@import 'variables';
+
 .nav-bar__dropdown {
   align-items: center;
   display: flex;
@@ -6,10 +8,10 @@
 }
 
 .nav-bar__dropdown-menu {
-  background-color: #ffffff;
-  border: 1px solid #EEEEEE;
+  background-color: $white;
+  border: 1px solid $light-gray;
   border-radius: 5px;
-  color: black;
+  color: $light-black;
   display: none;
   line-height: 2rem;
   padding: 10px 0;
@@ -24,10 +26,10 @@
 }
 
 .nav-bar__profile-picture {
-  width: 40px;
-  border: 1px solid transparent;
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
   border-radius: 90%;
-  background: radial-gradient(#ffffff 0%, #797979 100%);
 }
 
 .nav-bar__dropdown-button:focus ~ .nav-bar__dropdown-menu,
@@ -39,7 +41,7 @@
 
 .nav-bar__dropdown-button:hover,
 .nav-bar__dropdown-content-list-item:hover {
-  background-color: #F3F3F3;
+  background-color: $light-gray;
 }
 
 .nav-bar__dropdown-content-list-item {

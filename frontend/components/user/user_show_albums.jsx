@@ -1,18 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserShowAlbumsList = ({ album }) => {
+const UserShowAlbumsList = ({ album, currentUserId }) => {
+  if (!album) {
+    return null;
+  }
   return (
     <li key={album.id} className="user-albums__list-item">
       <div className="user-albums__album-container">
         <div className="user-albums__album-art-container">
+          {album.userId === currentUserId ? (
+            <div className="user-albums__album-update-container">
+              <Link
+                to={`/albums/${album.id}/edit`}
+                className="user-albums__album-update"
+              >
+                edit
+              </Link>
+            </div>
+          ) : null}
           <Link
-            to={`/users/${album.user_id}/albums/${album.id}`}
+            to={`/users/${album.userId}/albums/${album.id}`}
             className="user-albums__album-link"
           >
             <img
               className="albums-index__album-art"
-              src={album.photoUrl}
+              src={album.artUrl}
               alt={`${album.band}-${album.name}`}
             />
           </Link>
@@ -20,7 +33,7 @@ const UserShowAlbumsList = ({ album }) => {
         <ul className="user-albums__metadata-list">
           <li className="user-albums__metadata-list-item">
             <Link
-              to={`/users/${album.user_id}/albums/${album.id}`}
+              to={`/users/${album.userId}/albums/${album.id}`}
               className="user-albums__album-name user-albums__metadata"
             >
               {album.name}
@@ -32,25 +45,20 @@ const UserShowAlbumsList = ({ album }) => {
   );
 };
 
-const UserShowAlbums = ({ user, albums }) => {
+const UserShowAlbums = ({ user, albums, currentUserId }) => {
   const { albumIds } = user;
 
-  if (!albumIds.length) {
-    return null;
-  }
-
-  let userAlbumsClassModifier;
-  if (albumIds.length < 5) {
-    userAlbumsClassModifier = 'user-albums--min';
-  } else {
-    userAlbumsClassModifier = '';
-  }
-
   return (
-    <div className={`user-albums ${userAlbumsClassModifier}`}>
+    <div
+      className={`user-albums ${albumIds.length < 5 ? 'user-albums--min' : ''}`}
+    >
       <ul className="user-albums__list">
         {albumIds.map((albumId) => (
-          <UserShowAlbumsList key={albumId} album={albums[albumId]} />
+          <UserShowAlbumsList
+            key={albumId}
+            album={albums[albumId]}
+            currentUserId={currentUserId}
+          />
         ))}
       </ul>
     </div>

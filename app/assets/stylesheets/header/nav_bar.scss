@@ -1,3 +1,5 @@
+@import 'variables';
+
 .nav-bar {
   display: flex;
   flex-wrap: wrap;
@@ -12,33 +14,8 @@
   justify-content: flex-end;
 }
 
-.nav-bar__search-bar {
-  display: flex;
-  margin-bottom: 10px;
-  order: 1;
-  width: 100%;
-}
-
-.nav-bar__search-bar-input {
-  flex: 1;
-  height: 40px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.nav-bar__search-bar-icon {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.nav-bar__search-bar-input,
-.nav-bar__search-bar-icon {
-  background-color: #f3f3f3;
-  padding: 0 16px;
-}
-
 .nav-bar__user-list-item:hover {
-  background-color: #f3f3f3;
+  background-color: $light-gray;
 }
 
 .nav-bar__user-list-item {
@@ -55,7 +32,7 @@
 }
 
 .nav-bar__fa-music {
-  color: rgb(29, 160, 195);
+  color: $blue;
   font-size: 17px;
   margin-right: 5px;
 }

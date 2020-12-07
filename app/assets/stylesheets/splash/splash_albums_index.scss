@@ -1,15 +1,34 @@
+@import 'variables';
+
 .albums-index {
   align-items: center;
-  background-color: #EEF2F3;
+  background-color: $light-gray;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
+.albums-index__notification {
+  font-size: 1.25rem;
+  margin: 40px 2rem 0 2rem;
+}
+
+.albums-index__notification-bold {
+  font-weight: bold;
+  vertical-align: baseline;
+}
+
+.albums-index__new-and-notable {
+  margin: 2rem 0;
+  color: $blue;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 .albums-index__list {
   display: flex;
   flex-wrap: wrap;
-  margin: 40px 0;
+  margin: 0 0 40px 0;
   max-width: 220px;
   padding: 5px 0;
   text-align: center;
@@ -25,15 +44,16 @@
 }
 
 .albums-index__album-art-container {
-  background-color: gray;
-  border: 1px solid #F2F2F2;
-  height: 200px;
-  width: 200px
+  background-color: $mid-gray;
+  height: 202px;
+  width: 202px
 }
 
 .albums-index__album-art {
-  height: 200px;
-  width: 200px;
+  border: 1px solid $mid-gray;
+  height: 202px;
+  width: 202px;
+  object-fit: cover;
 }
 
 .albums-index__metadata-list {
@@ -49,7 +69,7 @@
 
 .albums-index__album-name {
   font-weight: bold;
-  text-decoration: black;
+  text-decoration: $light-black;
 }
 
 .albums-index__album-name:hover {

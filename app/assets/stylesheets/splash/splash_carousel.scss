@@ -1,3 +1,5 @@
+@import 'variables';
+
 .albums-index__carousel {
   background-color: #222222;
   justify-content: center;
@@ -13,19 +15,27 @@
 
 .albums-index__carousel-main-img-container,
 .albums-index__carousel-sub-img-container {
-  border: 1px solid #222222;
+  border: 2px solid #222222;
+}
+
+.albums-index__carousel-main-img-container {
+  border-bottom: none;
+}
+
+.albums-index__carousel-sub-img-container:not(:last-child) {
+  border-bottom: none;
 }
 
 .albums-index__carousel-main-img-container:hover,
 .albums-index__carousel-sub-img-container:hover {
-  opacity: 75%;
+  filter: brightness(1.1);
   transition: opacity 0.1s ease-out;
 }
-
 
 .albums-index__carousel-sub {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .albums-index__carousel-main-img {
@@ -37,6 +47,44 @@
   display: flex;
   width: 100%;
 }
+
+.albums-index__carousel-link {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.albums-index__carousel-main-description,
+.albums-index__carousel-sub-description {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 2rem;
+  margin: 3rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 20px rgba(1, 1, 1, 1);
+}
+
+.albums-index__carousel-main-description-secondary,
+.albums-index__carousel-sub-description-secondary {
+  font-size: 1.5rem;
+}
+
+// .albums-index__carousel-sub-description {
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   color: #fff;
+//   font-size: 1rem;
+//   margin: 1rem;
+//   font-weight: 900;
+//   text-shadow: 0px 0px 20px rgba(1, 1, 1, 1);
+// }
+
+// .albums-index__carousel-sub-description-secondary {
+//   font-weight: 500;
+// }
 
 @media only screen
 and (min-width: 992px) {
@@ -56,10 +104,6 @@ and (min-width: 992px) {
     flex: 1;
   }
 
-  .albums-index__carousel-main-img-container {
-    border: none;
-  }
-
   .albums-index__carousel-sub-img-container {
     flex: 1;
   }
@@ -69,4 +113,34 @@ and (min-width: 992px) {
     display: flex;
     height: 100%;
   }
+
+  .albums-index__carousel-main-img-container,
+  .albums-index__carousel-sub-img-container {
+    border: none;
+  }
+
+  .albums-index__carousel-main-img-container {
+    border-right: 2px solid #222222;
+  }
+
+  .albums-index__carousel-sub-img-container:not(:last-child) {
+    border-bottom: 2px solid #222222;
+  }
+
+  .albums-index__carousel-sub-description {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+    font-size: 1rem;
+    margin: 1rem;
+    font-weight: 900;
+    text-shadow: 0px 0px 20px rgba(1, 1, 1, 1);
+  }
+
+  .albums-index__carousel-sub-description-secondary {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
 }

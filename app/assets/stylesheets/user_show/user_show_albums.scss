@@ -1,3 +1,5 @@
+@import 'variables';
+
 .user-albums {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +37,18 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 200px;
+}
+
+.user-albums__album-update-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-albums__album-update {
+  background-color: lightyellow;
+  border: 1px solid $light-gray;
+  color: $blue;
+  text-align: center;
 }
 
 @media only screen

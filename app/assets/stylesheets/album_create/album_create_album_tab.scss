@@ -1,0 +1,54 @@
+@import 'variables';
+
+.album-create__album-tab {
+  display: flex;
+  padding: .5rem 1.5rem .5rem .5rem;
+  border: 1px solid $mid-gray;
+  border-left: none;
+  border-right: none;
+}
+
+.album-create__album-tab--error {
+  border-left: 1px solid $red;
+}
+
+.album-create__album-tab--no-error {
+  border-left: 1px solid $blue;
+}
+
+.album-create__album-tab-art {
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.album-create__album-tab-art--file {
+  border: 1px solid $mid-gray;
+}
+
+.album-create__album-tab-art--empty {
+  border: 1px dashed $mid-gray;
+}
+
+.album-create__album-tab-description {
+  color: $light-black;
+  font-size: .75rem;
+  text-align: left;
+}
+
+.album-create__album-tab-name {
+  font-size: 1.25rem;
+}
+
+.album-create__album-tab-band {
+  display: flex;
+}
+
+.album-create__album-tab-band-name {
+  font-weight: bold;
+}
+
+.album-create__album-tab-date {
+  color: $mid-gray2;
+}

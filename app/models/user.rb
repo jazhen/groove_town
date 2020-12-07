@@ -12,9 +12,13 @@
 #  updated_at      :datetime         not null
 #
 
-require_relative './models_helpers/check_length_validator.rb'
+require_relative './models_helpers/user/check_length_validator.rb'
 
 class User < ApplicationRecord
+  has_many :albums, dependent: :destroy
+  has_many :tracks, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
+
   validates :username,
             check_length: { minimum: 3 },
             uniqueness: { case_sensitive: true,
@@ -37,6 +41,8 @@ class User < ApplicationRecord
 
   validates :password_digest,
             presence: true
+
+  validate :validate_avatar
 
   after_initialize :ensure_session_token
 
@@ -89,5 +95,17 @@ class User < ApplicationRecord
     session_token
   end
 
-  has_many :albums, dependent: :destroy
+  def validate_avatar
+    if avatar.attached?
+      if !['image/jpeg', 'image/png'].include?(avatar.blob.content_type)
+        errors[:avatar] << 'File is not of type .jpg or .png.'
+        avatar.purge
+      elsif avatar.blob.byte_size > 5_000_000
+        errors[:avatar] << 'File size is larger than 5MB.'
+        avatar.purge
+      end
+    else
+      errors[:avatar] << 'Please add an avatar.'
+    end
+  end
 end

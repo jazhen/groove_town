@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 export const signup = (user) => {
   return $.ajax({
     url: '/api/users',

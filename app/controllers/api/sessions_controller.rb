@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
 
       if username_or_email.blank?
         session_errors[:username] << 'Please enter your username.'
-      elsif !User.find_by_username_or_email(username_or_email)
+      elsif !User.find_by(username_or_email: username_or_email)
         session_errors[:username] << 'We didn’t recognize that username.'
       end
 
