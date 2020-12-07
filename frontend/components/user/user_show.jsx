@@ -43,7 +43,8 @@ const UserShow = ({
   clearAllErrors,
   loading,
 }) => {
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState({ location: user.location });
+
   const [selectedTab, setSelectedTab] = useState(0);
   const [editing, setEditing] = useState(false);
 
@@ -72,13 +73,12 @@ const UserShow = ({
   };
 
   const handleCancel = () => {
-    setProfile({});
+    setProfile({ location: user.location });
     setEditing(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append('user[id]', userId);
     formData.append('user[location]', profile.location);
@@ -87,7 +87,8 @@ const UserShow = ({
     }
 
     updateUser(formData, userId).then(() => {
-      handleCancel();
+      setProfile({ location: profile.location });
+      setEditing(false);
     });
   };
 
@@ -160,6 +161,7 @@ const UserShow = ({
             ) : null}
             {userId === currentUserId && editing ? (
               <EditProfile
+                profile={profile}
                 handleOnLocationChange={handleOnLocationChange}
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}
