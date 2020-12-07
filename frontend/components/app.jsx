@@ -33,7 +33,6 @@ const App = ({ loading }) => {
 
   return (
     <>
-      {loading ? <Loading /> : null}
       <Header pathname={pathname} />
       <main className="main">
         <Switch>
@@ -56,6 +55,7 @@ const App = ({ loading }) => {
         </Switch>
       </main>
       <FooterContainer />
+      {loading ? <Loading /> : null}
     </>
   );
 };

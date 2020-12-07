@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    avatar_url = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/default-profile-pic.jpg')
+    avatar_url = open('https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/default-profile_pic.jpg')
     @user.avatar.attach(io: avatar_url, filename: 'default-profile-pic')
 
     if @user.save
