@@ -232,7 +232,7 @@ seeds = [
       {
         album_name: 'Familiars',
         track_names: %w[Palace Doppelgänger Hotel Intruders Director],
-        release_date: [2014, 6, 417]
+        release_date: [2014, 6, 17]
       }
     ]
   }
