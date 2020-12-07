@@ -349,19 +349,21 @@ const AlbumUpdate = ({
               >
                 Update
               </button>
-              <button
-                type="button"
-                className="album-update__options-delete"
-                onClick={() => setShowDeleteConfirmation(true)}
-              >
-                Delete
-              </button>
-              <Link
-                to={`/users/${user.id}`}
-                className="album-update__options-cancel"
-              >
-                cancel
-              </Link>
+              <div className="album-update__options-right-container">
+                <button
+                  type="button"
+                  className="album-update__options-delete"
+                  onClick={() => setShowDeleteConfirmation(true)}
+                >
+                  Delete
+                </button>
+                <Link
+                  to={`/users/${user.id}`}
+                  className="album-update__options-cancel"
+                >
+                  cancel
+                </Link>
+              </div>
             </div>
           </div>
         </div>

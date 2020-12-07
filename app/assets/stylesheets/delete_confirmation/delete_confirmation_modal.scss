@@ -1,6 +1,8 @@
+@import 'variables';
+
 .delete-confirmation {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   height: 100%;
@@ -14,31 +16,54 @@
 .delete-confirmation__content {
   position: fixed;
   text-align: center;
-  background-color: #F3F3F3;
-  border: 3px solid #2C353A;
+  background-color: $light-gray;
   margin: 2rem;
+  border-radius: 5px;
 }
 
 .delete-confirmation__button {
   flex: 1;
-  height: 3rem;
+  height: 2.5rem;
+  border-radius: 5px;
+
 }
 
 .delete-confirmation__buttons-container {
   display: flex;
+  margin: 1.5rem;
+  color: $white;
 }
 
 .delete-confirmation__confirm-button {
-  border-top: 3px solid #2C353A;
-  border-right: 3px solid #2C353A;
-  background-color: #EC5C5C;
+  background-color: $red;
+  margin-right: 1.25rem;
+  color: $white;
+  font-weight: 500;
 }
 
 .delete-confirmation__cancel-button {
-  border-top: 3px solid #2C353A;
-  background-color: #9BC5EC;
+  background-color: $blue;
+  margin-left: 1.25rem;
+  color: $white;
+  font-weight: 500;
 }
 
 .delete-confirmation__warning {
-  margin: 3rem 1rem;
+  margin: 2rem;
+}
+
+.delete-confirmation__top {
+  background-color: $mid-gray;
+  border-bottom: 1px solid $mid-gray2;
+  height: 3rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.delete-confirmation__close {
+  color: $mid-gray2;
 }
