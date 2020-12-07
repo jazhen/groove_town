@@ -271,13 +271,14 @@ seeds.each do |seed|
   location = seed[:user][:location]
   formatted_band_name = band_name.delete(".,'-?():&/").downcase.split.join('_')
   profile_pic_filename = "#{formatted_band_name}-profile_pic.jpg"
-  profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}")
 
   puts
   puts
-  puts profile_pic_url
+  puts "https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}"
   puts
   puts
+
+  profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}")
 
   band = User.new(username: formatted_band_name,
                   email: "#{formatted_band_name}@groovetown.com",
@@ -290,13 +291,14 @@ seeds.each do |seed|
   seed[:albums].each do |seed_album|
     formatted_album_name = seed_album[:album_name].delete(".,'-?():&/").downcase.split.join('_')
     filename = "#{formatted_band_name}-#{formatted_album_name}"
-    album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
 
     puts
     puts
-    puts album_art_url
+    puts "https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg"
     puts
     puts
+
+    album_art_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/album-covers/#{filename}.jpg")
 
     album = Album.new(name: seed_album[:album_name],
                       user_id: band.id,
@@ -309,7 +311,7 @@ seeds.each do |seed|
 
       puts
       puts
-      puts track_filename
+      puts "https://groove-town-seeds.s3-us-west-1.amazonaws.com/audio/#{track_filename}"
       puts
       puts
 
