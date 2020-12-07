@@ -1,6 +1,7 @@
 import React from 'react';
 
 const EditProfile = ({
+  originalLocation,
   profile,
   handleOnLocationChange,
   handleSubmit,
@@ -12,6 +13,7 @@ const EditProfile = ({
         location
         <input
           type="text"
+          placeholder={originalLocation}
           value={profile.location}
           onChange={handleOnLocationChange}
           className="user-show__profile-edit-location-input"

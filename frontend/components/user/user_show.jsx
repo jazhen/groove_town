@@ -162,11 +162,12 @@ const UserShow = ({
                 </button>
               ) : null}
             </div>
-            {user.location ? (
+            {user.location && !editing ? (
               <p className="user-show__profile-location">{user.location}</p>
             ) : null}
             {userId === currentUserId && editing ? (
               <EditProfile
+                originalLocation={user.location}
                 profile={profile}
                 handleOnLocationChange={handleOnLocationChange}
                 handleSubmit={handleSubmit}
