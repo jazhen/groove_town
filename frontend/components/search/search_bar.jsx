@@ -14,6 +14,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
 
   useEffect(() => {
     searchInput.current.value = '';
+    setActive(false);
     window.scrollTo(0, 0);
   }, [location]);
 
