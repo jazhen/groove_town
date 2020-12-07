@@ -21,70 +21,70 @@ Track.connection.execute('ALTER SEQUENCE tracks_id_seq RESTART WITH 1')
 # ActiveStorage::Attachment.connection.execute('ALTER SEQUENCE active_storage_attachment_id_seq RESTART WITH 1')
 
 seeds = [
-  {
-    user: {
-      band_name: 'Leon Bridges',
-      location: 'Atlanta, GA'
-    },
-    albums: [
-      {
-        album_name: 'All About You',
-        track_names: ['All About You'],
-        release_date: [2020, 10, 16]
-      }
-    ]
-  },
-  {
-    user: {
-      band_name: 'A Tribe Called Quest',
-      location: 'New York, NY'
-    },
-    albums: [
-      {
-        album_name: 'The Low End Theory',
-        track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
-        release_date: [1991, 9, 24]
-      },
-      {
-        album_name: 'Midnight Marauders',
-        track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
-        release_date: [1993, 11, 9]
-      },
-      {
-        album_name: 'Beats, Rhymes and Life',
-        track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
-        release_date: [1996, 7, 30]
-      },
-      {
-        album_name: 'We Got It from Here... Thank You 4 Your Service',
-        track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
-        release_date: [2016, 11, 11]
-      }
-    ]
-  },
-  {
-    user: {
-      band_name: 'Boards of Canada',
-      location: 'Edinburgh, United Kingdom'
-    },
-    albums: [
-      {
-        album_name: 'Music Has the Right to Children',
-        track_names: ['Wildlife Analysis', 'An Eagle in Your Mind', 'The Color of the Fire', 'Telephasic Workshop', 'Triangles & Rhombuses'],
-        release_date: [1998, 4, 20]
-      },
-      {
-        album_name: 'Geogaddi',
-        track_names: ['Ready Lets Go', 'Music Is Math', 'Beware the Friendly Stranger', 'Gyroscope', 'Dandelion'],
-        release_date: [2002, 2, 13]
-      },
-      {
-        album_name: 'The Campfire Headphase',
-        track_names: ['Into the Rainbow Vein', 'Chromakey Dreamcoat', 'Satellite Anthem Icarus', 'Peacock Tail', 'Dayvan Cowboy'],
-        release_date: [2005, 10, 17]
-      }
-    ]
-  },
+  # {
+  #   user: {
+  #     band_name: 'Leon Bridges',
+  #     location: 'Atlanta, GA'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'All About You',
+  #       track_names: ['All About You'],
+  #       release_date: [2020, 10, 16]
+  #     }
+  #   ]
+  # },
+  # {
+  #   user: {
+  #     band_name: 'A Tribe Called Quest',
+  #     location: 'New York, NY'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'The Low End Theory',
+  #       track_names: ['Excursions', "Buggin' Out", 'Rap Promoter', 'Butter', 'Verses from the Abstract'],
+  #       release_date: [1991, 9, 24]
+  #     },
+  #     {
+  #       album_name: 'Midnight Marauders',
+  #       track_names: ['Midnight Marauders Tour Guide', 'Steve Biko (Stir It Up)', 'Award Tour', '8 Million Stories', 'Midnight'],
+  #       release_date: [1993, 11, 9]
+  #     },
+  #     {
+  #       album_name: 'Beats, Rhymes and Life',
+  #       track_names: ['Phony Rappers', 'Get a Hold', 'Motivators', 'Jam', 'Crew'],
+  #       release_date: [1996, 7, 30]
+  #     },
+  #     {
+  #       album_name: 'We Got It from Here... Thank You 4 Your Service',
+  #       track_names: ['The Space Program', 'We the People....', 'Whateva Will Be', 'Solid Wall of Sound', 'Dis Generation'],
+  #       release_date: [2016, 11, 11]
+  #     }
+  #   ]
+  # },
+  # {
+  #   user: {
+  #     band_name: 'Boards of Canada',
+  #     location: 'Edinburgh, United Kingdom'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: 'Music Has the Right to Children',
+  #       track_names: ['Wildlife Analysis', 'An Eagle in Your Mind', 'The Color of the Fire', 'Telephasic Workshop', 'Triangles & Rhombuses'],
+  #       release_date: [1998, 4, 20]
+  #     },
+  #     {
+  #       album_name: 'Geogaddi',
+  #       track_names: ['Ready Lets Go', 'Music Is Math', 'Beware the Friendly Stranger', 'Gyroscope', 'Dandelion'],
+  #       release_date: [2002, 2, 13]
+  #     },
+  #     {
+  #       album_name: 'The Campfire Headphase',
+  #       track_names: ['Into the Rainbow Vein', 'Chromakey Dreamcoat', 'Satellite Anthem Icarus', 'Peacock Tail', 'Dayvan Cowboy'],
+  #       release_date: [2005, 10, 17]
+  #     }
+  #   ]
+  # },
   {
     user: {
       band_name: 'Animal Collective',
@@ -92,7 +92,7 @@ seeds = [
     },
     albums: [
       {
-        album_name: "Spirit They've Gone Spirit They've Vanished",
+        album_name: "Spirit They're Gone Spirit They've Vanished",
         track_names: ["Spirit They've Vanished", 'April and the Phantom', 'Untitled', 'Penny Dreadfuls', 'Chocolate Girl'],
         release_date: [2000, 7, 31]
       },
