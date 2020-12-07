@@ -13,7 +13,7 @@
 }
 
 .album-player__artist {
-  font-weight: 500;
+  font-weight: 900;
   color: $blue;
 }
 
@@ -22,13 +22,19 @@
   text-decoration: underline;
 }
 
-.album-player__artist {
+.album-player__sidebar-artist {
   font-weight: bold;
   text-align: center;
 }
 
-.album-player__artist-name {
+.album-player__sidebar-artist-name:hover {
+  text-decoration: underline;
+}
+
+.album-player__sidebar-artist-location {
+  font-size: .75rem;
   margin-bottom: .5rem;
+  color: $dark-gray;
 }
 
 .album-player__metadata-container {
@@ -37,7 +43,7 @@
   margin: 1rem 0;
 }
 
-.album-player__artist-pic {
+.album-player__sidebar-artist-pic {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -46,6 +52,7 @@
 .album-player__release-date {
   font-size: .75rem;
   margin: 2rem 0;
+  text-align: center;
 }
 
 @media only screen
@@ -92,5 +99,13 @@ and (min-width: 992px) {
   .album-player__art {
     width: 400px;
     height: 400px;
+  }
+
+  .album-player__sidebar-artist {
+    text-align: left;
+  }
+
+  .album-player__sidebar-artist-location {
+    font-weight: normal;
   }
 }

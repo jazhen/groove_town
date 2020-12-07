@@ -51,15 +51,20 @@ const AlbumShowAudioPlayer = ({ user, albums, tracks, albumId, sessionId }) => {
         </div>
 
         <div className="album-player__sidebar">
-          <div className="album-player__artist">
+          <div className="album-player__sidebar-artist">
             <Link to={`/users/${user.id}`}>
-              <p className="album-player__artist-name">{user.band}</p>
               <img
                 src={user.avatarUrl}
                 alt="profile pic"
-                className="album-player__artist-pic"
+                className="album-player__sidebar-artist-pic"
               />
+              <p className="album-player__sidebar-artist-name">{user.band}</p>
             </Link>
+            {user.location ? (
+              <p className="album-player__sidebar-artist-location">
+                {user.location}
+              </p>
+            ) : null}
           </div>
           <AlbumShowDiscography albums={albums} albumIds={user.albumIds} />
         </div>
