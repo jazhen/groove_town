@@ -270,15 +270,15 @@ seeds.each do |seed|
   band_name = seed[:user][:band_name]
   location = seed[:user][:location]
   formatted_band_name = band_name.delete(".,'-?():&/").downcase.split.join('_')
-  profile_pic_filename = "#{formatted_band_name}-profile_pic"
+  profile_pic_filename = "#{formatted_band_name}-profile_pic.jpg"
+  profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}")
 
   puts
   puts
-  puts profile_pic_filename
+  puts profile_pic_url
   puts
   puts
 
-  profile_pic_url = open("https://groove-town-seeds.s3-us-west-1.amazonaws.com/avatars/#{profile_pic_filename}.jpg")
   band = User.new(username: formatted_band_name,
                   email: "#{formatted_band_name}@groovetown.com",
                   password: 'me4SNq^3eJL3Jhfs',
@@ -294,7 +294,7 @@ seeds.each do |seed|
 
     puts
     puts
-    puts filename
+    puts album_art_url
     puts
     puts
 
