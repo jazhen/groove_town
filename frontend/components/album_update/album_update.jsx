@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import DeleteConfirmationModal from '../delete_confirmation/delete_confirmation_modal';
 import AlbumUpdateAlbumForm from './album_update_album_form';
 import AlbumUpdateAlbumTab from './album_update_album_tab';
 import AlbumUpdateTrackForm from './album_update_track_form';
@@ -25,6 +26,7 @@ const AlbumUpdate = ({
   const [tracks, setTracks] = useState(null);
   const [tabs, setTabs] = useState([]);
   const [tabsContent, setTabsContent] = useState([]);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const handleTrackDelete = useCallback(
     (tabIndex) => {
@@ -303,8 +305,14 @@ const AlbumUpdate = ({
     });
   };
 
-  const handleAlbumDelete = () => {
-    deleteAlbum(albumId).then(() => history.push('/'));
+  const handleAlbumDeleteClick = () => {
+    setShowDeleteConfirmation(!showDeleteConfirmation);
+  };
+
+  const handleAlbumDeleteConfirm = () => {
+    deleteAlbum(albumId).then(() => {
+      history.push(`/users/${user.id}`);
+    });
   };
 
   return (
@@ -348,7 +356,7 @@ const AlbumUpdate = ({
               <button
                 type="button"
                 className="album-update__options-delete"
-                onClick={handleAlbumDelete}
+                onClick={handleAlbumDeleteClick}
               >
                 Delete
               </button>
@@ -365,6 +373,12 @@ const AlbumUpdate = ({
           {tabsContent[selectedTab]}
         </div>
       </div>
+      {showDeleteConfirmation ? (
+        <DeleteConfirmationModal
+          handleAlbumDeleteClick={handleAlbumDeleteClick}
+          handleAlbumDeleteConfirm={handleAlbumDeleteConfirm}
+        />
+      ) : null}
     </div>
   );
 };
