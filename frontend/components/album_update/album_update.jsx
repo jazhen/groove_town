@@ -305,10 +305,6 @@ const AlbumUpdate = ({
     });
   };
 
-  const handleAlbumDeleteClick = () => {
-    setShowDeleteConfirmation(!showDeleteConfirmation);
-  };
-
   const handleAlbumDeleteConfirm = () => {
     deleteAlbum(albumId).then(() => {
       history.push(`/users/${user.id}`);
@@ -356,7 +352,7 @@ const AlbumUpdate = ({
               <button
                 type="button"
                 className="album-update__options-delete"
-                onClick={handleAlbumDeleteClick}
+                onClick={() => setShowDeleteConfirmation(true)}
               >
                 Delete
               </button>
@@ -375,7 +371,7 @@ const AlbumUpdate = ({
       </div>
       {showDeleteConfirmation ? (
         <DeleteConfirmationModal
-          handleAlbumDeleteClick={handleAlbumDeleteClick}
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
           handleAlbumDeleteConfirm={handleAlbumDeleteConfirm}
         />
       ) : null}

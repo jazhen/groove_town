@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DeleteConfirmationModal = (
-  handleAlbumDeleteClick,
-  handleAlbumDeleteConfirm
-) => {
+const DeleteConfirmationModal = ({
+  setShowDeleteConfirmation,
+  handleAlbumDeleteConfirm,
+}) => {
   return (
     <div className="delete-confirmation">
       <div className="delete-confirmation__content">
@@ -21,7 +21,7 @@ const DeleteConfirmationModal = (
           <button
             type="button"
             className="delete-confirmation__cancel-button delete-confirmation__button"
-            onClick={handleAlbumDeleteClick}
+            onClick={() => setShowDeleteConfirmation(false)}
           >
             Cancel
           </button>
