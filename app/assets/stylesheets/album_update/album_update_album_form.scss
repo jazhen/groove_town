@@ -28,8 +28,8 @@
   border: 1px solid $mid-gray;
   margin: 0 1rem;
   color: $light-black;
+  padding-left: .5rem;
 }
-
 
 .album-update-album-form__date-description {
   color: $mid-gray2;
@@ -51,8 +51,8 @@
 }
 
 .album-update-album-form__file-input-container {
-  width: 560px;
-  height: 560px;
+  width: 200px;
+  height: 200px;
 }
 
 .album-update-album-form__file-input-container--empty {
@@ -83,8 +83,8 @@
 }
 
 .album-update-album-form__file-input-art {
-  width: 560px;
-  height: 560px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   object-fit: cover;
 }
@@ -113,4 +113,30 @@
 
 .album-update-album-form__input-error {
   border: 1px solid $red;
+}
+
+@media only screen
+and (min-width: 768px) {
+  .album-update-album-form__file-input-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .album-update-album-form__file-input-art {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media only screen
+and (min-width: 992px) {
+  .album-update-album-form__file-input-container {
+    width: 560px;
+    height: 560px;
+  }
+
+  .album-update-album-form__file-input-art {
+    width: 560px;
+    height: 560px;
+  }
 }
