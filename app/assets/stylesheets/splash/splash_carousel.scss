@@ -63,28 +63,17 @@
   font-size: 2rem;
   margin: 3rem;
   font-weight: bold;
-  text-shadow: 0px 0px 20px rgba(1, 1, 1, 1);
+  text-shadow:
+    0.05em 0 black,
+    0 0.05em black,
+    -0.05em 0 black,
+    0 -0.05em black;
 }
 
 .albums-index__carousel-main-description-secondary,
 .albums-index__carousel-sub-description-secondary {
   font-size: 1.5rem;
 }
-
-// .albums-index__carousel-sub-description {
-//   position: absolute;
-//   left: 0;
-//   bottom: 0;
-//   color: #fff;
-//   font-size: 1rem;
-//   margin: 1rem;
-//   font-weight: 900;
-//   text-shadow: 0px 0px 20px rgba(1, 1, 1, 1);
-// }
-
-// .albums-index__carousel-sub-description-secondary {
-//   font-weight: 500;
-// }
 
 @media only screen
 and (min-width: 992px) {
@@ -135,7 +124,6 @@ and (min-width: 992px) {
     font-size: 1rem;
     margin: 1rem;
     font-weight: 900;
-    text-shadow: 0px 0px 20px rgba(1, 1, 1, 1);
   }
 
   .albums-index__carousel-sub-description-secondary {

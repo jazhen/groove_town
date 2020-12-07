@@ -14,6 +14,12 @@
   text-align: left;
 }
 
+.footer__link-container {
+  align-items: center;
+  display: flex;
+  color: $white;
+}
+
 .footer__icon {
   margin-right: 0.25rem;
 }

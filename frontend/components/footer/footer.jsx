@@ -4,42 +4,53 @@ import { Link } from 'react-router-dom';
 const FooterCredentials = () => {
   return (
     <>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://bandcamp.com/"
-        className="footer__link footer__bandcamp"
-      >
+      <div className="footer__link-container footer__bandcamp">
         <i className="fab fa-bandcamp footer__icon" />
-        Clone of bandcamp
-      </a>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://github.com/jazhen/groove_town/"
-        className="footer__link"
-      >
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://bandcamp.com/"
+          className="footer__link"
+        >
+          Based on bandcamp
+        </a>
+      </div>
+
+      <div className="footer__link-container">
         <i className="fab fa-github footer__icon" />
-        Github
-      </a>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://www.linkedin.com/in/jazhen/"
-        className="footer__link"
-      >
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/jazhen/groove_town/"
+          className="footer__link"
+        >
+          Github
+        </a>
+      </div>
+
+      <div className="footer__link-container">
         <i className="fab fa-linkedin footer__icon" />
-        Linkedin
-      </a>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href="https://angel.co/u/jazhen"
-        className="footer__link"
-      >
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.linkedin.com/in/jazhen/"
+          className="footer__link"
+        >
+          Linkedin
+        </a>
+      </div>
+
+      <div className="footer__link-container">
         <i className="fab fa-angellist footer__icon" />
-        AngelList
-      </a>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://angel.co/u/jazhen"
+          className="footer__link"
+        >
+          AngelList
+        </a>
+      </div>
     </>
   );
 };
