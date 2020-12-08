@@ -28,7 +28,7 @@
 
 .albums-index__carousel-main-img-container:hover,
 .albums-index__carousel-sub-img-container:hover {
-  filter: brightness(1.25);
+  filter: brightness(1.20);
   transition: opacity 0.1s ease-out;
 }
 
@@ -60,8 +60,8 @@
   left: 0;
   bottom: 0;
   color: #fff;
-  font-size: 2rem;
-  margin: 3rem;
+  font-size: 1.5rem;
+  margin: 1.5rem;
   font-weight: bold;
   text-shadow:
     0.05em 0 black,
@@ -72,7 +72,34 @@
 
 .albums-index__carousel-main-description-secondary,
 .albums-index__carousel-sub-description-secondary {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+}
+
+@media only screen
+and (min-width: 576px) {
+  .albums-index__carousel-main-description,
+  .albums-index__carousel-sub-description {
+    font-size: 1.75rem;
+    margin: 2rem;
+  }
+
+  .albums-index__carousel-main-description-secondary,
+  .albums-index__carousel-sub-description-secondary {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen
+and (min-width: 768px) {
+  .albums-index__carousel-main-description,
+  .albums-index__carousel-sub-description {
+    font-size: 2rem;
+  }
+
+  .albums-index__carousel-main-description-secondary,
+  .albums-index__carousel-sub-description-secondary {
+    font-size: 1.75rem;
+  }
 }
 
 @media only screen
@@ -116,19 +143,27 @@ and (min-width: 992px) {
     border-bottom: 2px solid #222222;
   }
 
+  .albums-index__carousel-main-description {
+    font-size: 2rem;
+    margin: 3rem;
+  }
+
+  .albums-index__carousel-main-description-secondary {
+    font-weight: 500;
+  }
+
   .albums-index__carousel-sub-description {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    color: #fff;
     font-size: 1rem;
     margin: 1rem;
-    font-weight: 900;
+  }
+
+  .albums-index__carousel-main-description-secondary,
+  .albums-index__carousel-sub-description-secondary {
+    font-size: 1.5rem;
   }
 
   .albums-index__carousel-sub-description-secondary {
     font-size: 1rem;
     font-weight: 500;
   }
-
 }

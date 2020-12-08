@@ -27,7 +27,7 @@ const Splash = ({ albums, albumIds, fetchAlbums, loading }) => {
                   alt="splash main"
                 />
                 <div className="albums-index__carousel-main-description">
-                  A Tribe Called Quest&apos;s 1991 The Low End Theory:
+                  A Tribe Called Quest&apos;s 1991 The Low End Theory
                   <p className="albums-index__carousel-main-description-secondary">
                     A milestone in alternative hip hop
                   </p>
