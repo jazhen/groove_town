@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 1rem;
 }
 
 .user-albums__list {
@@ -93,6 +94,13 @@ and (min-width: 992px) {
 
   .user-albums__list-item:not(:nth-child(4n+1)) {
     margin-left: 40px;
+  }
+}
+
+@media only screen
+and (min-width: 1160px) {
+  .user-albums {
+    margin: 0 auto;
   }
 }
 

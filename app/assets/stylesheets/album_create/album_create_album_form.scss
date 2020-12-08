@@ -26,7 +26,7 @@
 
 .album-form__date-input {
   border: 1px solid $mid-gray;
-  margin: 0 1rem;
+  margin: 0 .25rem;
   color: $light-black;
   padding-left: .25rem;
 }
@@ -114,6 +114,13 @@
 
 .album-form__input-error {
   border: 1px solid $red;
+}
+
+@media only screen
+and (min-width: 768px) {
+  .album-form__date-input {
+    margin: 0 1rem;
+  }
 }
 
 @media only screen

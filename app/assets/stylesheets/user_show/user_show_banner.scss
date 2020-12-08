@@ -45,7 +45,7 @@
 }
 
 .user-show__profile-placeholder {
-  width: 240px;
+  width: 15rem;
 }
 
 .user-show__profile-name {
@@ -103,6 +103,7 @@
   align-items: center;
   margin-left: 2rem;
   height: 1.75rem;
+  min-width: 125px;
 }
 
 .user-show__profile-edit-save-button {
@@ -164,4 +165,20 @@
 .user-show__profile-location {
   font-weight: 500;
   color: $dark-gray;
+}
+
+@media only screen
+and (min-width: 576px) {
+  .user-show__profile-picture-container {
+    margin: 0 1rem;
+  }
+}
+
+
+@media only screen
+and (min-width: 1160px) {
+  .user-show__profile-picture-container {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
 }
