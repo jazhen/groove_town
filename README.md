@@ -1,8 +1,8 @@
 ![logo](https://user-images.githubusercontent.com/6326660/102277904-c5134100-3edd-11eb-9cfb-4073d5c6c461.png)
 
-A <a href="https://bandcamp.com/" target="_blank">Bandcamp</a> inspired website, where users can upload, download, and stream music. Built mobile-first, optimized for all devices.
+A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first, optimized for all devices.
 
-# <a href="http://groovetown.herokuapp.com/#/" target="_blank">Check out the website!</a>
+# [Check out the website!](http://groovetown.herokuapp.com/#/)
 
 # Technologies and Tools
 
@@ -57,4 +57,4 @@ the default HTML5 Audio Element and then implement my own custom controls using 
 Providing custom validation error messages to the user instead of the default from
 Ruby on Rails required me to create a class that inherited from ```ActiveModel::Validator```.
 This example shows my implementation of custom error messages for the user sign up page.
-![backend_validations](https://user-images.githubusercontent.com/6326660/102283593-94d0a000-3ee7-11eb-8e2b-25f98bbecb93.png)
+![backend_validations](https://user-images.githubusercontent.com/6326660/102286460-3d353300-3eed-11eb-8cdf-966234d7600a.png)

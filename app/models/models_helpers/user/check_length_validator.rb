@@ -7,7 +7,8 @@ class CheckLengthValidator < ActiveModel::EachValidator
         record.errors[attribute] << 'Please enter your password.'
       end
     elsif value.length < options[:minimum]
-      record.errors[attribute] << "Your #{attribute} must be at least #{options[:minimum]} characters."
+      record.errors[attribute] << "Your #{attribute} must be at least
+                                   #{options[:minimum]} characters."
     end
   end
 end
