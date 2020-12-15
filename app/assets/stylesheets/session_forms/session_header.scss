@@ -14,16 +14,6 @@
   margin: 0 auto;
 }
 
-.session-header,
-.session-header__fa-music {
-  color: $blue;
-  font-size: 1.25rem;
-}
-
-.session-header__fa-music {
-  margin-right: .25rem;
-}
-
 @media only screen
 and (min-width: 992px) {
   .session-header__container {
