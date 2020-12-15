@@ -73,7 +73,8 @@ const AudioPlayer = ({ album, tracks, sessionId }) => {
   };
 
   const handlePrev = () => {
-    const prevTrack = tracks[trackIds[currentTrack.ord - 2]];
+    const prevTrackId = trackIds[currentTrack.ord - 2];
+    const prevTrack = tracks[prevTrackId];
 
     setCurrentTrack(prevTrack);
     player.current.pause();
@@ -85,7 +86,8 @@ const AudioPlayer = ({ album, tracks, sessionId }) => {
   };
 
   const handleNext = () => {
-    const nextTrack = tracks[trackIds[currentTrack.ord]];
+    const nextTrackId = trackIds[currentTrack.ord];
+    const nextTrack = tracks[nextTrackId];
 
     setCurrentTrack(nextTrack);
     player.current.pause();
