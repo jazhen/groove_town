@@ -6,7 +6,7 @@ const SessionHeader = () => {
     <header className="session-header ">
       <div className="session-header__container">
         <Link className="session-header__link" to="/">
-          <img className="nav-bar__logo" src="/logo_small.png" alt="logo" />
+          <img className="nav-bar__logo" src="/logo_with_name.svg" alt="logo" />
         </Link>
       </div>
     </header>

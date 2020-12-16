@@ -7,7 +7,7 @@ const NavBarSiteList = () => {
     <>
       <div className="nav-bar__index">
         <Link className="nav-bar__index-link" to="/">
-          <img className="nav-bar__logo" src="/logo_small.png" alt="logo" />
+          <img className="nav-bar__logo" src="/logo_with_name.svg" alt="logo" />
         </Link>
       </div>
       <SearchBarContainer />
