@@ -108,29 +108,29 @@ seeds = [
   #     }
   #   ]
   # },
-  # {
-  #   user: {
-  #     band_name: 'Radiohead',
-  #     location: 'Abingdon, United Kingdom'
-  #   },
-  #   albums: [
-  #     {
-  #       album_name: 'OK Computer',
-  #       track_names: ['Airbag', 'Soft as Snow (But Warm Inside)', 'Subterranean Homesick Alien', 'Exit Music (For a Film)', ' Let Down'],
-  #       release_date: [1997, 6, 16]
-  #     },
-  #     {
-  #       album_name: 'Kid A ',
-  #       track_names: ['Everything in Its Right Place', 'Kid A', 'The National Anthem', 'How to Disappear Completely', ' Treefingers'],
-  #       release_date: [2000, 10, 3]
-  #     },
-  #     {
-  #       album_name: 'In Rainbows',
-  #       track_names: ['15 Step', 'Bodysnatchers', 'Nude', 'Weird Fishes / Arpeggi', 'All I Need'],
-  #       release_date: [2007, 10, 10]
-  #     }
-  #   ]
-  # },
+  {
+    user: {
+      band_name: 'Radiohead',
+      location: 'Abingdon, United Kingdom'
+    },
+    albums: [
+      {
+        album_name: 'OK Computer',
+        track_names: ['Airbag', 'Soft as Snow (But Warm Inside)', 'Subterranean Homesick Alien', 'Exit Music (For a Film)', ' Let Down'],
+        release_date: [1997, 6, 16]
+      },
+      {
+        album_name: 'Kid A ',
+        track_names: ['Everything in Its Right Place', 'Kid A', 'The National Anthem', 'How to Disappear Completely', ' Treefingers'],
+        release_date: [2000, 10, 3]
+      },
+      {
+        album_name: 'In Rainbows',
+        track_names: ['15 Step', 'Bodysnatchers', 'Nude', 'Weird Fishes / Arpeggi', 'All I Need'],
+        release_date: [2007, 10, 10]
+      }
+    ]
+  }
   # {
   #   user: {
   #     band_name: 'The Strokes',
@@ -195,29 +195,29 @@ seeds = [
   #     }
   #   ]
   # },
-  {
-    user: {
-      band_name: 'My Bloody Valentine',
-      location: 'Dublin, Ireland'
-    },
-    albums: [
-      # {
-      #   album_name: "Isn't Anything",
-      #   track_names: ['Soft as Snow (But Warm Inside)', 'Lose My Breath', 'Cupid Come', "(When You Wake) You're Still in a Dream", 'No More Sorry'],
-      #   release_date: [1988, 11, 21]
-      # },
-      # {
-      #   album_name: 'Loveless',
-      #   track_names: ['Only Shallow', 'Loomer', 'Touched', 'To Here Knows When', 'When You Sleep'],
-      #   release_date: [1991, 11, 4]
-      # },
-      {
-        album_name: 'm b v',
-        track_names: ['She Found Now', 'Only Tomorrow', 'Who Sees You', 'Is This and Yes', 'If I Am'],
-        release_date: [2013, 2, 2]
-      }
-    ]
-  }
+  # {
+  #   user: {
+  #     band_name: 'My Bloody Valentine',
+  #     location: 'Dublin, Ireland'
+  #   },
+  #   albums: [
+  #     {
+  #       album_name: "Isn't Anything",
+  #       track_names: ['Soft as Snow (But Warm Inside)', 'Lose My Breath', 'Cupid Come', "(When You Wake) You're Still in a Dream", 'No More Sorry'],
+  #       release_date: [1988, 11, 21]
+  #     },
+  #     {
+  #       album_name: 'Loveless',
+  #       track_names: ['Only Shallow', 'Loomer', 'Touched', 'To Here Knows When', 'When You Sleep'],
+  #       release_date: [1991, 11, 4]
+  #     },
+  #     {
+  #       album_name: 'm b v',
+  #       track_names: ['She Found Now', 'Only Tomorrow', 'Who Sees You', 'Is This and Yes', 'If I Am'],
+  #       release_date: [2013, 2, 2]
+  #     }
+  #   ]
+  # },
   # {
   #   user: {
   #     band_name: 'The Antlers',
@@ -236,7 +236,6 @@ seeds = [
   #     }
   #   ]
   # }
-
 
   # {
   #   user: {

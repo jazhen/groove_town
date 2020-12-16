@@ -53,8 +53,8 @@ class Api::AlbumsController < ApplicationController
       next unless params[:album][:tracks_attributes][index.to_s][:audio]
 
       begin
-        audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
-        params[:album][:tracks_attributes][index.to_s][:duration] = Mp3Info.open(audio).length
+      audio = open(params[:album][:tracks_attributes][index.to_s][:audio])
+      params[:album][:tracks_attributes][index.to_s][:duration] = Mp3Info.open(audio).length
       rescue Mp3InfoEOFError
         next
     end
@@ -93,6 +93,7 @@ class Api::AlbumsController < ApplicationController
       :user_id,
       :release_date,
       :art,
+      :thumbnail,
       tracks_attributes: %i[id name ord user_id album_id duration audio _destroy]
     )
   end

@@ -24,7 +24,7 @@ const AlbumShowDiscography = ({ albums, albumIds }) => {
                       className="album-show-discography__link"
                     >
                       <img
-                        src={album.artUrl}
+                        src={album.thumbnail1000Url}
                         alt="album art"
                         className="album-show-discography__art"
                       />

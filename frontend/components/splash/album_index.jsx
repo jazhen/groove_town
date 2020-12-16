@@ -11,15 +11,13 @@ const AlbumIndex = ({ album }) => {
             className="albums-index__album-name albums-index__metadata"
           >
             <div className="albums-index__album-art-container">
-              {album.artUrl ? (
+              {album.thumbnail200Url ? (
                 <img
                   className="albums-index__album-art"
-                  src={album.artUrl}
+                  src={album.thumbnail200Url}
                   alt={`${album.band}-${album.name}`}
                 />
-              ) : (
-                ''
-              )}
+              ) : null}
             </div>
           </Link>
         </div>
