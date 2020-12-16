@@ -7,11 +7,10 @@ export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 export const CLEAR_ALL_ALBUM_ERRORS = 'CLEAR_ALL_ALBUM_ERRORS';
 
-const receiveAlbums = ({ albums, tracks, albumIds }) => {
+const receiveAlbums = ({ albums, albumIds }) => {
   return {
     type: RECEIVE_ALBUMS,
     albums,
-    tracks,
     albumIds,
   };
 };
