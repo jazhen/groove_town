@@ -93,7 +93,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
-                    src={album.artUrl}
+                    src={album.thumbnail200Url}
                     alt="album art"
                   />
                   <ul className="nav-bar__search-bar-results-data-list">
@@ -123,7 +123,7 @@ const SearchBar = ({ users, albums, tracks, fetchAll }) => {
                 <li className="nav-bar__search-bar-results-list-item">
                   <img
                     className="nav-bar__search-bar-results-album-img"
-                    src={albums[track.albumId].artUrl}
+                    src={albums[track.albumId].thumbnail200Url}
                     alt="track album art"
                   />
                   <ul className="nav-bar__search-bar-results-data-list">

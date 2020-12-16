@@ -57,7 +57,7 @@ const AlbumShow = ({
         id="album-show"
         className="album-show"
         style={{
-          backgroundImage: `url(${album.artUrl})`,
+          backgroundImage: `url(${album.thumbnail1000Url})`,
         }}
       >
         <div className="album-show__main-container">
@@ -65,7 +65,7 @@ const AlbumShow = ({
             <div
               className="album-show__banner"
               style={{
-                backgroundImage: `url(${album.artUrl})`,
+                backgroundImage: `url(${album.thumbnail1000Url})`,
               }}
             />
           </div>
