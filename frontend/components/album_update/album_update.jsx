@@ -82,7 +82,7 @@ const AlbumUpdate = ({
         name: oldAlbum.name,
         releaseDate: oldAlbum.releaseDate,
         artFile: null,
-        artUrl: oldAlbum.artUrl,
+        artUrl: oldAlbum.thumbnail1000Url,
       };
 
       setAlbum(newAlbum);
