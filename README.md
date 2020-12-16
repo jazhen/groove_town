@@ -2,9 +2,9 @@
 
 A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first, optimized for all devices.
 
-# [Check out the website!](http://groovetown.herokuapp.com/#/)
+# &#127926; [Check out the website!](http://groovetown.herokuapp.com/#/)
 
-# Technologies and Tools
+# &#128295; Technologies and Tools
 
 ## Backend
 
@@ -29,24 +29,25 @@ A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, do
 ![ESLint](https://img.shields.io/badge/-ESLint-informational?style=flat&logo=ESLint&logoColor=white&color=4B32C3)
 ![Prettier](https://img.shields.io/badge/-Prettier-informational?style=flat&logo=Prettier&logoColor=black&color=F7B93E)
 
-# Home Page
+# &#128187; Website Demo
+## Home Page
 | Desktop | Mobile |
 |--|--|
 | ![splash-desktop](https://user-images.githubusercontent.com/6326660/102149873-545c1e00-3e24-11eb-94af-83e6a56694e5.jpg) | ![splash-mobile](https://user-images.githubusercontent.com/6326660/102149875-558d4b00-3e24-11eb-9563-ca56e2bacd18.jpg) |
 
 ***
-# Album Show Page
+## Album Show Page
 | Desktop | Mobile |
 |--|--|
 |
 ![album-desktop](https://user-images.githubusercontent.com/6326660/102150215-e8c68080-3e24-11eb-92f2-40ce2b72686b.jpg) | ![album-mobile](https://user-images.githubusercontent.com/6326660/102150216-e95f1700-3e24-11eb-83d5-b4819b1d7e85.jpg)
 
 ***
-# Search Functionality
+## Search Functionality
 
 ![search](https://user-images.githubusercontent.com/6326660/102148576-93d53b00-3e21-11eb-8301-f99b18c1986a.jpg)
 
-# Code Samples
+# &#128269; Code Samples
 
 ## Audio Player
 In order to replicate Bandcamp's music player, I had to strip away the styling from
