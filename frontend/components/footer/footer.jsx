@@ -12,7 +12,7 @@ const FooterCredentials = () => {
           href="https://bandcamp.com/"
           className="footer__link"
         >
-          Based on bandcamp
+          Inspired by bandcamp
         </a>
       </div>
 
