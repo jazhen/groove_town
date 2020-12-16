@@ -70,9 +70,13 @@ const AlbumShowTracks = ({
                     handlePlay={handlePlay}
                   />
                 </li>
-                <li>{`${track.ord}.`}</li>
-                <li className="album-show__track-name">{track.name}</li>
-                <li>{formatTime(track.duration)}</li>
+                <li className="album-show__track-ord">{`${track.ord}.`}</li>
+                <li className="album-show__track-name-duration-container">
+                  <span className="album-show__track-name">{track.name}</span>
+                  <span className="album-show__track-duration">
+                    {formatTime(track.duration)}
+                  </span>
+                </li>
               </ul>
               <ul className="album-show__track-options-container">
                 {sessionId ? (

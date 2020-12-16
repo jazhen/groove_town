@@ -132,7 +132,7 @@ const AudioPlayer = ({ album, tracks, sessionId }) => {
             <span className="album-player__track-name">
               {currentTrack.name}
             </span>
-            <span className="album-player__track-time">
+            <span className="album-player__track-duration">
               {formatTime(currentTime)} / {formatTime(currentTrack.duration)}
             </span>
           </div>

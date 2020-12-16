@@ -7,8 +7,16 @@
   justify-content: space-between;
 }
 
+.album-show__track-ord {
+  margin-right: .25rem;
+}
+
 .album-show__track-name {
-  margin: 0 .5rem 0 .25rem;
+  margin-right: .5rem;
+}
+
+.album-show__track-duration {
+  color: $dark-gray;
 }
 
 .album-show__track-play-button {
