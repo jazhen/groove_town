@@ -97,6 +97,10 @@ const UserShow = ({
     });
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className="user-show">
       <div className="user-show__main-container">
