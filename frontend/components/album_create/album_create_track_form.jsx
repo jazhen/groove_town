@@ -69,5 +69,3 @@ const AlbumCreateTrackForm = ({
 };
 
 export default AlbumCreateTrackForm;
-
-// tracks[0].errors

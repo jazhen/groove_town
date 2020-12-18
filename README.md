@@ -1,6 +1,6 @@
 ![logo](https://user-images.githubusercontent.com/6326660/102277904-c5134100-3edd-11eb-9cfb-4073d5c6c461.png)
 
-A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first, optimized for all devices.
+A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first and optimized for all devices.
 
 # &#127926; [Check out the website!](http://groovetown.herokuapp.com/#/)
 

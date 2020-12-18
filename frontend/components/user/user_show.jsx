@@ -41,7 +41,6 @@ const UserShow = ({
   errors,
   updateUser,
   clearAllErrors,
-  loading,
 }) => {
   const [profile, setProfile] = useState({
     location: '',
@@ -97,10 +96,6 @@ const UserShow = ({
       setEditing(false);
     });
   };
-
-  if (loading || !user) {
-    return null;
-  }
 
   return (
     <div className="user-show">

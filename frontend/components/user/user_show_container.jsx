@@ -9,7 +9,7 @@ import UserShow from './user_show';
 import UserShowAlbums from './user_show_albums';
 
 const mapStateToProps = (
-  { entities: { users, albums }, session, ui: { errors, loading } },
+  { entities: { users, albums }, session, ui: { errors } },
   { match: { params } }
 ) => {
   const user = users[params.userId];
@@ -22,7 +22,6 @@ const mapStateToProps = (
           user={user}
           albums={albums}
           currentUserId={session.id}
-          loading={loading.standard}
         />
       ),
     },
@@ -36,7 +35,6 @@ const mapStateToProps = (
     userId: params.userId,
     currentUserId: `${session.id}`,
     errors: errors.users,
-    loading: loading.standard,
   };
 };
 
