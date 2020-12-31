@@ -1,6 +1,6 @@
 ![logo](https://user-images.githubusercontent.com/6326660/102277904-c5134100-3edd-11eb-9cfb-4073d5c6c461.png)
 
-A [Bandcamp](https://bandcamp.com/) inspired website where users can upload, download, and stream music. Built mobile-first and optimized for all devices.
+A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first and optimized for all devices.
 
 # &#127926; [Check out the website!](http://groovetown.herokuapp.com/#/)
 
@@ -36,11 +36,10 @@ A [Bandcamp](https://bandcamp.com/) inspired website where users can upload, dow
 | ![desktop](https://user-images.githubusercontent.com/6326660/103392206-8b435c80-4ad1-11eb-98a3-6a25a9494c68.png) | ![mobile](https://user-images.githubusercontent.com/6326660/103392208-8ed6e380-4ad1-11eb-9c66-cbc4a676e6e9.png) |
 
 ## Search Functionality
-
-![search](https://user-images.githubusercontent.com/6326660/103392210-8f6f7a00-4ad1-11eb-9f9a-71937d1dfa04.gif)
+![search](https://user-images.githubusercontent.com/6326660/103398961-b8a10200-4af3-11eb-896c-7c0c0b826c81.gif)
 
 ## Download Music
-![download](https://user-images.githubusercontent.com/6326660/103392207-8d0d2000-4ad1-11eb-9733-22dce042aef7.gif)
+![download](https://user-images.githubusercontent.com/6326660/103398475-bc338980-4af1-11eb-8b2e-15bdd5fc5719.gif)
 
 ## Upload Music
 ![upload](https://user-images.githubusercontent.com/6326660/103392213-94ccc480-4ad1-11eb-888b-ae3bf972e0e3.png)
@@ -49,11 +48,11 @@ A [Bandcamp](https://bandcamp.com/) inspired website where users can upload, dow
 
 ## Audio Player
 In order to replicate Bandcamp's music player, I had to strip away the styling from
-the default HTML5 Audio Element and then implement my own custom controls using JavaScript.
+the default HTML5 Audio Element and then **implement my own custom controls** using JavaScript.
 ![music_player](https://user-images.githubusercontent.com/6326660/102283596-95693680-3ee7-11eb-8118-0efa35bb53ed.png)
 
-## Back-end Custom Validations
-Providing custom validation error messages to the user instead of the default from
+## Custom Back-end Validations
+Providing **custom validation error messages** to the user instead of the default from
 Ruby on Rails required me to create a class that inherited from ```ActiveModel::Validator```.
 This example shows my implementation of custom error messages for the user sign up page.
 ![back-end_validations](https://user-images.githubusercontent.com/6326660/102286460-3d353300-3eed-11eb-8cdf-966234d7600a.png)
