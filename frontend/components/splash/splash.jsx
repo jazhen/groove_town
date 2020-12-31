@@ -94,7 +94,7 @@ const Splash = ({ albums, albumIds, fetchAlbums }) => {
         <span className="albums-index__notification-bold">
           274 million&nbsp;
         </span>
-        hours using groovetown, and&nbsp;
+        hours using Groovetown, and&nbsp;
         <span className="albums-index__notification-bold">
           31 million&nbsp;
         </span>
