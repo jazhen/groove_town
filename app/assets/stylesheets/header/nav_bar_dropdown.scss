@@ -32,6 +32,7 @@
   border-radius: 90%;
 }
 
+.nav-bar__dropdown-button:active ~ .nav-bar__dropdown-menu,
 .nav-bar__dropdown-button:focus ~ .nav-bar__dropdown-menu,
 .nav-bar__dropdown-menu:active,
 .nav-bar__dropdown-link
