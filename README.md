@@ -1,19 +1,19 @@
 ![logo](https://user-images.githubusercontent.com/6326660/102277904-c5134100-3edd-11eb-9cfb-4073d5c6c461.png)
 
-A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first and optimized for all devices.
+A [Bandcamp](https://bandcamp.com/) inspired website where users can upload, download, and stream music. Built mobile-first and optimized for all devices.
 
 # &#127926; [Check out the website!](http://groovetown.herokuapp.com/#/)
 
 # &#128295; Technologies and Tools
 
-## Backend
+## Back-end
 
 ![Ruby](https://img.shields.io/badge/-Ruby-informational?style=flat&logo=Ruby&logoColor=white&color=CC342D)
 ![Ruby on Rails](https://img.shields.io/badge/-Ruby_on_Rails-informational?style=flat&logo=ruby-on-rails&logoColor=white&color=CC342D)
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-informational?style=flat&logo=PostgreSQL&logoColor=white&color=336791)
 ![Amazon AWS](https://img.shields.io/badge/-Amazon_AWS-informational?style=flat&logo=amazon-aws&logoColor=white&color=232F3E)
 
-## Frontend
+## Front-end
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-informational?style=flat&logo=JavaScript&logoColor=black&color=F7DF1E)
 ![React](https://img.shields.io/badge/-React-informational?style=flat&logo=React&logoColor=black&color=61DAFB)
@@ -29,23 +29,21 @@ A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, do
 ![ESLint](https://img.shields.io/badge/-ESLint-informational?style=flat&logo=ESLint&logoColor=white&color=4B32C3)
 ![Prettier](https://img.shields.io/badge/-Prettier-informational?style=flat&logo=Prettier&logoColor=black&color=F7B93E)
 
-# &#128187; Website Demo
-## Home Page
+# &#128187; Demo
+## Responsive Design
 | Desktop | Mobile |
 |--|--|
-| ![splash-desktop](https://user-images.githubusercontent.com/6326660/102149873-545c1e00-3e24-11eb-94af-83e6a56694e5.jpg) | ![splash-mobile](https://user-images.githubusercontent.com/6326660/102149875-558d4b00-3e24-11eb-9563-ca56e2bacd18.jpg) |
+| ![desktop](https://user-images.githubusercontent.com/6326660/103392206-8b435c80-4ad1-11eb-98a3-6a25a9494c68.png) | ![mobile](https://user-images.githubusercontent.com/6326660/103392208-8ed6e380-4ad1-11eb-9c66-cbc4a676e6e9.png) |
 
-***
-## Album Show Page
-| Desktop | Mobile |
-|--|--|
-|
-![album-desktop](https://user-images.githubusercontent.com/6326660/102150215-e8c68080-3e24-11eb-92f2-40ce2b72686b.jpg) | ![album-mobile](https://user-images.githubusercontent.com/6326660/102150216-e95f1700-3e24-11eb-83d5-b4819b1d7e85.jpg)
-
-***
 ## Search Functionality
 
-![search](https://user-images.githubusercontent.com/6326660/102148576-93d53b00-3e21-11eb-8301-f99b18c1986a.jpg)
+![search](https://user-images.githubusercontent.com/6326660/103392210-8f6f7a00-4ad1-11eb-9f9a-71937d1dfa04.gif)
+
+## Download Music
+![download](https://user-images.githubusercontent.com/6326660/103392207-8d0d2000-4ad1-11eb-9733-22dce042aef7.gif)
+
+## Upload Music
+![upload](https://user-images.githubusercontent.com/6326660/103392213-94ccc480-4ad1-11eb-888b-ae3bf972e0e3.png)
 
 # &#128269; Code Samples
 
@@ -54,8 +52,8 @@ In order to replicate Bandcamp's music player, I had to strip away the styling f
 the default HTML5 Audio Element and then implement my own custom controls using JavaScript.
 ![music_player](https://user-images.githubusercontent.com/6326660/102283596-95693680-3ee7-11eb-8118-0efa35bb53ed.png)
 
-## Backend Custom Validations
+## Back-end Custom Validations
 Providing custom validation error messages to the user instead of the default from
 Ruby on Rails required me to create a class that inherited from ```ActiveModel::Validator```.
 This example shows my implementation of custom error messages for the user sign up page.
-![backend_validations](https://user-images.githubusercontent.com/6326660/102286460-3d353300-3eed-11eb-8cdf-966234d7600a.png)
+![back-end_validations](https://user-images.githubusercontent.com/6326660/102286460-3d353300-3eed-11eb-8cdf-966234d7600a.png)
