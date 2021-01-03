@@ -11,7 +11,7 @@ const AlbumUpdate = ({
   oldAlbum,
   allTracks,
   albumId,
-  fetchAlbum,
+  fetchUser,
   updateAlbum,
   deleteAlbum,
   errors,
@@ -69,8 +69,8 @@ const AlbumUpdate = ({
   }, []);
 
   useEffect(() => {
-    fetchAlbum(albumId);
-  }, [fetchAlbum, albumId]);
+    fetchUser(user.id);
+  }, [fetchUser, user.id]);
 
   useEffect(() => {
     setToday(new Date().toISOString().slice(0, 10));

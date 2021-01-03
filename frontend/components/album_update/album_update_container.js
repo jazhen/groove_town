@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { fetchUser } from '../../actions/user_actions';
 import {
   fetchAlbum,
   clearAlbumErrors,
@@ -23,6 +24,7 @@ const mapStateToProps = (
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchUser: (userId) => dispatch(fetchUser(userId)),
   fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
   updateAlbum: (album, albumId) => dispatch(updateAlbum(album, albumId)),
   deleteAlbum: (albumId) => deleteAlbum(albumId),
