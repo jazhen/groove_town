@@ -2,16 +2,16 @@
 
 A [Bandcamp](https://bandcamp.com/) inspired website, where users can upload, download, and stream music. Built mobile-first and optimized for all devices.
 
-# &#127926; [Check out the website!](http://groovetown.herokuapp.com/#/)
+# &#127926; [Check out the website!](https://groovetown.herokuapp.com/#/)
 
 # &#128295; Technologies and Tools
 
 ## Back-end
 
 ![Ruby](https://img.shields.io/badge/-Ruby-informational?style=flat&logo=Ruby&logoColor=white&color=CC342D)
-![Ruby on Rails](https://img.shields.io/badge/-Ruby_on_Rails-informational?style=flat&logo=ruby-on-rails&logoColor=white&color=CC342D)
+![Rails](https://img.shields.io/badge/-Rails-informational?style=flat&logo=ruby-on-rails&logoColor=white&color=CC342D)
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-informational?style=flat&logo=PostgreSQL&logoColor=white&color=336791)
-![Amazon AWS](https://img.shields.io/badge/-Amazon_AWS-informational?style=flat&logo=amazon-aws&logoColor=white&color=232F3E)
+![AWS S3](https://img.shields.io/badge/-AWS_S3-informational?style=flat&logo=amazon-aws&logoColor=white&color=232F3E)
 
 ## Front-end
 
