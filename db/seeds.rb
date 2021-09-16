@@ -15,10 +15,10 @@ Album.destroy_all
 Album.connection.execute('ALTER SEQUENCE albums_id_seq RESTART WITH 1')
 Track.destroy_all
 Track.connection.execute('ALTER SEQUENCE tracks_id_seq RESTART WITH 1')
-ActiveStorage::Blob.destroy_all
-ActiveStorage::Blob.connection.execute('ALTER SEQUENCE active_storage_blob_id_seq RESTART WITH 1')
-ActiveStorage::Attachment.destroy_all
-ActiveStorage::Attachment.connection.execute('ALTER SEQUENCE active_storage_attachment_id_seq RESTART WITH 1')
+# ActiveStorage::Blob.destroy_all
+# ActiveStorage::Blob.connection.execute('ALTER SEQUENCE active_storage_blob_id_seq RESTART WITH 1')
+# ActiveStorage::Attachment.destroy_all
+# ActiveStorage::Attachment.connection.execute('ALTER SEQUENCE active_storage_attachment_id_seq RESTART WITH 1')
 
 seeds = [
   {
