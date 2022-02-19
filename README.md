@@ -56,3 +56,16 @@ Providing **custom validation error messages** to the user instead of the defaul
 Ruby on Rails required me to create a class that inherited from ```ActiveModel::Validator```.
 This example shows my implementation of custom error messages for the user sign up page.
 ![back-end_validations](https://user-images.githubusercontent.com/6326660/102286460-3d353300-3eed-11eb-8cdf-966234d7600a.png)
+
+# Run Locally
+Run the follow commands in separate terminal tabs.
+
+Run the Rails back end:
+```
+rails server
+```
+
+Run the React front end:
+```
+npm start
+```
